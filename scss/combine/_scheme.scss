@@ -1,0 +1,102 @@
+$tones: ( 
+	b: -5, d3: -4, d2: -3, d1: -2, d:-1, n:0,
+	l:1, l1:2, l2:3, l3:4, w: 5
+);
+
+[class*='ncc-'] {
+	@each $name,$step in $tones {
+		--c-#{$name}: #{hsl-css-var($step)};
+	}
+}
+
+@mixin schemer($scheme) {
+
+
+	@each $var, $val in $scheme {
+	
+		--#{$var}: #{$val};
+		
+		$white: 95%;
+		$black: 5%;
+		$h: round(hue($val)/1deg);
+		$s: round(saturation($val));
+		$l: round(lightness($val));
+		$uf: ($white - $l)/5;
+		$df: ($l - $black)/5;
+
+
+		@if $var != background and $var != text 
+			and $var != shade and $var != shadow 
+			and $var != border and $var != hilite {
+
+			--#{$var}_h: #{$h};		
+			--#{$var}_s: #{$s};		
+			--#{$var}_l: #{$l};	
+			@if $l > 50% {		
+				--#{$var}_t: #000;
+			} @else {
+				--#{$var}_t: #fff;
+			}
+		
+			[class*='ncc-#{$var}'] {
+			
+				--h: var(--#{$var}_h, #{$h});
+				--s: var(--#{$var}_s, #{$s});;
+				--l: var(--#{$var}_l, #{$l});
+				--uf: var(--#{$var}_uf, calc((#{$white} - var(--l)) / 5));
+				--df: var(--#{$var}_df, calc((var(--l) - #{$black}) / 5));
+
+
+			}
+			
+			.ncc-#{$var} {
+			
+				&.bg, .bg {
+					background-color: var(--c-n);
+					@if $l > 50% {
+						color: var(--c-b);
+					} @else {
+						color: var(--c-w);
+					}
+				}
+				
+				@each $name,$step in $tones {
+
+					&.color-#{$name}, .color-#{$name} {
+						
+						color: var(--c-#{$name});
+					}
+					
+					&.bg-#{$name}, .bg-#{$name} {
+						
+						$r: $l + ($uf * $step);
+
+						@if ($step < 0) {
+							$r: $l + ($df * $step);
+						}
+						
+						background-color: var(--c-#{$name});
+						@if ($r < 50%) { color: var(--c-w); }
+						@else { color: var(--c-b); }
+					}
+					
+					
+				}			
+
+			}
+		}
+	}
+}
+
+.light-scheme {
+	background-color: #{$light-background-color};
+	color: #{$light-text-color};
+	@include schemer($light);
+}
+
+.dark-scheme {
+	background-color: #{$dark-background-color};
+	color: #{$dark-text-color};
+	@include schemer($dark);
+}
+

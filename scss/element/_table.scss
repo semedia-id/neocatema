@@ -1,0 +1,38 @@
+.light-scheme table {
+	@extend [class*='ncc-surface'];
+	--face: #{unquote("hsl(var(--h), var(--s), 90%)")};
+	--face-t: #{unquote("hsl(var(--h), var(--s), 10%)")};
+	--shade: #{unquote("hsla(var(--h), var(--s), var(--l), .1)")};	
+}
+
+.dark-scheme table {
+	@extend [class*='ncc-surface'];
+	--face: #{unquote("hsl(var(--h), var(--s), 10%)")};
+	--face-t: #{unquote("hsl(var(--h), var(--s), 90%)")};
+	--shade: #{unquote("hsla(var(--h), var(--s), var(--l), .1)")};
+}
+
+table {
+	
+	width: 100%; 
+	border-spacing: 1px;
+	border: 1px solid var(--face);
+	border-collapse: collapse;
+	vertical-align: middle; 
+
+	td, th { 
+		text-align: center; 
+		border: 1px solid var(--face);
+		padding: calc(1rem * (var(--line-height) - 1)/2);
+	}
+
+	thead { 
+		background-color: var(--face);
+		color: var(--face-t);
+	}
+	
+}
+
+table[stripes] {
+	tbody tr:nth-child(even) { background-color: var(--shade); }
+}

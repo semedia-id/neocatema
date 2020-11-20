@@ -1,0 +1,14 @@
+* { box-sizing:border-box; }
+
+body {
+	min-height: 100vh;
+	background: var(--background);
+	color: var(--text);
+	font-size: var(--font-size);
+	font-family: var(--font-base);
+	line-height: var(--line-height);
+}
+
+a {
+	text-decoration: none;
+}

@@ -1,0 +1,11 @@
+:root {
+
+	// base on root
+	@each $var,$val in $base {
+		--#{$var}: #{$val};
+		$base-vars: append($base-vars,$var) !global;		
+	}
+
+	--line-margin: calc(var(--line-height) * var(--font-size));
+}
+

@@ -1,0 +1,27 @@
+.xample:hover {
+	background: var(--background);
+	outline: 1px solid var(--border);
+    position: relative;
+	&:after {
+	  z-index: +1;
+	  top:0;
+	  right:0;
+	  font-family: 'neoca-feather';
+	  content: '\5a';
+	  position: absolute;
+	  color:var(--text);
+	  background-color: var(--border);
+	  cursor:pointer;
+	  padding: .1rem;
+	}
+	
+}
+
+.nc-icon { 
+    display: flex; flex-flow: column wrap; padding: 1rem; text-align: center; 
+    margin: .5rem;
+    outline: 1px dotted var(--border);
+	i { font-size: 2rem; margin-bottom: 1rem; }
+    span { display:block; text-align: center; color: var(--label); font-family: var(--font-mono); }
+
+}

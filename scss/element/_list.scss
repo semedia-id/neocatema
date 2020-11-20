@@ -1,0 +1,7 @@
+// sub list are keep with previous.
+
+ul,
+ol { padding-inline-start: 1rem; }
+
+li > ul { @extend %no-margin-top; }
+li > ol { @extend %no-margin-top; }
