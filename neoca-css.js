@@ -1,9 +1,7 @@
-if (!scheme) {
-	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-		var scheme = 'dark';
-	} else {
-		var scheme = 'light';
-	}
+var scheme = 'light';
+
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+	var scheme = 'dark';
 }
 
 var field1 = ['background','text'];
@@ -54,14 +52,6 @@ let url = new URL(window.location.href)
 var path = url.pathname;
 var page = url.searchParams.get('page');
 var sample = url.searchParams.get('sample');
-
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    gas('body').addClass('dark-scheme');
-	gas('#neoca_scheme_switch span').content('Dark Scheme');
-} else {
-    gas('body').addClass('light-scheme');
-	gas('#neoca_scheme_switch span').content('Light Scheme');
-}
 
 function neoca_switch_scheme(ele=false) {
 	if (gas('body').hasClass('dark-scheme')) {
@@ -170,22 +160,27 @@ function inputcolor(scheme) {
 		}
 	});
 
-	nc_cssvar('shade');
-	nc_cssvar('shadow');
-	nc_cssvar('border');
-	nc_cssvar('hilite');
+	nc_cssvar('shade',scheme);
+	nc_cssvar('shadow',scheme);
+	nc_cssvar('border',scheme);
+	nc_cssvar('hilite',scheme);
 
 
 }
 
 function change_color(ele) {
+
+	if (gas('body').class=='dark-scheme') {
+		scheme = 'dark';
+	} else {
+		scheme = 'light';
+	}
 	
 	var what = ele.getAttribute('data-color');
 	var color = ele.value;
 	ele.setAttribute('data-value',color);
 	ele.setAttribute('value',color);
 	var name = scheme+"-"+what
-	console.log('han',name);
 //	console.log('change:'+name, color);
 	localStorage.setItem(name, color);
 	if (field2.includes(what)) {
@@ -196,8 +191,6 @@ function change_color(ele) {
 }
 
 function nc_cssvar(what,base=false,value=false) {
-
-    var scheme = 'light'
 
 	if (gas('body').class=='dark-scheme') {
 		scheme = 'dark';
@@ -315,9 +308,21 @@ function nc_variables() {
 
 document.addEventListener('DOMContentLoaded', function () {
 
+	var scheme = 'light';
+
+	if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		scheme = 'dark';
+		gas('body').addClass('dark-scheme');
+		gas('#neoca_scheme_switch span').content('Dark Scheme');
+	} else {
+		scheme = 'light';
+    	gas('body').addClass('light-scheme');
+		gas('#neoca_scheme_switch span').content('Light Scheme');
+	}
+
 	ncd_init();
 
-	inputcolor();
+	inputcolor(scheme);
 	inputothers();
 
 });

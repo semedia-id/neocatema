@@ -3248,7 +3248,7 @@ button.secondary, .button.secondary, input[type="submit"].secondary, input[type=
   --border: #0004;
   --shade: #0003;
   --hilite: #fff9;
-  --shadow: #0002; }
+  --shadow: #0005; }
   .light-scheme [class*='ncc-surface'], .light-scheme code,
   .light-scheme kbd, .light-scheme .dark-scheme pre, .dark-scheme .light-scheme pre, .light-scheme pre, .light-scheme table, .light-scheme .dark-scheme table, .dark-scheme .light-scheme table {
     --h: var(--surface_h, 210);
