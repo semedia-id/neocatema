@@ -18,10 +18,12 @@
 }
 
 .nc-icon { 
-    display: flex; flex-flow: column wrap; padding: 1rem; text-align: center; 
+    display: flex; 
+    flex-flow: column wrap; 
+    padding: 1rem; text-align: center; 
     margin: .5rem;
     outline: 1px dotted var(--border);
-	i { font-size: 2rem; margin-bottom: 1rem; }
+	i { font-size: 2rem; margin-bottom: 1rem; display:block; }
     span { display:block; text-align: center; color: var(--label); font-family: var(--font-mono); }
 
 }

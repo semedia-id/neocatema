@@ -1,13 +1,11 @@
 .dark-scheme pre {
-	@extend [class*='ncc-surface'];
-	--background: #{unquote("hsl(var(--h), var(--s), 25%)")};
-	--color: #{unquote("hsl(var(--h), var(--s), 95%)")}
+	--background: #{unquote("hsl(var(--surface_h), var(--surface_s), 25%)")};
+	--color: #{unquote("hsl(var(--surface_h), var(--surface_s), 95%)")}
 }
 
 .light-scheme pre {
-	@extend [class*='ncc-surface'];
-	--background: #{unquote("hsl(var(--h), var(--s), 15%)")};
-	--color: #{unquote("hsl(var(--h), var(--s), 95%)")}
+	--background: #{unquote("hsl(var(--surface_h), var(--surface_s), 15%)")};
+	--color: #{unquote("hsl(var(--surface_h), var(--surface_s), 95%)")}
 }
 
 

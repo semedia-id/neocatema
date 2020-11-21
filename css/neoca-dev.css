@@ -334,7 +334,8 @@ body {
   outline: 1px dotted var(--border); }
   .nc-icon i {
     font-size: 2rem;
-    margin-bottom: 1rem; }
+    margin-bottom: 1rem;
+    display: block; }
   .nc-icon span {
     display: block;
     text-align: center;

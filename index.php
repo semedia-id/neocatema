@@ -6,9 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<link href="/css/icon/style.min.css?<?php seed(); ?>" type="text/css" rel="stylesheet">
-<link href="/css/neoca-dev.css?<?php seed(); ?>" type="text/css" rel="stylesheet">
 <link href="/css/neoca.css?<?php seed(); ?>" type="text/css" rel="stylesheet">
+<link href="/css/neoca-dev.css?<?php seed(); ?>" type="text/css" rel="stylesheet">
 <script src="/js/w3color.js?"></script> 
 <script src="/js/_gas.js?<?php seed() ?>"></script> 
 
