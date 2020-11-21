@@ -1,4 +1,4 @@
-# noecatema
+# neocatema
 Minimal CSS Framework with dark-mode enable
 
 ## Require
