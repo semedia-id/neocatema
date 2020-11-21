@@ -2,3 +2,5 @@
 .sass-cache/**
 favicon.ico
 *.bak
+*.map
+
