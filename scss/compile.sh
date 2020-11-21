@@ -62,3 +62,10 @@ ls -1 dev/* \
 	| sed -e 's/\.scss$/";/' \
 	| sed -e 's/^dev\/_/@import "dev\//' \
 	>> '_dev.scss'	
+	
+	
+echo "// Bourbon 4.2.7 - http://bourbon.io - MIT License" > vendor/_bourbon.scss
+ls -1 vendor/bourbon/* \
+	| sed -e 's/\.scss$/";/' \
+	| sed -e 's/^vendor\/bourbon\/_/@import "bourbon\//' \
+	>> 'vendor/_bourbon.scss'	
