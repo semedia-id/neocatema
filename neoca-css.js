@@ -150,14 +150,6 @@ function apply_var(what,val,hsl=false) {
 
 function inputcolor(scheme) {
 
-	if (!scheme) {
-		if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			var scheme = 'dark';
-		} else {
-			var scheme = 'light';
-		}
-	}
-
 	fields.forEach( function(what) {
 
 		var name = scheme + "-" + what
@@ -187,11 +179,13 @@ function inputcolor(scheme) {
 }
 
 function change_color(ele) {
+	
 	var what = ele.getAttribute('data-color');
 	var color = ele.value;
 	ele.setAttribute('data-value',color);
 	ele.setAttribute('value',color);
 	var name = scheme+"-"+what
+	console.log('han',name);
 //	console.log('change:'+name, color);
 	localStorage.setItem(name, color);
 	if (field2.includes(what)) {
@@ -203,12 +197,22 @@ function change_color(ele) {
 
 function nc_cssvar(what,base=false,value=false) {
 
+    var scheme = 'light'
+
+	if (gas('body').class=='dark-scheme') {
+		scheme = 'dark';
+	} else {
+		scheme = 'light';
+	}
+
 	if (base) {
 		var name = base+"-"+what
 	} else {
 		var name = scheme+"-"+what
 	}
 
+	console.log("!!!",name);
+	
 	var kan = '#nc_dashboard main'
 
 	if (!value) {
@@ -220,7 +224,7 @@ function nc_cssvar(what,base=false,value=false) {
 
 	gas(kan).cssvarRemove(what);
 	localStorage.setItem(name, val);
-//	console.log(what,val);
+	//console.log(name,what,val);
 	gas(kan).cssvar(what,val);
 
 }

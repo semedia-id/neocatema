@@ -78,7 +78,7 @@ ol[none] {
   color: #fff; }
 
 ::-webkit-input-placeholder {
-  color: var(--face-l); }
+  color: var(--text); }
 
 /* Change Autocomplete styles in Chrome*/
 input:-webkit-autofill,
@@ -90,7 +90,8 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-text-fill-color: red; }
+  -webkit-text-fill-color: var(--text);
+  transition: background-color 1000s ease-in-out 0s; }
 
 .dark-scheme blockquote {
   --color: hsl(var(--accent_h), var(--accent_s), 70%); }
@@ -106,12 +107,16 @@ blockquote {
 /* Forms
    ========================================================================== */
 form {
-  --input-background: hsl(var(--h), var(--s), 90%);
+  --input-background: hsla(var(--h), var(--s), 90%,.5);
+  --input-background-active: hsla(var(--h), var(--s), 90%,.2);
   --option: hsl(var(--h), var(--s), 90%);
   --option-text: #111; }
+  form input[pseudo] {
+    background-color: var(--input-background); }
 
 .dark-scheme form {
-  --input-background: hsl(var(--h), var(--s), 10%);
+  --input-background: hsla(var(--h), var(--s), 10%,.3);
+  --input-background-active: hsla(var(--h), var(--s), 10%,.2);
   --option: hsl(var(--h), var(--s), 10%);
   --option-text: #fff; }
 
@@ -262,17 +267,6 @@ textarea {
   font: inherit;
   /* 2 */ }
 
-/* from bourbon/addons
- *
- * $text-inputs-list
- * 
- */
-select,
-input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], input:not([type]), textarea {
-  outline: none;
-  background-color: var(--input-background);
-  color: var(--text); }
-
 select option {
   background-color: var(--option);
   color: var(--option-text);
@@ -298,6 +292,13 @@ form {
       width: 100%; }
     form .form-field .form-data .form-textarea-wrapper {
       width: 100%; }
+
+form.row .form-field,
+form.row .form-data,
+form.row .form-label {
+  display: inline-block; }
+form.row * {
+  width: auto !important; }
 
 form.inline-form .buttons {
   margin-left: 40%; }
@@ -339,13 +340,25 @@ textarea {
     scrollbar-face-color: var(--spot);
     scrollbar-track-color: var(--shade); }
 
+/* from bourbon/addons
+ *
+ * $text-inputs-list
+ * 
+ */
 select,
 input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], input:not([type]), textarea {
-  padding: calc(var(--padding) /4) calc(var(--padding) /2); }
-
-select,
-input[type="color"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="email"], input[type="month"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="time"], input[type="url"], input[type="week"], input:not([type]), textarea {
+  padding: calc(var(--padding) /4) calc(var(--padding) /2);
+  outline: none;
+  background-color: var(--input-background);
+  color: var(--text);
   border: 1px solid var(--border); }
+  select:focus, select:active,
+  input[type="color"]:focus,
+  input[type="color"]:active, input[type="date"]:focus, input[type="date"]:active, input[type="datetime"]:focus, input[type="datetime"]:active, input[type="datetime-local"]:focus, input[type="datetime-local"]:active, input[type="email"]:focus, input[type="email"]:active, input[type="month"]:focus, input[type="month"]:active, input[type="number"]:focus, input[type="number"]:active, input[type="password"]:focus, input[type="password"]:active, input[type="search"]:focus, input[type="search"]:active, input[type="tel"]:focus, input[type="tel"]:active, input[type="text"]:focus, input[type="text"]:active, input[type="time"]:focus, input[type="time"]:active, input[type="url"]:focus, input[type="url"]:active, input[type="week"]:focus, input[type="week"]:active, input:not([type]):focus, input:not([type]):active, textarea:focus, textarea:active {
+    background-color: var(--input-background-active); }
+  select:hover,
+  input[type="color"]:hover, input[type="date"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="email"]:hover, input[type="month"]:hover, input[type="number"]:hover, input[type="password"]:hover, input[type="search"]:hover, input[type="tel"]:hover, input[type="text"]:hover, input[type="time"]:hover, input[type="url"]:hover, input[type="week"]:hover, input:not([type]):hover, textarea:hover {
+    box-shadow: 1px 0 3px var(--shadow); }
 
 /* heading
 */
@@ -3195,8 +3208,6 @@ button.secondary, .button.secondary, input[type="submit"].secondary, input[type=
   --c-w: hsl(var(--h), var(--s), calc(var(--l) + (calc(var(--uf) * 5)))); }
 
 .light-scheme {
-  background-color: #f6f6f6;
-  color: #111111;
   --background: #f6f6f6;
   --text: #111111;
   --surface: #334455;
@@ -3689,8 +3700,6 @@ button.secondary, .button.secondary, input[type="submit"].secondary, input[type=
     color: var(--c-b); }
 
 .dark-scheme {
-  background-color: #090909;
-  color: #eeeeee;
   --background: #090909;
   --text: #eeeeee;
   --surface: #2b4540;
@@ -3731,7 +3740,7 @@ button.secondary, .button.secondary, input[type="submit"].secondary, input[type=
   --border: #fff4;
   --shade: #0003;
   --hilite: #fff9;
-  --shadow: #0002; }
+  --shadow: #fff3; }
   .dark-scheme [class*='ncc-surface'], .dark-scheme code,
   .dark-scheme kbd, .dark-scheme pre, .dark-scheme .light-scheme pre, .light-scheme .dark-scheme pre, .dark-scheme .light-scheme table, .light-scheme .dark-scheme table, .dark-scheme table {
     --h: var(--surface_h, 168);

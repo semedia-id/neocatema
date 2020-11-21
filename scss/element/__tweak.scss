@@ -22,9 +22,9 @@ ol[none] {list-style-type: none;}
 
 
 ::-webkit-input-placeholder {
-    color: var(--face-l)
-
+    color: var(--text)
 }
+
 
 
 /* Change Autocomplete styles in Chrome*/
@@ -37,6 +37,9 @@ textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-  -webkit-text-fill-color: red;
+
+  -webkit-text-fill-color: var(--text);
+  transition: background-color 1000s ease-in-out 0s;
+
 }
 

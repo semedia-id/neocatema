@@ -271,6 +271,8 @@ body {
       scrollbar-face-color: #fffc;
       scrollbar-track-color: #0003; }
   #nc_dashboard main {
+    background: var(--background);
+    color: var(--text);
     transition: margin .25s  linear;
     display: block;
     position: fixed;

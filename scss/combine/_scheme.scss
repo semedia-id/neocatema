@@ -89,14 +89,10 @@ $tones: (
 }
 
 .light-scheme {
-	background-color: #{$light-background-color};
-	color: #{$light-text-color};
 	@include schemer($light);
 }
 
 .dark-scheme {
-	background-color: #{$dark-background-color};
-	color: #{$dark-text-color};
 	@include schemer($dark);
 }
 

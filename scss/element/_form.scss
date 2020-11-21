@@ -4,14 +4,20 @@
 
 form {
 	@extend [class*='ncc-button'];
-	--input-background: #{unquote("hsl(var(--h), var(--s), 90%)")};
+	--input-background: #{unquote("hsla(var(--h), var(--s), 90%,.5)")};
+	--input-background-active: #{unquote("hsla(var(--h), var(--s), 90%,.2)")};
 	--option: #{unquote("hsl(var(--h), var(--s), 90%)")};
 	--option-text: #111;
+
+	input[pseudo] {
+		background-color: var(--input-background);
+	}
 }
 
 .dark-scheme form {
 	@extend [class*='ncc-button'];
-	--input-background: #{unquote("hsl(var(--h), var(--s), 10%)")};
+	--input-background: #{unquote("hsla(var(--h), var(--s), 10%,.3)")};
+	--input-background-active: #{unquote("hsla(var(--h), var(--s), 10%,.2)")};
 	--option: #{unquote("hsl(var(--h), var(--s), 10%)")};
 	--option-text: #fff;
 }
@@ -176,18 +182,6 @@ textarea {
   font: inherit; /* 2 */
 }
 
-/* from bourbon/addons
- *
- * $text-inputs-list
- * 
- */
-
-select,
-#{$text-inputs-list} {
-	outline: none;
-	background-color: var(--input-background);
-	color: var(--text);
-}
 
 select option {
 	background-color: var(--option);
@@ -209,7 +203,7 @@ form {
 /* Grav */
 
 form {
-	width: 100%;
+   width: 100%;
   .required { color: var(--accent); }
   
   .form-field { 
@@ -222,6 +216,18 @@ form {
       .form-textarea-wrapper { width: 100%; }
     }
   }
+}
+
+
+form.row {
+    .form-field,
+    .form-data,
+    .form-label {
+        display:inline-block;    	
+    }
+
+    * { width: auto !important; }
+
 }
 
 form.inline-form {
@@ -256,12 +262,26 @@ textarea {
 }
 
 
-select,
-#{$text-inputs-list} {
-	padding: calc(var(--padding) /4) calc(var(--padding) /2);
-}
+/* from bourbon/addons
+ *
+ * $text-inputs-list
+ * 
+ */
 
 select,
 #{$text-inputs-list} {
+	padding: calc(var(--padding) /4) calc(var(--padding) /2);
+	outline: none;
+	background-color: var(--input-background);
+	color: var(--text);
 	border: 1px solid var(--border);
+	
+	&:focus,
+	&:active {
+		background-color: var(--input-background-active);
+	}
+	&:hover {
+		box-shadow: 1px 0 3px var(--shadow);
+	}
 }
+
