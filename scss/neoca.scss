@@ -1,15 +1,12 @@
 // Load Third Party Libraries
-@import "vendor/bourbon";
-
+@import "vendor/bourbon/bourbon";
 @import "configuration";
-@import "function";
 
-@import "_note";
+@import "neoca/_note";
+@import "neoca/function";
+@import "neoca/vars";
 
-@import "element";
-@import "utilities";
-
-@import "component";
-@import "combine";
-
-
+@import "neoca/element";
+@import "neoca/component";
+@import "neoca/combine";
+@import "neoca/utilities";
