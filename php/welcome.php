@@ -5,7 +5,7 @@
 <p>Minimal CSS Framework with dark-mode enable</p>
 
 <p>
-<a href='https://github.com/tacoen/noecatema' class='button'><i class='ncico-github'></i> Github</a>
+<a href='https://github.com/tacoen/neocatema' class='button'><i class='ncico-github'></i> Github</a>
 </p>
 
 
