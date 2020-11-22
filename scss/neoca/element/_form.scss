@@ -3,10 +3,9 @@
 
 
 form {
-	@extend [class*='ncc-button'];
-	--input-background: #{unquote("hsla(var(--h), var(--s), 90%,.5)")};
-	--input-background-active: #{unquote("hsla(var(--h), var(--s), 90%,.2)")};
-	--option: #{unquote("hsl(var(--h), var(--s), 90%)")};
+	--input-background: #{unquote("hsla(var(--button_h), var(--button_s), 90%,.5)")};
+	--input-background-active: #{unquote("hsla(var(--button_h), var(--button_s), 90%,.2)")};
+	--option: #{unquote("hsl(var(--button_h), var(--button_s), 90%)")};
 	--option-text: #111;
 
 	input[pseudo] {
@@ -15,10 +14,9 @@ form {
 }
 
 .dark-scheme form {
-	@extend [class*='ncc-button'];
-	--input-background: #{unquote("hsla(var(--h), var(--s), 10%,.3)")};
-	--input-background-active: #{unquote("hsla(var(--h), var(--s), 10%,.2)")};
-	--option: #{unquote("hsl(var(--h), var(--s), 10%)")};
+	--input-background: #{unquote("hsla(var(--button_h), var(--button_s), 10%,.3)")};
+	--input-background-active: #{unquote("hsla(var(--button_h), var(--button_s), 10%,.2)")};
+	--option: #{unquote("hsl(var(--button_h), var(--button_s), 10%)")};
 	--option-text: #fff;
 }
 

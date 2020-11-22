@@ -2,15 +2,11 @@
 @import "vendor/bourbon/bourbon";
 @import "configuration";
 
-@import "icon/style.min.css";
-
 @import "neoca/_note";
-@import "neoca/function";
 @import "neoca/vars";
+@import "neoca/function";
 
 @import "neoca/combine";
-
 @import "neoca/element";
 @import "neoca/component";
-
 @import "neoca/utilities";
