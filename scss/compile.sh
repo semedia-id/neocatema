@@ -1,10 +1,9 @@
-echo "/* "> neoca/__note.scss
-echo " * neoca.css - https://github.com/tacoen/neocatema">> neoca/__note.scss
-echo " * ">> neoca/__note.scss
-date +" * Compiled Time Stamp: %D %T" >> neoca/__note.scss
-echo " * ">> neoca/__note.scss
-echo " */ ">> neoca/__note.scss
-echo " ">> neoca/__note.scss
+echo "/* ------------------------------------------"> neoca/__note.scss
+echo " neoca.css">> neoca/__note.scss
+echo " https://github.com/tacoen/neocatema">> neoca/__note.scss
+date +" Compiled Time Stamp: %D %T" >> neoca/__note.scss
+echo " License: MIT ">> neoca/__note.scss
+echo " ------------------------------------------ */ ">> neoca/__note.scss
 
 date +"// %D %T" > _configuration.scss
 
