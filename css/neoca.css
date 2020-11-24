@@ -1229,6 +1229,8 @@ table[stripes] tbody tr:nth-child(even) {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap; }
+  [flex].column {
+    flex-direction: column; }
   [flex] [full] {
     -webkit-box-flex: 0;
     -moz-box-flex: 0;
@@ -1358,6 +1360,9 @@ table[stripes] tbody tr:nth-child(even) {
   width: 100%;
   z-index: +1; }
 
+[small-text] {
+  font-size: .75rem; }
+
 [class*='ncc-'] {
   --c-b: hsl(var(--h), var(--s), calc(var(--l) + (calc(var(--df) * -5))));
   --c-d3: hsl(var(--h), var(--s), calc(var(--l) + (calc(var(--df) * -4))));
@@ -1414,14 +1419,15 @@ table[stripes] tbody tr:nth-child(even) {
   --hilite: #fff9;
   --shadow: #0002; }
   .light-scheme [class*='ncc-surface'] {
-    --h: var(--surface_h, 210);
-    --s: var(--surface_s, 25%);
-    --l: var(--surface_l, 27%);
-    --uf: var(--surface_uf, calc((95% - var(--l)) / 5));
-    --df: var(--surface_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--surface_h);
+    --s: var(--surface_s);
+    --l: var(--surface_l);
+    --uf: var(--surface_uf, calc((95%-var(--l)) / 5));
+    --df: var(--surface_df, calc((var(--l)-5%) / 5)); }
   .light-scheme .ncc-surface.bg, .light-scheme .ncc-surface .bg {
     background-color: var(--c-n);
-    color: var(--c-w); }
+    color: var(--c-w);
+    --text: var(--c-w) ; }
   .light-scheme .ncc-surface.color-b, .light-scheme .ncc-surface .color-b {
     color: var(--c-b); }
   .light-scheme .ncc-surface.bg-b, .light-scheme .ncc-surface .bg-b {
@@ -1478,14 +1484,15 @@ table[stripes] tbody tr:nth-child(even) {
     background-color: var(--c-w);
     color: var(--c-b); }
   .light-scheme [class*='ncc-button'] {
-    --h: var(--button_h, 0);
-    --s: var(--button_s, 0%);
-    --l: var(--button_l, 87%);
-    --uf: var(--button_uf, calc((95% - var(--l)) / 5));
-    --df: var(--button_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--button_h);
+    --s: var(--button_s);
+    --l: var(--button_l);
+    --uf: var(--button_uf, calc((95%-var(--l)) / 5));
+    --df: var(--button_df, calc((var(--l)-5%) / 5)); }
   .light-scheme .ncc-button.bg, .light-scheme .ncc-button .bg {
     background-color: var(--c-n);
-    color: var(--c-b); }
+    color: var(--c-b);
+    --text: var(--c-b) ; }
   .light-scheme .ncc-button.color-b, .light-scheme .ncc-button .color-b {
     color: var(--c-b); }
   .light-scheme .ncc-button.bg-b, .light-scheme .ncc-button .bg-b {
@@ -1542,14 +1549,15 @@ table[stripes] tbody tr:nth-child(even) {
     background-color: var(--c-w);
     color: var(--c-b); }
   .light-scheme [class*='ncc-accent'] {
-    --h: var(--accent_h, 0);
-    --s: var(--accent_s, 80%);
-    --l: var(--accent_l, 33%);
-    --uf: var(--accent_uf, calc((95% - var(--l)) / 5));
-    --df: var(--accent_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--accent_h);
+    --s: var(--accent_s);
+    --l: var(--accent_l);
+    --uf: var(--accent_uf, calc((95%-var(--l)) / 5));
+    --df: var(--accent_df, calc((var(--l)-5%) / 5)); }
   .light-scheme .ncc-accent.bg, .light-scheme .ncc-accent .bg {
     background-color: var(--c-n);
-    color: var(--c-w); }
+    color: var(--c-w);
+    --text: var(--c-w) ; }
   .light-scheme .ncc-accent.color-b, .light-scheme .ncc-accent .color-b {
     color: var(--c-b); }
   .light-scheme .ncc-accent.bg-b, .light-scheme .ncc-accent .bg-b {
@@ -1606,14 +1614,15 @@ table[stripes] tbody tr:nth-child(even) {
     background-color: var(--c-w);
     color: var(--c-b); }
   .light-scheme [class*='ncc-warning'] {
-    --h: var(--warning_h, 45);
-    --s: var(--warning_s, 100%);
-    --l: var(--warning_l, 60%);
-    --uf: var(--warning_uf, calc((95% - var(--l)) / 5));
-    --df: var(--warning_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--warning_h);
+    --s: var(--warning_s);
+    --l: var(--warning_l);
+    --uf: var(--warning_uf, calc((95%-var(--l)) / 5));
+    --df: var(--warning_df, calc((var(--l)-5%) / 5)); }
   .light-scheme .ncc-warning.bg, .light-scheme .ncc-warning .bg {
     background-color: var(--c-n);
-    color: var(--c-b); }
+    color: var(--c-b);
+    --text: var(--c-b) ; }
   .light-scheme .ncc-warning.color-b, .light-scheme .ncc-warning .color-b {
     color: var(--c-b); }
   .light-scheme .ncc-warning.bg-b, .light-scheme .ncc-warning .bg-b {
@@ -1670,14 +1679,15 @@ table[stripes] tbody tr:nth-child(even) {
     background-color: var(--c-w);
     color: var(--c-b); }
   .light-scheme [class*='ncc-error'] {
-    --h: var(--error_h, 0);
-    --s: var(--error_s, 60%);
-    --l: var(--error_l, 50%);
-    --uf: var(--error_uf, calc((95% - var(--l)) / 5));
-    --df: var(--error_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--error_h);
+    --s: var(--error_s);
+    --l: var(--error_l);
+    --uf: var(--error_uf, calc((95%-var(--l)) / 5));
+    --df: var(--error_df, calc((var(--l)-5%) / 5)); }
   .light-scheme .ncc-error.bg, .light-scheme .ncc-error .bg {
     background-color: var(--c-n);
-    color: var(--c-w); }
+    color: var(--c-w);
+    --text: var(--c-w) ; }
   .light-scheme .ncc-error.color-b, .light-scheme .ncc-error .color-b {
     color: var(--c-b); }
   .light-scheme .ncc-error.bg-b, .light-scheme .ncc-error .bg-b {
@@ -1734,14 +1744,15 @@ table[stripes] tbody tr:nth-child(even) {
     background-color: var(--c-w);
     color: var(--c-b); }
   .light-scheme [class*='ncc-info'] {
-    --h: var(--info_h, 210);
-    --s: var(--info_s, 50%);
-    --l: var(--info_l, 40%);
-    --uf: var(--info_uf, calc((95% - var(--l)) / 5));
-    --df: var(--info_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--info_h);
+    --s: var(--info_s);
+    --l: var(--info_l);
+    --uf: var(--info_uf, calc((95%-var(--l)) / 5));
+    --df: var(--info_df, calc((var(--l)-5%) / 5)); }
   .light-scheme .ncc-info.bg, .light-scheme .ncc-info .bg {
     background-color: var(--c-n);
-    color: var(--c-w); }
+    color: var(--c-w);
+    --text: var(--c-w) ; }
   .light-scheme .ncc-info.color-b, .light-scheme .ncc-info .color-b {
     color: var(--c-b); }
   .light-scheme .ncc-info.bg-b, .light-scheme .ncc-info .bg-b {
@@ -1798,14 +1809,15 @@ table[stripes] tbody tr:nth-child(even) {
     background-color: var(--c-w);
     color: var(--c-b); }
   .light-scheme [class*='ncc-success'] {
-    --h: var(--success_h, 120);
-    --s: var(--success_s, 57%);
-    --l: var(--success_l, 47%);
-    --uf: var(--success_uf, calc((95% - var(--l)) / 5));
-    --df: var(--success_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--success_h);
+    --s: var(--success_s);
+    --l: var(--success_l);
+    --uf: var(--success_uf, calc((95%-var(--l)) / 5));
+    --df: var(--success_df, calc((var(--l)-5%) / 5)); }
   .light-scheme .ncc-success.bg, .light-scheme .ncc-success .bg {
     background-color: var(--c-n);
-    color: var(--c-w); }
+    color: var(--c-w);
+    --text: var(--c-w) ; }
   .light-scheme .ncc-success.color-b, .light-scheme .ncc-success .color-b {
     color: var(--c-b); }
   .light-scheme .ncc-success.bg-b, .light-scheme .ncc-success .bg-b {
@@ -1905,14 +1917,15 @@ table[stripes] tbody tr:nth-child(even) {
   --hilite: #fff9;
   --shadow: #0002; }
   .dark-scheme [class*='ncc-surface'] {
-    --h: var(--surface_h, 30);
-    --s: var(--surface_s, 25%);
-    --l: var(--surface_l, 73%);
-    --uf: var(--surface_uf, calc((95% - var(--l)) / 5));
-    --df: var(--surface_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--surface_h);
+    --s: var(--surface_s);
+    --l: var(--surface_l);
+    --uf: var(--surface_uf, calc((95%-var(--l)) / 5));
+    --df: var(--surface_df, calc((var(--l)-5%) / 5)); }
   .dark-scheme .ncc-surface.bg, .dark-scheme .ncc-surface .bg {
     background-color: var(--c-n);
-    color: var(--c-b); }
+    color: var(--c-b);
+    --text: var(--c-b) ; }
   .dark-scheme .ncc-surface.color-b, .dark-scheme .ncc-surface .color-b {
     color: var(--c-b); }
   .dark-scheme .ncc-surface.bg-b, .dark-scheme .ncc-surface .bg-b {
@@ -1969,14 +1982,15 @@ table[stripes] tbody tr:nth-child(even) {
     background-color: var(--c-w);
     color: var(--c-b); }
   .dark-scheme [class*='ncc-button'] {
-    --h: var(--button_h, 0);
-    --s: var(--button_s, 0%);
-    --l: var(--button_l, 13%);
-    --uf: var(--button_uf, calc((95% - var(--l)) / 5));
-    --df: var(--button_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--button_h);
+    --s: var(--button_s);
+    --l: var(--button_l);
+    --uf: var(--button_uf, calc((95%-var(--l)) / 5));
+    --df: var(--button_df, calc((var(--l)-5%) / 5)); }
   .dark-scheme .ncc-button.bg, .dark-scheme .ncc-button .bg {
     background-color: var(--c-n);
-    color: var(--c-w); }
+    color: var(--c-w);
+    --text: var(--c-w) ; }
   .dark-scheme .ncc-button.color-b, .dark-scheme .ncc-button .color-b {
     color: var(--c-b); }
   .dark-scheme .ncc-button.bg-b, .dark-scheme .ncc-button .bg-b {
@@ -2033,14 +2047,15 @@ table[stripes] tbody tr:nth-child(even) {
     background-color: var(--c-w);
     color: var(--c-b); }
   .dark-scheme [class*='ncc-accent'] {
-    --h: var(--accent_h, 180);
-    --s: var(--accent_s, 80%);
-    --l: var(--accent_l, 67%);
-    --uf: var(--accent_uf, calc((95% - var(--l)) / 5));
-    --df: var(--accent_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--accent_h);
+    --s: var(--accent_s);
+    --l: var(--accent_l);
+    --uf: var(--accent_uf, calc((95%-var(--l)) / 5));
+    --df: var(--accent_df, calc((var(--l)-5%) / 5)); }
   .dark-scheme .ncc-accent.bg, .dark-scheme .ncc-accent .bg {
     background-color: var(--c-n);
-    color: var(--c-b); }
+    color: var(--c-b);
+    --text: var(--c-b) ; }
   .dark-scheme .ncc-accent.color-b, .dark-scheme .ncc-accent .color-b {
     color: var(--c-b); }
   .dark-scheme .ncc-accent.bg-b, .dark-scheme .ncc-accent .bg-b {
@@ -2097,14 +2112,15 @@ table[stripes] tbody tr:nth-child(even) {
     background-color: var(--c-w);
     color: var(--c-b); }
   .dark-scheme [class*='ncc-warning'] {
-    --h: var(--warning_h, 45);
-    --s: var(--warning_s, 100%);
-    --l: var(--warning_l, 40%);
-    --uf: var(--warning_uf, calc((95% - var(--l)) / 5));
-    --df: var(--warning_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--warning_h);
+    --s: var(--warning_s);
+    --l: var(--warning_l);
+    --uf: var(--warning_uf, calc((95%-var(--l)) / 5));
+    --df: var(--warning_df, calc((var(--l)-5%) / 5)); }
   .dark-scheme .ncc-warning.bg, .dark-scheme .ncc-warning .bg {
     background-color: var(--c-n);
-    color: var(--c-w); }
+    color: var(--c-w);
+    --text: var(--c-w) ; }
   .dark-scheme .ncc-warning.color-b, .dark-scheme .ncc-warning .color-b {
     color: var(--c-b); }
   .dark-scheme .ncc-warning.bg-b, .dark-scheme .ncc-warning .bg-b {
@@ -2161,14 +2177,15 @@ table[stripes] tbody tr:nth-child(even) {
     background-color: var(--c-w);
     color: var(--c-b); }
   .dark-scheme [class*='ncc-error'] {
-    --h: var(--error_h, 0);
-    --s: var(--error_s, 60%);
-    --l: var(--error_l, 30%);
-    --uf: var(--error_uf, calc((95% - var(--l)) / 5));
-    --df: var(--error_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--error_h);
+    --s: var(--error_s);
+    --l: var(--error_l);
+    --uf: var(--error_uf, calc((95%-var(--l)) / 5));
+    --df: var(--error_df, calc((var(--l)-5%) / 5)); }
   .dark-scheme .ncc-error.bg, .dark-scheme .ncc-error .bg {
     background-color: var(--c-n);
-    color: var(--c-w); }
+    color: var(--c-w);
+    --text: var(--c-w) ; }
   .dark-scheme .ncc-error.color-b, .dark-scheme .ncc-error .color-b {
     color: var(--c-b); }
   .dark-scheme .ncc-error.bg-b, .dark-scheme .ncc-error .bg-b {
@@ -2225,14 +2242,15 @@ table[stripes] tbody tr:nth-child(even) {
     background-color: var(--c-w);
     color: var(--c-b); }
   .dark-scheme [class*='ncc-info'] {
-    --h: var(--info_h, 210);
-    --s: var(--info_s, 50%);
-    --l: var(--info_l, 20%);
-    --uf: var(--info_uf, calc((95% - var(--l)) / 5));
-    --df: var(--info_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--info_h);
+    --s: var(--info_s);
+    --l: var(--info_l);
+    --uf: var(--info_uf, calc((95%-var(--l)) / 5));
+    --df: var(--info_df, calc((var(--l)-5%) / 5)); }
   .dark-scheme .ncc-info.bg, .dark-scheme .ncc-info .bg {
     background-color: var(--c-n);
-    color: var(--c-w); }
+    color: var(--c-w);
+    --text: var(--c-w) ; }
   .dark-scheme .ncc-info.color-b, .dark-scheme .ncc-info .color-b {
     color: var(--c-b); }
   .dark-scheme .ncc-info.bg-b, .dark-scheme .ncc-info .bg-b {
@@ -2289,14 +2307,15 @@ table[stripes] tbody tr:nth-child(even) {
     background-color: var(--c-w);
     color: var(--c-b); }
   .dark-scheme [class*='ncc-success'] {
-    --h: var(--success_h, 120);
-    --s: var(--success_s, 57%);
-    --l: var(--success_l, 27%);
-    --uf: var(--success_uf, calc((95% - var(--l)) / 5));
-    --df: var(--success_df, calc((var(--l) - 5%) / 5)); }
+    --h: var(--success_h);
+    --s: var(--success_s);
+    --l: var(--success_l);
+    --uf: var(--success_uf, calc((95%-var(--l)) / 5));
+    --df: var(--success_df, calc((var(--l)-5%) / 5)); }
   .dark-scheme .ncc-success.bg, .dark-scheme .ncc-success .bg {
     background-color: var(--c-n);
-    color: var(--c-w); }
+    color: var(--c-w);
+    --text: var(--c-w) ; }
   .dark-scheme .ncc-success.color-b, .dark-scheme .ncc-success .color-b {
     color: var(--c-b); }
   .dark-scheme .ncc-success.bg-b, .dark-scheme .ncc-success .bg-b {
@@ -2435,7 +2454,7 @@ button, .button, input[type="submit"], input[type="reset"], input[type="button"]
   --l: var(--button_l);
   --t: var(--button_t);
   background-color: var(--color);
-  color: var(--t); }
+  color: var(--text); }
   button:hover, .button:hover, input[type="submit"]:hover, input[type="reset"]:hover, input[type="button"]:hover {
     background-image: linear-gradient(0deg, var(--shadow), transparent);
     box-shadow: 0 2px 2px var(--shadow); }
@@ -2446,7 +2465,7 @@ button, .button, input[type="submit"], input[type="reset"], input[type="button"]
     --l: var(--warning_l);
     --t: var(--warning_t);
     background-color: var(--color);
-    color: var(--t); }
+    color: var(--text); }
   button.red, .button.red, input[type="submit"].red, input[type="reset"].red, input[type="button"].red {
     --color: var(--error);
     --h: var(--error_h);
@@ -2454,7 +2473,7 @@ button, .button, input[type="submit"], input[type="reset"], input[type="button"]
     --l: var(--error_l);
     --t: var(--error_t);
     background-color: var(--color);
-    color: var(--t); }
+    color: var(--text); }
   button.green, .button.green, input[type="submit"].green, input[type="reset"].green, input[type="button"].green {
     --color: var(--success);
     --h: var(--success_h);
@@ -2462,7 +2481,7 @@ button, .button, input[type="submit"], input[type="reset"], input[type="button"]
     --l: var(--success_l);
     --t: var(--success_t);
     background-color: var(--color);
-    color: var(--t); }
+    color: var(--text); }
   button.blue, .button.blue, input[type="submit"].blue, input[type="reset"].blue, input[type="button"].blue {
     --color: var(--info);
     --h: var(--info_h);
@@ -2470,7 +2489,7 @@ button, .button, input[type="submit"], input[type="reset"], input[type="button"]
     --l: var(--info_l);
     --t: var(--info_t);
     background-color: var(--color);
-    color: var(--t); }
+    color: var(--text); }
   button.xsmall, .button.xsmall, input[type="submit"].xsmall, input[type="reset"].xsmall, input[type="button"].xsmall {
     font-size: .85rem;
     padding: calc(var(--padding) /8) calc(var(--padding) /8); }
@@ -2491,7 +2510,7 @@ button.primary, .button.primary, input[type="submit"].primary, input[type="reset
   --l: var(--accent_l);
   --t: var(--accent_t);
   background-color: var(--color);
-  color: var(--t); }
+  color: var(--text); }
 button.secondary, .button.secondary, input[type="submit"].secondary, input[type="reset"].secondary, input[type="button"].secondary {
   --color: var(--surface);
   --h: var(--surface_h);
@@ -2499,7 +2518,7 @@ button.secondary, .button.secondary, input[type="submit"].secondary, input[type=
   --l: var(--surface_l);
   --t: var(--surface_t);
   background-color: var(--color);
-  color: var(--t); }
+  color: var(--text); }
 
 [naked], .naked {
   background: transparent !important;

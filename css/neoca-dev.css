@@ -342,5 +342,9 @@ body {
     text-align: center;
     color: var(--label);
     font-family: var(--font-mono); }
+  .nc-icon input {
+    width: 80px;
+    text-align: center;
+    font-size: .8rem; }
 
 /*# sourceMappingURL=neoca-dev.css.map */

@@ -40,11 +40,11 @@ $tones: (
 		
 			[class*='ncc-#{$var}'] {
 			
-				--h: var(--#{$var}_h, #{$h});
-				--s: var(--#{$var}_s, #{$s});;
-				--l: var(--#{$var}_l, #{$l});
-				--uf: var(--#{$var}_uf, calc((#{$white} - var(--l)) / 5));
-				--df: var(--#{$var}_df, calc((var(--l) - #{$black}) / 5));
+				--h: var(--#{$var}_h);
+				--s: var(--#{$var}_s);;
+				--l: var(--#{$var}_l);
+				--uf: var(--#{$var}_uf, calc((#{$white}-var(--l)) / 5));
+				--df: var(--#{$var}_df, calc((var(--l)-#{$black}) / 5));
 
 
 			}
@@ -55,8 +55,10 @@ $tones: (
 					background-color: var(--c-n);
 					@if $l > 50% {
 						color: var(--c-b);
+						--text: var(--c-b)
 					} @else {
 						color: var(--c-w);
+						--text: var(--c-w)
 					}
 				}
 				

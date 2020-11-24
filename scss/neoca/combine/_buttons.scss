@@ -26,7 +26,7 @@ $all-buttons-hover: assign-inputs([
 @mixin button-color($val) {
 	@include hsl-var-name($val);
 	background-color: var(--color);
-	color: var(--t);
+	color: var(--text);
 }
 
 #{$all-buttons} {
