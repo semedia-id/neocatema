@@ -1,6 +1,18 @@
-[left] { text-align: left; }
 [center] { text-align: center; }
-[right] { text-align: left; }
+
+[right] {
+    float: right;
+    text-align: right;
+}
+
+[left] {
+    float: left;
+    text-align: left;
+}
+
+[spaced] * {
+	margin-right: calc(.5 * var(--margin));
+}
 
 @for $i from 0 through 6 {
 	[mr-#{$i}] { margin-right: calc(#{$i} * var(--margin)) !important; }
@@ -33,10 +45,10 @@
 
 }
 
-[outlined] { outline: 1px dashed var(--border); }
+[outlined] { outline: var(--hrsep) dashed var(--border); }
 
-[border] { border: 1px solid var(--border); }
-[border-top] { border-top: 1px solid var(--border); }
-[border-left] { border-left: 1px solid var(--border); }
-[border-right] { border-right: 1px solid var(--border); }
-[border-bottom] { border-bottom: 1px solid var(--border); }
+[border] { border: var(--hrsep) solid var(--border); }
+[border-top] { border-top: var(--hrsep) solid var(--border); }
+[border-left] { border-left: var(--hrsep) solid var(--border); }
+[border-right] { border-right: var(--hrsep) solid var(--border); }
+[border-bottom] { border-bottom: var(--hrsep) solid var(--border); }

@@ -160,6 +160,7 @@ body {
     }    
 
     main {
+    	font-family: var(--font-base);
     	background: var(--background);
     	color: var(--text);
     	transition: margin .25s  linear;

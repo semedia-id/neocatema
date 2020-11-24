@@ -77,14 +77,18 @@ $all-buttons-hover: assign-inputs([
 	&.secondary { @include button-color(surface); };
 }	
 
-.naked { 
+[naked],.naked { 
     background: transparent !important;
+	color: var(--text);
+	&:hover { background-image: none; box-shadow: none; }
 }
 
-.toggle { 
+[toggle],.toggle { 
     background: transparent !important; 
-    border: none;  outline: none; 
+    border: none;  
+	outline: none; 
     color: var(--text);
+	&:hover { background-image: none; box-shadow: none;  }
 }
 
 .toggle:hover { box-shadow: none; }

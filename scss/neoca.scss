@@ -1,12 +1,22 @@
 // Load Third Party Libraries
 @import "vendor/bourbon/bourbon";
-@import "configuration";
+@import "configuration/default";
 
 @import "neoca/_note";
-@import "neoca/vars";
 @import "neoca/function";
 
-@import "neoca/combine";
+// GRAV
+
+// @import "neoca/grav";
+
+// OR
+
+@import "neoca/vars";
+@import "neoca/generic";
+
+
+
 @import "neoca/element";
 @import "neoca/component";
 @import "neoca/utilities";
+@import "neoca/combine";

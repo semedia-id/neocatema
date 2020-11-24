@@ -11,23 +11,23 @@ $tones: (
 
 @mixin schemer($scheme) {
 
-
 	@each $var, $val in $scheme {
 	
 		--#{$var}: #{$val};
 		
 		$white: 95%;
 		$black: 5%;
-		$h: round(hue($val)/1deg);
-		$s: round(saturation($val));
-		$l: round(lightness($val));
-		$uf: ($white - $l)/5;
-		$df: ($l - $black)/5;
 
 
 		@if $var != background and $var != text 
 			and $var != shade and $var != shadow 
 			and $var != border and $var != hilite {
+			
+			$h: round(hue($val)/1deg);
+			$s: round(saturation($val));
+			$l: round(lightness($val));
+			$uf: ($white - $l)/5;
+			$df: ($l - $black)/5;
 
 			--#{$var}_h: #{$h};		
 			--#{$var}_s: #{$s};		

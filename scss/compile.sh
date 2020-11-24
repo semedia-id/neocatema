@@ -13,6 +13,20 @@ ls -1 configuration/* \
 	| sed -e 's/^configuration\/_/@import "configuration\//' \
 	>> '_configuration.scss'
 
+date +"// %D %T" > neoca/_grav.scss
+
+ls -1 neoca/grav/* \
+	| sed -e 's/\.scss$/";/' \
+	| sed -e 's/^neoca\/grav\/_/@import "grav\//' \
+	>> 'neoca/_grav.scss'
+
+date +"// %D %T" > neoca/_generic.scss
+
+ls -1 neoca/generic/* \
+	| sed -e 's/\.scss$/";/' \
+	| sed -e 's/^neoca\/generic\/_/@import "generic\//' \
+	>> 'neoca/_generic.scss'
+
 date +"// %D %T" > neoca/_function.scss
 ls -1 neoca/function/* \
 	| sed -e 's/\.scss$/";/' \
