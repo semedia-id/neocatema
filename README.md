@@ -1,6 +1,6 @@
-# Neoca
+# Neocátema
 
-Neoca is a merge of Gaskeun and Neoca Grav Theme.
+Neocátema is Grav Gantry Theme
 
 ## Requirement
 
@@ -10,18 +10,20 @@ Neoca is a merge of Gaskeun and Neoca Grav Theme.
 
 ## Features
 
-* Styles
+* Utility first CSS Framework
   * Normalize with css variables
   * Dark Scheme Enable
   * Colours Palete*
-* User/Site Template and Blueprints
-* Nucleus/Gantry5 Template
-* Gantry Particles
-  * Branding
-  * Listing
-  * Carousel
-  * TOC
-  * Page Tree (Page Menu)
+  * Feathers Icons
+* Site specify Template and Blueprints
+* Gantry5
+  * Site specify Gantry Particles
+    * Branding
+    * Listing
+    * Carousel
+    * TOC
+    * Page Tree (Page Menu)
+    * Themedev / Dummy Content particles
 * Javascript
   * tocbot
   * w3color
