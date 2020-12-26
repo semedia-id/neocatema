@@ -39,4 +39,4 @@ Then, rename the folder to "neoca". You should now have Neoca theme files under
 
 # It limitless!
 
-![theme-dev-screenshoot](screenshot.jpg)
+
