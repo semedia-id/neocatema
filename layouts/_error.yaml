@@ -1,0 +1,8 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/error.png'
+
+layout:
+  /main/:
+    - system-content
+    - system-messages

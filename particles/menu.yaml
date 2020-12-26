@@ -1,0 +1,132 @@
+name: Menu
+description: Gantry menu
+type: particle
+icon: fa-bars
+
+configuration:
+  caching:
+    type: menu
+
+form:
+  fields:
+    
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the menu particle.
+      default: true
+    
+    _tabs:
+      type: container.tabs
+      fields:
+    
+        _tab_menus:
+           label: Setup
+           fields: 
+
+            menu:
+              type: menu.list
+              label: Menu
+              description: Select menu to be used with the particle.
+              default: ''
+              selectize:
+              allowEmptyOption: true
+              options:
+                '': Use Default Menu
+                '-active-': Use Active Menu
+
+            base:
+              type: menu.item
+              label: Base Item
+              description: "Select a menu item to always be used as the base for the menu display."
+              default: '/'
+              options:
+                '/': Active
+
+            startLevel:
+              type: input.text
+              label: Start Level
+              description: Set the start level of the menu.
+              default: 1
+
+            maxLevels:
+              type: input.text
+              label: Max Levels
+              description: Set the maximum number of menu levels to display.
+              default: 0
+
+            renderTitles:
+              type: input.checkbox
+              label: Render Titles
+              description: Renders the titles/tooltips of the Menu Items for accessibility.
+              default: 0
+
+        _tab_more:
+          label: Menus
+          fields:
+
+            _info:
+               type: separator.note
+               class: alert alert-info
+               content: GANTRY5_PARTICLE_MENU_INFO
+               
+            hide_mobile:
+              type: input.checkbox
+              label: Hide in Mobile
+              default: 0
+
+            responsive:
+              type: input.checkbox
+              label: Responsive 
+              default: 0
+            
+            menu_width:
+                type: input.text
+                label: Menu Width
+                default: 120px
+                pattern: '(auto|\d+(\.\d+){0,1}(rem|em|%|px))'
+            
+            menu_layout:
+                type: select.select
+                label: Menu Layout
+                default: row
+                options:
+                    row: Row
+                    column: Column
+                    
+            menu_animation:
+                type: select.select
+                label: Animation
+                description: Select the dropdown animation.
+                default: g-fade
+                options:
+                    g-no-animation: No Animation
+                    g-fade: Fade
+                    g-slide: Slide
+
+
+        _tab_button:
+          label: Toggle Button
+          fields:
+
+            _info:
+               type: separator.note
+               class: alert alert-info
+               content: Toggle Button always shown if responsive being checked
+               
+            icon:
+              type: input.icon
+              label: Icon
+              description: Icon to show
+              default: "fa fa-bars"
+            icon_height:
+              type: input.text
+              label: height
+              default: 3rem
+              pattern: '(\d+(\.\d+){0,1}(rem|em|px))|auto|initial'
+            icon_width:
+              type: input.text
+              label: width
+              default: auto
+              pattern: '(\d+(\.\d+){0,1}(rem|em|px))|auto|initial'
+            

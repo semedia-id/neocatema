@@ -1,0 +1,103 @@
+@mixin touch-alike {
+
+    box-shadow: 0 0 8px var(--light3);
+    background-color: var(--light1);
+    border-radius: 50%;
+
+}
+
+.responsive-block {
+
+	.desktop & {
+		display: none;
+	}
+	
+	&.show {
+		display: initial;
+	}
+	
+	@include breakpoint(mobile-only) {
+		display: none;
+	}
+}
+
+.res-ctl {
+
+    &:hover {
+        text-shadow: 0 0 3px #000;
+    }
+
+	display: none;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: var(--t);
+	font-size: calc(var(--ctl-height) / 2);
+    width: var(--ctl-width);	
+    height: 100%;
+	
+	.desktop & {
+		display: initial;
+	}
+	
+	@include breakpoint(mobile-only) {
+		display: initial;
+	}
+}
+
+
+@mixin menucan-responsive {
+
+    height: auto;
+    --menu-width: 100%;
+    --background: var(--c-d);
+
+    .g-go-back { display: none; }
+
+	.toplevel {
+		flex-flow:column nowrap !important;
+		height: auto !important;
+		width: 100% !important;
+	}
+
+    li { 
+	    width: 100% !important;
+	    height: auto !important; 
+        border-top: 1px solid var(--shade1);
+
+        a { padding: .5rem 1rem; height: auto; }       
+        
+        .dropdown-menu  {
+        	width: 100% !important;
+        	position: relative !important;
+            a { 
+                padding: .5rem 1rem .5rem 2rem !important; 
+                height: auto; 
+            } 
+        }
+	
+    }
+
+    li:hover {
+        .dropdown-menu  {
+            display:none;
+        }    	
+    }
+
+    .menu-parent-indicator:hover  {
+        @include touch-alike
+    }
+
+}
+
+.menucan {
+
+    &.responsive {
+        @include menucan-responsive;
+    }
+    
+    @include breakpoint(mobile-only) {
+        @include menucan-responsive;
+    }    
+
+}

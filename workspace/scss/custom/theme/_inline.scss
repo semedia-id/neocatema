@@ -1,0 +1,32 @@
+em,
+var,
+code { color: var(--accent); }
+
+var { font-weight: 700; }
+kbd { 
+    background-color: var(--text); 
+	color: var(--background); 
+	padding: 1px .25rem;
+    border-radius: 2px;
+    letter-spacing: -1px;
+}
+
+mark {
+	background-color: var(--warning);
+	padding: 1px .25rem;
+	display:inline-block;
+}
+
+
+abbr[title],
+dfn[title] {
+	font-style: normal;
+	text-decoration: none;
+	border-bottom: 1px dotted var(--info);
+	cursor: help;
+}
+
+cite:before {
+	content: "\2014\2002";
+	color: var(--border);
+}

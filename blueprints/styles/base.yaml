@@ -1,0 +1,77 @@
+name: Common Base
+type: tema
+
+form:
+  fields:
+
+    _note1:
+        type: separator.note
+        class: opt-note header
+        content: Content
+
+    padding:
+        type: input.text
+        label: Padding
+        default: "1rem"
+        placeholder: 1rem (default) 
+        pattern: '\d+(\.\d+){0,1}(rem|em|%|px)'
+
+    margin:
+        type: input.text
+        label: Margin
+        default: "1rem"
+        placeholder: 1rem (default) 
+        pattern: '\d+(\.\d+){0,1}(rem|em|%|px)'
+        
+    bradius:
+        type: input.text
+        label: Border Radius
+        default: "0.25rem"
+        placeholder: 0.25rem (default) 
+        pattern: '\d+(\.\d+){0,1}(rem|em|px)'
+
+    hrsep:
+        type: input.text
+        label: Border Size
+        default: "1px"
+        placeholder: 1px (default) 
+        pattern: '\d+(\.\d+){0,1}(rem|em|px)'
+
+    _note1:
+        type: separator.note
+        class: opt-note header
+        content: Typeface
+
+    font-base:
+        type: input.fonts
+        label: Base Font
+        default: 'clearsans, sans-serif'
+
+    font-head:
+        type: input.fonts
+        label: Heading Font
+
+    font-alter:
+        type: input.fonts
+        label: Alter Font
+        default: 'serif'
+
+    font-mono:
+        type: input.fonts
+        label: Mono Font
+        default: 'monospace'
+        
+    font-size:
+        type: input.text
+        label: Font Size
+        pattern: '\d+(\.\d+){0,1}(rem|em|px)'
+        placeholder: 1.5rem(default)
+        default: 1rem
+    
+    line-height:
+        type: input.text
+        label: Line Height
+        pattern: '\d+(\.\d+){0,1}'
+        placeholder: Font-size + 0.5 (default) 
+        default: "1.5"
+

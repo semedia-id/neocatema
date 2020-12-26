@@ -1,0 +1,117 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+{% set page = uri.param('page') %}
+
+{% set sample = uri.param('sample') %}
+
+{% set dump = gantry.config.get('styles') %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="gantry-theme://workspace/css/dummy.css" />
+
+	<link rel="stylesheet" href="gantry-theme://workspace/css/m-prism.css">
+	
+{% endblock %}
+{% block javascript_footer %}
+
+    <script src="{{ url('gantry-theme://workspace/js/ncc-dummy.js') }}"></script>
+	<script src="{{ url('gantry-theme://workspace/js/m-prism.js') }}"></script>
+
+
+{% endblock %}
+
+
+{% block particle %}
+
+<div class='flex top theme-dummy'>
+
+<div class='td-content pr-100 pt-100 pb-100'>
+
+{% set ok=false %}
+
+{%if sample %}
+	{% include '@particles/tema/'~sample~'.html.twig' %}
+	{% set ok=true %}
+{% endif %}
+
+{% if not ok %}
+	{% include '@particles/tema/00--neoca_info.html.twig' %}
+{% endif %}
+
+</div>
+<div class='td-menu pa-100'>
+
+{% set c = '' %}
+{% set lc = '' %}
+{% set ic = '' %}
+{% set rc = '' %}
+{% set bc = '' %}
+{% set gc = '' %}
+
+{% for file in filedir('/user/themes/neoca/particles/tema','*.html.twig') %}
+	{% set f = file|replace({
+		'/user/themes/neoca/particles/tema/':'',
+		'.html.twig':''
+		}) %}
+	{% set fn = f|regex_replace('/^.*--/','') %}
+	{% set fn = fn|replace({'_':' '})|capitalize %}
+	
+	{% if f|contains('colours') %}
+		{% set fn = fn|replace({' colours':''}) %}
+		{% set c = c ~ "<li><a href='"~uri.path~"/sample:"~f~"'>"~fn~"</a></li>" %}
+	{% elseif f|contains('info') %}
+		{% set fn = fn|replace({' info':''}) %}
+		{% set ic = ic ~ "<li><a href='"~uri.path~"/sample:"~f~"'>"~fn~"</a></li>" %}
+	{% elseif f|contains('ref') %}
+		{% set fn = fn|replace({' ref':''}) %}
+		{% set rc = rc ~ "<li><a href='"~uri.path~"/sample:"~f~"'>"~fn~"</a></li>" %}
+	{% elseif f|contains('basic') %}
+		{% set fn = fn|replace({' basic':''}) %}
+		{% set bc = bc ~ "<li><a href='"~uri.path~"/sample:"~f~"'>"~fn~"</a></li>" %}
+	{% elseif f|contains('grav') %}
+		{% set fn = fn|replace({' grav':''}) %}
+		{% set gc = gc ~ "<li><a href='"~uri.path~"/sample:"~f~"'>"~fn~"</a></li>" %}
+		
+	{% else %}
+		{%set lc = lc ~ "<li><a href='"~uri.path~"/sample:"~f~"'>"~fn~"</a></li>" %}
+	{% endif %}
+
+{% endfor %}
+
+
+<ul class='none'>
+	{{ic|raw}}
+</ul>
+
+<h4>Basic</h4>
+<ol class='decimal-leading-zero'>
+	{{bc|raw}}
+</ol>
+
+<h4 class='mt-100'>Theme Colours</h4>
+
+<ol class='decimal-leading-zero'>
+	{{c|raw}}
+</ol>
+
+<h4 class='mt-100'>Style UI</h4>
+<ol class='decimal-leading-zero'>
+	{{lc|raw}}
+</ol>
+
+<h4>Grav/ Gantry5</h4>
+<ol class='decimal-leading-zero'>
+	{{gc|raw}}
+</ol>
+
+<h4 class='mt-100'>References</h4>
+<ol class='decimal-leading-zero'>
+	{{rc|raw}}
+</ol>
+
+
+
+</div>
+
+
+</div>
+{% endblock %}

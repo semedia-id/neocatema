@@ -1,0 +1,43 @@
+.yellow { 
+	--background: #{get-hsl-var(warning)};
+	--text: #{get-hsl-var(warning,(l:3%))};
+}
+
+.red { 
+	--background: #{get-hsl-var(error)};
+	--text: #{get-hsl-var(error,(l:97%))};
+}
+
+.blue { 
+	--background: #{get-hsl-var(info)};
+	--text: #{get-hsl-var(info,(l:97%))};
+}
+
+.green { 
+	--background: #{get-hsl-var(success)};
+	--text: #{get-hsl-var(success,(l:97%))};
+}
+
+.primary {
+	--background: #{get-hsl-var(accent)};
+	--text: #{get-hsl-var(accent,(l:97%))};
+}
+
+.secondary {
+	--background: #{get-hsl-var(surface)};
+	--text: #{get-hsl-var(accent,(l:97%))};
+}
+
+.dark-scheme {
+
+
+    .primary {
+	    --text: #{get-hsl-var(accent,(l:3%))};
+    }
+
+    .secondary {
+	    --text: #{get-hsl-var(accent,(l:3%))};
+    }
+
+
+}

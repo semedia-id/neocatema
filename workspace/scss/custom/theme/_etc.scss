@@ -1,0 +1,53 @@
+
+.disabled
+:disabled,
+[disabled] { opacity: .6; cursor: not-allowed;  }
+
+.ttu { text-transform: uppercase; }
+.ttl { text-transform: lowercase; }
+.ttc { text-transform: capitalize; }
+
+.lh-0 { line-height: 1.15; }
+.lh { line-height: var(--line-height); }
+.lh-1 { line-height: var(--line-height); }
+.lh-2 { line-height: calc(2 * var(--line-height)); }
+.lh-3 { line-height: calc(3 * var(--line-height)); }
+
+
+[class*='ncico-'] {
+
+	&.x2 { font-size: 2em; }
+	&.x3 { font-size: 3em; }
+	&.x4 { font-size: 4em; }
+	
+
+}
+
+hr { clear:both; }
+
+
+.bullet { border-radius: 50%; }
+.rounded { border-radius: 1em; }
+.bordered { 
+	border-color: var(--border);
+	border-width: 1px;
+	border-style: solid
+	}
+
+.framed { background: #f3f3f3; padding: .5em; }
+.polaroid { background: #f3f3f3; padding: .5em .5em 2em .5em; }
+
+/*
+.bordered {
+	&.w\:1p { border-width: 1px; }
+	&.w\:2p { border-width: 2px; }
+	&.w\:3p { border-width: 3px; }
+	&.w\:25 { border-width: .25em; }
+	&.w\:50 { border-width: .5em; }
+	&.w\:100 { border-width: 1em; }
+	&.w\:200 { border-width: 2em; }
+	&.s\:dot { border-style: dotted; }
+	&.s\:dash { border-style: dashed; }
+	&.s\:solid { border-style: solid; }
+}
+*/

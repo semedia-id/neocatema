@@ -1,0 +1,63 @@
+
+table {
+	--body: #{get-hsl-var(surface,(l:95%))};
+	--header-text: #{get-hsl-var(surface,(l:97%))};
+	--header: #{get-hsl-var(surface,(l:20%))};
+	--body-text: #{get-hsl-var(surface,(l:5%))};
+	--shade: #{get-hsl-var(surface,(l:90%))};
+	--hrsep: 1px;
+	
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+        background-color: var(--header);
+        color: var(--header-text)
+    }
+
+    tbody {
+        background-color: var(--body);
+        color: var(--body-text);
+    }
+
+    th,td {
+        padding: .5em;
+        border: var(--hrsep) solid var(--border);
+        text-align: center;
+        vertical-align: middle;
+    }
+
+	&.noborder {
+		th,td {
+			border: var(--hrsep) solid transparent;
+		}
+	}
+
+	&.spaced {
+
+	    border-collapse: separate;
+
+		th,td {
+			border: var(--hrsep) solid transparent;
+			margin: 0 var(--hrsep) var(--hrsep) 0;
+		}
+	}
+	
+    &.row-stripes {
+        th:nth-child(odd),
+		td:nth-child(odd) { background: var(--shade) }
+    }
+
+    &.stripes {
+        tr:nth-child(even) td { background: var(--shade) }
+    }
+    
+	&.compact {
+		width: auto;
+		th,td {
+			padding: .25em;		
+		}
+	}
+}
+
+

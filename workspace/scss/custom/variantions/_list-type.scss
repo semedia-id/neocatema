@@ -1,0 +1,44 @@
+$ul-list-types: [
+	circle,
+	disc,
+	square
+];
+
+$ol-list-types: [
+	decimal,
+	decimal-leading-zero,
+	lower-alpha,
+	upper-alpha,
+	lower-roman,
+	upper-roman,
+];
+
+/* list-type variants, shorcode-ui flavored */
+
+@each $type in $ul-list-types {
+	ul[#{$type}],
+	ul.#{$type} { list-style-type: $type; }
+}
+
+@each $type in $ol-list-types {
+	ol[#{$type}],
+	ol.#{$type} { list-style-type: $type; }
+}
+
+ol[decimal-leading-zero],
+ol.decimal-leading-zero { padding-left: 1.5rem; }
+
+
+ul.none,
+ol.none,
+ul[none],
+ol[none] { list-style-type: none; padding-left: 0; }
+
+
+// sub list are keep with previous.
+
+ul,
+ol { padding-inline-start: 1rem; }
+
+ul li::marker { color: var(--surface); }
+ol li::marker { color: var(--accent); }

@@ -1,0 +1,139 @@
+details:
+  name: neoca
+  version: '2.0'
+  icon: html5
+  date: 'August 17, 2020'
+
+  description: Neoca Theme
+  images:
+    thumbnail: /admin/image/preset1.png
+    preview: /admin/image/preset1.png
+
+author:
+  name: tacoen
+  email: tacoen@gmail.com
+  url: https://github.com/tacoen/
+
+  homepage: https://github.com/tacoen/neoca
+  readme: https://github.com/tacoen/neoca/blob/master/README.md
+  keywords: gantry, gantry5, theme, gaskeun
+  bugs: https://github.com/tacoen/neoca/issues
+  license: MIT
+
+  documentation:
+    link: https://github.com/tacoen/neoca/wiki
+
+  support:
+    link: https://github.com/tacoen/neoca/issues
+
+
+configuration:
+  gantry:
+    platform: grav
+    engine: nucleus
+
+  theme:
+    base: gantry-theme://common
+    file: gantry-theme://include/theme.php
+    class: \Gantry\Framework\Theme
+
+  fonts:
+
+    adobe-clean:
+      300: 'gantry-theme://fonts/adobeclean-light'
+      400: 'gantry-theme://fonts/adobeclean-regular'
+      700: 'gantry-theme://fonts/adobeclean-bold'    
+
+    adobe-clean-semicn:
+      400: 'gantry-theme://fonts/adobeclean-semicn'
+      700: 'gantry-theme://fonts/adobeclean-boldsemicn'    
+
+  css:
+    compiler: \Gantry\Component\Stylesheet\ScssCompiler
+    paths:
+      - gantry-theme://scss
+      - gantry-engine://scss
+    files:
+      - theme
+    persistent:
+      - theme
+    overrides:
+
+  block-variations:
+
+    alignment:
+        top: top
+        middle: middle
+        bottom: bottom
+        left: left
+        center: center
+        right: right
+        
+    resize:
+        grow: grow
+        shrink: shrink
+
+  
+  section-variations:
+
+    Layout Function:
+      dock-top: Dock it on Top
+      fix-at-top: Fix at Top
+      fix-at-left: Fix at left
+      toggle-able: Toggleable
+
+    Utility:
+      disabled: Disabled
+      center: Center
+      nomarginall: No Margin
+      nopaddingall: No Padding
+      small-font: Small Font
+      mobile-only: Mobile Only
+
+    Styles Color:
+      ncc-surface: surface-color
+      ncc-accent: accent-color
+      ncc-button: button-color
+      ncc-info: blue-color
+      ncc-error: red-color
+      ncc-warning: yellow-color
+      ncc-success: green-color
+
+    Custom Color:
+        ncc-color1: custom-color-1
+        ncc-color2: custom-color-2
+        ncc-color3: custom-color-3
+        ncc-color4: custom-color-4
+
+    Background Cover:
+      cover-1: Cover 1
+      cover-2: Cover 2
+      cover-3: Cover 3
+      cover-4: Cover 4
+      
+    Effects:
+      shadow: Shadow 1
+      shadow2: Shadow 2
+      rounded: Rounded
+      square: Square      
+  dependencies:
+    gantry: 5.4.0
+
+admin:
+  styles:
+
+    configuration:
+      - menu
+      - breakpoints
+      - option
+
+    neocatema:
+      - light
+      - base
+      - dark
+
+    variations:
+      - accent
+      - cover
+      - surface
+

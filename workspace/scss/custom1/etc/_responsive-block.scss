@@ -1,0 +1,123 @@
+@mixin responsive-transform {
+    &.fixed-left { transform: translateX(-100%); }
+    &.fixed-right { transform: translateX(100%); }
+    &.left { transform: translateX(-100%); }
+    &.right { transform: translateX(100%); }
+
+}
+
+#g-page-surround {
+    transition: transform .25s ease-in-out;
+}
+
+button.res-ctl {
+
+    position:absolute;
+    cursor:pointer; 
+    opacity: 1 !important;
+    right: initial;
+    border: none;
+    outline: none;
+    background: transparent;
+    height: var(--ctl-height);
+
+    i { 
+        font-size: calc(var(--ctl-height) / 2); 
+    }
+
+    &.text {
+        i { font-size: calc(var(--ctl-height) / 3); }
+   }
+
+}
+
+.responsive.g-block {
+
+    transition: opacity .25s ease-in-out;
+
+    &:not(.block-res) {
+
+    	position:absolute;
+    	width: 0;
+    }    
+
+    .res-content {
+        transition: transform .35s ease-in-out;
+        @include responsive-transform;
+        opacity: 0;
+    }
+
+     &.show {
+
+    	position: initial;
+    	width: auto;
+
+        .res-content {
+            transform: translate(0);
+            opacity: 1;
+        }
+     }
+}
+
+
+
+body.res-active {
+    overflow: hidden;
+}
+
+[data-responsive-position='fixed-left'] {
+  
+    button.res-ctl {
+        right: 0;
+    }
+
+    .res-content {
+        padding-top: var(--ctl-height);
+    }
+
+    .responsive.show {
+        position: fixed;
+        width: var(--responsive-width);
+        height: 100%;
+        top:0;
+        left:0;
+    }
+
+    @include breakpoint(not-mobile) {
+        #g-page-surround { transform: translateX(var(--responsive-width)); }
+        .responsive.show { transform: translateX(calc(-1 * var(--responsive-width))); }
+    }
+
+}
+
+[data-responsive-position='fixed-right'] {
+  
+    button.res-ctl {
+        left: 0;
+    }
+
+    .res-content {
+        padding-top: var(--ctl-height);
+    }
+
+    .responsive.show {
+        position: fixed;
+        width: var(--responsive-width);
+        height: 100%;
+        top:0;
+        right:0;
+    }
+
+    @include breakpoint(not-mobile) {
+        #g-page-surround { transform: translateX(calc(-1 * var(--responsive-width))); }
+        .responsive.show { transform: translateX(calc(1 * var(--responsive-width))); }
+    }
+
+}
+
+
+@include breakpoint(mobile-only) {
+    #g-page-surround {
+        padding-top: 64px;
+    }
+}

@@ -1,0 +1,31 @@
+
+$way:(
+	'l':'left',
+	'r':'right',
+	'b':'bottom',
+	't':'top'
+);
+
+@each $s,$w in $way {
+	.border-#{$s} { 
+		border-#{$w}-width: 1px; 
+		border-#{$w}-style: solid;
+		border-#{$w}-color: var(--border); 
+	}
+}
+
+	.border { 
+		border-width: 1px; 
+		border-style: solid;
+		border-color: var(--border); 
+	}
+
+@for $i from 1 through 7 {
+
+	.bw-#{$i} { border-width: #{$i}px; }	
+	
+}
+
+.b-dot { border-style: dotted }
+.b-dash { border-style: dashed }
+.b-double { border-style: double; border-width: 4px; }

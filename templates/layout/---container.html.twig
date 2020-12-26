@@ -1,0 +1,45 @@
+{% set html %}
+    {% for segment in segments %}
+        {% include 'layout/' ~ segment.type ~ '.html.twig' with { 
+			'segments': segment.children,
+			'options': options
+			} %}
+    {% endfor %}
+{% endset %}
+
+INIKAH
+
+{% if segment.attributes.sticky or html|trim %}
+
+    {% set attr_id = segment.attributes.id ?: 'g-' ~ segment.id %}
+    {% set boxed = segment.attributes.boxed %}
+    {% if boxed is not null %}
+        {% set boxed = boxed|trim == '' ? gantry.config.page.body.layout.sections : boxed %}
+    {% endif %}
+    {% set class = 'g-wrapper' ~ (segment.attributes.class ? ' ' ~ segment.attributes.class) %}
+    {% set attr_extra = segment.attributes.extra|attribute_array %}
+
+	{% info = "data-box="~{{boxed}} %}
+	
+    {% if (boxed > 0)  %}
+        {% set box_class = "g-container layout-"~boxed %}
+
+		{% set html %}
+			<div {{info}} class="{{box_class}}">{{ html|raw }}</div>
+        {% endset %}
+
+    {% else %}
+
+		{{ html|raw }}
+
+	{% endif %}
+	
+	INIKAH?
+	
+    {% set html %}
+    <section id="{{ attr_id }}" class="{{ class }}" {{- attr_extra|raw }}>
+        {{ html|raw }}
+    </section>
+    {% endset %}
+
+{% endif %}

@@ -1,0 +1,37 @@
+html { 
+
+	box-sizing:border-box;
+	line-height: 1.15;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0
+}
+
+*,
+*:before,
+*:after { box-sizing: inherit; }
+
+
+table {
+  text-indent: 0;
+  border-color: inherit;
+}
+
+tfoot,
+thead,
+tbody {
+	background-color: inherit;
+}
+
+// vertical section/container
+
+main,
+aside {
+    min-height: 100%;
+}
+
+
+.gn-small .gn-small-hide,
+noscript { display: none; }

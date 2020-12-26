@@ -1,0 +1,129 @@
+/* Forms
+   ========================================================================== */
+
+/*
+
+form {
+	--input-background: #{unquote("hsla(var(--button_h), var(--button_s), 90%,.5)")};
+	--input-background-active: #{unquote("hsla(var(--button_h), var(--button_s), 90%,.2)")};
+	--option: #{unquote("hsl(var(--button_h), var(--button_s), 90%)")};
+	--option-text: #111;
+
+	input[pseudo] {
+		background-color: var(--input-background);
+	}
+}
+
+.dark-scheme form {
+	--input-background: #{unquote("hsla(var(--button_h), var(--button_s), 10%,.3)")};
+	--input-background-active: #{unquote("hsla(var(--button_h), var(--button_s), 10%,.2)")};
+	--option: #{unquote("hsl(var(--button_h), var(--button_s), 10%)")};
+	--option-text: #fff;
+}
+
+*/
+
+
+
+select option {
+	background-color: var(--option);
+	color: var(--option-text);
+	border: none;
+}
+
+form {
+	select,
+	#{$text-inputs-list} {
+		width: 100%;
+	}
+
+}
+
+/* Grav */
+
+form {
+   width: 100%;
+  .required { color: var(--accent); }
+
+  .form-field {
+	margin-bottom: var(--margin);
+    .form-label {
+      label { font-weight: 700 }
+    }
+    .form-data {
+      .form-input-wrapper { width: 100%; }
+      .form-textarea-wrapper { width: 100%; }
+    }
+  }
+}
+
+
+.row form,
+form.row {
+    .form-field,
+    .form-data,
+    .form-label {
+        display:inline-block;
+    }
+
+    * { width: auto !important; }
+
+}
+
+.inline-form form,
+form.inline-form {
+
+  .buttons { margin-left: 40%; }
+
+  .form-field {
+	margin-bottom: var(--margin);
+	display: flex;
+
+
+    .form-label {
+      flex-basis: 40%;
+	  label { font-weight: 700; }
+    }
+
+    .form-data {
+	  flex-basis: 60%;
+      .form-input-wrapper { width: 100%; }
+      .form-textarea-wrapper { width: 100%; }
+    }
+  }
+}
+
+
+textarea {
+	font-family: var(--font-mono);
+	line-height: 1.15;
+	font-size: 1.2em;
+	overflow: auto;
+	//@include scrollbars(.25rem, var(--hilite), var(--shade));
+}
+
+
+/* from bourbon/addons
+ *
+ * $text-inputs-list
+ *
+ */
+
+
+/*
+select,
+#{$text-inputs-list} {
+
+	border: 1px inset var(--border);
+	padding: .125rem;
+
+	&:focus,
+	&:active {
+		background-color: var(--input-background-active);
+	}
+	&:hover {
+		box-shadow: 1px 0 3px var(--shadow);
+	}
+}
+
+*/

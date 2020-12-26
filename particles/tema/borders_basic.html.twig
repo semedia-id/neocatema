@@ -1,0 +1,30 @@
+<h2 class='border-b mb-100  fw-light'>Borders</h2>
+
+<div class='example'>
+<p class='border-b mb-100 bw-3 fw-light'>Border and Border-radius</p>
+</div>
+
+<h3 class='my-100'>border style</h3>
+
+<div class='flex easy'>	
+	<div class='pa-100 border-a'>b-solid</div>	
+	<div class='pa-100 border-a b-dot'>b-dotted</div>
+	<div class='pa-100 border-a b-dash'>b-dashed</div>
+	<div class='pa-100 border-a b-double'>b-double</div>	
+</div>
+
+{% for w in ['a','t','r','b','l'] %}
+
+	<h3 class='my-100 ttl'>border-{{w}}</h3>
+	
+	<div class='flex easy'>
+	<div class='pa-100 border-{{w}}'>border-{{w}}</div>
+	{% for s in 1..7 %}
+		<div class='pa-100 border-{{w}} bw-{{s}}'>bw-{{s}}</div>
+	{% endfor %}
+	</div>	
+
+{% endfor %}
+
+
+	

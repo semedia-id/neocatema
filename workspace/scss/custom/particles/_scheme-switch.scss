@@ -1,0 +1,24 @@
+#ncc_scheme_switch {
+	--background: var(--c-l1);
+	--text: var(--b);
+
+	background: var(--background);
+    padding: .5em .5em .25em;
+    font-size: 1.1em;
+    border-radius: .25rem;
+
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    box-shadow: 1px 3px 6px 0 var(--shadow3);
+
+}
+
+#ncc_scheme_switch i { 
+    margin-right: .5em;
+    vertical-align: top;    
+}
+
+.dark-scheme {
+	#ncc_scheme_switch i { transform: rotate(-180deg); }
+}

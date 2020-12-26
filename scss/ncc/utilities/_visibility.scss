@@ -1,0 +1,30 @@
+// Breakpoints
+//
+// - large-desktop-range
+// - desktop-range 
+// - desktop-only --
+
+// - tablet-range
+// - not-mobile --
+
+// - large-mobile-range
+// - small-mobile-range
+// - mobile-only --
+
+
+.only-in-desktop,
+.only-in-tablet,
+.only-in-mobile {
+	display: none;
+}
+
+@include breakpoint(mobile-only) {
+	.only-in-mobile { display: initial; }
+	.hide-in-mobile { display: none !important; }
+}
+
+@include breakpoint(desktop-only) {
+	.only-in-desktop { display: initial !important; }
+	.hide-in-desktop { display: none !important; }
+}
+

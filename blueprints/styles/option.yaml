@@ -1,0 +1,26 @@
+name: Options
+description: Style Option
+type: configuration
+
+form:
+  fields:
+
+    disable_scheme:
+      type: input.checkbox
+      label: Disable Scheme
+      default: '0'
+
+    devinchrome:
+      type: input.checkbox
+      label: Enable Workspaces
+      default: '1'
+
+    _info4:
+      type: separator.note
+      class: opt-note header
+      content: <b>Modules</b>
+
+    animate_css:
+      type: input.checkbox
+      label: Animate.css
+      default: '0'

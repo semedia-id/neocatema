@@ -1,0 +1,21 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{% set page = uri.param('nccdev') %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="gantry-theme://theme-dev/css/ncc-themedev.css" />
+{% endblock %}
+{% block javascript_footer %}
+    <script src="{{ url('gantry-theme://theme-dev/js/ncc-themedev.js') }}"></script>
+{% endblock %}
+
+{# include ['@particles/gn-themedev/'~page~'.html.twig', 'welcome.html.twig'] #}
+
+{% pageblock body_bottom %}
+	{% include '@particles/gn-themedev/vars.html.twig' %}
+	{% include '@particles/gn-themedev/color-chart.html.twig' %}
+	{% include '@particles/gn-themedev/inputs.html.twig' %}
+	{% if page %}
+		{% include '@particles/gn-themedev/'~page~'.html.twig' %}
+	{% endif %}
+{% endpageblock %}

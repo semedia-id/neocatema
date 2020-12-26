@@ -1,0 +1,10 @@
+#g-offcanvas {
+	position: absolute;
+    .g-grid {
+    	position: relative;
+    
+        > * { z-index: 9999; }
+    }
+
+
+}    

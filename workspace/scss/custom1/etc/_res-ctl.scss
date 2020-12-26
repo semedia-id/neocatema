@@ -1,0 +1,21 @@
+#section-ctl {
+
+
+	button {
+	    --center: calc( (100% / 2) - (var(--margin) / 2) );
+		position: absolute;
+		left: initial; right: initial; top:initial; bottom: initial;
+		min-width: var(--ctl-width);
+		min-height: var(--ctl-width);
+		@extend %vcenter;
+		i { font-size: calc( var(--ctl-width) / 2) }
+		span { margin-left: calc(var(--margin) /2 ) }
+
+		&.left { left: var(--margin) }
+		&.right { right: var(--margin); }
+		&.top { top: calc(var(--margin)/2); left: var(--center); }
+		&.bottom { bottom: calc(var(--margin)/2); left: var(--center); }
+	}
+
+
+}

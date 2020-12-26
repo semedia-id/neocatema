@@ -1,0 +1,72 @@
+@function get-hsl-var($var, $mod:() ) {
+	
+	$dh: var(--#{$var}-h);
+	$ds: var(--#{$var}-s);
+	$dl: var(--#{$var}-l);
+	
+	@if map-get($mod,'h') { $dh: #{map-get($mod,'h')} }
+	@if map-get($mod,'s') { $ds: #{map-get($mod,'s')} }
+	@if map-get($mod,'l') { $dl: #{map-get($mod,'l')} }
+
+	@if map-get($mod,'ah') { $dh: calc(var(--#{$var}-h) + #{map-get($mod,'ah')}) }
+	@if map-get($mod,'as') { $ds: calc(var(--#{$var}-s) + #{map-get($mod,'as')}) }
+	@if map-get($mod,'al') { $dl: calc(var(--#{$var}-l) + #{map-get($mod,'al')}) }
+	
+	@return #{unquote('hsl(#{$dh},#{$ds},#{$dl})')};
+
+}
+
+
+@mixin hsl-var-color($var,$val) {
+
+	$w: 95%;
+	$b: 5%;
+	$h: round(hue($val)/1deg);
+	$s: round(saturation($val));
+	$l: round(lightness($val));
+	$u: ($w - $l)/5;
+	$d: ($l - $b)/5;
+	
+	--#{$var}-color: #{$val};
+	--#{$var}-h: #{$h};
+	--#{$var}-s: #{$s};
+	--#{$var}-l: #{$l};
+	--#{$var}-uf: #{$u};
+	--#{$var}-df: #{$d};
+	
+	
+	@if ($l<50%) { 
+		--#{$var}-t: #{unquote('hsl(var(--h), var(--s), 97%)')}; 
+	} @else {
+		--#{$var}-t: #{unquote('hsl(var(--h), var(--s), 3%)')}; 
+	}
+	
+}
+
+
+@mixin hsl-color($val) {
+
+	$w: 95%;
+	$b: 5%;
+	$h: round(hue($val)/1deg);
+	$s: round(saturation($val));
+	$l: round(lightness($val));
+	$u: ($w - $l)/5;
+	$d: ($l - $b)/5;
+	
+	--color: #{$val};
+	--h: #{$h};
+	--s: #{$s};
+	--l: #{$l};
+	--uf: #{$u};
+	--df: #{$d};
+	
+	--c: #{unquote('hsl(var(--h), var(--s), var(--l))')};
+	
+	@if ($l<50%) { 
+		--t: #{unquote('hsl(var(--h), var(--s), 97%)')}; 
+	} @else {
+		--t: #{unquote('hsl(var(--h), var(--s), 3%)')}; 
+	}
+	
+}

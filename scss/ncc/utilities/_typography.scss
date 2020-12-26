@@ -1,0 +1,66 @@
+// typography
+
+.font-base { font-family: var(--font-base); }
+.font-alter { font-family: var(--font-alter); }
+.font-head { font-family: var(--font-head); }
+.font-mono { font-family: var(--font-mono); }
+
+html .fw-light { font-weight: 300; }
+html .fw-norm { font-weight: 400; }
+html .fw-medium { font-weight: 500; }
+html .fw-bold { font-weight: 700; }
+
+body {
+	font-family: var(--font-base);
+	font-weight: 400;
+	font-size: var(--font-size);
+	line-height: var(--line-height);
+}
+
+// heading: title, section title, reading marks
+
+@function hsize($i) {
+	$s: (5-$i);
+	$r: .25;
+	@if ($s<=0) { $r: 0.1 }
+	@return 1+($s*$r);
+}
+
+
+$heading: assign-inputs(['h1','h2','h3','h4','h5','h6']);
+
+#{$heading} {
+	margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+
+@for $i from 1 through 6 {
+
+	h#{$i},.h#{$i} {
+		line-height:1.15;
+		font-size: #{hsize($i)}rem;
+		text-transform: capitalize;
+		font-weight: 700;
+		font-family: var(--font-head);
+	}
+
+	h#{$i} {
+		margin-top: var(--line-margin);
+		&:first-child {
+			margin-top:0;
+		}
+	}
+
+}
+
+h4 + p { margin-top: calc(.5 * var(--margin)) }
+
+h6,h5 { text-transform: uppercase; }
+h6 + p,
+h5 + p { margin-top: 0 }
+
+tfoot,thead,legend {
+	@extend .h5;
+}

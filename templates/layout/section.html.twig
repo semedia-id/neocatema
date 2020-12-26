@@ -1,0 +1,118 @@
+{% set tag_type = segment.subtype|default('section') %}
+{% set attr_id = segment.attributes.id ?: 'g-' ~ segment.id %}
+{% set attr_class = segment.attributes.class
+	~ ' section-'~segment.id
+	~ (segment.attributes.blockcolor ? ' bg')
+	~ (segment.attributes.disable_sizes ? ' no-size')
+	~ (segment.attributes.disable_grid ? ' no-grid')
+	~ (segment.attributes.disable_gcontent ? ' no-gcontent')
+    ~ (segment.attributes.variations ? ' ' ~ segment.attributes.variations|join(' '))
+	~ (segment.attributes.background_color ? ' hsl-pal') %}
+
+{% set attr_extra = segment.attributes.extra|attribute_array %}
+{% set boxed = segment.attributes.boxed %}
+{% set options = {
+	'gsize': segment.attributes.disable_sizes,
+	'ggrid': segment.attributes.disable_grid,
+	'gcontent': segment.attributes.disable_gcontent,
+	}
+%}
+
+{# Neoca //------- #}
+
+{% if segment.attributes.background_color %}
+	{% do gantry.document.addInlineScript('ncc_construct_pallete("#'~attr_id~'")', 0, 'footer') %}
+{% endif %}
+
+{% set styles = segment.attributes.custom_style %}
+{% set styles = styles 
+	~ (segment.attributes.background_color ? "; --color:"~ segment.attributes.background_color )
+%}
+
+{% if segment.attributes.responsive %}
+
+	{% pageblock myclass %} has-res {% endpageblock %}
+		
+	{% set attr_class = attr_class 
+		~ (segment.attributes.responsive ? ' res-content')
+		~ (segment.attributes.res_always ? ' show')
+		~ (segment.attributes.res_swipe ? ' swipe')
+		~ (segment.attributes.res_position ? ' ' ~ segment.attributes.res_position)
+	%}
+	
+	{% set resbutton_class = 'res-ctl toggle'
+		~ (segment.attributes.res_title ? ' text')
+	%}
+
+	{% set resbutton_style = ""
+		~(segment.attributes.res_icon_w ? '--ctl-width:' ~ segment.attributes.res_icon_w ~';' )
+		~(segment.attributes.res_icon_h ? '--ctl-height:' ~ segment.attributes.res_icon_h ~';' )
+	%}
+
+	{% set resbutton %}
+	
+	<button class="{{resbutton_class}}" 
+		data-always="{{segment.attributes.res_always}}"
+		data-section='#{{attr_id}}'
+		data-position='{{segment.attributes.res_position}}'
+		data-icon-h='{{segment.attributes.res_icon_h}}'
+		data-icon-w='{{segment.attributes.res_icon_w}}'
+		data-icon='{{segment.attributes.res_icon}}'>
+	<i class='{{segment.attributes.res_icon}}'></i>
+	{%if segment.attributes.res_title %}<span>{{segment.attributes.res_title}}</span>{% endif %}
+	</button>
+	
+	{% endset %}
+
+{% endif %}
+
+
+{# Neoca //------- #}	
+
+{% if boxed is not null %}
+    {% set boxed = boxed|trim == '' ? gantry.config.page.body.layout.sections : boxed %}
+{% endif %}
+
+{%- set html %}
+
+    {% if segment.children %}
+        {% for segment in segments %}
+            {% include 'layout/' ~ segment.type ~ '.html.twig' with { 
+				'segments':segment.children ,
+				'options':options
+			} %}
+        {% endfor %}
+    {% endif %}
+{% endset %}
+
+{%- if segment.attributes.sticky or html|trim %}
+    
+	{% if boxed > 0 %}
+		{% set box_class = "g-container layout-" ~boxed %}
+	{% else %}
+		{% set box_class = "g-container" %}
+	{% endif %}
+	
+    {% set html %}
+        <div class="{{box_class|raw}}">{{ html|raw }}</div>
+    {% endset %}
+
+    {% set html %}
+    
+		{% set attr_class = attr_class ? ' class="' ~ attr_class|trim ~ '"' %}
+
+		{{ resbutton|raw }}
+
+		<{{ tag_type }} 
+			id="{{ attr_id }}"
+			{{ attr_class|raw }} {{- attr_extra|raw }} 
+			{% if styles %} style="{{styles}}" {% endif %} >
+			{{ html|raw }}
+		</{{ tag_type }}>
+
+    {%- endset %}
+
+
+    {{ html|raw }}
+
+{% endif %}

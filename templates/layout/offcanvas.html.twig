@@ -1,0 +1,23 @@
+{% set attr_class = segment.attributes.class ? ' class="' ~ segment.attributes.class|e ~ '"' %}
+{% set attr_extra = segment.attributes.extra|attribute_array %}
+
+{% set offcanvas %}
+	{% set options_offcanvas = {
+		'gsize': true,
+		'ggrid': segment.attributes.disable_grid,
+		'gcontent': segment.attributes.disable_gcontent,
+		}
+	%}
+    {% for child in segment.children %}
+        {% include 'layout/' ~ child.type ~ '.html.twig' with { 
+			'segments': segment.children,
+			'options': options_offcanvas
+		} %}
+    {% endfor %}
+{% endset %}
+
+{%- if segment.attributes.sticky or offcanvas|trim -%}
+<div id="g-offcanvas" {{ attr_class|raw }} {{- attr_extra|raw }}>
+    {{ offcanvas|raw -}}
+</div>
+{% endif %}

@@ -1,0 +1,8 @@
+version: 2
+preset:
+  image: 'gantry-admin://images/layouts/offline.png'
+
+layout:
+  /main/:
+    - system-content
+    - system-messages

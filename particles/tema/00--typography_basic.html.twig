@@ -1,0 +1,51 @@
+
+<h2 class='border-b mb-100 fw-light'>Typography</h2>
+
+<h3 class='mt-1 ttl'>--font-base</h3>
+<p class='big'>{{ randomwords(22)|capitalize }}</p>
+<p size='75'>{{ randomwords(22)|capitalize }}</p>
+<p size='50' class='medium'>{{ randomwords(22)|capitalize }}</p>
+<p size='25' class='small'>{{ randomwords(22)|capitalize }}</p>
+
+
+<h3 class='mt-1 ttl'>--font-head</h3>
+<p class='big font-head'>{{ randomwords(22)|capitalize }}</p>
+<p size='75' class='font-head'>{{ randomwords(22)|capitalize }}</p>
+<p size='50' class='font-head medium'>{{ randomwords(22)|capitalize }}</p>
+<p size='25' class='font-head small'>{{ randomwords(22)|capitalize }}</p>
+
+<h3 class='mt-1 ttl'>--font-alter</h3>
+<p class='big font-alter'>{{ randomwords(22)|capitalize }}</p>
+<p size='75' class='font-alter'>{{ randomwords(22)|capitalize }}</p>
+<p size='50' class='font-alter medium'>{{ randomwords(22)|capitalize }}</p>
+<p size='25' class='font-alter small'>{{ randomwords(22)|capitalize }}</p>
+
+<h3 class='mt-1 ttl'>--font-mono</h3>
+<p class='big font-mono'>{{ randomwords(22)|capitalize }}</p>
+<p size='75' class='font-mono'>{{ randomwords(22)|capitalize }}</p>
+<p size='50' class='font-mono medium'>{{ randomwords(22)|capitalize }}</p>
+<p size='25' class='font-mono small'>{{ randomwords(22)|capitalize }}</p>
+
+<div class='g-grid mt-200 top'>
+
+<div size='50' class='g-block pr-1'>
+
+{% for s in 1..6 %}
+	<h{{s}}>Heading {{s}}</h{{s}}>
+	<p>A paragraph consists of one or more sentences; under under <code>h{{s}}</code></p>
+{% endfor %}
+
+</div>
+
+<div size='50' class='g-block pr-1'>
+
+{% for s in 1..6 %}
+	<div class='h{{s}}'>Heading {{s}}</div>
+	<p>A paragraph consists of one or more sentences; under under <code>div.h{{s}}</code></p>
+{% endfor %}
+
+</div>
+
+</div>
+
+

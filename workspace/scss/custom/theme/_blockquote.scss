@@ -1,0 +1,14 @@
+blockquote {
+	--background: #{get-hsl-var(accent,(l:92%))};
+	--border: #{get-hsl-var(accent,(l:70%))};
+    --text: #{get-hsl-var(surface,(l:7%))};
+
+    background-color: var(--background);
+	color: var(--text);
+    padding: var(--padding); 
+	margin: var(--margin);
+	font-family: var(--font-alter);
+	border-right: .25em solid var(--border);
+	font-size: 1.15em;
+	clear:both;
+}

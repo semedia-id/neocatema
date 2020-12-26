@@ -1,0 +1,16 @@
+name: Responsive Button
+description: Responsive Button Placeholder
+type: particle
+icon: fa-square
+
+configuration:
+  caching:
+    type: config_matches
+
+form:
+  fields:
+    
+    target:
+      type: input.text
+      label: Target
+      overridable: false

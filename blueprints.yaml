@@ -1,0 +1,44 @@
+name: neoca
+version: "0.2.0"
+description: "Neoca - Utility Base Grav Gantry5 theme"
+icon: html5
+author:
+  name: tacoen
+  email: tacoen@gmail.com
+  url: https://tacoen.github.io/
+homepage: https://tacoen.github.io/neoca/
+readme: https://github.com/tacoen/neoca/blob/master/README.md
+keywords: gantry5, css3, theme
+bugs: https://github.com/tacoen/neoca/issues
+license: MIT
+
+dependencies:
+  - { name: grav, version: '>=1.5.10' }
+
+form:
+  validation: loose
+  fields:
+
+    _note:
+        type: section
+        title: Options
+
+    owner:
+        size: long
+        type: textarea
+        label: <b>Owner Information</b>
+
+    _note2:
+        type: section
+        title: Generate Static Page
+
+    static_path:
+        toggleable: true
+        type: text
+        label: Static Path (static root)
+
+    rewrite:
+        type: checkbox
+        label: Rewrite everything
+        default: false
+
