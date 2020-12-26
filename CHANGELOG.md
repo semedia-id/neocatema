@@ -58,5 +58,14 @@
 ## 13/12/2020
 	
 1. [](#new)
-	* Initial release
+	* Gasnoda Initial release
+	
+# 0.3.0
+## 27/12/2020
+	
+1. [](#improved)
+	* neocatema
+	* Utility-first css framework
+	* Fix theme.php
+	
 	
