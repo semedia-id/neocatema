@@ -1,15 +1,15 @@
 name: neoca
 version: "0.2.0"
-description: "Neoca - Utility Base Grav Gantry5 theme"
+description: "Theme base on Neocátema(skeleton)"
 icon: html5
 author:
   name: tacoen
   email: tacoen@gmail.com
   url: https://tacoen.github.io/
-homepage: https://tacoen.github.io/neoca/
-readme: https://github.com/tacoen/neoca/blob/master/README.md
+homepage: https://tacoen.github.io/neocatema/
+readme: https://github.com/tacoen/neocatema/blob/master/README.md
 keywords: gantry5, css3, theme
-bugs: https://github.com/tacoen/neoca/issues
+bugs: https://github.com/tacoen/neocatema/issues
 license: MIT
 
 dependencies:
