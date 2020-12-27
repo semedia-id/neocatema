@@ -1,6 +1,5 @@
-.htaccess
-.sass-cache/**
-favicon.ico
-*.bak
-*.map
+*.css.map
 
+bin/*
+.sass-cache/
+.sass-cache/*
