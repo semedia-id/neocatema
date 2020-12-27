@@ -8,6 +8,11 @@ function responsiveControler() {
 		gas(block).cssvar('ctl-height', gas(el).data('ctl-height') );
 		if ( gas(el).data('responsive') )  { gas(block).addClass('desktop'); }
 		gas( gas(el).data('target') ).addClass('responsive-block');
+		if ( gas(el).data('position') ) {
+			gas('body').data('responsive-position',gas(el).data('position'));
+		}
+
+		gas(block).cssvar('responsive-width',gas(block).width()+'px');
 
         var element = el.cloneNode(true);
 		block.prepend(element)

@@ -1,0 +1,92 @@
+
+/*
+
+#g-page-surround {
+    transition: transform .25s ease-in-out;
+}
+
+.responsive.g-block {
+
+    transition: opacity .25s ease-in-out;
+
+    &:not(.block-res) {
+
+    	position:absolute;
+    	width: 0;
+    }    
+
+    .res-content {
+        transition: transform .35s ease-in-out;
+        @include responsive-transform;
+        opacity: 0;
+    }
+
+     &.show {
+
+    	position: initial;
+    	width: auto;
+
+        .res-content {
+            transform: translate(0);
+            opacity: 1;
+        }
+     }
+}
+
+
+
+body.res-active {
+    overflow: hidden;
+}
+
+[data-responsive-position='fixed-left'] {
+  
+    button.res-ctl {
+        right: 0;
+    }
+
+    .res-content {
+        padding-top: var(--ctl-height);
+    }
+
+    .responsive-block.show {
+        position: fixed;
+        width: var(--responsive-width);
+        height: 100%;
+        top:0;
+        left:0;
+    }
+
+    @include breakpoint(not-mobile) {
+        #g-page-surround { transform: translateX(var(--responsive-width)); }
+        .responsive-block.show { transform: translateX(calc(-1 * var(--responsive-width))); }
+    }
+
+}
+
+[data-responsive-position='fixed-right'] {
+  
+    button.res-ctl {
+        left: 0;
+    }
+
+    .res-content {
+        padding-top: var(--ctl-height);
+    }
+
+    .responsive-block.show {
+        position: fixed;
+        width: var(--responsive-width);
+        height: 100%;
+        top:0;
+        right:0;
+    }
+
+    @include breakpoint(not-mobile) {
+        #g-page-surround { transform: translateX(calc(-1 * var(--responsive-width))); }
+        .responsive-block.show { transform: translateX(calc(1 * var(--responsive-width))); }
+    }
+
+}
+
+*/

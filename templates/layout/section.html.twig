@@ -20,9 +20,6 @@
 
 {# Neoca //------- #}
 
-{% if segment.attributes.background_color %}
-	{% do gantry.document.addInlineScript('ncc_construct_pallete("#'~attr_id~'")', 0, 'footer') %}
-{% endif %}
 
 {% set styles = segment.attributes.custom_style %}
 {% set styles = styles 
@@ -37,10 +34,12 @@
 		~ (segment.attributes.responsive ? ' res-content')
 		~ (segment.attributes.res_always ? ' show')
 		~ (segment.attributes.res_swipe ? ' swipe')
-		~ (segment.attributes.res_position ? ' ' ~ segment.attributes.res_position)
+		
 	%}
 	
-	{% set resbutton_class = 'res-ctl toggle'
+	{# ~ (segment.attributes.res_position ? ' ' ~ segment.attributes.res_position) #}
+	
+	{% set resbutton_class = 'res-ctl section-ctl toggle'
 		~ (segment.attributes.res_title ? ' text')
 	%}
 
@@ -53,10 +52,10 @@
 	
 	<button class="{{resbutton_class}}" 
 		data-always="{{segment.attributes.res_always}}"
-		data-section='#{{attr_id}}'
+		data-target='#{{attr_id}}'
 		data-position='{{segment.attributes.res_position}}'
-		data-icon-h='{{segment.attributes.res_icon_h}}'
-		data-icon-w='{{segment.attributes.res_icon_w}}'
+		data-ctl-height='{{segment.attributes.res_icon_h}}'
+		data-ctl-width='{{segment.attributes.res_icon_w}}'
 		data-icon='{{segment.attributes.res_icon}}'>
 	<i class='{{segment.attributes.res_icon}}'></i>
 	{%if segment.attributes.res_title %}<span>{{segment.attributes.res_title}}</span>{% endif %}

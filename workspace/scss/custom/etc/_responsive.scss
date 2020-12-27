@@ -6,6 +6,15 @@
 
 }
 
+@mixin responsive-transform {
+    &.fixed-left { transform: translateX(-100%); }
+    &.fixed-right { transform: translateX(100%); }
+    &.left { transform: translateX(-100%); }
+    &.right { transform: translateX(100%); }
+
+}
+
+
 .responsive-block {
 
 	.desktop & {
@@ -21,10 +30,39 @@
 	}
 }
 
+
+body[data-responsive-position='fixed right'] {
+
+	.res-content.responsive-block {
+
+		.desktop & {
+			display: none;
+		}
+	
+		&.show {
+			display: initial;
+			position: fixed;
+			width: var(--responsive-width);
+			height: 100%;
+			top:0;
+			right:0;			
+		}
+	
+		@include breakpoint(mobile-only) {
+			display: none;
+		}
+	}
+
+}
+
+
+
 .res-ctl {
 
     &:hover {
         text-shadow: 0 0 3px #000;
+        box-shadow: none;
+        border:none;
     }
 
 	display: none;
