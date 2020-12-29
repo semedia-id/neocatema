@@ -171,9 +171,7 @@
 
 </div>
 {% set inline_js %}
-
 gas('#g-page-surround').addClass('theme-set');
-
 {% endset %}
 
-{% do gantry.document.addInlineScript(inline_js, 0, 'footer') %}
+{% do gasvara('inline_js',inline_js) %}

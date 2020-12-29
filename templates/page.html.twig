@@ -42,12 +42,14 @@
 
 {%- set page_top %}
     {% block page_top %}
+	{% if gantry.config.page.body.layout.sections == 2 %}<div class='g-container pages'>{% endif %}
     {% endblock %}
     {{ gantry.document.getHtml('top')|join("\n    ")|raw }}
 {% endset -%}
 
 {%- set page_bottom %}
     {% block page_bottom %}
+	{% if gantry.config.page.body.layout.sections == 2 %}</div>{% endif %}
     {% endblock %}
     {{ gantry.document.getHtml('bottom')|join("\n    ")|raw }}
 {% endset -%}
@@ -62,10 +64,6 @@
     {% block body_bottom %}
     {% endblock %}
     {{ gantry.document.getHtml('body_bottom')|join("\n    ")|raw }}
-{% endset -%}
-
-{%- set menucan_ctl %}
-    {{ gantry.document.getHtml('menucan_ctl')|join("\n    ")|raw }}
 {% endset -%}
 
 {%- set myclass %}
@@ -90,12 +88,13 @@
 		{%- do gantry.document.addScript(url('gantry-assets://workspace/js/script.js'), 10, 'footer') -%}
 	{% endif %}
 
-{%-set inline_js %}
-var disable_scheme = {{ (gantry.config.get('styles.option.disable_scheme') ? 'true': 'false')|raw }};
-var gn_media_breakpoint = {'wide':{{ 16*gantry.config.get('styles.breakpoints.large-desktop-container')|number_format }},'desktop':{{ 16*gantry.config.get('styles.breakpoints.desktop-container')|number_format}},'tablet':{{ 16*gantry.config.get('styles.breakpoints.tablet-container')|number_format}},'mobile':{{ 	16*gantry.config.get('styles.breakpoints.large-mobile-container')|number_format}}};
-{% endset -%}
+	{%-set inline_js %}
+	var disable_scheme = {{ (gantry.config.get('styles.option.disable_scheme') ? 'true': 'false')|raw }};
+	var gn_media_breakpoint = {'wide':{{ 16*gantry.config.get('styles.breakpoints.large-desktop-container')|number_format }},'desktop':{{ 16*gantry.config.get('styles.breakpoints.desktop-container')|number_format}},'tablet':{{ 16*gantry.config.get('styles.breakpoints.tablet-container')|number_format}},'mobile':{{ 	16*gantry.config.get('styles.breakpoints.large-mobile-container')|number_format}}};
+	{% endset -%}
 
-	{% do gantry.document.addInlineScript(inline_js|spaceless, 0, 'footer') %}
+	{% do gasvara('inline_js',inline_js) %}
+
 
 {# //------- #}
 
@@ -139,5 +138,8 @@ var gn_media_breakpoint = {'wide':{{ 16*gantry.config.get('styles.breakpoints.la
 		<div class='modal-layer'></div>
 	</body>
     {%- endblock %}
+
+<script>{{ config.gas.inline_js|sort|join('\n')|stripper|raw }}</script>
+
 </html>
 {% endblock -%}

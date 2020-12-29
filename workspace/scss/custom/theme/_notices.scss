@@ -20,6 +20,8 @@
 	&.blue { @include notice-color(info); }
 	&.green { @include notice-color(success); }
 
+    p { margin-bottom: 0 }
+    
 	&:after {
 		content: "x";
 		position: absolute;

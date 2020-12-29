@@ -1,4 +1,4 @@
-name: Body Attributes M
+name: Body Attributes
 description: Settings that can be applied to the page.
 type: global
 
@@ -32,9 +32,8 @@ form:
         allowEmptyOption: true
       options:
         0: Remove Container
-        1: Full-width
+        1: Full-width (Boxed Content)
         2: Boxed Content
-        3: Fullwidth (Flushed Content)        
 
     body_top:
       type: textarea.textarea

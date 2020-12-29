@@ -22,7 +22,9 @@
 	});
 	
 	{% endset -%}
-	{%- do gantry.document.addInlineScript(inlinejs, 0, 'footer') -%}
+
+	{% do gasvara('inline_js',inlinejs) %}
+
 		
   {% default %}
 

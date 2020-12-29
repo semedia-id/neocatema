@@ -2,6 +2,7 @@
 namespace Grav\Theme;
 
 use \Grav\Common\Grav;
+use Grav\Common\Theme;
 use Grav\Common\Utils;
 
 class GaskenTwigExtension extends \Twig_Extension
@@ -32,6 +33,7 @@ class GaskenTwigExtension extends \Twig_Extension
             new \Twig_SimpleFunction('filedir', [$this, 'filedir']),
             new \Twig_SimpleFunction('fileget', [$this, 'fileget']),
             new \Twig_SimpleFunction('randomwords', [$this, 'randomwords']),
+            new \Twig_SimpleFunction('gasvara', [$this, 'gasvar_array_func']),
         ];
     }
 
@@ -40,10 +42,13 @@ class GaskenTwigExtension extends \Twig_Extension
 		
 		$tmp = explode("\n", $string);
 		$tmp = preg_replace('/^\s+$/', '', $tmp);
+		$tmp = preg_replace('/^\s+/', '', $tmp);
+		$tmp = preg_replace('/\s+$/', '', $tmp);
 		$tmp = array_filter($tmp);
 		$string = implode("\n", $tmp);		
-		$string = preg_replace('/\t/', '    ', $string);
-		$string = preg_replace('/    /', '  ', $string);
+		$string = preg_replace('/\t/', '', $string);
+		//$string = preg_replace('/\n/', '', $string);
+		$string = preg_replace('/;;/', ';', $string);
 		return (trim($string));
     }	
 
@@ -54,6 +59,27 @@ class GaskenTwigExtension extends \Twig_Extension
 		shuffle($words); 
 		for ($x = 0; $x <= $n; $x++) { $w .= $words[$x]. ' '; }
 		return rtrim($w);
+	}
+
+    public function gasvar_array_func($var,$value)
+	{
+		$coba = Grav::instance();
+		$gas = $coba['config']['gas'];
+		
+		if (!isset($gas[$var])) {
+			$gas[$var]=[];
+			array_push($gas[$var],$value);
+		} else {
+			array_push($gas[$var],$value);
+		}
+		
+		$coba['config']['gas'] = $gas;
+		
+			
+		//$path = Grav::instance()['page']->path() . '/' . $path.'/';
+		
+		//$theme->config->set('gas.'.$var, $value);
+		//return true;
 	}
 	
 	public function fileget($file)

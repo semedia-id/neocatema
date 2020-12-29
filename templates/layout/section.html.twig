@@ -10,7 +10,8 @@
 	~ (segment.attributes.background_color ? ' hsl-pal') %}
 
 {% set attr_extra = segment.attributes.extra|attribute_array %}
-{% set boxed = segment.attributes.boxed %}
+
+
 {% set options = {
 	'gsize': segment.attributes.disable_sizes,
 	'ggrid': segment.attributes.disable_grid,
@@ -19,6 +20,8 @@
 %}
 
 {# Neoca //------- #}
+
+{%-set inline_js = inline_js ~ '; var coba="1"' %}
 
 
 {% set styles = segment.attributes.custom_style %}
@@ -34,10 +37,10 @@
 		~ (segment.attributes.responsive ? ' res-content')
 		~ (segment.attributes.res_always ? ' show')
 		~ (segment.attributes.res_swipe ? ' swipe')
-		
+		~ (segment.attributes.res_animation ? ' ' ~segment.attributes.res_animation)
+		~ (segment.attributes.res_position ? ' ' ~ segment.attributes.res_position)
 	%}
 	
-	{# ~ (segment.attributes.res_position ? ' ' ~ segment.attributes.res_position) #}
 	
 	{% set resbutton_class = 'res-ctl section-ctl toggle'
 		~ (segment.attributes.res_title ? ' text')
@@ -53,7 +56,9 @@
 	<button class="{{resbutton_class}}" 
 		data-always="{{segment.attributes.res_always}}"
 		data-target='#{{attr_id}}'
+		data-with-close=1
 		data-position='{{segment.attributes.res_position}}'
+		data-animation='{{segment.attributes.res_animation}}'
 		data-ctl-height='{{segment.attributes.res_icon_h}}'
 		data-ctl-width='{{segment.attributes.res_icon_w}}'
 		data-icon='{{segment.attributes.res_icon}}'>
@@ -68,9 +73,7 @@
 
 {# Neoca //------- #}	
 
-{% if boxed is not null %}
-    {% set boxed = boxed|trim == '' ? gantry.config.page.body.layout.sections : boxed %}
-{% endif %}
+{% set boxed = segment.attributes.boxed ? segment.attributes.boxed : gantry.config.page.body.layout.sections %}
 
 {%- set html %}
 
@@ -86,11 +89,7 @@
 
 {%- if segment.attributes.sticky or html|trim %}
     
-	{% if boxed > 0 %}
 		{% set box_class = "g-container layout-" ~boxed %}
-	{% else %}
-		{% set box_class = "g-container" %}
-	{% endif %}
 	
     {% set html %}
         <div class="{{box_class|raw}}">{{ html|raw }}</div>

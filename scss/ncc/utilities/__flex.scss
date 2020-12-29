@@ -1,8 +1,6 @@
 .flex { 
 
 	display: flex; 
-	flex-wrap: nowrap;
-	align-items: center;
 	
 	&.easy {
 		flex-direction: row;
@@ -29,11 +27,5 @@
 	&.shrink,.shrink { flex-shrink: 1 }
 	&.grow,.grow { flex-grow: 1; max-width: 100%; }
 
-}
-
-.g-block,
-.g-grid {
-	@extend .flex;
-	flex-wrap: wrap;
 }
 

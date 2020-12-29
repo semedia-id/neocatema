@@ -1,0 +1,20 @@
+.g-block,
+.g-grid {
+	@extend .flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+}
+
+.g-block,
+.g-content,
+.g-grid {
+	@extend %container;
+}
+
+
+#g-navigation,
+#g-offcanvas {
+	@extend %noselect;
+}
+
+.g-go-back { display: none; }

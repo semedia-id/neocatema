@@ -22,6 +22,6 @@
 {% set slider_inject %}
 image_slider('{{ idimg }}',{{ particle.images|length }}, {{ particle.delay }},0);
 {% endset %}
-{% do gantry.document.addInlineScript(slider_inject, 0, 'footer') %}
+{% do gasvara('inline_js',slider_inject) %}
 {% endif %}
 {% endblock %}

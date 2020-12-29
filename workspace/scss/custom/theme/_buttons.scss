@@ -56,6 +56,7 @@ select,
 		border: 1px solid transparent;
 		&:hover { box-shadow: none; border: 1px solid transparent; }
 		&:focus { outline: none; }
+		
 	}	
 
 	&.spaced * { margin-right: .25rem }
@@ -102,7 +103,12 @@ select,
 	white-space: nowrap;
 	background: var(--background);
 	color: var(--text);
+	text-decoration: none !important;
 
+	&:not(.toggle) { 
+		i { margin-right: .25em; }
+	}
+	
 	&:hover { 
 		border: 1px solid var(--border2); 
 		box-shadow: 1px 1px 6px var(--shadow1);

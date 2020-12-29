@@ -156,8 +156,8 @@ class Neoca extends Theme
     {
 		require_once(__DIR__.'/php/GaskenTwigExtension.php');
         $this->grav['twig']->twig->addExtension(new GaskenTwigExtension());
-        require_once(__DIR__.'/php/ColorMixerTwigExtension.php');
-        $this->grav['twig']->twig->addExtension(new ColorMixerTwigExtension());
+        //require_once(__DIR__.'/php/ColorMixerTwigExtension.php');
+        //$this->grav['twig']->twig->addExtension(new ColorMixerTwigExtension());
     }
 
 

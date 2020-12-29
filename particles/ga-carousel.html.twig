@@ -94,5 +94,6 @@
 showSlides(0, {{ particle.delay }});
 {% endset %}
 
-{% do gantry.document.addInlineScript(slider_inject, 0, 'footer') %}
+{% do gasvara('inline_js',slider_inject) %}
+
 

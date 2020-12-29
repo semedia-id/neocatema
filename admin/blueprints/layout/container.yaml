@@ -14,9 +14,8 @@ form:
       options:
         '': Inherit from Page Settings
         0: Remove Container
-        1: Boxed
-        2: Fullwidth (Boxed Content)
-        3: Fullwidth (Flushed Content)
+        1: Full-width (Boxed Content)
+        2: Boxed Content
 
     class:
       type: input.selectize

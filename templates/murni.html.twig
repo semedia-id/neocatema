@@ -1,0 +1,9 @@
+{% extends "partials/page.html.twig" %}
+
+{% block ncc_inject_js %}
+var t = 'ini dari murni'
+{% endblock %}
+   
+{% block content %}
+    {{ page.content|raw }}
+{% endblock %}

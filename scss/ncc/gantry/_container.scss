@@ -1,3 +1,4 @@
+
 .g-container {
 
 	margin: 0 auto;
@@ -19,9 +20,8 @@
 		width: 100%;
 	}
 
-	&.layout-1 { width: 100%; }
-
-	&.layout-2 { 
+	&.layout-0 { width: 100%; }
+	&.layout-1 { 
 		width: 100%;
 
 		@include breakpoint(large-desktop-range) {
@@ -33,8 +33,11 @@
 		}		
 
 	}
-	
-	
-	
+	&.layout-2 { 
+		margin: 0;
+	}
 }
 
+.g-block .g-container {
+	width: auto;
+}

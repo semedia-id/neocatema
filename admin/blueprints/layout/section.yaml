@@ -13,18 +13,17 @@ form:
           fields:
 
             boxed:
-                type: select.selectize
-                label: Layout
-                description: Select the Layout container behavior. 'Inherit' refers to Page Settings.
-                isset: true
-                selectize:
-                    allowEmptyOption: true
-                options:
-                    '': Inherit
-                    0: Fullwidth (Boxed Content)
-                    2: Fullwidth (Flushed Content)
-                    1: Boxed
-                    3: Remove Container
+              type: select.selectize
+              label: Layout
+              description: Select the Layout container behavior. 'Inherit' refers to Page Settings.
+              isset: true
+              selectize:
+                allowEmptyOption: true
+              options:
+                '': Inherit
+                0: Remove Container
+                1: Full-width (Boxed Content)
+                2: Boxed Content
 
             background_color:
               type: input.colorpicker
@@ -96,10 +95,18 @@ form:
                 label: Off-Canvas
                 default: left
                 options:
-                    left: Left
-                    right: Right
-                    'fixed left': Fixed Left
-                    'fixed right': Fixed Right
+                    'pos-left': Left
+                    'pos-right': Right
+                    'pos-fixed-left': Fixed Left
+                    'pos-fixed-right': Fixed Right
+
+            res_animation:
+                type: select.selectize
+                label: Animation
+                default: slide
+                options:
+                    slide: slide
+                    h-flip: h-flip
 
             res_icon:
                 type: input.icon

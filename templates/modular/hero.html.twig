@@ -16,7 +16,8 @@
 
 	{% set module_injectjs = module_injectjs ~ "ncc_construct_pallete('#"~id~"');" %}
 
-	{% do gantry.document.addInlineScript(module_injectjs, 0, 'footer') %}
+	{% do gasvara('inline_js',module_injectjs) %}
+	
 
 {% endif %}
 
@@ -96,9 +97,11 @@
 	%}
 
 	{% set module_img_injectjs %}
-	gn_modular_slideshow('#{{id}}',{{page.header.img_timeout|raw}})
+	gn_modular_slideshow('#{{id}}',{{page.header.img_timeout|raw}});
 	{% endset %}
-	{% do gantry.document.addInlineScript(module_img_injectjs, 0, 'footer') %}	
+
+	{% do gasvara('inline_js',module_img_injectjs) %}
+
 
 
 {% endif %}
