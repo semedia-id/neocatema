@@ -1,21 +1,28 @@
 <h2 class='border-b mb-100 fw-light'>Surface Colour</h2>
 
-<div class='flex top'>
 
+
+{% set dc_mono_list = ['b','d4','d3','d2','d1','d','l','l1','l2','l3','l4','w'] %}
+{% set dc_cot_list = ['a1','a2','c0','c1','c2','t1','t2'] %}
+
+
+<div class='flex top'>
 <div class='color-chart'>
-<div class='label mt-0'>surface</div>
-	<div><div class='boxcolor auto-text-color ncc-surface bg-b' data-color='b'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-surface bg-d3' data-color='d3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-surface bg-d2' data-color='d2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-surface bg-d1' data-color='d1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-surface bg-d' data-color='d'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-surface bg' data-color='n'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-surface bg-l' data-color='l'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-surface bg-l1' data-color='l3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-surface bg-l2' data-color='l2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-surface bg-l3' data-color='l1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-surface bg-w' data-color='w'></div></div>
+
+<div class='label'>monochromatic</div>
+
+{% for dc in dc_mono_list %}
+	<div><div class='boxcolor auto-text-color ncc-surface bg-{{dc}}' data-color='{{dc}}'></div></div>
+{% endfor %}
+
+<div class='label'>theorical</div>
+
+{% for dc in dc_cot_list %}
+	<div><div class='boxcolor auto-text-color ncc-surface bg-{{dc}}' data-color='{{dc}}'></div></div>
+{% endfor %}
+
 </div>
+
 
 <div class='color-preview'>
 
@@ -66,7 +73,7 @@
 <div class='flex top'>
 
 <div class='third'>
-<div class='ncc-surface bg-d3 auto-text-color'>
+<div class='ncc-surface bg-d3 auto-text-color rounded'>
 <div class='pa-300 center'>
 <p><i style='font-size: 5rem;' class='ncico-css'></i></p>
 <p>A paragraph is a block of text.</p>
@@ -75,20 +82,20 @@
 </div>
 
 <div class='third pr-100 pl-100'>
-<div border class='ncc-surface bg-w auto-text-color  border'>
-<div class='bg-d2 fg-w'><i class='ma-100 ncico-menu'></i></div>
+<div border class='ncc-surface bg-l3 auto-text-color border'>
+<div class='bg-a1 fg-w'><i class='ma-100 ncico-menu'></i></div>
 <div class='py-200 px-100'>
 <h4>What About</h4>
 <p>A paragraph always starts on a new line, and is usually a block of text.</p>
-<p><button class='ncc-button bg'>Button</button></p>
+<p><button class='bg-a2 auto-text-color'>Button</button></p>
 </div>
 </div>
 </div>
 
 <div class='third'>
-<div class='ncc-surface bg-l2 auto-text-color'>
+<div class='ncc-surface bg-w auto-text-color border'>
 <div class='pt-400 pr-100 pl-100 pb-200'>
-<h1 class='ncc-accent fg-d2'>Accented</h4>
+<h1 class='ncc-accent fg-t2'>Accented</h4>
 <p>A paragraph always starts on a new line, and is usually a block of text.</p>
 </div>
 <div class='bg-d3 center auto-text-color'><i class='ma-100 ncico-more-horizontal'></i></div>

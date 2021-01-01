@@ -1,0 +1,55 @@
+{% set dc_mono_list = [
+	'b','d4','d3','d2','d1','d',
+	'w','l4','l3','l2','l1','l'] %}
+{% set dc_tri_list = ['t1','n','t2'] %}
+{% set dc_com_list = ['n','c0','c1','c2'] %}
+{% set dc_ana_list = ['a1','n','a2'] %}
+
+
+<h2 class='border-b mb-100 fw-light'>Color Theory</h2>
+
+<h3>Monochromatic</h3>
+<p>Monochromatic color schemes are easy to create because they use only one color. This schemes use different tones from the same angle on the color wheel (the same hue).</p>
+
+<div class='flex row spaced'>
+
+<div class='flex row spaced'>
+{% for dc in dc_mono_list %}
+	<div class='boxcolor auto-text-color ncc-surface bg-{{dc}}' data-color='{{dc}}'></div>
+{% endfor %}
+</div>
+
+	<div class='boxcolor auto-text-color ncc-surface bg-n span-col' data-color='n'></div>
+
+</div>
+
+<h3>Analogous</h3>
+<p>Analogous color schemes are created by using colors that are next to each other on the color wheel.</p>
+
+<div class='flex row spaced'>
+{% for dc in dc_ana_list %}
+	<div class='boxcolor auto-text-color ncc-surface bg-{{dc}}' data-color='{{dc}}'></div>
+{% endfor %}
+</div>
+
+<h3>Complementary / Compound</h3>
+<p>Complementary schemes are created by combining colors from opposite sides of the color wheel.</P>
+<p>Compound schemes (aka Split Complementary) are almost the same as complementary schemes.
+Instead of using colors that are opposites, it uses colors on both sides of the opposite hue.</p>
+
+<div class='flex row spaced'>
+{% for dc in dc_com_list %}
+	<div class='boxcolor auto-text-color ncc-surface bg-{{dc}}' data-color='{{dc}}'></div>
+{% endfor %}
+</div>
+
+
+
+<h3>Triadic </h3>
+<p>Triadic schemes are made up of hues equally spaced around the color wheel.</p>
+
+<div class='flex row spaced'>
+{% for dc in dc_tri_list %}
+	<div class='boxcolor auto-text-color ncc-surface bg-{{dc}}' data-color='{{dc}}'></div>
+{% endfor %}
+</div>

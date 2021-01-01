@@ -1,19 +1,24 @@
-<h2 class='border-b mb-100 fw-light'>Accent Colour</h2>
+<h2 class='border-b mb-100  fw-light'>Accent Colour</h2>
+
+{% set dc_mono_list = ['b','d4','d3','d2','d1','d','l','l1','l2','l3','l4','w'] %}
+{% set dc_cot_list = ['a1','a2','c0','c1','c2','t1','t2'] %}
+
 
 <div class='flex top'>
 <div class='color-chart'>
-<div class='label'>accent</div>
-	<div><div class='boxcolor auto-text-color ncc-accent bg-b' data-color='b'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-accent bg-d3' data-color='d3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-accent bg-d2' data-color='d2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-accent bg-d1' data-color='d1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-accent bg-d' data-color='d'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-accent bg' data-color='n'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-accent bg-l' data-color='l'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-accent bg-l1' data-color='l3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-accent bg-l2' data-color='l2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-accent bg-l3' data-color='l1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-accent bg-w' data-color='w'></div></div>
+
+<div class='label'>monochromatic</div>
+
+{% for dc in dc_mono_list %}
+	<div><div class='boxcolor auto-text-color ncc-accent bg-{{dc}}' data-color='{{dc}}'></div></div>
+{% endfor %}
+
+<div class='label'>theorical</div>
+
+{% for dc in dc_cot_list %}
+	<div><div class='boxcolor auto-text-color ncc-accent bg-{{dc}}' data-color='{{dc}}'></div></div>
+{% endfor %}
+
 </div>
 
 <div class='color-preview'>
@@ -28,10 +33,10 @@
 </div>
 </div>
 
-<div class='mt-2 label'>Markdown Flavored Element</div>
+<div class='mt-200 label'>Markdown Flavored Element</div>
 
 <div class='flex top'>
-<div class='half pr-2'>
+<div class='half pr-100'>
 
 <h1 class='title'>Title</h1>	
 <p>Lujem felis kodo netus elit magna fermentum orci thomas aliquam accio hub corona falo ango dom cafe araha hac rutrum sit loop commodo man odio placerat laoreet vestibulum leo labor elementum union pellentesque pharetra hyper gravida belian curabitur petite etiam vel.</p>

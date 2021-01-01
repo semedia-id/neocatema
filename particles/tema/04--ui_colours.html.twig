@@ -1,69 +1,28 @@
-<h2 class='border-b mb-100 fw-light'>Accent Colour</h2>
+<h2 class='border-b mb-100 fw-light'>UI Colour</h2>
 
 <div class='flex top'>
 
+{% set dc_mono_list = ['b','d4','d3','d2','d1','d','l','l1','l2','l3','l4','w'] %}
+{% set dc_cot_list = ['a1','a2','c0','c1','c2','t1','t2'] %}
+{% set sets_list = ['warning','error','info','success'] %}
+
+{% for sets in sets_list %}
+	
 <div class='color-chart'>
-<div class='label'>Yellow</div>
-	<div><div class='boxcolor auto-text-color ncc-warning bg-b' data-color='b'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-warning bg-d3' data-color='d3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-warning bg-d2' data-color='d2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-warning bg-d1' data-color='d1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-warning bg-d' data-color='d'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-warning bg' data-color='n'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-warning bg-l' data-color='l'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-warning bg-l1' data-color='l3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-warning bg-l2' data-color='l2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-warning bg-l3' data-color='l1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-warning bg-w' data-color='w'></div></div>
+	<div class='label'>{{sets}}</div>
+	<div><div class='boxcolor auto-text-color ncc-{{sets}} bg-n' data-color='n'></div></div>
+	<div class='label'>monochromatic</div>
+	{% for dc in dc_mono_list %}
+		<div><div class='boxcolor auto-text-color ncc-{{sets}} bg-{{dc}}' data-color='{{dc}}'></div></div>
+	{% endfor %}
+	<div class='label'>theorical</div>
+	{% for dc in dc_cot_list %}
+		<div><div class='boxcolor auto-text-color ncc-{{sets}} bg-{{dc}}' data-color='{{dc}}'></div></div>
+	{% endfor %}
 </div>
 
-<div class='color-chart'>
-<div class='label'>Red</div>
-	<div><div class='boxcolor auto-text-color ncc-error bg-b' data-color='b'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-error bg-d3' data-color='d3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-error bg-d2' data-color='d2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-error bg-d1' data-color='d1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-error bg-d' data-color='d'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-error bg' data-color='n'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-error bg-l' data-color='l'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-error bg-l1' data-color='l3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-error bg-l2' data-color='l2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-error bg-l3' data-color='l1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-error bg-w' data-color='w'></div></div>
+{% endfor %}
 </div>
-
-<div class='color-chart'>
-<div class='label'>Blue</div>
-	<div><div class='boxcolor auto-text-color ncc-info bg-b' data-color='b'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-info bg-d3' data-color='d3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-info bg-d2' data-color='d2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-info bg-d1' data-color='d1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-info bg-d' data-color='d'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-info bg' data-color='n'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-info bg-l' data-color='l'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-info bg-l1' data-color='l3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-info bg-l2' data-color='l2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-info bg-l3' data-color='l1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-info bg-w' data-color='w'></div></div>
-</div>
-
-<div class='color-chart ncc-success'>
-<div class='label'>Green</div>
-	<div><div class='boxcolor auto-text-color bg-b' data-color='b'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-success bg-d3' data-color='d3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-success bg-d2' data-color='d2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-success bg-d1' data-color='d1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-success bg-d' data-color='d'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-success bg' data-color='n'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-success bg-l' data-color='l'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-success bg-l1' data-color='l3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-success bg-l2' data-color='l2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-success bg-l3' data-color='l1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-success bg-w' data-color='w'></div></div>
-</div>
-
-</div>
-
 <h3 class='mt-200'>Custome Color</h3>
 
 <div class='example'>
@@ -85,6 +44,4 @@
 <div class='label'>constructed stylesheet</div>
 
 <p>Change CSS custom properties on the fly for specific element / DOM subtrees.</p>
-
-
 

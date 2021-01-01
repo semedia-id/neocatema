@@ -1,21 +1,25 @@
 <h2 class='border-b mb-100  fw-light'>Button Colour</h2>
 
+
+{% set dc_mono_list = ['b','d4','d3','d2','d1','d','l','l1','l2','l3','l4','w'] %}
+{% set dc_cot_list = ['a1','a2','c0','c1','c2','t1','t2'] %}
+
+
 <div class='flex top'>
 <div class='color-chart'>
 
+<div class='label'>monochromatic</div>
 
-<div class='label mt-0'>button</div>
-	<div><div class='boxcolor auto-text-color ncc-button bg-b' data-color='b'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-button bg-d3' data-color='d3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-button bg-d2' data-color='d2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-button bg-d1' data-color='d1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-button bg-d' data-color='d'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-button bg' data-color='n'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-button bg-l' data-color='l'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-button bg-l1' data-color='l3'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-button bg-l2' data-color='l2'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-button bg-l3' data-color='l1'></div></div>
-	<div><div class='boxcolor auto-text-color ncc-button bg-w' data-color='w'></div></div>
+{% for dc in dc_mono_list %}
+	<div><div class='boxcolor auto-text-color ncc-button bg-{{dc}}' data-color='{{dc}}'></div></div>
+{% endfor %}
+
+<div class='label'>theorical</div>
+
+{% for dc in dc_cot_list %}
+	<div><div class='boxcolor auto-text-color ncc-button bg-{{dc}}' data-color='{{dc}}'></div></div>
+{% endfor %}
+
 </div>
 
 <div class='color-preview'>

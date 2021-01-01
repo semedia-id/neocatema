@@ -1,7 +1,7 @@
 /* grav dependecy on workspace */
 .color-chart {
-  width: 15%;
-  padding-right: 2rem;
+  width: 20%;
+  padding-right: 2em;
   display: flex;
   flex-direction: column; }
   .color-chart.row {
