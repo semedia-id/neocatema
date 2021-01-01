@@ -1,6 +1,6 @@
 # Neocátema
 
-Neocátema is Grav Gantry Theme
+Neocátema is Grav Gantry Theme with CSS Utility Base Framework.
 
 ## Requirement
 
