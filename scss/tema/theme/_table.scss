@@ -6,7 +6,7 @@ table {
 	--body-text: #{get-hsl-var(surface,(l:5%))};
 	--shade: #{get-hsl-var(surface,(l:90%))};
 	--hrsep: 1px;
-	
+
     width: 100%;
     border-collapse: collapse;
 
@@ -42,7 +42,7 @@ table {
 			margin: 0 var(--hrsep) var(--hrsep) 0;
 		}
 	}
-	
+
     &.row-stripes {
         th:nth-child(odd),
 		td:nth-child(odd) { background: var(--shade) }
@@ -51,11 +51,11 @@ table {
     &.stripes {
         tr:nth-child(even) td { background: var(--shade) }
     }
-    
+
 	&.compact {
 		width: auto;
 		th,td {
-			padding: .25em;		
+			padding: .25em;
 		}
 	}
 }

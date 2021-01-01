@@ -33,7 +33,7 @@
 
     	position:absolute;
     	width: 0;
-    }    
+    }
 
     .res-content {
         transition: transform .35s ease-in-out;
@@ -60,7 +60,7 @@ body.res-active {
 }
 
 [data-responsive-position='fixed-left'] {
-  
+
     button.res-ctl {
         right: 0;
     }
@@ -85,7 +85,7 @@ body.res-active {
 }
 
 [data-responsive-position='fixed-right'] {
-  
+
     button.res-ctl {
         left: 0;
     }

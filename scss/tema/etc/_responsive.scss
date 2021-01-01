@@ -26,7 +26,7 @@
 	}
 
     .res-close { display: none; }
-	
+
 	&.show {
 		visibility: visible;
 		opacity: 1;
@@ -45,7 +45,7 @@
 		.res-close { display: initial; }
         @include responsive-transform;
     }
-				
+
 	&.show {
 		transform: translate(0) rotate(0) scale(1);
 		opacity: 1;
@@ -84,7 +84,7 @@
 	    :not(.show) {
             @include responsive-transform;
 	    }
-			
+
 		&.show {
 			display: initial;
 			position: fixed;
@@ -92,9 +92,9 @@
 			height: 100%;
 			top:0;
 			right:0;
-			z-index: 999;		
+			z-index: 999;
 		}
-	
+
 		@include breakpoint(mobile-only) {
 			opacity: 0;
 			display: initial;
@@ -119,28 +119,28 @@
 		width: 100% !important;
 	}
 
-    li { 
+    li {
 	    width: 100% !important;
-	    height: auto !important; 
+	    height: auto !important;
         border-top: 1px solid var(--shade1);
 
-        a { padding: .5rem 1rem; height: auto; }       
-        
+        a { padding: .5rem 1rem; height: auto; }
+
         .dropdown-menu  {
         	width: 100% !important;
         	position: relative !important;
-            a { 
-                padding: .5rem 1rem .5rem 2rem !important; 
-                height: auto; 
-            } 
+            a {
+                padding: .5rem 1rem .5rem 2rem !important;
+                height: auto;
+            }
         }
-	
+
     }
 
     li:hover {
         .dropdown-menu  {
             display:none;
-        }    	
+        }
     }
 
     .menu-parent-indicator:hover  {
@@ -154,10 +154,10 @@
     &.responsive {
         @include menucan-responsive;
     }
-    
+
     @include breakpoint(mobile-only) {
         @include menucan-responsive;
-    }    
+    }
 
 }
 
@@ -176,13 +176,13 @@
 	outline: none;
 	color: var(--t);
 	font-size: calc(var(--ctl-height) / 2);
-    width: var(--ctl-width);	
+    width: var(--ctl-width);
     height: 100%;
-	
+
 	.desktop & {
 		display: initial;
 	}
-	
+
 	@include breakpoint(mobile-only) {
 		display: initial;
 	}
