@@ -19,7 +19,7 @@
 	&.x2 { font-size: 2em; }
 	&.x3 { font-size: 3em; }
 	&.x4 { font-size: 4em; }
-	
+
 
 }
 
@@ -28,7 +28,7 @@ hr { clear:both; }
 
 .bullet { border-radius: 50%; }
 .rounded { border-radius: 1em; }
-.bordered { 
+.bordered {
 	border-color: var(--border);
 	border-width: 1px;
 	border-style: solid

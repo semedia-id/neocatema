@@ -1,20 +1,20 @@
-.flex { 
+.flex {
 
-	display: flex; 
-	
+	display: flex;
+
 	&.easy {
 		flex-direction: row;
 		flex-wrap: wrap;
 		width: 100%;
-		
+
 		> * { margin-right: 1em }
 	}
-		
+
 	&.row { flex-direction: row; }
 	&.col,&.column { flex-direction: column; }
 	&.wrap { flex-wrap: wrap; }
 	&.nowrap { flex-wrap: nowrap; }
-	
+
 	&.top { align-items: start; }
 	&.middle { align-items: center; }
 	&.bottom { align-items: end; }
@@ -23,7 +23,7 @@
 	&.right { justify-content: end; }
 	&.between { justify-content: space-between; }
 	&.evenly { justify-content: space-evenly; }
-	
+
 	&.shrink,.shrink { flex-shrink: 1 }
 	&.grow,.grow { flex-grow: 1; max-width: 100%; }
 

@@ -1,9 +1,9 @@
-pre { 
+pre {
 	--background: #{get-hsl-var(surface,(l:90%))};
     --text: #{get-hsl-var(surface,(l:5%))};
 
     background-color: var(--background);
-    padding: 1em; 
+    padding: 1em;
     overflow: auto;
     color: var(--text);
     code { color: var(--text); }

@@ -1,9 +1,9 @@
 
 
 figure {
- 
-	margin:0; 
-	padding: .5em; 
+
+	margin:0;
+	padding: .5em;
 	position: relative;
 	display: inline-flex;
 	background: #fff;
@@ -13,14 +13,14 @@ figure {
 	&.right { float: right; margin-left: 1em; margin-bottom: 1em; }
 	&.fitwidth { margin: 1em 0; display:block; width: 100%;  }
 	&.center { margin: 1em auto; display:block;  }
-	
+
 	&.half { max-width: 49%; }
 	&.quater { max-width: 24%; }
-	
+
 	img { width: 100%; }
 
 	figcaption {
-		width: calc(100% - 1em); 
+		width: calc(100% - 1em);
 		margin:0;
 		position: absolute;
 		bottom: .5em;

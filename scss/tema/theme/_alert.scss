@@ -1,16 +1,16 @@
 
 @mixin alert-color($color) {
 	--border: #{get-hsl-var($color)};
-	--background: #{get-hsl-var($color,(l:88%))}; 
-	--text: #222; 
-} 
+	--background: #{get-hsl-var($color,(l:88%))};
+	--text: #222;
+}
 
 
 @mixin dark-alert-color($color) {
 	--border: #{get-hsl-var($color,(l:40%))};
-	--background: #{get-hsl-var($color,(l:18%))}; 
-	--text: #ddd; 
-} 
+	--background: #{get-hsl-var($color,(l:18%))};
+	--text: #ddd;
+}
 
 .alert {
 	background: var(--background);
@@ -30,8 +30,8 @@
 		left: 1em;
 		top: .8em;
 		cursor: pointer;
-	}	
-}	
+	}
+}
 
 .alert-warning {
 	&:before { content:'\4a'; }

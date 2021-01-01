@@ -1,18 +1,18 @@
 @mixin root-schemer($var,$val) {
-	
-	--#{$var}: #{$val}; 
-	
-	@if $var == shade or $var == border 
+
+	--#{$var}: #{$val};
+
+	@if $var == shade or $var == border
 		or $var== shadow or $var == light {
-	
+
 		@if ($val) {
 			--#{$var}1: rgba(#{$val},.1);
 			--#{$var}2: rgba(#{$val},.3);
 			--#{$var}3: rgba(#{$val},.6);
 		}
-		
+
 	}
-	
+
 }
 
 :root {
@@ -33,12 +33,12 @@
 @mixin schemer($scheme) {
 
 	@each $var, $val in $scheme {
-	
+
 		@include root-schemer($var,$val);
 
-		@if $var != background and $var != text 
-			and $var != shade and $var != border 
-			and $var != light and $var != shadow {		
+		@if $var != background and $var != text
+			and $var != shade and $var != border
+			and $var != light and $var != shadow {
 
 			$w: 95%;
 			$b: 5%;
@@ -47,42 +47,42 @@
 			$l: round(lightness($val));
 			$u: ($w - $l)/5;
 			$d: ($l - $b)/5;
-			
-		
-	
+
+
+
 			--#{$var}-h: #{$h};
 			--#{$var}-s: #{$s};
 			--#{$var}-l: #{$l};
 			--#{$var}-uf: #{$u};
 			--#{$var}-df: #{$d};
-	
+
 			.ncc-#{$var} {
 
 				@include hsl-var($var);
 
 				--c: #{unquote('hsl(var(--h), var(--s), var(--l))')};
-				--b: #{unquote('hsl(var(--h), var(--s), 3%)')}; 
-				--w: #{unquote('hsl(var(--h), var(--s), 97%)')}; 
-				
+				--b: #{unquote('hsl(var(--h), var(--s), 3%)')};
+				--w: #{unquote('hsl(var(--h), var(--s), 97%)')};
 
-				@if ($l<50%) { --t: var(--w); } 
+
+				@if ($l<50%) { --t: var(--w); }
 				@else {	--t: var(--b); }
-			
+
 			}
 
-		
+
 		}
-			
+
 	}
-		
+
 }
 
 
-.light-scheme {		
+.light-scheme {
 	@include schemer($light)
 }
 
-.dark-scheme {		
+.dark-scheme {
 	@include schemer($dark)
 }
 

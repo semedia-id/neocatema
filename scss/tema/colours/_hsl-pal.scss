@@ -8,7 +8,7 @@ $tones: (
 .hsl-pal {
 
 	/* monochromatic */
-	
+
 	@each $name,$s in $tones {
 		$m: var(--uf);
 		@if ($s < 0) { $m: var(--df); }
@@ -16,21 +16,21 @@ $tones: (
 	}
 
 	/* analogus */
-	
+
 	--c-a1: #{unquote('hsl(calc(var(--h) + 30), var(--s), var(--l))')};
 	--c-a2: #{unquote('hsl(calc(var(--h) - 30), var(--s), var(--l))')};
-	
+
 	/* complement/compound */
-	
+
 	--c-c0: #{unquote('hsl(calc(var(--h) + 180), var(--s), var(--l))')};
 	--c-c1: #{unquote('hsl(calc(var(--h) + 210), var(--s), var(--l))')};
 	--c-c2: #{unquote('hsl(calc(var(--h) + 150), var(--s), var(--l))')};
-	
+
 	/* triadic */
-	
+
 	--c-t1: #{unquote('hsl(calc(var(--h) + 120), var(--s), var(--l))')};
 	--c-t2: #{unquote('hsl(calc(var(--h) - 120), var(--s), var(--l))')};
-	
+
 	/* custome */
 
 	--c-ac: #{unquote('hsla(calc(var(--h) + 180), var(--s), var(--l), .2)')};

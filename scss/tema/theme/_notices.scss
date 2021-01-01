@@ -1,15 +1,15 @@
 
 @mixin notice-color($color) {
 	--border: #{get-hsl-var($color,(l:80%))};
-	--background: #{get-hsl-var($color,(l:92%))}; 
-	--text: #222; 
-} 
+	--background: #{get-hsl-var($color,(l:92%))};
+	--text: #222;
+}
 
 @mixin dark-notice-color($color) {
 	--border: #{get-hsl-var($color,(l:40%))};
-	--background: #{get-hsl-var($color,(l:20%))}; 
-	--text: #ddd; 
-} 
+	--background: #{get-hsl-var($color,(l:20%))};
+	--text: #ddd;
+}
 
 .notices {
 
@@ -19,14 +19,14 @@
 	margin-bottom: 1em;
 	border: 1px solid var(--border);
 	position: relative;
-	
+
 	&.yellow { @include notice-color(warning); }
 	&.red { @include notice-color(error); }
 	&.blue { @include notice-color(info); }
 	&.green { @include notice-color(success); }
 
     p { margin-bottom: 0 }
-    
+
 	&:after {
 		content: "x";
 		position: absolute;

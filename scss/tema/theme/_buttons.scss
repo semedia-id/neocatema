@@ -32,7 +32,7 @@ $all-buttons-active: assign-inputs($buttons, active);
 
 %inline-button {
 	font: 400 13.3333px Arial;
-	padding: .25em .5em .125rem .5rem; 
+	padding: .25em .5em .125rem .5rem;
 }
 
 select,
@@ -42,46 +42,46 @@ select,
 	font-family: var(--font-base);
 	display: inline-block;
 	align-items: center;
-	
 
-	padding: .25rem .5rem .125rem .5rem; 
-	
-	&.naked { 
-		background: transparent; 
+
+	padding: .25rem .5rem .125rem .5rem;
+
+	&.naked {
+		background: transparent;
 
 	}
 
-	&.toggle { 
-		background: transparent; 
+	&.toggle {
+		background: transparent;
 		border: 1px solid transparent;
 		&:hover { box-shadow: none; border: 1px solid transparent; }
 		&:focus { outline: none; }
-		
-	}	
+
+	}
 
 	&.spaced * { margin-right: .25rem }
-	
+
 	&.inline {
 		@extend %inline-button;
-	}	
+	}
 
 	&.mid-btn,
 	.mid-btn & {
 		font-size: 1.1rem;
-		padding: .75rem .75rem .5rem .75rem; 
+		padding: .75rem .75rem .5rem .75rem;
 	}
-	
+
 	.large-btn &,
 	&.large-btn {
 		font-size: 1.5rem;
-		padding: 1rem 1rem .75rem 1rem; 
+		padding: 1rem 1rem .75rem 1rem;
 	}
 
 }
 
-p > button { 
-	vertical-align: top; 
-	@extend %inline-button;	
+p > button {
+	vertical-align: top;
+	@extend %inline-button;
 }
 
 select,
@@ -105,14 +105,14 @@ select,
 	color: var(--text);
 	text-decoration: none !important;
 
-	&:not(.toggle) { 
+	&:not(.toggle) {
 		i { margin-right: .25em; }
 	}
-	
-	&:hover { 
-		border: 1px solid var(--border2); 
+
+	&:hover {
+		border: 1px solid var(--border2);
 		box-shadow: 1px 1px 6px var(--shadow1);
-	}	
+	}
 
 	&:focus {
 		outline: var(--shade1) solid 1px;

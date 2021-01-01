@@ -7,23 +7,23 @@ $way:(
 );
 
 @each $s,$w in $way {
-	.border-#{$s} { 
-		border-#{$w}-width: 1px; 
+	.border-#{$s} {
+		border-#{$w}-width: 1px;
 		border-#{$w}-style: solid;
-		border-#{$w}-color: var(--border2); 
+		border-#{$w}-color: var(--border2);
 	}
 }
 
-	.border,.border-a { 
-		border-width: 1px; 
+	.border,.border-a {
+		border-width: 1px;
 		border-style: solid;
-		border-color: var(--border2); 
+		border-color: var(--border2);
 	}
 
 @for $i from 1 through 7 {
 
-	.bw-#{$i} { border-width: #{$i}px; }	
-	
+	.bw-#{$i} { border-width: #{$i}px; }
+
 }
 
 .b-dot { border-style: dotted }

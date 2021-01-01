@@ -7,7 +7,7 @@ $sizes: (0, 25,50,75,100,200,300,400,500,600,700);
 	} @else {
 		$i: #{($s/100)}em;
 	}
-	
+
 	.pa-#{$s} { padding: #{$i}; }
 	.px-#{$s} { padding-right: #{$i}; padding-left: #{$i}; }
 	.py-#{$s} { padding-top: #{$i}; padding-bottom: #{$i}; }
@@ -18,13 +18,13 @@ $sizes: (0, 25,50,75,100,200,300,400,500,600,700);
 }
 
 @each $s in $sizes {
-	
+
 	@if ($s==0) {
 		$i: 0 !important;
 	} @else {
 		$i: #{($s/100)}em;
 	}
-	
+
 	.ma-#{$s} { margin: #{$i}; }
 	.mx-#{$s} { margin-right: #{$i}; margin-left: #{$i}; }
 	.my-#{$s} { margin-top: #{$i}; margin-bottom: #{$i}; }

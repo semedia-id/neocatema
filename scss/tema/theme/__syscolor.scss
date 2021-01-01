@@ -1,19 +1,19 @@
-.yellow { 
+.yellow {
 	--background: #{get-hsl-var(warning)};
 	--text: #{get-hsl-var(warning,(l:3%))};
 }
 
-.red { 
+.red {
 	--background: #{get-hsl-var(error)};
 	--text: #{get-hsl-var(error,(l:97%))};
 }
 
-.blue { 
+.blue {
 	--background: #{get-hsl-var(info)};
 	--text: #{get-hsl-var(info,(l:97%))};
 }
 
-.green { 
+.green {
 	--background: #{get-hsl-var(success)};
 	--text: #{get-hsl-var(success,(l:97%))};
 }
