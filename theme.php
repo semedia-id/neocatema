@@ -47,31 +47,6 @@ class Neoca extends Theme
 		$this->grav['assets']->add("user://themes/$theme_name/js/w3color/w3color.js");
 		$this->grav['assets']->add("user://themes/$theme_name/admin/poko.js");
 
-		/*
-
-		use quicktray link will better!
-
-		if (isset($this->grav['theme']->config()['links'])) {
-
-			foreach ($this->grav['theme']->config()['links'] as $key => $val) {
-
-				if (substr($val, 0, 4) == 'http') {
-					$link = $val;
-				} else {
-					$link = "../".$val;
-				}
-
-				$this->grav['twig']->plugins_hooked_nav[$key] = [
-					'route' => $link,
-					'icon' => 'fa-link'
-				];
-
-			}
-
-		}
-
-		*/
-
     }
 
     public function onThemeInitialized()
@@ -80,7 +55,6 @@ class Neoca extends Theme
             return;
         }
 
-        /** @var UniformResourceLocator $locator */
         $locator = $this->grav['locator'];
         $path = $locator('theme://');
         $name = $this->name;
@@ -124,7 +98,6 @@ class Neoca extends Theme
 
 	public function onTwigSiteVariables()
     {
-        $gantry = Gantry::instance();
         $locator = $this->grav['locator'];
 		$adminCookieSuffix = '-admin';
 		$this->adminCookie = session_name() . $adminCookieSuffix;
@@ -193,23 +166,6 @@ class Neoca extends Theme
         $types = $event->types;
         $types->scanBlueprints('user://blueprints');
     }
-
-    public function onFormProcessed(Event $event)
-    {
-        $action = $event['action'];
-        $params = $event['params'];
-        $form = $event['form'];
-		$path = GRAV_ROOT . $params['path'];
-
-        switch ($action) {
-			case 'txt-write':
-				$data = $form->value()->toArray();
-				$file = $path ."/". $data['file'];
-				file_put_contents($file,$data['text']);
-				break;
-		}
-	}
-
 
     public function onOutputGenerated()
     {

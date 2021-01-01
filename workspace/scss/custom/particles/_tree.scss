@@ -58,6 +58,9 @@
 
 		&.toplevel > li {
 			border-bottom: 1px dotted var(--border);
+
+            > a { font-weight: 700; }
+
 		}
 
 		padding: 0;
@@ -69,9 +72,6 @@
 			list-style: none;
 			line-height: 1.8;
 
-			&.parent {
-				border-top: 1px dotted var(--border);
-			}
 
 			ol {
 				padding: 0;

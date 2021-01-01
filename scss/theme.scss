@@ -1,10 +1,7 @@
 @import "dependencies";
-@import "function";
-@import "ncc/function";
-@import "ncc/configuration";
-@import "ncc/normalize";
-@import "ncc/base";
-@import "ncc/settings";
-@import "ncc/gantry";
-@import "ncc/theme";
-@import "ncc/utilities";
+
+
+
+@import 'ncc/base';
+
+@import 'tema/base';

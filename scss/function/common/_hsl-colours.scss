@@ -1,8 +1,10 @@
 @function get-hsl-var($var, $mod:() ) {
 	
-	$dh: var(--#{$var}-h);
-	$ds: var(--#{$var}-s);
-	$dl: var(--#{$var}-l);
+	$dh: unquote('var(--#{$var}-h)');
+	$ds: unquote('var(--#{$var}-s)');
+	$dl: unquote('var(--#{$var}-l)');
+	
+	
 	
 	@if map-get($mod,'h') { $dh: #{map-get($mod,'h')} }
 	@if map-get($mod,'s') { $ds: #{map-get($mod,'s')} }

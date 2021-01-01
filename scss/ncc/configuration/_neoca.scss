@@ -21,10 +21,10 @@ $light-warning-color: #ffcc33 !default;
 $light-error-color: #cc3333 !default;
 $light-info-color: #336699 !default;
 
-$light-shade-color: #0003 !default;
-$light-border-color: #0004 !default;
-$light-hilite-color: #fff9 !default;
-$light-shadow-color: #0002 !default;
+$light-shade-color: #00000033 !default;
+$light-border-color: #00000044 !default;
+$light-hilite-color: #ffffff99 !default;
+$light-shadow-color: #00000022 !default;
 
 $dark-background-color:invert($light-background-color) !default; 
 $dark-text-color: invert($light-text-color) !default; 
@@ -36,9 +36,9 @@ $dark-warning-color: darken($light-warning-color,20%) !default;
 $dark-error-color: darken($light-error-color,20%) !default; 
 $dark-info-color: darken($light-info-color,20%) !default; 
 
-$dark-shade-color: #0003 !default;
-$dark-border-color: #fff4 !default;
-$dark-hilite-color: #fff9 !default;
-$dark-shadow-color: #0002 !default;
+$dark-shade-color: #00000099 !default;
+$dark-border-color: #ffffff44 !default;
+$dark-hilite-color: #ffffff99 !default;
+$dark-shadow-color: #00000066 !default;
 $dark-bradius: 0.25rem !default;
 $dark-hrsep: 1px !default;

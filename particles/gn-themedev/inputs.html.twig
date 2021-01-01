@@ -1,6 +1,6 @@
 <div id='ncc-panel'>
-<button id='ncc-panel-ctl' naked spaced onclick="gn_toggle('#ncc-panel','open')">
-<i class='ncico-sliders'></i>Theme Dev
+<button id='ncc-panel-ctl' class='toggle' onclick="gn_toggle('#ncc-panel','open')">
+<i class='ncico-sliders pr-25'></i>Theme Dev
 </button>
 
 <div class='content'>
@@ -152,17 +152,17 @@
 
 </div><!--set-->
 
-<p class='tools'>
-<button title='variables' id='ncc-page-ctl' naked onclick="gn_toggle('#ncc-page','open');nc_variables();">
+<p class='tools pa-50 pb-0 mb-0'>
+<button title='variables' id='ncc-page-ctl' class='toggle' onclick="gn_toggle('#ncc-page','open');nc_variables();">
 <i class='ncico-download'></i></button>
 
-<button title='colors' id='ncc-chart-ctl' naked onclick="gn_toggle('#ncc-chart','open');nc_variables();">
+<button title='colors' id='ncc-chart-ctl' class='toggle' onclick="gn_toggle('#ncc-chart','open');nc_variables();">
 <i class='ncico-eye'></i></button>
 
-<a class='button toggle' naked href='https://github.com/tacoen/neocatema/wiki'>
+<a class='button toggle' href='https://github.com/tacoen/neocatema/wiki'>
 <i class='ncico-github'></i></a>
 
-<button title='reset' id='ncc-panel-reset' naked right onclick="localStorage.clear();location.reload();">
+<button title='reset' id='ncc-panel-reset' class='toggle right' onclick="localStorage.clear();location.reload();">
 <i class='ncico-slash'></i>
 </button>
 

@@ -134,7 +134,12 @@
                         <span class="g-separator nav-item-content"{{ title|raw }}>{{ self.displayTitle(item) }}</span>
                     {% endif %}
                         {% if (item.children) and not item.dropdown_hide -%}
-                            <span class="menu-parent-indicator"></span>
+
+						<label for="{{ item.id }}" class="menu-parent-indicator" data-g-menuparent="">
+						<i class="off ncico-chevron-up"></i>
+						<i class="on ncico-chevron-down"></i>
+						</label>
+							
                         {%- endif %}
                 {% endif %}
             {% if item.url %}</a>

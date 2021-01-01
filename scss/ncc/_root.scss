@@ -1,0 +1,47 @@
+@if $base-font-base {
+	@include import-font($base-font-base);
+}
+
+@if $base-font-alter {
+	@if $base-font-alter != $base-font-base {
+		@include import-font($base-font-alter);
+	}
+}
+@if $base-font-head {
+	@if $base-font-head != $base-font-base {
+		@include import-font($base-font-head);
+	}
+}
+
+@if $base-font-mono {
+	@if $base-font-mono != $base-font-base {
+		@include import-font($base-font-mono);
+	}
+}
+
+:root {
+
+	--font-base: #{get-font-family($base-font-base)};
+	--font-alter: #{get-font-family($base-font-alter)};
+	--font-head: #{get-font-family($base-font-head)};
+	--font-mono: #{get-font-family($base-font-mono)};
+
+	--margin: #{$base-margin};
+	--padding: #{$base-padding};
+	--line-height: #{$base-line-height};
+	--font-size: #{$base-font-size};
+	--line-margin: #{$base-line-height}em;
+	
+	--box-height: 70vh;
+	--hrsep: $base-hrsep;
+	--bradius: $base-bradius;
+
+}
+
+/*	
+$base-bradius: 0.25rem !default;
+$base-hrsep: 1px !default;	
+*/
+
+
+

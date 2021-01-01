@@ -1,0 +1,44 @@
+$light: ();
+$dark: ();
+$base: ();
+
+@function varkan($section,$var,$val) {
+	@return map-merge($section,(#{$var}:$val));
+}
+
+$dark: varkan($dark, background, $dark-background-color);
+$dark: varkan($dark, text, $dark-text-color);
+$dark: varkan($dark, surface, $dark-surface-color);
+$dark: varkan($dark, button, $dark-button-color);
+$dark: varkan($dark, accent, $dark-accent-color);
+$dark: varkan($dark, success, $dark-success-color);
+$dark: varkan($dark, warning, $dark-warning-color);
+$dark: varkan($dark, error, $dark-error-color);
+$dark: varkan($dark, info, $dark-info-color);
+$dark: varkan($dark, shade, $dark-shade-color);
+$dark: varkan($dark, shadow, $light-shadow-color);
+$dark: varkan($dark, border, $dark-border-color);
+$dark: varkan($dark, light, $dark-hilite-color);
+
+$light: varkan($light, background, $light-background-color);
+$light: varkan($light, text, $light-text-color);
+$light: varkan($light, surface, $light-surface-color);
+$light: varkan($light, button, $light-button-color);
+$light: varkan($light, accent, $light-accent-color);
+$light: varkan($light, success, $light-success-color);
+$light: varkan($light, warning, $light-warning-color);
+$light: varkan($light, error, $light-error-color);
+$light: varkan($light, info, $light-info-color);
+$light: varkan($light, shade, $light-shade-color);
+$light: varkan($light, shadow, $light-shadow-color);
+$light: varkan($light, border, $light-border-color);
+$light: varkan($light, light, $light-hilite-color);
+
+
+@mixin hsl-var($name) {
+	--h: unquote("var(--#{$name}-h)");
+	--s: unquote("var(--#{$name}-s)");
+	--l: unquote("var(--#{$name}-l)");
+	--uf: unquote("var(--#{$name}-uf)");
+	--df: unquote("var(--#{$name}-df)");
+}
