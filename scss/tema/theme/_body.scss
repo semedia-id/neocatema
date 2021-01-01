@@ -3,7 +3,7 @@ body {
 	color: var(--text);
 	a { color: var(--accent); }
 
-	@include scrollbars(.75rem, var(--light), var(--shade));
+	@include scrollbars(.75rem, var(--light), var(--shade2));
 
 	&.dark-scheme {
 		@include scrollbars(.75rem, var(--light2), var(--light1));

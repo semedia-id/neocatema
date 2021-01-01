@@ -148,4 +148,14 @@ textarea.example {
     scrollbar-face-color: #fff3;
     scrollbar-track-color: #0006; }
 
+.flex.spaced {
+  flex-wrap: wrap; }
+  .flex.spaced .span-col {
+    height: calc(5rem + 2px); }
+  .flex.spaced .spaced {
+    width: 80%; }
+  .flex.spaced > div {
+    margin: 1px;
+    width: calc((100% / 6) - 2px); }
+
 /*# sourceMappingURL=ncc-doc.css.map */

@@ -99,7 +99,7 @@ textarea {
 	line-height: 1.15;
 	font-size: 1.2em;
 	overflow: auto;
-	//@include scrollbars(.25rem, var(--hilite), var(--shade));
+	@include scrollbars(.5rem, var(--hilite), var(--shade1));
 }
 
 

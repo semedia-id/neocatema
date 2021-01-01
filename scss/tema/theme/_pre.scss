@@ -19,4 +19,6 @@ pre {
 
 .dark-scheme pre {
 	filter: invert(1);
+	--background: #{get-hsl-var(surface,(l:80%))};
+
 }

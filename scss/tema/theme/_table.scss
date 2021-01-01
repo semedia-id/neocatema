@@ -45,11 +45,11 @@ table {
 
     &.row-stripes {
         th:nth-child(odd),
-		td:nth-child(odd) { background: var(--shade) }
+		td:nth-child(odd) { background: var(--shade1) }
     }
 
     &.stripes {
-        tr:nth-child(even) td { background: var(--shade) }
+        tr:nth-child(even) td { background: var(--shade1) }
     }
 
 	&.compact {

@@ -154,3 +154,22 @@ textarea.example {
 	line-height: 1.2;
 	@include scrollbars( .25rem, #fff3, #0006);	
 }
+
+
+.flex.spaced {
+    flex-wrap: wrap;
+    
+    .span-col {
+        height: calc(5rem + 2px);
+    }
+
+    .spaced {
+        width: 80%;
+    }
+    
+    > div { 
+        margin: 1px;
+        width: calc((100% / 6) - 2px);
+    }
+}
+
