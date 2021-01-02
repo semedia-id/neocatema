@@ -164,14 +164,6 @@
     .res-ctl {
       display: initial; } }
 
-.dock-at-top {
-  transition: all .5s ease; }
-
-.pinned {
-  width: 100%;
-  z-index: 90;
-  box-shadow: 0 0 6px var(--shadow); }
-
 /* -------------------------------------------------------------
  * 
  * neocatema/particles - 01/02/21 22:43:06
