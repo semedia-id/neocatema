@@ -1,5 +1,5 @@
 /*
- * gas.js -- for Gakeun.js on Neoca Grav theme
+ * gas.js -- for Gakeun.js on ncc Grav theme
  *
  */
 
@@ -8,7 +8,7 @@
 function gas(query) {
 
 	/*
-	 * gas is Neoca Script
+	 * gas is ncc Script
 	 *
 	 */
 

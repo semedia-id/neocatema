@@ -40,10 +40,6 @@ function ncc_construct_pallete(q) {
 		cstyle += cssvar_input("t","var(--b)");
 	}
 	
-	console.log(q);
-	console.log(color);
-	console.log(cstyle);
-	
 	gas(q).cssConstruct(cstyle)
 	
 }

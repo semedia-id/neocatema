@@ -36,14 +36,14 @@
 	* static pages generator
 
 2. [](#improved)
-	* become neoca
+	* become Neocà
 	* accent, button and surface colors
 	
 # 0.1.5
 ## 25/11/2020
 
 1. [](#improved)
-	* normalize.css + nucles-s + css vars() = neocatema
+	* normalize.css + nucles-s + css vars() = Neocàtema
 	* remove theme-admin links
 	* renaming css var()
 	* section.yaml
@@ -64,7 +64,7 @@
 ## 27/12/2020
 	
 1. [](#improved)
-	* neocatema
+	* Neocàtema
 	* Utility-first css framework
 	* Fix theme.php
 

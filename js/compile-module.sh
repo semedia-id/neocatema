@@ -2,8 +2,8 @@ date +"/* Compile Time: %D %T */" > module.js
 
 cat 'gas/gas.js' >> module.js
 cat 'w3color/w3color.js' >> module.js
-cat 'requirejs/require.js' >> module.js
 
+# cat 'requirejs/require.js' >> module.js
 # cat 'requirejs/domready.js' >> module.js
 	
 for f in module/*
@@ -14,10 +14,23 @@ do
 	cat $f >> module.js
 done;
 
-sed '/^$/d' module.js > temp
-sed 's/^ *//g' temp > temp2
+sed -E 's/\t//g' module.js > temp
+
+sed -E 's/(\(|\)|=|\}|\{|,|\:|>|<|\+)\s+/\1/g' temp > temp2
+sed -E 's/\s+(\(|\)|=|\}|\{|,|\:|>|<|\+)/\1/g' temp2 > temp
 sed 's/[[:space:]]*$//g' temp > temp2
-sed 's/^[[:space:]]*//g' temp2 > module.min.js
+sed 's/^[[:space:]]*//g' temp2 > temp
+
+#sed 's/[[:space:]]=/=/g' temp2 > temp
+#sed 's/=[[:space:]]/=/g' temp > temp2
+#sed 's/[[:space:]]:/:/g' temp2 > temp
+#sed 's/:[[:space:]]/:/g' temp > temp2
+#sed 's/[[:space:]],/,/g' temp2 > temp
+#sed 's/,[[:space:]]/,/g' temp > temp2
+
+# sed -E 's/\s+(\W)\s+/\1/g' temp2 > temp
+sed '/^$/d' temp > module.min.js
+
 
 rm -f temp
 rm -f temp2
