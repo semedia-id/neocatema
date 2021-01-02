@@ -77,17 +77,13 @@ configuration:
   section-variations:
 
     Layout Function:
-      dock-top: Dock it on Top
+      dock-at-top: Dock it on Top
       fix-at-top: Fix at Top
-      fix-at-left: Fix at left
-      toggle-able: Toggleable
 
     Utility:
-      disabled: Disabled
-      center: Center
-      nomarginall: No Margin
-      nopaddingall: No Padding
-      small-font: Small Font
+      auto-text-color: auto textcolor
+      hsl-pal: hsl-pal
+      disabled: disabled
       mobile-only: Mobile Only
 
     Styles Color:

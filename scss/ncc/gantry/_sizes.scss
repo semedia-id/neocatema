@@ -62,6 +62,15 @@
 
 .g-block {
 	> .g-content { width: 100%; }
+	
+}
+
+@include breakpoint(mobile-only) {
+
+	.g-block {
+		> .g-content { padding: 0 var(--padding); }
+	}
+	
 }
 
 .fit-height {

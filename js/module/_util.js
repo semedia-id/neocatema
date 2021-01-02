@@ -4,3 +4,4 @@ function cssvar_hsl(what,h,s,l) { return "--"+what+":hsl("+h+","+percent(s)+","+
 function trim(x) { return x.replace(/^\s+|\s+$/g, ''); }
 function safe_str(x) { return x.replace(/^\s+|\s+$|\W/g, '').toLowerCase(); }
 function quote(text) { return '"'+text.replace(/\"/ig,"'")+'"'; }
+function gn_toggle(ele,classes) { gas(ele).toggleClass(classes); }

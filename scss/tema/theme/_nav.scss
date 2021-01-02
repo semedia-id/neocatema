@@ -44,6 +44,8 @@ nav.menucan {
 
     @include breakpoint(mobile-only) {
         height: auto;
+		position: absolute;
+		left: 0;		
     }
 
     ul { margin: 0 }
