@@ -4,14 +4,15 @@ function ncc_main_afterLoad() {
 	responsiveControler();
 	clickControler();
 	construct_styles();
-	ncc_breakpoint_tagging()
-	console.log('ncc-main: afterload')
+	ncc_breakpoint_tagging();
+	ncc_init_swipeable();	
+	console.log('ncc-main: afterload');
 }
 
 function ncc_main_onResize() {
-	ncc_breakpoint_tagging()
-	ncc_breakpoint_responsive_show()	
-	console.log('ncc-main: onresize')
+	ncc_breakpoint_tagging();
+	ncc_breakpoint_responsive_show();
+	console.log('ncc-main: onresize');
 }
 
 
