@@ -3,9 +3,6 @@
 
 {% assets with { priority: 10 } %}
     {% block head_stylesheets -%}
-        {% if gantry.config.page.fontawesome.enable|default(1) %}
-            <link rel="stylesheet" href="gantry-assets://css/font-awesome.min.css" type="text/css"/>
-        {% endif %}
 		{% for scss in gantry.theme.configuration.css.persistent|default(gantry.theme.configuration.css.files) %}
         <link rel="stylesheet" href="{{ scss }}.scss" type="text/css"/>
         {%- endfor %}
@@ -18,10 +15,13 @@
         <link rel="stylesheet" href="{{ scss }}.scss" type="text/css"/>
         {%- endfor %}
     {% endblock -%}
+	
+
 {% endassets -%}
 
 <head>
     {{ gantry.document.getHtml('head_top')|join("\n    ")|raw }}
+
     {% block head_meta %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -53,6 +53,25 @@
         <title>Title</title>
     {%- endblock %}
 
+
+    {% set ncc_head %}
+
+		{% include "partials/font-preload.html.twig" %}
+
+        {% if gantry.config.page.fontawesome.enable|default(1) %}
+            <link href="gantry-assets://css/font-awesome.min.css" type="text/css" rel="stylesheet">
+        {% endif %}
+
+		<link href="gantry-assets://css/ncc-icon.css" type="text/css" rel="stylesheet">
+		
+	
+	{% endset %}
+
+
+	{% do gasvara('ncc_head',ncc_head|stripper) %}
+	
+	{{ config.gas.ncc_head|join('\n')|stripper|raw }}
+
     {% block head_application -%}
         {{ gantry.styles('head')|join("\n")|raw }}
         {{ gantry.scripts('head')|join("\n")|raw }}
@@ -66,11 +85,18 @@
         <![endif]-->
     {% endblock -%}
 
-    {% block head %}{% endblock %}
+    {% block head %}
+	{% endblock %}
+
+
     {% block head_custom %}
         {% if gantry.config.page.head.head_bottom %}
         {{ gantry.config.page.head.head_bottom|raw }}
         {% endif %}
     {% endblock %}
+
     {{ gantry.document.getHtml('head_bottom')|join("\n    ")|raw }}
+
+
+
 </head>

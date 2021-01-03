@@ -23,6 +23,7 @@ class GaskenTwigExtension extends \Twig_Extension
         return [
             new \Twig_SimpleFilter('filedir', [$this, 'filedir']),
             new \Twig_SimpleFilter('fileget', [$this, 'fileget']),
+			new \Twig_SimpleFilter('file_exists', [$this, 'file_is_exist']),
 			new \Twig_SimpleFilter('stripper', [$this, 'stripper_func']),			
 		];
     }
@@ -32,11 +33,21 @@ class GaskenTwigExtension extends \Twig_Extension
         return [
             new \Twig_SimpleFunction('filedir', [$this, 'filedir']),
             new \Twig_SimpleFunction('fileget', [$this, 'fileget']),
+			new \Twig_SimpleFilter('file_exists', [$this, 'file_is_exist']),
             new \Twig_SimpleFunction('randomwords', [$this, 'randomwords']),
             new \Twig_SimpleFunction('gasvara', [$this, 'gasvar_array_func']),
         ];
     }
 
+	public function file_is_exist($path) {
+		echo 'masuk=$path';
+		if (file_exists($path)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	public function stripper_func($string,$compress=false)
     {
 		

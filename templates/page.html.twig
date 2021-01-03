@@ -79,8 +79,6 @@
         {%- do gantry.document.addStyle(url('gantry-assets://vendors/animate.min.css')) -%}
     {% endif %}
 
-    {%- do gantry.document.addStyle(url('gantry-assets://css/ncc-icon.css')) -%}
-
     {% if gantry.config.get('styles.option.devinchrome') -%}
         {%- do gantry.document.addStyle(url('gantry-assets://workspace/css/custom.css')) -%}
         {%- do gantry.document.addScript(url('gantry-assets://workspace/js/script.js'), 10, 'footer') -%}
@@ -116,6 +114,7 @@
 {%- block page -%}
 <!DOCTYPE {{ gantry.config.page.doctype|default('html')|raw }}>
 <html {{ gantry.page.htmlAttributes|raw }}>
+
 {{ page_head|raw }}
 
 {% block page_body -%}
