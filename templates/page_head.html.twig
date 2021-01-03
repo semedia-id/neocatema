@@ -3,8 +3,15 @@
 
 {% assets with { priority: 10 } %}
     {% block head_stylesheets -%}
+
+        {% if gantry.config.page.fontawesome.enable|default(1) %}
+            <link href="gantry-assets://css/font-awesome.min.css" type="text/css" rel="stylesheet">
+        {% endif %}
+
+		<link href="gantry-assets://css/ncc-icon.css" type="text/css" rel="stylesheet">
+
 		{% for scss in gantry.theme.configuration.css.persistent|default(gantry.theme.configuration.css.files) %}
-        <link rel="stylesheet" href="{{ scss }}.scss" type="text/css"/>
+        <link href="{{ scss }}.scss" type="text/css" rel="stylesheet" >
         {%- endfor %}
     {% endblock -%}
 
@@ -57,13 +64,6 @@
     {% set ncc_head %}
 
 		{% include "partials/font-preload.html.twig" %}
-
-        {% if gantry.config.page.fontawesome.enable|default(1) %}
-            <link href="gantry-assets://css/font-awesome.min.css" type="text/css" rel="stylesheet">
-        {% endif %}
-
-		<link href="gantry-assets://css/ncc-icon.css" type="text/css" rel="stylesheet">
-		
 	
 	{% endset %}
 

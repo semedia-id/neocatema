@@ -1,4 +1,9 @@
 {% set fonts = [] %}
+
+{% if gantry.config.page.fontawesome.enable|default(1) %}
+	{% set fonts = fonts|merge(['gantry-assets://fonts/fontawesome-webfont']) %}
+{% endif %}
+		
 {% for ft in gantry.theme.configuration.fonts %}
 	{% for f in ft %}
 		{% set fonts = fonts|merge([f]) %}

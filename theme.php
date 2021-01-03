@@ -179,7 +179,29 @@ class Neoca extends Theme
 
         if (! $this->isAdmin()) {
 
+			$st_content = $this->grav->output."";
 
+			if (isset($this->config['theme']['tidy_output'])) {
+
+				$tmp = explode("\n", $st_content);
+				$tmp = preg_replace('/^(\W)\s+$/', '$1', $tmp);
+				$tmp = preg_replace('/^\s+(\W)/', '$1', $tmp);
+				$tmp = preg_replace('/(\r|\t)/', '', $tmp);
+				$tmp = preg_replace('/(\W)\s+(\W)/', '$1$2', $tmp);
+
+				$tmp = preg_replace('/\s+$/', '', $tmp);
+				$tmp = array_filter($tmp);
+				$st_content = implode("\n", $tmp);
+			
+				$st_content  = preg_replace('/\s+\">/', '">', $st_content );
+				$st_content  = preg_replace('/"\s+>/', '">', $st_content );
+				$st_content = preg_replace('/[\r\n\s+\t]+(?=(?:[^<])*>)/', ' ', $st_content);
+				$st_content = preg_replace('/\n(>|\}|\)|\")/', '$1', $st_content);
+		
+				$this->grav->output = $st_content;
+			
+			}
+			
 			if (isset($this->config['theme']['static_path'])) {
 
 				$locator = $this->grav['locator'];
@@ -190,7 +212,6 @@ class Neoca extends Theme
 				$file = $tdir.$this->grav['uri']->path();
 				createPath($file);
 				$filepath = $file."/index.html";
-				$st_content = $this->grav->output."";
 
 				$st_content = preg_replace('#href="\/#','href="/static/',$st_content);
 				$st_content = preg_replace('#link href="\/static#','link href="',$st_content);
