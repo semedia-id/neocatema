@@ -1,0 +1,24 @@
+name: Lorem Ipsum
+description: Lorem Ipsum Dummy
+type: particle
+icon: fa-asterisk
+
+configuration:
+  caching:
+    type: config_matches
+    values:
+      twig: '0'
+      filter: '0'
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      default: true
+
+    words:
+      type: input.text
+      label: words count
+      default: 29
+      

@@ -10,7 +10,6 @@
     {% endif %}
 {% endset -%}
 
-
 {%- set offcanvas = null -%}
 {%- for segment in segments if segment.type == 'offcanvas' %}
     {%- set offcanvas = segment -%}
@@ -19,13 +18,12 @@
 {%- set page_offcanvas %}
     {% block page_offcanvas %}
 
-	<noscript>Hi! You need to enable JavaScript for this website.</noscript>
+    {% if offcanvas %}
+        {% include 'layout/' ~ offcanvas.type ~ '.html.twig' with {
+            'segment': offcanvas
+        } -%}
+    {% endif %}
 
-        {% if offcanvas %}
-            {% include 'layout/' ~ offcanvas.type ~ '.html.twig' with {
-				'segment': offcanvas 
-			} -%}
-        {% endif %}
     {% endblock %}
 {% endset -%}
 
@@ -34,69 +32,72 @@
 {%- set page_layout %}
     {% block page_layout %}
     {% for segment in segments if segment.type != 'offcanvas' %}
-        {% include 'layout/' ~ segment.type ~ '.html.twig' with { 
-			'segments': segment.children } %}
+        {% include 'layout/' ~ segment.type ~ '.html.twig' with {
+            'segments': segment.children } %}
     {% endfor %}
     {% endblock %}
 {% endset -%}
 
 {%- set page_top %}
+
+    {% if gantry.config.page.body.layout.sections == 2 %}<div class='g-container pages'>{% endif %}
+
     {% block page_top %}
-	{% if gantry.config.page.body.layout.sections == 2 %}<div class='g-container pages'>{% endif %}
     {% endblock %}
-    {{ gantry.document.getHtml('top')|join("\n    ")|raw }}
+    {{ gantry.document.getHtml('top')|join("\n")|raw }}
 {% endset -%}
 
 {%- set page_bottom %}
     {% block page_bottom %}
-	{% if gantry.config.page.body.layout.sections == 2 %}</div>{% endif %}
     {% endblock %}
-    {{ gantry.document.getHtml('bottom')|join("\n    ")|raw }}
+    {{ gantry.document.getHtml('bottom')|join("\n")|raw }}
+    {% if gantry.config.page.body.layout.sections == 2 %}</div>{% endif %}
 {% endset -%}
 
 {%- set body_top %}
     {% block body_top %}
     {% endblock %}
-    {{ gantry.document.getHtml('body_top')|join("\n    ")|raw }}
+    {{ gantry.document.getHtml('body_top')|join("\n")|raw }}
+    <noscript>Hi! You need to enable JavaScript for this website.</noscript>
 {% endset -%}
 
 {%- set body_bottom %}
     {% block body_bottom %}
     {% endblock %}
-    {{ gantry.document.getHtml('body_bottom')|join("\n    ")|raw }}
-{% endset -%}
+    {{ gantry.document.getHtml('body_bottom')|join("\n")|raw }}
 
-{%- set myclass %}
-    {{ gantry.document.getHtml('myclass')|join("\n    ")|raw }}
+    <div class='modal-layer'></div>
+
 {% endset -%}
 
 {# Head and footer needs to come last because of any of the above blocks may have CSS or JavaScript in them #}
 
-{# Neoca //------- #}
+    {%- do gantry.document.addScript(url('gantry-assets://js/module.min.js'), 10) -%}
+    {%- do gantry.document.addScript(url('gantry-assets://js/main.js'), 10, 'footer') -%}
 
-	{%- do gantry.document.addScript(url('gantry-assets://js/module.min.js'), 10) -%}
-	{%- do gantry.document.addScript(url('gantry-assets://js/main.js'), 10, 'footer') -%}
+    {% if gantry.config.get('styles.option.animate_css') -%}
+        {%- do gantry.document.addStyle(url('gantry-assets://vendors/animate.min.css')) -%}
+    {% endif %}
 
-	{% if gantry.config.get('styles.option.animate_css') -%}
-		{%- do gantry.document.addStyle(url('gantry-assets://vendors/animate.min.css')) -%}
-	{% endif %}
+    {%- do gantry.document.addStyle(url('gantry-assets://css/ncc-icon.css')) -%}
 
-	{%- do gantry.document.addStyle(url('gantry-assets://css/ncc-icon.css')) -%}
+    {% if gantry.config.get('styles.option.devinchrome') -%}
+        {%- do gantry.document.addStyle(url('gantry-assets://workspace/css/custom.css')) -%}
+        {%- do gantry.document.addScript(url('gantry-assets://workspace/js/script.js'), 10, 'footer') -%}
+    {% endif %}
 
-	{% if gantry.config.get('styles.option.devinchrome') -%}
-		{%- do gantry.document.addStyle(url('gantry-assets://workspace/css/custom.css')) -%}
-		{%- do gantry.document.addScript(url('gantry-assets://workspace/js/script.js'), 10, 'footer') -%}
-	{% endif %}
+    {%-set inline_js %}
+    var disable_scheme = {{ (gantry.config.get('styles.option.disable_scheme') ? 'true': 'false')|raw }};
+    var gn_media_breakpoint = {
+        'wide':{{ 16*gantry.config.get('styles.breakpoints.large-desktop-container')|number_format }},
+        'desktop':{{ 16*gantry.config.get('styles.breakpoints.desktop-container')|number_format}},
+        'tablet':{{ 16*gantry.config.get('styles.breakpoints.tablet-container')|number_format}},
+        'mobile':{{ 16*gantry.config.get('styles.breakpoints.large-mobile-container')|number_format}}
+    };
+    {% endset -%}
 
-	{%-set inline_js %}
-	var disable_scheme = {{ (gantry.config.get('styles.option.disable_scheme') ? 'true': 'false')|raw }};
-	var gn_media_breakpoint = {'wide':{{ 16*gantry.config.get('styles.breakpoints.large-desktop-container')|number_format }},'desktop':{{ 16*gantry.config.get('styles.breakpoints.desktop-container')|number_format}},'tablet':{{ 16*gantry.config.get('styles.breakpoints.tablet-container')|number_format}},'mobile':{{ 	16*gantry.config.get('styles.breakpoints.large-mobile-container')|number_format}}};
-	{% endset -%}
+    {% do gasvara('inline_js',inline_js|stripper(true)) %}
 
-	{% do gasvara('inline_js',inline_js) %}
-
-
-{# //------- #}
 
 {%- set page_head %}
     {% block page_head -%}
@@ -107,7 +108,7 @@
 {%- set page_footer %}
     {% block page_footer %}
         {% do gantry.platform.finalize() -%}
-        {{ gantry.scripts('footer')|join("\n    ")|raw -}}
+        {{ gantry.scripts('footer')|join("\n")|raw -}}
     {% endblock %}
 
     {{ gantry.debugger.render()|raw }}
@@ -115,31 +116,34 @@
 {%- block page -%}
 <!DOCTYPE {{ gantry.config.page.doctype|default('html')|raw }}>
 <html {{ gantry.page.htmlAttributes|raw }}>
-    {{ page_head|raw }}
-    {% block page_body -%}
+{{ page_head|raw }}
+
+{% block page_body -%}
     <body{{ gantry.page.bodyAttributes({'class': [
-		myclass,
-		'page-'~page.slug(), 
-		gantry.page.preset, 
-		'g-style-' ~ gantry.theme.preset]
-	})|raw }}>
+        'page-'~page.slug(),
+        gantry.page.preset,
+        'g-style-' ~ gantry.theme.preset]
+    })|raw }}>
+
         {{ gantry.config.page.body.body_top|raw }}
+
         {{ body_top|raw }}
         {{ page_offcanvas|raw }}
-		
-		<div id="g-page-surround">
+
+        <div id="g-page-surround">
             {{ page_top|raw }}
             {{ page_layout|raw }}
             {{ page_bottom|raw }}
         </div>
         {{ body_bottom|raw }}
         {{ page_footer|raw }}
-		{{ gantry.config.page.body.body_bottom|raw }}
-		<div class='modal-layer'></div>
-	</body>
+
+        {{ gantry.config.page.body.body_bottom|raw }}
+
+    </body>
     {%- endblock %}
 
-<script>{{ config.gas.inline_js|sort|join('\n')|stripper|raw }}</script>
+<script>{{ config.gas.inline_js|sort|join('\n')|stripper(true)|raw }}</script>
 
 </html>
 {% endblock -%}

@@ -37,7 +37,7 @@ class GaskenTwigExtension extends \Twig_Extension
         ];
     }
 
-	public function stripper_func($string)
+	public function stripper_func($string,$compress=false)
     {
 		
 		$tmp = explode("\n", $string);
@@ -46,9 +46,15 @@ class GaskenTwigExtension extends \Twig_Extension
 		$tmp = preg_replace('/\s+$/', '', $tmp);
 		$tmp = array_filter($tmp);
 		$string = implode("\n", $tmp);		
-		$string = preg_replace('/\t/', '', $string);
-		//$string = preg_replace('/\n/', '', $string);
 		$string = preg_replace('/;;/', ';', $string);
+		
+		if ($compress) {
+			$string = preg_replace('/\t/', '', $string);
+			$string = preg_replace('/\n/', '', $string);
+			$string = preg_replace('/\s+(=|:|<|>|\(|\)|\}|\{|,)/', '$1', $string);
+			$string = preg_replace('/(=|:|<|>|\(|\)|\}|\{|,)\s+/', '$1', $string);
+		}
+		
 		return (trim($string));
     }	
 

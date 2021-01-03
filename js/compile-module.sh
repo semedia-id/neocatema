@@ -20,17 +20,7 @@ sed -E 's/(\(|\)|=|\}|\{|,|\:|>|<|\+)\s+/\1/g' temp > temp2
 sed -E 's/\s+(\(|\)|=|\}|\{|,|\:|>|<|\+)/\1/g' temp2 > temp
 sed 's/[[:space:]]*$//g' temp > temp2
 sed 's/^[[:space:]]*//g' temp2 > temp
-
-#sed 's/[[:space:]]=/=/g' temp2 > temp
-#sed 's/=[[:space:]]/=/g' temp > temp2
-#sed 's/[[:space:]]:/:/g' temp2 > temp
-#sed 's/:[[:space:]]/:/g' temp > temp2
-#sed 's/[[:space:]],/,/g' temp2 > temp
-#sed 's/,[[:space:]]/,/g' temp > temp2
-
-# sed -E 's/\s+(\W)\s+/\1/g' temp2 > temp
 sed '/^$/d' temp > module.min.js
-
 
 rm -f temp
 rm -f temp2
