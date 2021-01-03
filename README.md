@@ -2,7 +2,7 @@
 
 Neocátema is Grav Gantry Theme with CSS Utility Base Framework.
 
-Yes, We active develope the [Wiki](https://github.com/tacoen/neocatema/wiki).
+Yes, Neocátema has its [Wiki](https://github.com/tacoen/neocatema/wiki).
 
 ## Requirement
 
