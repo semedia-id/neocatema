@@ -13,8 +13,8 @@ base:
   styles:
     base:
       bradius: "0.25rem"
-      font-base: '''clearsans'', sans-serif'
-      font-head: '''clearsans'', sans-serif'
+      font-base: '''adobe-clean'', sans-serif'
+      font-head: '''adobe-clean-semicn'', sans-serif'
       font-alter: ''
       font-mono: ''
       font-size: "1rem"
@@ -22,30 +22,17 @@ base:
       line-height: "1.5"
       margin: "1rem"
       padding: "0.5rem"
-    dark:
-      accent-color: "#ff9911"
-      background-color: "#090909"
-      border-color: "#fff4"
-      button-color: "#999999"
-      error-color: "#7a1f1f"
-      hilite-color: "#fff9"
-      info-color: "#1a334d"
-      shade-color: "#0003"
-      shadow-color: "#fff5"
-      success-color: "#1d6b1d"
-      surface-color: "#ccbbaa"
-      text-color: "#eeeeee"
-      warning-color: "#cc9900"
+
     light:
       accent-color: "#991111"
       background-color: "#f6f6f6"
-      border-color: "#0004"
       button-color: "#dddddd"
       error-color: "#cc3333"
-      hilite-color: "#fff9"
       info-color: "#336699"
-      shade-color: "#0003"
-      shadow-color: "#0005"
+      border-color: "#000000"
+      shade-color: "#000000"
+      shadow-color: "#000000"
+      hilite-color: "#ffffff"
       success-color: "#33bb33"
       surface-color: "#334455"
       text-color: "#111111"

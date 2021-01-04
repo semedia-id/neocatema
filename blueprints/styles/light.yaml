@@ -70,8 +70,8 @@ form:
     shade-color:
         type: input.colorpicker
         label: Shade
-        default: "#0003"
+        default: "#222222"
     shadow-color:
         type: input.colorpicker
         label: Shadow
-        default: "#0005"
+        default: "#111111"

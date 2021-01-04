@@ -55,16 +55,16 @@ form:
     border-color:
         type: input.text
         label: Border Color
-        default: "#fff4"
+        default: "#ffffff"
     hilite-color:
         type: input.text
         label: Hilite
-        default: "#fff9"
+        default: "#ffffff"
     shade-color:
         type: input.text
         label: Shade
-        default: "#0003"
+        default: "#000000"
     shadow-color:
         type: input.text
         label: Shadow
-        default: "#fff5"
+        default: "#ffffff"

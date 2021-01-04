@@ -45,11 +45,12 @@ form:
     font-base:
         type: input.fonts
         label: Base Font
-        default: 'clearsans, sans-serif'
+        default: 'adobe-clean, sans-serif'
 
     font-head:
         type: input.fonts
         label: Heading Font
+        default: 'adobe-clean-semicn, sans-serif'
 
     font-alter:
         type: input.fonts
