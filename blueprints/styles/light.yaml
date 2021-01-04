@@ -60,18 +60,18 @@ form:
         content: Decorant
 
     border-color:
-        type: input.text
+        type: input.colorpicker
         label: Border Color
-        default: "#0004"
+        default: "#333333"
     hilite-color:
-        type: input.text
+        type: input.colorpicker
         label: Hilite
-        default: "#fff9"
+        default: "#ffffff"
     shade-color:
-        type: input.text
+        type: input.colorpicker
         label: Shade
         default: "#0003"
     shadow-color:
-        type: input.text
+        type: input.colorpicker
         label: Shadow
         default: "#0005"

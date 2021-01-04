@@ -1,30 +1,72 @@
-<h2 class='border-b mb-100  fw-light'>Borders</h2>
+<h2 class='bd-b-solid-shade2 mb-100  fw-light'>Borders</h2>
 
 <div class='example'>
-<p class='border-b mb-100 bw-3 fw-light'>Border and Border-radius</p>
+	<button aria-label='action' class='bd-b-solid2-shade2 bd-t-solid2-light2 auto-text-color px-100 py-50'>
+	<i class='ncico-download'></i><b>Action Button</b></button>
 </div>
 
-<h3 class='my-100'>border style</h3>
-
-<div class='flex easy'>	
-	<div class='pa-100 border-a'>b-solid</div>	
-	<div class='pa-100 border-a b-dot'>b-dotted</div>
-	<div class='pa-100 border-a b-dash'>b-dashed</div>
-	<div class='pa-100 border-a b-double'>b-double</div>	
+<div class='example'>
+	<h1 class='bd-b-dotted2-shade'>Heading 1</h1>
 </div>
 
-{% for w in ['a','t','r','b','l'] %}
+<h3 class='mt-200 mb-100'>border style</h3>
 
-	<h3 class='my-100 ttl'>border-{{w}}</h3>
+<div class='flex easy'>
 	
-	<div class='flex easy'>
-	<div class='pa-100 border-{{w}}'>border-{{w}}</div>
-	{% for s in 1..7 %}
-		<div class='pa-100 border-{{w}} bw-{{s}}'>bw-{{s}}</div>
-	{% endfor %}
-	</div>	
-
+{% for s in ['solid','dotted','dashed','double'] %}
+	{% if s == 'double' %}
+		<div class='pa-100 bd-double4-shade'>.bd-double4</div>	
+	{% else %}
+		<div class='pa-100 bd-{{s}}-shade'>.bd-{{s}}</div>	
+	{% endif %}
 {% endfor %}
 
+</div>
+
+<h3 class='mt-200 mb-100'>border width</h3>
+
+<div class='flex easy'>
+	{% for s in 1..7 %}
+		{% if s == 1 %}
+			<div class='pa-100 bd-solid-shade'>.bd-solid</div>	
+		{% else %}	
+			<div class='pa-100 bd-solid{{s}}-shade'>.bd-solid{{s}}</div>
+		{% endif %}
+	{% endfor %}
+</div>
+
+
+<h3 class='mt-200 mb-100'>border color</h3>
+
+<div class='flex easy'>
+	{% for s in 0..3 %}
+		{% if s == 0 %}
+			<div class='pa-100 bd-solid-shade'>.bd-solid-shade</div>	
+		{% else %}	
+			<div class='pa-100 bd-solid-shade{{s}}'>.bd-solid-shade{{s}}</div>
+		{% endif %}
+	{% endfor %}
+</div>
+<div class='flex easy mt-100'>
+	{% for s in 0..3 %}
+		{% if s == 0 %}
+			<button class='red pa-100 bd-solid2-light'>.bd-solid-light</button>	
+		{% else %}	
+			<button class='red pa-100 bd-solid2-light{{s}}'>.bd-solid-light{{s}}</button>
+		{% endif %}
+	{% endfor %}	
+</div>
+
+<h3 class='mt-200 mb-100'>border side</h3>
+
+<div class='flex easy'>
+	{% for w in ['a','t','r','b','l'] %}
+		{% if w == 'a' %}
+			<div class='pa-100 bd-solid-shade'>bd-solid-shade</div>
+		{% else %}	
+			<div class='pa-100 bd-{{w}}-solid-shade'>bd-{{w}}-solid-shade</div>
+		{% endif %}
+	{% endfor %}
+</div>	
 
 	
