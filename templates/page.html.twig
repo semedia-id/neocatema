@@ -29,12 +29,26 @@
 
 {%- set page_offcanvas = page_offcanvas|trim ?: '' %}
 
+
+{%- set page_float %}
+    {% block page_float %}
+    {% for segment in segments %}
+		{% if (segment.attributes.offpage==1) %}
+			{% include 'layout/' ~ segment.type ~ '.html.twig' with {
+				'segments': segment.children } %}
+		{% endif %}
+	{% endfor %}
+    {% endblock %}
+{% endset -%}
+	
 {%- set page_layout %}
     {% block page_layout %}
-    {% for segment in segments if segment.type != 'offcanvas' %}
-        {% include 'layout/' ~ segment.type ~ '.html.twig' with {
-            'segments': segment.children } %}
-    {% endfor %}
+    {% for segment in segments %}
+		{% if (segment.type != 'offcanvas') and (segment.attributes.offpage!=1) %}
+		{% include 'layout/' ~ segment.type ~ '.html.twig' with {
+				'segments': segment.children } %}
+		{% endif %}
+	{% endfor %}
     {% endblock %}
 {% endset -%}
 
@@ -134,7 +148,16 @@
             {{ page_layout|raw }}
             {{ page_bottom|raw }}
         </div>
-        {{ body_bottom|raw }}
+
+		{%set page_float = page_float|trim ? : '' %}
+        
+		{%if page_float %}
+			<div id="g-float">
+				{{ page_float|raw }}
+			</div>
+		{% endif %}
+		
+		{{ body_bottom|raw }}
         {{ page_footer|raw }}
 
         {{ gantry.config.page.body.body_bottom|raw }}
