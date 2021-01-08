@@ -1,30 +1,49 @@
-{% extends "/page_head.html.twig" %}
+{% extends "component/header.html.twig" %}
 
 {% block head_title %}
     <title>{% if header.title %}{{ header.title }} | {% endif %}{{ site.title }}</title>
 {% endblock %}
 
 {% block head_meta %}
+	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta charset="utf-8" />
     {% if gantry.config.page.head.meta -%}
         {% for attributes in gantry.config.page.head.meta -%}
             {%- for key, value in attributes %}
                 {% if key starts with 'og:' %}
-                <meta property="{{ key|e }}" content="{{ value|e }}" />
+					<meta property="{{ key|e }}" content="{{ value|e }}" />
                 {% else %}
-                <meta name="{{ key|e }}" content="{{ value|e }}" />
+					<meta name="{{ key|e }}" content="{{ value|e }}" />
                 {% endif %}
             {% endfor -%}
         {%- endfor -%}
     {%- endif -%}
-    {% include 'partials/metadata.html.twig' %}
+
+	{% for meta in page.metadata %}
+		<meta 
+			{% if meta.name %}name="{{ meta.name }}" {% endif %}
+			{% if meta.http_equiv %}http-equiv="{{ meta.http_equiv }}" {% endif %}
+			{% if meta.charset %}charset="{{ meta.charset }}" {% endif %}
+			{% if meta.property %}property="{{ meta.property }}" {% endif %}
+			{% if meta.content %}content="{{ meta.content }}" {% endif %}
+			/>
+	{% endfor %}
+
+	{% set owner = theme_var('owner')? theme_var('owner'): false %}
+	{% if owner%}
+		<meta name="owner" content="{{ owner }}" />
+	{% endif %}
+
+	{% if header.robots %}
+        <meta name="robots" content="{{ header.robots }}">
+	{% endif %}
+
 {% endblock %}
 
 {% block head_links %}
     <link rel="canonical" href="{{ page.url(true, true) }}" />
-	{% include "partials/font-preload.html.twig" %}	
+	{% include "etc/font-preload.html.twig" %}	
 	{% if gantry.config.page.assets.favicon %}
         <link rel="icon" type="image/x-icon" href="{{ url(gantry.config.page.assets.favicon) }}" />
     {% endif %}
@@ -73,29 +92,6 @@
     {% endif %}	
 
 {% endassets -%}
-
-
-{# Head and footer needs to come last because of any of the above blocks may have CSS or JavaScript in them #}
-
-    {%- do gantry.document.addScript(url('gantry-assets://js/module.min.js'), 10) -%}
-    {%- do gantry.document.addScript(url('gantry-assets://js/main.js'), 10, 'footer') -%}
-
-    {% if gantry.config.get('styles.option.devinchrome') -%}
-        {%- do gantry.document.addScript(url('gantry-assets://workspace/js/script.js'), 10, 'footer') -%}
-    {% endif %}
-
-    {%-set inline_js %}
-    var disable_scheme = {{ (gantry.config.get('styles.option.disable_scheme') ? 'true': 'false')|raw }};
-    var gn_media_breakpoint = {
-        'wide':{{ 16*gantry.config.get('styles.breakpoints.large-desktop-container')|number_format }},
-        'desktop':{{ 16*gantry.config.get('styles.breakpoints.desktop-container')|number_format}},
-        'tablet':{{ 16*gantry.config.get('styles.breakpoints.tablet-container')|number_format}},
-        'mobile':{{ 16*gantry.config.get('styles.breakpoints.large-mobile-container')|number_format}}
-    };
-    {% endset -%}
-
-    {% do gasvara('inline_js',inline_js|stripper(true)) %}
-
 
 {% block head_application %}
 

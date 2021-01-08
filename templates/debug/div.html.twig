@@ -4,7 +4,7 @@
 {% if segment.children %}
 <ul>
 	{%- for segment in segment.children -%}
-		{% include 'ncc/debug/div.html.twig' with {'segment':segment} %}
+		{% include 'layout/debug/div.html.twig' with {'segment':segment} %}
 	{% endfor %}
 </ul>
 

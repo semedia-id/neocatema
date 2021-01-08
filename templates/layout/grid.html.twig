@@ -1,25 +1,13 @@
-{% set attr_extra = segment.attributes.extra|attribute_array %}
-{% set class = 'g-grid' ~ (segment.attributes.class ? ' ' ~ segment.attributes.class|join(' ')) %}
-
-{%- set html %}
-    {% if segment.children %}
-        {% for segment in segments %}
-            {% include 'layout/' ~ segment.type ~ '.html.twig' with { 
-				'segments':segment.children,
-				'options':options
-			} %}
-        {% endfor %}
-    {% endif %}
+{%- set html -%}
+{%if options.ggrid %}<div class='g-grid'>{%endif%}
+{% if segment.children %}
+	{% for segment in segment.children -%}
+		{% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
+	{% endfor %}
+{% endif %}			
+{%if options.ggrid %}</div>{%endif%}
 {% endset %}
 
-{%- if html|trim %}
-	{% if segment.type == 'offcanvas' %}
-		  {{- html|raw -}}
-	{% elseif segment.attributes.offpage  %}
-		  {{- html|raw -}}
-	{% else %}
-        <div {% if segment.attributes.id %}id="{{ segment.attributes.id|e }}" {% endif %}class="{{ class }}" {{- attr_extra|raw }}>
-		  {{- html|raw -}}
-        </div>
-	{% endif %}
+{% if html|trim %}
+{{ html|raw }}
 {% endif %}
