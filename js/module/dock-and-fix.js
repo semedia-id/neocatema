@@ -5,7 +5,7 @@ function ncc_scroll_element(el,top,targetY=0) {
 		var scroll = this.scrollY;
 		if (scroll > top) {
 			var pinned = true;
-			console.log('y=',scroll);
+			//console.log('y=',scroll);
 		} else {
 			var pinned = false;
 		}
@@ -45,6 +45,15 @@ function ncc_fixtop_init() {
 		gt_shadow.classList.add('fix-a-top-shadow-adjust');
         body = document.querySelector('body');
 		body.prepend(gt_shadow);
+		
+		window.addEventListener('scroll', (event) => {
+			var scroll = this.scrollY;
+			if (scroll <= sh) {
+				gas('body').addClass('at-top')
+			} else {
+				gas('body').removeClass('at-top')
+			}
+		});			
 		
 	})
 

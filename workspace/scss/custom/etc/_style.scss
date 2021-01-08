@@ -1,0 +1,98 @@
+#gpb {
+    padding-top: .5rem;
+    position: relative;
+    width: 9rem !important;
+    flex-basis: 9rem !important;
+
+	.logo { 
+	    width: 80px; 
+	    .ico { 
+            width:30px;
+            margin-left: 30px;
+	    }
+	    .txt {
+	    	opacity: 0;
+            transition: opacity .5s ease-in-out;
+	    }
+	}
+
+	.text {
+		position: absolute;
+		opacity: 0;
+        transition: opacity 1s ease-in-out;
+	}
+
+
+    @include breakpoint(mobile-only) {
+        padding-left: 1rem;
+        .text {
+            left: 102px !important;
+        }
+    }
+    
+
+}
+
+header {
+	height: 0px;
+	opacity:0;
+	transition: all .75s ease;
+    border-bottom-right-radius: 25%;
+    border-bottom-left-radius: 100%;
+}
+
+
+.at-top {
+	
+	#gpb {
+        .txt { opacity: 1 }
+        .text { 
+            opacity: 1;
+		    top: 110px;
+		    left: 88px;
+		    width: 60px;
+		    line-height: 1.15;
+        }
+	}
+
+    header { 
+        opacity: 1; 
+        height: 180px; 
+        filter: initial;        
+        border-bottom-left-radius: 25%;
+        border-bottom-right-radius: 100%;
+        
+
+        .g-container,
+        .g-grid,
+        .g-block,
+        .g-content  { height: 100%;  }
+
+        .g-content {
+        	position: relative;
+        }
+
+        .particle-text {
+
+        	margin-left: 60%;
+        	width: 20%;
+        	text-align: right;
+            padding-right: 2rem;
+
+            @include breakpoint(mobile-only) {        	
+                width: 50%;
+                margin-left: 50%;
+            }
+        }
+   }
+
+}
+
+
+main { 
+    padding-top: 100px
+}
+
+
+
+.fit-height .nav-item-container { height: var(--container-h,initial) !important; }

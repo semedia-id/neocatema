@@ -1,5 +1,4 @@
-{% extends '@nucleus/partials/particle.html.twig' %}
-{% block particle %}
-<h2 class='title gn-title'>{{ page.title }}</h2>
-
-{% endblock %}
+{%- extends '@nucleus/partials/particle.html.twig' -%}
+{%- block particle %}
+<div class='particle-text big font-alter'>{{ page.header.summary|raw }}</div>
+{% endblock -%}

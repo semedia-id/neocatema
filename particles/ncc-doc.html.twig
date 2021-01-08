@@ -47,9 +47,12 @@
 {% set bc = '' %}
 {% set gc = '' %}
 
-{% for file in filedir('/user/themes/neoca/particles/tema','*.html.twig') %}
-	{% set f = file|replace({
-		'/user/themes/neoca/particles/tema/':'',
+{% set docpath = gantry.theme.path~'/particles/tema/' %}
+{% set relpath = "#"~ docpath|regex_replace("#"~base_dir~"#",'') ~"#" %}
+
+{% for file in filedir(docpath,'*.html.twig') %}
+	{% set f = file|regex_replace(relpath,'') %}
+	{% set f = f|replace({
 		'.html.twig':''
 		}) %}
 	{% set fn = f|regex_replace('/^.*--/','') %}

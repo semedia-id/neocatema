@@ -1,10 +1,10 @@
 nav.menucan {
 
 	--menu-width: 180px;
-	--text: var(--t,var(--text));
 	--hover: var(--c-ho, var(--shade1));
 	--active: var(--c-ac, var(--shade2));
-	--background: var(--c, var(--surface));
+	--background: var(--c,);
+	--text: var(--t,var(--text));
 
 }
 
@@ -21,7 +21,6 @@ nav.menucan {
     transform:scaleY(1) translate(0) ;
     height: auto;
     width: initial;
-
 }
 
 @mixin dropdown-hide {
@@ -101,7 +100,7 @@ nav.menucan {
     input[type='checkbox'] {
         display: none;
 
-        ~ div > label,
+        ~ span > label,
         ~ a > label {
         	.off { display: none; }
         	.on { display: block; }
@@ -110,7 +109,7 @@ nav.menucan {
 
 	input[type="checkbox"]:checked {
 
-        ~div > label,
+        ~ span > label,
         ~ a > label {
         	.off { display: block; }
         	.on { display: none; }
@@ -118,7 +117,10 @@ nav.menucan {
 
         ~ .dropdown-menu {
         	@include dropdown-show;
-            display:initial;
+
+			@include breakpoint(mobile-only) {
+				display:initial;
+			}
         }
 	}
 

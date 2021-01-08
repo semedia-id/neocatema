@@ -1,0 +1,108 @@
+html { 
+	box-sizing:border-box;
+}
+
+*,
+*:before,
+*:after { box-sizing: inherit; }
+
+body { margin:0; padding: 0; }
+
+table {
+  text-indent: 0;
+  border-color: inherit;
+}
+
+tfoot,
+thead,
+tbody {
+	background-color: inherit;
+}
+
+// vertical section/container
+
+main,
+aside {
+    min-height: 100%;
+}
+
+noscript { display: none; }
+
+// container leave nomarks
+
+%container {
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+}
+
+body,
+footer,
+header,
+section,
+main,
+article,
+aside,
+nav,
+details,
+fieldset {
+	@extend %container;
+}
+
+// content has top margin, but not first-child
+
+$contents-list: [
+	'address',
+	'blockquote',
+	'canvas',
+	'dl',
+	'figcaption',
+	'figure',
+	'ol',
+	'p',
+	'ul',
+	'video'
+];
+
+$contents-block: assign-inputs($contents-list);
+
+#{$contents-block} {
+	margin-top: var(--margin,1rem);
+	margin-bottom: var(--margin,1rem);
+}
+
+$contents-block-firstchild: assign-inputs($contents-list,first-child);
+
+#{$contents-block-firstchild} {
+	margin-top: 0;
+	margin-bottom: var(--margin,1rem);
+}
+
+// disable selection for this element
+
+footer,
+header,
+input,
+button,
+nav,
+video,
+object,
+script {
+	@extend %noselect;
+}
+
+
+a:not(.button) { 
+	text-decoration: none; 
+	&:hover { text-decoration: underline; }
+}
+
+nav ul {
+	list-style-type: none;
+	padding-left:0;
+}
+
+
+
+

@@ -53,6 +53,7 @@
 
 	{% set resbutton %}
 	
+	
 	<button class="{{resbutton_class}}" 
 		data-always="{{segment.attributes.res_always}}"
 		data-target='#{{attr_id}}'
@@ -62,8 +63,14 @@
 		data-ctl-height='{{segment.attributes.res_icon_h}}'
 		data-ctl-width='{{segment.attributes.res_icon_w}}'
 		data-icon='{{segment.attributes.res_icon}}'>
-	<i class='{{segment.attributes.res_icon}}'></i>
+	{% if segment.attributes.res_image %}
+		<img src='{{ url(segment.attributes.res_image) }}'>
+	{% else %}
+		<i class='{{segment.attributes.res_icon}}'></i>
+	{% endif %}
+	
 	{%if segment.attributes.res_title %}<span>{{segment.attributes.res_title}}</span>{% endif %}
+	
 	</button>
 	
 	{% endset %}
@@ -89,7 +96,7 @@
 
 {%- if segment.attributes.sticky or html|trim %}
     
-		{% set box_class = "g-container layout-" ~boxed %}
+	{% set box_class = "g-container layout-" ~boxed %}
 	
     {% set html %}
         <div class="{{box_class|raw}}">{{ html|raw }}</div>
@@ -99,6 +106,8 @@
     
 		{% set attr_class = attr_class ? ' class="' ~ attr_class|trim ~ '"' %}
 
+		{% if (segment.attributes.offpage==1) %}<div class='g-float-element'>{% endif %}
+
 		{{ resbutton|raw }}
 
 		<{{ tag_type }} 
@@ -107,6 +116,8 @@
 			{% if styles %} style="{{styles}}" {% endif %} >
 			{{ html|raw }}
 		</{{ tag_type }}>
+
+		{% if (segment.attributes.offpage==1) %}</div>{% endif %}
 
     {%- endset %}
 

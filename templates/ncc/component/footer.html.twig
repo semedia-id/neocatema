@@ -1,0 +1,13 @@
+{%- do gantry.document.addScript(url('gantry-assets://js/main.js'), 10, 'footer') -%}
+
+{% if gantry.config.get('styles.option.devinchrome') -%}
+    {%- do gantry.document.addScript(url('gantry-assets://workspace/js/script.js'), 10, 'footer') -%}
+{% endif %}
+
+{% block page_footer %}
+   {% do gantry.platform.finalize() -%}
+   {{ gantry.scripts('footer')|join("\n")|raw -}}
+	{{ gantry.debugger.render()|raw }}
+{% endblock %}
+
+

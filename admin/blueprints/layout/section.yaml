@@ -32,7 +32,7 @@ form:
             blockcolor:
                 type: input.checkbox
                 label: Block Color
-                default: true
+                default: false
 
             variations:
                 type: input.section-variations
@@ -58,27 +58,35 @@ form:
 
             disable_grid:
                 type: input.checkbox
-                label: Disable Grid
+                label: No Grid
+                default: false
+
+            disable_container:
+                type: input.checkbox
+                label: No Container
                 default: false
 
             disable_sizes:
                 type: input.checkbox
-                label: Flush sizes
+                label: No sizes
                 default: false
 
             disable_gcontent:
                 type: input.checkbox
-                label: Flush g-content
+                label: No g-content
                 default: false
 
             offpage:
                 type: input.checkbox
                 label: Outside Page
                 default: false
-            
-            custom_style:
-                type: textarea.textarea
+
+            css:
+                type: collection.keyvalue
                 label: CSS Style
+                description: CSS Styles.
+                key_placeholder: Key (--name, css, ...)
+                value_placeholder: Value
 
         _tab_title2:
           label: Responsive
@@ -98,13 +106,15 @@ form:
             res_position:
                 type: select.selectize
                 label: Off-Canvas
-                default: left
+                default: right
                 options:
                     'pos-left': Left
                     'pos-right': Right
-                    'pos-fixed-left': Fixed Left
-                    'pos-fixed-right': Fixed Right
 
+            res_swipe:
+                type: input.checkbox
+                label: Swipeable
+                
             res_animation:
                 type: select.selectize
                 label: Animation
@@ -113,26 +123,27 @@ form:
                     slide: slide
                     h-flip: h-flip
 
-            res_icon:
+            ctl_icon:
                 type: input.icon
                 label: Toggle Icon
                 default: fa fa-bars
 
-            res_icon_w:
+            ctl_image:
+                type: input.imagepicker
+                label: Toggle Image
+
+            ctl_w:
                 type: input.text
                 label: Icon Width
                 default: 3rem
 
-            res_icon_h:
+            ctl_h:
                 type: input.text
                 label: Icon Height
                 default: 3rem 
                 
-            res_title:
+            ctl_title:
                 type: input.text
                 label: Text
                 placeholder: Icon Text
 
-            res_swipe:
-                type: input.checkbox
-                label: Swipeable

@@ -1,0 +1,9 @@
+.block {
+
+	display: block;
+
+	&.left { float: left; }
+	&.right { float: right; }
+
+	> div { float: left; }
+}

@@ -19,6 +19,6 @@ form:
 
     words:
       type: input.text
-      label: words count
+      label: Words count
       default: 29
       

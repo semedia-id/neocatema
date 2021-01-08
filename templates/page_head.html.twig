@@ -1,101 +1,51 @@
 {%- do gantry.debugger.assets() -%}
 {%- do gantry.theme.loadAtoms() -%}
 
-{% assets with { priority: 10 } %}
-    {% block head_stylesheets -%}
-
-        {% if gantry.config.page.fontawesome.enable|default(1) %}
-            <link href="gantry-assets://css/font-awesome.min.css" type="text/css" rel="stylesheet">
-        {% endif %}
-
-		<link href="gantry-assets://css/ncc-icon.css" type="text/css" rel="stylesheet">
-
-		{% for scss in gantry.theme.configuration.css.persistent|default(gantry.theme.configuration.css.files) %}
-        <link href="{{ scss }}.scss" type="text/css" rel="stylesheet" >
-        {%- endfor %}
-    {% endblock -%}
-
-    {% block head_platform %}{% endblock %}
-
-    {% block head_overrides -%}
-        {% for scss in gantry.theme.configuration.css.overrides %}
-        <link rel="stylesheet" href="{{ scss }}.scss" type="text/css"/>
-        {%- endfor %}
-    {% endblock -%}
-	
-
-{% endassets -%}
-
 <head>
-    {{ gantry.document.getHtml('head_top')|join("\n    ")|raw }}
 
-    {% block head_meta %}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        {% if gantry.config.page.head.meta -%}
-            {% for attributes in gantry.config.page.head.meta -%}
-                {%- for key, value in attributes %}
-                    {% if key starts with 'og:' %}
-                    <meta property="{{ key|e }}" content="{{ value|e }}" />
-                    {% else %}
-                    <meta name="{{ key|e }}" content="{{ value|e }}" />
-                    {% endif %}
-                {% endfor -%}
-            {%- endfor -%}
-        {%- endif -%}
-        {{ gantry.document.getHtml('head_meta')|join("\n    ")|raw }}
+{{ gantry.document.getHtml('head_top')|join("\n    ")|raw }}
 
-        {% if gantry.config.page.assets.favicon %}
-        <link rel="icon" type="image/x-icon" href="{{ url(gantry.config.page.assets.favicon) }}" />
-        {% endif %}
-
-        {% if gantry.config.page.assets.touchicon %}
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ url(gantry.config.page.assets.touchicon) }}">
-        <link rel="icon" sizes="192x192" href="{{ url(gantry.config.page.assets.touchicon) }}">
-        {% endif %}
-    {% endblock %}
-
-    {%- block head_title -%}
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>Title</title>
-    {%- endblock %}
-
-
-    {% set ncc_head %}
-
-		{% include "partials/font-preload.html.twig" %}
+{%- block head_title -%}
+{%- endblock %}
 	
-	{% endset %}
+{% block head_meta %}
+{% endblock %}
+{{ gantry.document.getHtml('head_meta')|join("\n    ")|raw }}	
 
+{%- block head_links -%}
+{%- endblock %}
 
-	{% do gasvara('ncc_head',ncc_head|stripper) %}
-	
-	{{ config.gas.ncc_head|join('\n')|stripper|raw }}
+{% block head_styles -%}
+{%- endblock %}
 
-    {% block head_application -%}
-        {{ gantry.styles('head')|join("\n")|raw }}
-        {{ gantry.scripts('head')|join("\n")|raw }}
-    {%- endblock %}
+{% block head_application -%}
+{%- endblock %}
 
-    {% block head_ie_stylesheets -%}
-        <!--[if (gte IE 8)&(lte IE 9)]>
-        <script type="text/javascript" src="{{ url('gantry-assets://js/html5shiv-printshiv.min.js') }}"></script>
-        <link rel="stylesheet" href="{{ url('gantry-engine://css/nucleus-ie9.css') }}" type="text/css"/>
-        <script type="text/javascript" src="{{ url('gantry-assets://js/matchmedia.polyfill.js') }}"></script>
-        <![endif]-->
-    {% endblock -%}
+{#
 
-    {% block head %}
-	{% endblock %}
+{{ gantry.styles('head')|join("\n")|raw }}
+{{ gantry.scripts('head')|join("\n")|raw }}
 
+#}
 
-    {% block head_custom %}
-        {% if gantry.config.page.head.head_bottom %}
-        {{ gantry.config.page.head.head_bottom|raw }}
-        {% endif %}
-    {% endblock %}
+{% block head %}
+{% endblock %}
 
-    {{ gantry.document.getHtml('head_bottom')|join("\n    ")|raw }}
+{% block head_ie_stylesheets -%}
+    <!--[if (gte IE 8)&(lte IE 9)]>
+    <script type="text/javascript" src="{{ url('gantry-assets://js/html5shiv-printshiv.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url('gantry-engine://css/nucleus-ie9.css') }}" type="text/css"/>
+    <script type="text/javascript" src="{{ url('gantry-assets://js/matchmedia.polyfill.js') }}"></script>
+    <![endif]-->
+{% endblock -%}
+
+{% block head_custom %}
+    {% if gantry.config.page.head.head_bottom %}
+    {{ gantry.config.page.head.head_bottom|raw }}
+    {% endif %}
+{% endblock %}
+
+{{ gantry.document.getHtml('head_bottom')|join("\n    ")|raw }}
 
 
 

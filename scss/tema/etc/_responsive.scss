@@ -1,3 +1,6 @@
+/*
+
+
 @mixin touch-alike {
 
     box-shadow: 0 0 8px var(--light3);
@@ -71,7 +74,7 @@
 }
 
 
-/*
+
 [data-responsive-position='fixed right'] {
 
 	.res-content.responsive-block {
@@ -103,7 +106,6 @@
 
 }
 
-*/
 
 @mixin menucan-responsive {
 
@@ -164,29 +166,4 @@
 
 }
 
-
-.res-ctl {
-
-    &:hover {
-        text-shadow: 0 0 3px #000;
-        box-shadow: none;
-        border:none;
-    }
-
-	display: none;
-	background: transparent;
-	border: none;
-	outline: none;
-	color: var(--t);
-	font-size: calc(var(--ctl-height) / 2);
-    width: var(--ctl-width);
-    height: 100%;
-
-	.desktop & {
-		display: initial;
-	}
-
-	@include breakpoint(mobile-only) {
-		display: initial;
-	}
-}
+*/

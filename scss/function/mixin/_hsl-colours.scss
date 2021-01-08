@@ -1,24 +1,3 @@
-@function get-hsl-var($var, $mod:() ) {
-
-	$dh: unquote('var(--#{$var}-h)');
-	$ds: unquote('var(--#{$var}-s)');
-	$dl: unquote('var(--#{$var}-l)');
-
-
-
-	@if map-get($mod,'h') { $dh: #{map-get($mod,'h')} }
-	@if map-get($mod,'s') { $ds: #{map-get($mod,'s')} }
-	@if map-get($mod,'l') { $dl: #{map-get($mod,'l')} }
-
-	@if map-get($mod,'ah') { $dh: calc(var(--#{$var}-h) + #{map-get($mod,'ah')}) }
-	@if map-get($mod,'as') { $ds: calc(var(--#{$var}-s) + #{map-get($mod,'as')}) }
-	@if map-get($mod,'al') { $dl: calc(var(--#{$var}-l) + #{map-get($mod,'al')}) }
-
-	@return #{unquote('hsl(#{$dh},#{$ds},#{$dl})')};
-
-}
-
-
 @mixin hsl-var-color($var,$val) {
 
 	$w: 95%;

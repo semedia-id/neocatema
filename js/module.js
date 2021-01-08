@@ -1,4 +1,4 @@
-/* Compile Time: 01/02/21 23:20:41 */
+/* Compile Time: 01/06/21 10:32:13 */
 /*
  * gas.js -- for Gakeun.js on ncc Grav theme
  *
@@ -848,6 +848,8 @@ function cssvar_hsl(what,h,s,l) { return "--"+what+":hsl("+h+","+percent(s)+","+
 function trim(x) { return x.replace(/^\s+|\s+$/g, ''); }
 function safe_str(x) { return x.replace(/^\s+|\s+$|\W/g, '').toLowerCase(); }
 function quote(text) { return '"'+text.replace(/\"/ig,"'")+'"'; }
+function gn_toggle(ele,classes) { gas(ele).toggleClass(classes); }
+
 /* ------ module/ajax-form.js ------*/
 
 function gn_ajaxform(qform,qresult) {
@@ -1016,7 +1018,7 @@ function ncc_scroll_element(el,top,targetY=0) {
 		var scroll = this.scrollY;
 		if (scroll > top) {
 			var pinned = true;
-			console.log('y=',scroll);
+			//console.log('y=',scroll);
 		} else {
 			var pinned = false;
 		}
@@ -1056,6 +1058,15 @@ function ncc_fixtop_init() {
 		gt_shadow.classList.add('fix-a-top-shadow-adjust');
         body = document.querySelector('body');
 		body.prepend(gt_shadow);
+		
+		window.addEventListener('scroll', (event) => {
+			var scroll = this.scrollY;
+			if (scroll <= sh) {
+				gas('body').addClass('at-top')
+			} else {
+				gas('body').removeClass('at-top')
+			}
+		});			
 		
 	})
 
@@ -1118,6 +1129,11 @@ function responsiveControler() {
 	document.querySelectorAll('.res-ctl').forEach( function(el) {
 
 		var block = el.closest('.g-block')
+		
+		if (!block) {
+			var block = el.closest('div');
+		}
+
 		gas(block).cssvar('ctl-width', gas(el).data('ctl-width') );
 		gas(block).cssvar('ctl-height', gas(el).data('ctl-height') );
 		if ( gas(el).data('responsive') )  { gas(block).addClass('desktop'); }
@@ -1149,6 +1165,9 @@ function responsiveControler() {
 			});
 		}
 		
+		if ( gas(el).data('fwdock') ) {
+			gas(block).addClass('responsive-dock');
+		}
 		
 		if ( gas(el).data('position') ) {
 			gas('body').data('responsive-position',gas(el).data('position'));

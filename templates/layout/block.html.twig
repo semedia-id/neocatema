@@ -10,8 +10,10 @@
 	{% if segment.children %}
         {% for segment in segments %}
             {% if segment.content %}
+				::INI::
 				{{ segment.content|raw }}
             {% else %}
+				::ATAU::
                 {% include [
 						'content/' ~ segment.type ~ '.html.twig', 
 						'layout/' ~ segment.type ~ '.html.twig'

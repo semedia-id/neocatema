@@ -9,7 +9,7 @@ use RocketTheme\Toolbox\Event\Event;
 
 use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
 
-class Neoca extends Theme
+class Neocatema extends Theme
 {
     public $gantry = '5.4.0';
 
@@ -150,7 +150,7 @@ class Neoca extends Theme
 		if (! file_exists($tdir) ) { mkdir($bdir); }
 		
 		$pdir = $locator('user://')."/data/gantry5/themes/$theme_name/particles";
-		if (! file_exists($pdir) ) { mkdir($pdir); }
+		if (! file_exists($pdir) ) { mkdir($pdir,0755,true); }
 
         $this->grav['twig']->twig_paths[] = $locator('user://templates');
     }

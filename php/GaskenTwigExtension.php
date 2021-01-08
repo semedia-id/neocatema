@@ -25,6 +25,7 @@ class GaskenTwigExtension extends \Twig_Extension
             new \Twig_SimpleFilter('fileget', [$this, 'fileget']),
 			new \Twig_SimpleFilter('file_exists', [$this, 'file_is_exist']),
 			new \Twig_SimpleFilter('stripper', [$this, 'stripper_func']),			
+			new \Twig_SimpleFilter('nodupe', [$this, 'unique_array']),
 		];
     }
 
@@ -35,17 +36,81 @@ class GaskenTwigExtension extends \Twig_Extension
             new \Twig_SimpleFunction('fileget', [$this, 'fileget']),
 			new \Twig_SimpleFilter('file_exists', [$this, 'file_is_exist']),
             new \Twig_SimpleFunction('randomwords', [$this, 'randomwords']),
-            new \Twig_SimpleFunction('gasvara', [$this, 'gasvar_array_func']),
+            
+			new \Twig_SimpleFunction('gasvara', [$this, 'gasvar_array_func']),
+            new \Twig_SimpleFunction('to_array', [$this, 'to_array']),
+			
+			new \Twig_SimpleFunction('stringken', [$this, 'ncc_stringken']),
+			
+			new \Twig_SimpleFunction('gas_add_link', [$this, 'gas_add_link']),
+            new \Twig_SimpleFunction('gas_link', [$this, 'gas_link']),
+			
+			
         ];
     }
 
+	public function ncc_stringken($array, $delim=' ') {
+		
+		if (! is_array($array) ) { $array = explode($delim,$array); }
+		array_filter($array);
+		sort($array);
+		return trim(join($delim,array_unique($array)),$delim);
+	}
+	
+	public function gas_add_link($href,$type="text/css",$rel="stylesheet")
+	{
+		$coba = Grav::instance();
+		$gas = $coba['config']['gas'];
+		
+		if (!isset($gas['link'])) {
+			$gas['link']=[];
+		}
+		
+		$entry['href']=$href;
+		$entry['type']=$type;
+		$entry['rel']=$rel;
+		
+		array_push($gas['link'],$entry);
+		$coba['config']['gas'] = $gas;
+		
+	}
+	
+	public function gas_link($void='') {
+
+		$coba = Grav::instance();
+		$gas = $coba['config']['gas'];
+		$str = "";
+		foreach ($gas['link'] as $i) {
+			$str .= '<link rel="'.$i['rel'].'" href="'.$i['href'].'" type="'.$i['type'].'">'."\n";
+		}
+		
+		return $str;
+	}
+	
+	public function unique_array($array) 
+	{
+		array_filter($array);
+		sort($array);
+		return array_unique($array);
+	
+	}
+	
 	public function file_is_exist($path) {
-		echo 'masuk=$path';
 		if (file_exists($path)) {
 			return true;
 		} else {
 			return false;
 		}
+	}
+	
+	public function to_array($stdClassObject) 
+	{
+		$response = array();
+		foreach ($stdClassObject as $key => $value) {
+			$response[$key]= $value;
+		}
+		ksort($response);
+		return $response;		
 	}
 	
 	public function stripper_func($string,$compress=false)
@@ -107,6 +172,8 @@ class GaskenTwigExtension extends \Twig_Extension
     public function filedir($path='',$pattern='*')
     {
 
+		$path = preg_replace("#".GRAV_ROOT."#","",$path);
+		
 		if (Utils::startsWith($path, '/')) {
 			$path = GRAV_ROOT . $path.'/';
 		} else {

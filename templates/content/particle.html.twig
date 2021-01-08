@@ -11,7 +11,6 @@
     {% endif %}
 
     {% set html %}
-		ini-par: {{ options|print_r }}
         {% if enabled and (segment.attributes.enabled is null or segment.attributes.enabled) %}
             {% include ['particles/' ~ segment.subtype ~ '.html.twig',
 				'@particles/' ~ segment.subtype ~ '.html.twig',

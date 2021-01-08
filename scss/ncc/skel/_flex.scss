@@ -5,9 +5,7 @@
 	&.easy {
 		flex-direction: row;
 		flex-wrap: wrap;
-		width: 100%;
 
-		> * { margin-right: 1em }
 	}
 
 	&.row { flex-direction: row; }
@@ -17,14 +15,25 @@
 
 	&.top { align-items: start; }
 	&.middle { align-items: center; }
-	&.bottom { align-items: end; }
+	&.bottom { align-items: flex-end; }
 	&.left { justify-content: start; }
 	&.center { justify-content: center; }
-	&.right { justify-content: end; }
+	&.right { justify-content: flex-end; }
 	&.between { justify-content: space-between; }
 	&.evenly { justify-content: space-evenly; }
 
 	&.shrink,.shrink { flex-shrink: 1 }
 	&.grow,.grow { flex-grow: 1; max-width: 100%; }
 
+}
+
+.g-block,
+.g-grid {
+	flex-wrap: wrap;
+	align-items: flex-start;
+	display: flex;
+}
+
+.g-block {
+	@extend .flex;
 }

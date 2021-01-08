@@ -4,6 +4,11 @@ function responsiveControler() {
 	document.querySelectorAll('.res-ctl').forEach( function(el) {
 
 		var block = el.closest('.g-block')
+		
+		if (!block) {
+			var block = el.closest('div');
+		}
+
 		gas(block).cssvar('ctl-width', gas(el).data('ctl-width') );
 		gas(block).cssvar('ctl-height', gas(el).data('ctl-height') );
 		if ( gas(el).data('responsive') )  { gas(block).addClass('desktop'); }
@@ -35,6 +40,9 @@ function responsiveControler() {
 			});
 		}
 		
+		if ( gas(el).data('fwdock') ) {
+			gas(block).addClass('responsive-dock');
+		}
 		
 		if ( gas(el).data('position') ) {
 			gas('body').data('responsive-position',gas(el).data('position'));

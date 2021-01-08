@@ -77,8 +77,13 @@ form:
 
             responsive:
               type: input.checkbox
-              label: Responsive 
+              label: Desktop Responsive 
               default: 0
+
+            responsive_dock:
+              type: input.checkbox
+              label: Dock Full Width 
+              default: 1
             
             menu_width:
                 type: input.text

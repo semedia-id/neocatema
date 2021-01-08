@@ -1,17 +1,19 @@
 #gn-branding {
 
 	display: flex;
-
+    height:100%;
+    padding-right: 1rem;
 	a {
 		border: none; outline: none;
+		&:hover { text-decoration: none; }
 		position: relative;
-		@include flex-div(row, center, flex-start);
+		@include flex-div(row, center, center);
 		color: var(--text);
 	}
 
 	.site-logo {
 
-		@include flex-div(row, center, center);
+		@include flex-div(row, center, flex-start);
 
 		flex-shrink: 1;
 
@@ -27,15 +29,17 @@
 	}
 
 	.wrapper {
-		@include flex-div(column,start,center,initial);
+		@include flex-div(column,center,flex-center,initial);
 		flex: 1 0;
 		font-weight: 300;
 		line-height: 1.2;
 
 		.site-title {
 			font-weight: 600;
-			margin: 0 0 .125rem 0;
-			font-size: var(--font-size);
+			display:inline-block;
+			font-size: 1.1rem;
+			padding-top: .75rem;
+			color: var(--t);
 
 			small {
 				display:block;
@@ -52,10 +56,10 @@
 
 	@include breakpoint(mobile-only) {
 		.wrapper { display: none; }
+		nav.menucan {
+			width: 100%;
+		}
 	}
 }
 
 
-.dark-scheme .site-logo {
-	filter: invert(1);
-}

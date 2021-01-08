@@ -108,7 +108,7 @@
             {% if item.url %}
 				<a class="nav-item-container{{ item.anchor_class ? ' ' ~ item.anchor_class }}" href="{{ item.url }}{{ item.hash }}"{{ (title ~ label ~ target ~ rel ~ linkAttributes)|raw }}>
             {% else %}
-				<div class="nav-item-container{{ item.anchor_class ? ' ' ~ item.anchor_class }}" data-g-menuparent=""{{ label|raw }}>
+				<span class="nav-item-container{{ item.anchor_class ? ' ' ~ item.anchor_class }}" data-g-menuparent=""{{ label|raw }}>
 			{% endif %}
                 {% if item.image %}
                     <span class='nav-item-image'><img src="{{ url(item.image) }}" alt="{{ item.title }}" /></span>
@@ -143,7 +143,7 @@
                         {%- endif %}
                 {% endif %}
             {% if item.url %}</a>
-            {% else %}</div>{% endif %}
+            {% else %}</span>{% endif %}
             {% if (item.children) -%}
                 {{ self.displaySubmenu(item, menu, context, dropdown_type, menu_animation ) }}
             {%- endif %}
@@ -193,6 +193,7 @@
 	{% set button_data = ''
 		~ (particle.icon_height ? " data-ctl-height='" ~ particle.icon_height~"'")
 		~ " data-ctl-width='" ~ (particle.icon_width ? particle.icon_width: particle.icon_height)~"'" 
+		~ (particle.responsive_dock ? " data-fwdock=1") 
 		~ (particle.responsive ? " data-responsive=1") 
 
 	%}
@@ -211,6 +212,7 @@
 		class='res-ctl naked'
 		aria-label='toggle menu'
 		{{button_data|raw}}
+		
 		data-target='#{{ id }}-particle'>
 		<i class="on {{particle.icon}}"></i>
 	</button>

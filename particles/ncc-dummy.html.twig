@@ -1,7 +1,4 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
-
-{% block particle %}
-
-{{ randomwords(particles.words) }}
-
-{% endblock %}
+{%- block particle %}
+{{ randomwords(particle.words)|trim }}
+{% endblock -%}

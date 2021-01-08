@@ -1,0 +1,26 @@
+{% set fonts = [] %}
+
+{% if gantry.config.page.fontawesome.enable|default(1) %}
+	{% set fonts = fonts|merge(['gantry-assets://fonts/fontawesome-webfont']) %}
+{% endif %}
+		
+{% for ft in gantry.theme.configuration.fonts %}
+	{% for f in ft %}
+		{% set fonts = fonts|merge([f]) %}
+	{% endfor %}
+{% endfor %}
+
+{% for font in fonts %}
+	{% set f = font|replace({'gantry-theme://':gantry.theme.path~'/'}) %}
+	{% if file_exists(f~'.woff2') %}
+		<link href="{{font}}.woff2" as='font' type="font/woff2" crossorigin rel='prefetch'>
+	{% elseif file_exists(f~'.woff') %}
+		<link href="{{font}}.woff" as='font' type="font/woff" crossorigin rel='prefetch'>
+	{% elseif file_exists(f~'.eot')|file_exist %}
+		<link href="{{font}}.eot" as='font' type="font/eot" crossorigin rel='prefetch'>
+	{% elseif file_exists(f~'.ttf') %}
+		<link href="{{font}}.ttf" as='font' type="font/ttf" crossorigin rel='prefetch'>
+	{% endif %}
+{% endfor %}
+
+	

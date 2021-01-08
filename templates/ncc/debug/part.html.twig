@@ -1,0 +1,20 @@
+<!-- needed fields:
+	
+	tag
+
+-->
+
+<li>type: {{segment.type}} -> 	
+	<ul>
+		<li>subtype={{segment.subtype}}</li>
+		<li>id={{segment.id}}</li>
+		<li>attribute:{% include 'ncc/debug/attr.html.twig' with {'segment':segment} %}</li>
+		{% if segment.children %}
+		<li>Children:
+			{%- for segment in segment.children -%}
+			<ul>{% include 'ncc/debug/part.html.twig' with {'segment':segment} %}</ul>
+			{% endfor %}
+		</li>
+		{% endif %}			
+	</ul>
+</li>

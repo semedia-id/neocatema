@@ -2,6 +2,11 @@
 
 	--#{$var}: #{$val};
 
+	// so default is not red
+	@if $var == background {
+		--color:#{$val};
+	}
+	
 	@if $var == shade or $var == border
 		or $var== shadow or $var == light {
 

@@ -1,0 +1,44 @@
+.g-container {
+	margin: 0;
+	width: 100%; 
+	
+	&.layout-1 {
+		width: 100%;
+		@include breakpoint(large-desktop-range) {
+			padding: 0 calc((100% - #{$breakpoints-large-desktop-container}) / 2);
+		}
+
+		@include breakpoint(desktop-range) {
+			padding: 0 calc((100% - #{$breakpoints-desktop-container}) / 2);
+		}
+
+	}
+	
+	
+	&.layout-2 {
+		margin: 0 auto;
+		width: $breakpoints-large-desktop-container;
+
+		.fix-at-top { width: $breakpoints-large-desktop-container; }
+
+	}
+
+}	
+
+
+
+/*
+.g-grid
+.g-block {
+	outline: 1px solid green;
+}
+
+.g-content {
+	outline: 1px solid purple;
+}
+
+#g-offcanvas {
+	background: #ccc;
+}
+
+*/

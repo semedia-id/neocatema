@@ -3,3 +3,5 @@
 bin/*
 .sass-cache/
 .sass-cache/*
+workspace/gempita/*
+images/*
