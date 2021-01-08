@@ -2,10 +2,10 @@
 {%- set id = segment.attributes.id ? : 'g-' ~ segment.id -%}
 
 {% set options = {
-	'gsize': ( segment.attributes.disable_sizes ? false : true ),
-	'ggrid': (segment.attributes.disable_grid ? false : true ),
-	'gcontent': (segment.attributes.disable_gcontent ? false : true )
-	}
+    'gsize': ( segment.attributes.disable_sizes ? false : true ),
+    'ggrid': (segment.attributes.disable_grid ? false : true ),
+    'gcontent': (segment.attributes.disable_gcontent ? false : true )
+    }
 %}
 
 
@@ -23,16 +23,16 @@
 {%set styles = '' %}
 
 {% for line in segment.attributes.css %}
-	{% for var,val in line %}
-		{% set styles = styles ~ var~":"~val~";" %}
-	{% endfor %}
+    {% for var,val in line %}
+        {% set styles = styles ~ var~":"~val~";" %}
+    {% endfor %}
 {% endfor %}
 
 {% set styles = styles ~ (segment.attributes.background_color ? '--color:'~segment.attributes.background_color)~';' %}
 
 {%- if segment.attributes.responsive -%}
-	{% set styles = styles ~ (segment.attributes.ctl_w ? '--ctl-w:'~segment.attributes.ctl_w)~';' %}
-	{% set styles = styles ~ (segment.attributes.ctl_h ? '--ctl-h:'~segment.attributes.ctl_h)~';' %}
+    {% set styles = styles ~ (segment.attributes.ctl_w ? '--ctl-w:'~segment.attributes.ctl_w)~';' %}
+    {% set styles = styles ~ (segment.attributes.ctl_h ? '--ctl-h:'~segment.attributes.ctl_h)~';' %}
 {% endif %}
 
 {% set styles = stringken(styles,';') %}
@@ -43,52 +43,52 @@
 
 {%- if segment.attributes.responsive -%}
 
-	{% set button_attr = '' %}
-	{% set button_attr = button_attr ~ (segment.attributes.res_animation ? ' data-anim="'~segment.attributes.res_animation~'"') %}
-	{% set button_attr = button_attr ~ (segment.attributes.res_position ? ' data-position="'~segment.attributes.res_position~'"') %}
+    {% set button_attr = '' %}
+    {% set button_attr = button_attr ~ (segment.attributes.res_animation ? ' data-anim="'~segment.attributes.res_animation~'"') %}
+    {% set button_attr = button_attr ~ (segment.attributes.res_position ? ' data-position="'~segment.attributes.res_position~'"') %}
 
-	{%- set button_responsive -%}
+    {%- set button_responsive -%}
 
-		<button class='toggle res-ctl' {{ button_attr }}>
-		{% if segment.attributes.ctl_image %}
-			<img src='{{ segment.attributes.ctl_image }}'>
-		{% else %}
-			<i class='{{ segment.attributes.ctl_icon }}'></i>
-		{% endif %}
-			<span class='ctl-title'>{{ segment.attributes.res_title }}BTN</span>
-		</button>
-	
-	{% endset %}
+        <button class='toggle res-ctl' {{ button_attr }}>
+        {% if segment.attributes.ctl_image %}
+            <img src='{{ segment.attributes.ctl_image }}'>
+        {% else %}
+            <i class='{{ segment.attributes.ctl_icon }}'></i>
+        {% endif %}
+            <span class='ctl-title'>{{ segment.attributes.res_title }}BTN</span>
+        </button>
+
+    {% endset %}
 
 {% endif %}
 
 {%- set html %}
-	{% if segment.children %}
-		{%- for segment in segment.children -%}
-			{% include 'layout/'~segment.type~'.html.twig' with {'segment':segment,'options':options} %}
-		{% endfor %}
-	{% endif %}			
+    {% if segment.children %}
+        {%- for segment in segment.children -%}
+            {% include 'layout/'~segment.type~'.html.twig' with {'segment':segment,'options':options} %}
+        {% endfor %}
+    {% endif %}
 {% endset -%}
 
 {% set boxed = segment.attributes.boxed ? segment.attributes.boxed : gantry.config.page.body.layout.sections %}
 
 {% if (segment.attributes.offpage==1) %}<div class='g-float-element'>{% endif %}
-		
-<{{ tag }} id="{{id|raw}}" 
-	{% if class|trim %}class="{{class|raw}}"{%endif%}
-	{% if styles|trim %}style="{{styles|raw}}"{%endif%} 
-	{{ tag_attr|raw }} 
-	g-type="{{segment.type}}">
-	
-	
-	{{ button_responsive|raw }}
 
-	<div class="g-container layout-{{boxed}}">	
-	
-	{{html|raw}}
+<{{ tag }} id="{{id|raw}}"
+    {% if class|trim %}class="{{class|raw}}"{%endif%}
+    {% if styles|trim %}style="{{styles|raw}}"{%endif%}
+    {{ tag_attr|raw }}
+    g-type="{{segment.type}}">
 
-	</div>
-	
+
+    {{ button_responsive|raw }}
+
+    <div class="g-container layout-{{boxed}}">
+
+    {{html|raw}}
+
+    </div>
+
 </{{tag}}>
 
 {% if (segment.attributes.offpage==1) %}</div>{% endif %}

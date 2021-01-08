@@ -2,13 +2,13 @@
 
 {% block content %}
 
-{% include 'partials/article.html.twig' 
-	with {
-		'blog':page.parent, 
-		'truncate': false, 
-		'show_date': page.parent.header.content.show_date,
-		'show_prev_next': page.parent.header.content.show_prev_next 
-	}
+{% include 'partials/article.html.twig'
+    with {
+        'blog':page.parent,
+        'truncate': false,
+        'show_date': page.parent.header.content.show_date,
+        'show_prev_next': page.parent.header.content.show_prev_next
+    }
 %}
 
 

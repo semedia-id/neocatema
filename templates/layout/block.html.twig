@@ -7,7 +7,7 @@
 {%- set c_array = c_array| merge([(segment.attributes.blockcolor ? 'bg')]) -%}
 
 {%- if options.gsize %}
-	{% set c_array = c_array| merge(['size-'~segment.attributes.size]) -%}
+    {% set c_array = c_array| merge(['size-'~segment.attributes.size]) -%}
 {% endif -%}
 
 {% set class = stringken(c_array) %}
@@ -15,9 +15,9 @@
 {%set styles = '' %}
 
 {% for line in segment.attributes.css %}
-	{% for var,val in line %}
-		{% set styles = styles ~ var~":"~val~";" %}
-	{% endfor %}
+    {% for var,val in line %}
+        {% set styles = styles ~ var~":"~val~";" %}
+    {% endfor %}
 {% endfor %}
 
 {% set styles = styles ~ (segment.attributes.background_color ? '--color:'~segment.attributes.background_color)~';' %}
@@ -25,31 +25,31 @@
 {% set styles = stringken(styles,';') %}
 
 {% set html %}
-	{% if segment.children %}
-		{%- for segment in segment.children -%}
+    {% if segment.children %}
+        {%- for segment in segment.children -%}
             {#
-			{% if segment.content %}
-				{% set gantry_content = segment.content|raw %}
-				{%- if options.gcontent==false %}
-					{{ gantry_content|replace({'g-content ':'','g-content':''})|raw }}
-				{% else %}
-					{{ gantry_content | raw }}
-				{% endif -%}
+            {% if segment.content %}
+                {% set gantry_content = segment.content|raw %}
+                {%- if options.gcontent==false %}
+                    {{ gantry_content|replace({'g-content ':'','g-content':''})|raw }}
+                {% else %}
+                    {{ gantry_content | raw }}
+                {% endif -%}
             #}
-				{% include [
-					'content/' ~ segment.type ~ '.html.twig', 
-					'layout/'~segment.type~'.html.twig',
-				] with {'segment':segment,'options':options} %}
+                {% include [
+                    'content/' ~ segment.type ~ '.html.twig',
+                    'layout/'~segment.type~'.html.twig',
+                ] with {'segment':segment,'options':options} %}
 
-		{% endfor %}
-	{% endif %}			
+        {% endfor %}
+    {% endif %}
 {% endset %}
 
 
 {% if html|trim %}
-	<div id="{{id}}" 
-		{% if styles|trim %}style="{{styles|raw}}"{%endif%} 		
-		class="g-block {{ class|raw }}">
-		{{ html|raw }}
-	</div>
+    <div id="{{id}}"
+        {% if styles|trim %}style="{{styles|raw}}"{%endif%}
+        class="g-block {{ class|raw }}">
+        {{ html|raw }}
+    </div>
 {% endif %}

@@ -1,7 +1,7 @@
 {% extends [
-	'module-chrome/' ~ style ~ '.html.twig', 
-	'module-chrome/gantry.html.twig'
-	] %}
+    'module-chrome/' ~ style ~ '.html.twig', 
+    'module-chrome/gantry.html.twig'
+    ] %}
 
 {% set id = segment.id ?: segment.type ~ '-' ~ rand(1000, 9999) %}
 {% set chrome = segment.chrome %}
@@ -21,11 +21,11 @@
         '/content/' ~ segment.type ~ '.html.twig',
         '/content/unknown.html.twig']
         with { segment: {
-			id: id, 
-			type: segment.type, 
-			subtype: segment.options.type, 
-			options: segment.options, 
-			attributes: segment.options.attributes 
-			}} %}
+            id: id, 
+            type: segment.type, 
+            subtype: segment.options.type, 
+            options: segment.options, 
+            attributes: segment.options.attributes 
+            }} %}
     {% endif %}
 {% endblock %}

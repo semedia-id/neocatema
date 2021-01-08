@@ -1,12 +1,12 @@
 <ul>
 {% for attr,value in to_array(options) -%}
-	{% if value is iterable %}
-		{% set res = value|print_r %}
-	{% else %}
-		{% set res = value %}
-	{% endif %}
+    {% if value is iterable %}
+        {% set res = value|print_r %}
+    {% else %}
+        {% set res = value %}
+    {% endif %}
 
-	<li>{{attr}} = {{res}}</li>
+    <li>{{attr}} = {{res}}</li>
 
 {% endfor %}
 </ul> 

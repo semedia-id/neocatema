@@ -1,29 +1,29 @@
 {% set subtype = segment.subtype|default(segment.type) %}
 {% set enabled = gantry.config.get('particles.' ~ subtype ~ '.enabled', 1) %}
 
-	
+
 {% if enabled and (segment.attributes.enabled is null or segment.attributes.enabled) %}
-	
-	{% if subtype == 'content' %}
-		{%- set c_array = (segment.attributes.class? segment.attributes.class: ['']) -%}	
-		{%- if options.gcontent %}
-			{% set c_array = c_array| merge(['g-content']) -%}
-		{% endif -%}
 
-		{% set class = stringken(c_array) %}
-		{% set html = content|raw %}
-	
-	{% elseif subtype == 'messages' %}
+    {% if subtype == 'content' %}
+        {%- set c_array = (segment.attributes.class? segment.attributes.class: ['']) -%}
+        {%- if options.gcontent %}
+            {% set c_array = c_array| merge(['g-content']) -%}
+        {% endif -%}
 
-		{% set class = "g-system-messages" %}
-		{% set html = gantry.platform.displaySystemMessages()|raw %}
-		
-	{% endif %}
+        {% set class = stringken(c_array) %}
+        {% set html = content|raw %}
+
+    {% elseif subtype == 'messages' %}
+
+        {% set class = "g-system-messages" %}
+        {% set html = gantry.platform.displaySystemMessages()|raw %}
+
+    {% endif %}
 
 {% endif %}
 
 {% if html|trim %}
-	<div class="{{class}}">
-		{{ html|raw }}
-	</div>
+    <div class="{{class}}">
+        {{ html|raw }}
+    </div>
 {% endif %}

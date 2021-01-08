@@ -1,13 +1,13 @@
 {% set html %}
-	{% if segment.children %}
-		{%- for segment in segment.children -%}
-			{% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
-		{% endfor %}
-	{% endif %}			
+    {% if segment.children %}
+        {%- for segment in segment.children -%}
+            {% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
+        {% endfor %}
+    {% endif %}
 {% endset %}
 
 {% if html|trim %}
-	<div id='g-offcanvas'>
-	{{ html|raw }}
-	</div>
+    <div id='g-offcanvas'>
+    {{ html|raw }}
+    </div>
 {% endif %}

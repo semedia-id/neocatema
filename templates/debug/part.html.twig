@@ -1,20 +1,20 @@
 <!-- needed fields:
-	
-	tag
+    
+    tag
 
 -->
 
-<li>type: {{segment.type}} -> 	
-	<ul>
-		<li>subtype={{segment.subtype}}</li>
-		<li>id={{segment.id}}</li>
-		<li>attribute:{% include 'layout/debug/attr.html.twig' with {'segment':segment} %}</li>
-		{% if segment.children %}
-		<li>Children:
-			{%- for segment in segment.children -%}
-			<ul>{% include 'layout/debug/part.html.twig' with {'segment':segment} %}</ul>
-			{% endfor %}
-		</li>
-		{% endif %}			
-	</ul>
+<li>type: {{segment.type}} ->     
+    <ul>
+        <li>subtype={{segment.subtype}}</li>
+        <li>id={{segment.id}}</li>
+        <li>attribute:{% include 'layout/debug/attr.html.twig' with {'segment':segment} %}</li>
+        {% if segment.children %}
+        <li>Children:
+            {%- for segment in segment.children -%}
+            <ul>{% include 'layout/debug/part.html.twig' with {'segment':segment} %}</ul>
+            {% endfor %}
+        </li>
+        {% endif %}            
+    </ul>
 </li>

@@ -1,6 +1,6 @@
 {% if not particle %}
-	{% set enabled = gantry.config.get('particles.' ~ segment.type ~ '.enabled', 1) %}
-	{% set particle = gantry.config.getJoined('particles.' ~ segment.type, segment.attributes) %}
+    {% set enabled = gantry.config.get('particles.' ~ segment.type ~ '.enabled', 1) %}
+    {% set particle = gantry.config.getJoined('particles.' ~ segment.type, segment.attributes) %}
 {% endif %}
 
 {% try %}
@@ -12,19 +12,19 @@
         {% endif %}
     {% endset %}
 
-	{%- set c_array = (segment.classes?  segment.classes: ['']) -%}
-	{%- if options.gcontent %}
-		{% set c_array = c_array| merge(['g-content']) -%}
-	{% endif -%}
-	{% set class = c_array|nodupe|join(' ')|trim %}
+    {%- set c_array = (segment.classes?  segment.classes: ['']) -%}
+    {%- if options.gcontent %}
+        {% set c_array = c_array| merge(['g-content']) -%}
+    {% endif -%}
+    {% set class = c_array|nodupe|join(' ')|trim %}
 
     {%- if html|trim %}
-	
-		{% if class != '' %}<div class="{{class}}">{%endif%}
-			{{ html|raw }}
-		{% if class != '' %}</div>{%endif%}
 
-	{% endif %}
+        {% if class != '' %}<div class="{{class}}">{%endif%}
+            {{ html|raw }}
+        {% if class != '' %}</div>{%endif%}
+
+    {% endif %}
 
 {% catch %}
     <div class="alert alert-error"><strong>Error</strong> while rendering {{ segment.subtype|default('position') }}.</div>

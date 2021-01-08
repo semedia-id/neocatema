@@ -3,9 +3,9 @@
 
 {% if segment.children %}
 <ul>
-	{%- for segment in segment.children -%}
-		{% include 'layout/debug/div.html.twig' with {'segment':segment} %}
-	{% endfor %}
+    {%- for segment in segment.children -%}
+        {% include 'layout/debug/div.html.twig' with {'segment':segment} %}
+    {% endfor %}
 </ul>
 
 {% endif %}

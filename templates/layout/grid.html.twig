@@ -1,10 +1,10 @@
 {%- set html -%}
 {%if options.ggrid %}<div class='g-grid'>{%endif%}
 {% if segment.children %}
-	{% for segment in segment.children -%}
-		{% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
-	{% endfor %}
-{% endif %}			
+    {% for segment in segment.children -%}
+        {% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
+    {% endfor %}
+{% endif %}
 {%if options.ggrid %}</div>{%endif%}
 {% endset %}
 

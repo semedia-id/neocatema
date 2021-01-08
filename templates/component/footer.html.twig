@@ -7,7 +7,7 @@
 {% block page_footer %}
    {% do gantry.platform.finalize() -%}
    {{ gantry.scripts('footer')|join("\n")|raw -}}
-	{{ gantry.debugger.render()|raw }}
+    {{ gantry.debugger.render()|raw }}
 {% endblock %}
 
 

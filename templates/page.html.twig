@@ -15,63 +15,63 @@
 {% endset -%}
 
 {%- set page_layout %}
-	{%- for segment in segments if segment.type != 'offcanvas' -%}
-		{% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
-	{% endfor %}
+    {%- for segment in segments if segment.type != 'offcanvas' -%}
+        {% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
+    {% endfor %}
 {% endset -%}
 
 {%- set page_offcanvas %}
-	{%- for segment in segments if segment.type == 'offcanvas' -%}
-		{% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
-	{% endfor %}
+    {%- for segment in segments if segment.type == 'offcanvas' -%}
+        {% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
+    {% endfor %}
 {% endset -%}
 
 
 {%- set page_offpage %}
-	{%- for segment in segments if segment.attributes.offpafe ==1 -%}
-		{% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
-	{% endfor %}
+    {%- for segment in segments if segment.attributes.offpafe ==1 -%}
+        {% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
+    {% endfor %}
 {% endset -%}
 
 {% set boxclass = boxed==2 ? "g-container layout-2": "g-container" %}
 
 {%- block page %}
 
-	<!DOCTYPE {{ gantry.config.page.doctype|default('html')|raw }}>
-	<html {{ gantry.page.htmlAttributes|raw }}>
-	<head>
-	{{ page_header|raw }}
-	</head>
+    <!DOCTYPE {{ gantry.config.page.doctype|default('html')|raw }}>
+    <html {{ gantry.page.htmlAttributes|raw }}>
+    <head>
+    {{ page_header|raw }}
+    </head>
 
     <body{{ gantry.page.bodyAttributes({'class': ['page-'~page.slug(), gantry.page.preset, 'g-style-' ~ gantry.theme.preset]})|raw }}>
 
-	{{ gantry.config.page.body.body_top|raw }}
+    {{ gantry.config.page.body.body_top|raw }}
     {{ body_top|raw }}
 
-	{{ page_offcanvas|raw }}
-	
-	<div id="g-page-surround" class="{{boxclass}}">	
+    {{ page_offcanvas|raw }}
 
-	{{ page_top|raw }}
-	{{ page_layout|raw }}
-	{{ page_bottom|raw }}
-	
-	</div>
+    <div id="g-page-surround" class="{{boxclass}}">
 
-	{% if page_offpage|trim %}
-		<div id="g-offpage">
-		{{ page_offpage|raw }}
-		</div>
-	{% endif %}	
+    {{ page_top|raw }}
+    {{ page_layout|raw }}
+    {{ page_bottom|raw }}
 
-	{{ body_bottom|raw }}
-	{{ gantry.config.page.body.body_bottom|raw }}
+    </div>
+
+    {% if page_offpage|trim %}
+        <div id="g-offpage">
+        {{ page_offpage|raw }}
+        </div>
+    {% endif %}
+
+    {{ body_bottom|raw }}
+    {{ gantry.config.page.body.body_bottom|raw }}
     {{ page_footer|raw }}
 
-	{% block page_inlinescript %}
-		<script>{{ config.gas.inline_js|sort|join('\n')|stripper(true)|raw }}</script>
-	{% endblock %}
-	
-	</body>
-	</html>
+    {% block page_inlinescript %}
+        <script>{{ config.gas.inline_js|sort|join('\n')|stripper(true)|raw }}</script>
+    {% endblock %}
+
+    </body>
+    </html>
 {% endblock %}
