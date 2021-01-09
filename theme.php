@@ -102,6 +102,8 @@ class Neocatema extends Theme
 		$adminCookieSuffix = '-admin';
 		$this->adminCookie = session_name() . $adminCookieSuffix;
 
+		$this->config->set('buf',[]);
+
 		/* Provide {{ config.gas }} */
 
         if (isset($_COOKIE[$this->adminCookie]) === true) {

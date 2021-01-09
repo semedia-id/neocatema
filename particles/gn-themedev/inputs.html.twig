@@ -174,4 +174,4 @@
 gas('#g-page-surround').addClass('theme-set');
 {% endset %}
 
-{% do gasvara('inline_js',inline_js) %}
+{% do ncc_add_injected_js(inline_js|stripper(true)) %}

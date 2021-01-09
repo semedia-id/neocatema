@@ -1,59 +1,40 @@
+
 {% extends "partials/page.html.twig" %}
 
-{% set show_onpage_menu = header.onpage_menu == true or header.onpage_menu is null %}
-
-{% macro pageLinkName(text) %}{{ text|lower|replace({' ':'_'}) }}{% endmacro %}
-
-{% import _self as macro %}
-
-{% block javascripts %}
-    {% if show_onpage_menu %}
-        {% do assets.add('theme://js/singlePageNav.min.js') %}
-    {% endif %}
-    {{ parent() }}
-{% endblock %}
-
-
-{% block bottom %}
-    {{ parent() }}
-    {% if show_onpage_menu %}
-        <script>
-        // singlePageNav initialization & configuration
-        $('#navbar').singlePageNav({
-            offset: $('#header').outerHeight(),
-            filter: ':not(.external)',
-            updateHash: true,
-            currentClass: 'active'
-        });
-        </script>
-    {% endif %}
-{% endblock %}
-
-{% block header_navigation %}
-    {% if show_onpage_menu %}
-        <ul class="navigation">
-        {% for module in page.collection() %}
-            {% set current_module = (module.active or module.activeChild) ? 'active' : '' %}
-            <li class="{{ current_module }}"><a href="#{{ macro.pageLinkName(module.menu) }}">{{ module.menu }}</a></li>
-        {% endfor %}
-        {% for mitem in site.menu %}
-            <li>
-                <a href="{{ mitem.url }}">
-                    {% if mitem.icon %}<i class="fa fa-{{ mitem.icon }}" aria-hidden="true"></i>{% endif %}
-                    {{ mitem.text }}
-                </a>
-            </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        {{  parent() }}
-    {% endif %}
-{% endblock %}
-
 {% block content %}
-    {{ page.content|raw }}
-    {% for module in page.collection() %}
-        <div id="{{ macro.pageLinkName(module.menu) }}"></div>
+
+{% set pagenav = "" %}
+{% set content = "" %}
+
+{% if page.header.onpage_menu %}
+	{% do gasvara('inline_js',"ncc_modular_nav();") %}
+{% endif %}
+
+{% for module in page.collection() %}
+
+	{%- set module_link = module.slug|lower|replace({"_":""}) -%}
+
+	{% if page.header.onpage_menu %}
+		{% set pagenav = pagenav ~ '<li><a href="#' ~ module_link ~'">'~module.title~'</a></li>'~"\n" %}
+	{% endif %}
+
+	{% set module_content %}
+		<div id="{{ module_link|raw }}"></div>
         {{ module.content|raw }}
-    {% endfor %}
+	{% endset %}
+
+	{% set content = content ~ module_content %}
+
+{% endfor %}
+
+	{{ page.content|raw }}
+
+	{% if pagenav|trim %}
+		<ul class='pagenav'>
+		{{ pagenav|raw }}
+		</ul>
+	{% endif %}
+
+	{{ content|raw }}
+
 {% endblock %}

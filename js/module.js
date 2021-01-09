@@ -1,4 +1,4 @@
-/* Compile Time: 01/06/21 10:32:13 */
+/* Compile Time: 01/09/21 22:46:16 */
 /*
  * gas.js -- for Gakeun.js on ncc Grav theme
  *
@@ -1069,6 +1069,23 @@ function ncc_fixtop_init() {
 		});			
 		
 	})
+
+}
+/* ------ module/modular-nav.js ------*/
+
+function ncc_modular_nav() {
+
+	gas('html').addClass('smooth_scroll');
+	
+	document.querySelectorAll('.pagenav a').forEach( function(el) {
+	
+		el.addEventListener("click", function(e) {
+			e.preventDefault();
+			var target = gas(el).attr('href');
+			document.querySelector(target).scrollIntoView({ behavior: 'smooth' });	
+		})
+		
+	});	
 
 }
 /* ------ module/modular-slide.js ------*/

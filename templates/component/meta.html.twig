@@ -1,0 +1,43 @@
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+{% if gantry.config.page.head.meta -%}
+    {% for attributes in gantry.config.page.head.meta -%}
+        {%- for key, value in attributes %}
+            {% if key starts with 'og:' %}
+                <meta property="{{ key|e }}" content="{{ value|e }}" />
+            {% else %}
+                <meta name="{{ key|e }}" content="{{ value|e }}" />
+            {% endif %}
+        {% endfor -%}
+    {%- endfor -%}
+{%- endif -%}
+
+{% for meta in page.metadata %}
+    <meta
+        {% if meta.name %}name="{{ meta.name }}" {% endif %}
+        {% if meta.http_equiv %}http-equiv="{{ meta.http_equiv }}" {% endif %}
+        {% if meta.charset %}charset="{{ meta.charset }}" {% endif %}
+        {% if meta.property %}property="{{ meta.property }}" {% endif %}
+        {% if meta.content %}content="{{ meta.content }}" {% endif %}
+        />
+{% endfor %}
+
+{% set owner = theme_var('owner')? theme_var('owner'): false %}
+{% if owner%}
+    <meta name="owner" content="{{ owner }}" />
+{% endif %}
+
+{% if header.robots %}
+    <meta name="robots" content="{{ header.robots }}">
+{% endif %}
+
+{% if gantry.config.page.assets.favicon %}
+    <link rel="icon" type="image/x-icon" href="{{ url(gantry.config.page.assets.favicon) }}" />
+{% endif %}
+{% if gantry.config.page.assets.touchicon %}
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url(gantry.config.page.assets.touchicon) }}">
+    <link rel="icon" sizes="192x192" href="{{ url(gantry.config.page.assets.touchicon) }}">
+{% endif %}
+
+

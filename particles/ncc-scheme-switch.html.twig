@@ -1,6 +1,7 @@
 {% do gasvara('inline_js',"ncc_scheme_actived();") %}
 
 {% block particle %}
+
 <button  
 	class='toggle gn_scheme_switch'
 	aria-label='Scheme switch'
@@ -8,4 +9,5 @@
 	<i class="ncico-toggle-left"></i>
 	{% if particle.title %}<span>{{ particle.title|raw }}</span>{% endif %}
 </button>
+
 {% endblock %}

@@ -1,11 +1,39 @@
 {%- do gantry.debugger.startTimer('render', 'Rendering page') -%}
 {%- do gantry.theme.setLayout() -%}
-{%- do gantry.theme.loadAtoms() -%}
-{%- set segments = gantry.theme.segments() -%}
-{%- set boxed = gantry.config.page.body.layout.sections -%}
 
-{%- set page_header = include('component/header-part.html.twig') %}
-{%- set page_footer = include('component/footer-part.html.twig') %}
+{%- set segments = gantry.theme.segments() -%}
+
+{%- set c_array = [gantry.page.preset,'page-'~page.slug(),'g-style-' ~ gantry.theme.preset] -%}
+{%- set body_class = stringken(c_array) %}
+
+{%- set boxed = gantry.config.page.body.layout.sections -%}
+{%- set box_class = boxed==2 ? "g-container layout-2": "g-container" %}
+
+{%- set head_meta %}
+	{% include('component/meta.html.twig') %}
+	{% block head_meta %}
+	{% endblock %}
+	{{ gantry.document.getHtml('head_meta')|join("\n    ")|raw }}    
+{% endset -%}
+
+{%- set head_title %}
+	<title>{% if header.title %}{{ header.title }} | {% endif %}{{ site.title }}</title>
+	<link href="{{ page.url(true, true) }}" rel="canonical" >
+{% endset -%}
+
+{%- set head_custom %}
+	{% block head_custom %}
+		{% if gantry.config.page.head.head_bottom %}
+			{{ gantry.config.page.head.head_bottom|raw }}
+		{% endif %}
+	{% endblock %}
+{% endset -%}
+
+{%- set head_preload = include("etc/font-preload.html.twig") -%}
+
+{%- set head_asset %}
+	{% include('component/asset.html.twig') %}
+{% endset -%}
 
 {%- set content %}
     {% if gantry.theme.hasContent() %}
@@ -26,52 +54,123 @@
     {% endfor %}
 {% endset -%}
 
-
 {%- set page_offpage %}
     {%- for segment in segments if segment.attributes.offpafe ==1 -%}
         {% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
     {% endfor %}
 {% endset -%}
 
-{% set boxclass = boxed==2 ? "g-container layout-2": "g-container" %}
-
-{%- block page %}
-
-    <!DOCTYPE {{ gantry.config.page.doctype|default('html')|raw }}>
-    <html {{ gantry.page.htmlAttributes|raw }}>
-    <head>
-    {{ page_header|raw }}
-    </head>
-
-    <body{{ gantry.page.bodyAttributes({'class': ['page-'~page.slug(), gantry.page.preset, 'g-style-' ~ gantry.theme.preset]})|raw }}>
-
+{%- set body_top %}
+    {% block body_top %}
+    {% endblock %}
     {{ gantry.config.page.body.body_top|raw }}
-    {{ body_top|raw }}
-
+    {{ gantry.document.getHtml('body_top')|join("\n    ")|raw }}
     {{ page_offcanvas|raw }}
+{% endset -%}
 
-    <div id="g-page-surround" class="{{boxclass}}">
+{%- set page_top %}
+    {% block page_top %}
+    {% endblock %}
+    {{ gantry.document.getHtml('top')|join("\n    ")|raw }}
+{% endset -%}
 
-    {{ page_top|raw }}
-    {{ page_layout|raw }}
-    {{ page_bottom|raw }}
+{%- set page_bottom %}
+    {% block page_bottom %}
+    {% endblock %}
+    {{ gantry.document.getHtml('bottom')|join("\n    ")|raw }}
+{% endset -%}
 
-    </div>
+{%- set body_bottom %}
 
     {% if page_offpage|trim %}
-        <div id="g-offpage">
-        {{ page_offpage|raw }}
-        </div>
+        <div id="g-offpage">{{ page_offpage|raw }}</div>
     {% endif %}
 
-    {{ body_bottom|raw }}
-    {{ gantry.config.page.body.body_bottom|raw }}
-    {{ page_footer|raw }}
-
-    {% block page_inlinescript %}
-        <script>{{ config.gas.inline_js|sort|join('\n')|stripper(true)|raw }}</script>
+    {% block body_bottom %}
     {% endblock %}
 
-    </body>
-    </html>
-{% endblock %}
+	{%- do gantry.document.addScript(url('gantry-assets://js/main.js'), 10, 'footer') -%}
+
+	{% if gantry.config.get('styles.option.devinchrome') -%}
+		{%- do gantry.document.addScript(url('gantry-assets://workspace/js/script.js'), 10, 'footer') -%}
+	{% endif %}
+	
+	{% do gantry.platform.finalize() -%}
+	{{ gantry.scripts('footer')|join("\n")|raw -}}
+    {{ gantry.debugger.render()|raw }}
+
+	{% block page_injected_script %}
+		{% include "etc/injected_js.html.twig" %}
+        <script>{{ gasvara_string('inline_js')|raw }}</script>
+    {% endblock %}
+    {{ gantry.config.page.body.body_bottom|raw }}
+    {{ gantry.document.getHtml('body_bottom')|join("\n")|raw }}
+
+{% endset -%}
+
+
+{%- block page %}
+<!DOCTYPE {{ gantry.config.page.doctype|default('html')|raw }}>
+<html {{ gantry.page.htmlAttributes|raw }}>
+<head>
+	{{ head_meta|raw }}
+	{{ gantry.document.getHtml('head_top')|join("\n")|raw }}
+	{{ head_title|raw }}
+	{{ head_preload|raw }}
+	{{ head_asset|raw }}
+	{{ head_custom|raw }}
+	{{ gantry.document.getHtml('head_bottom')|join("\n")|raw }}
+</head>
+
+<body class="{{body_class}}">
+
+    {{ body_top|raw }}
+
+	<div id="g-page-surround" class="{{box_class}}">
+		{{ page_top|raw }}
+		{{ page_layout|raw }}
+		{{ page_bottom|raw }}
+	</div>
+
+    {{ body_bottom|raw }}
+
+</body>
+</html>
+{% endblock -%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#
+
+{%- set page_header = include('component/header-part.html.twig') %}
+{%- set page_footer = include('component/footer-part.html.twig') %}
+
+
+
+
+
+
+
+
+
+    {{ page_header|raw }}
+
+    <body{{ gantry.page.bodyAttributes({'class': ['page-'~page.slug(), gantry.page.preset, 'g-style-' ~ gantry.theme.preset]})|raw }}>
+    </div>
+
+    {{ page_footer|raw }}
+
+</body>
+
+#}

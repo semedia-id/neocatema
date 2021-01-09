@@ -18,5 +18,7 @@
 {% endset %}
 {%- do gantry.document.addScript(url('gantry-theme://js/tocbot/tocbot.min.js'), 3, 'footer') -%}
 {%- do gantry.document.addScript(url('gantry-theme://js/toc.js'), 2, 'footer') -%}
-{%- do gasvara('inline_js',inlinejs) -%}
+
+{% do ncc_add_injected_js(inline_js|stripper(true)) %}
+
 {% endif %}

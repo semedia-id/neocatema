@@ -38,17 +38,15 @@ class GaskenTwigExtension extends \Twig_Extension
             new \Twig_SimpleFunction('randomwords', [$this, 'randomwords']),
             
 			new \Twig_SimpleFunction('gasvara', [$this, 'gasvar_array_func']),
+			new \Twig_SimpleFunction('gasvara_string', [$this, 'gasvara_print']),
             new \Twig_SimpleFunction('to_array', [$this, 'to_array']),
 			
 			new \Twig_SimpleFunction('stringken', [$this, 'ncc_stringken']),
 			
-			new \Twig_SimpleFunction('gas_add_link', [$this, 'gas_add_link']),
-            new \Twig_SimpleFunction('gas_link', [$this, 'gas_link']),
-			
-			
         ];
     }
 
+	
 	public function ncc_stringken($array, $delim=' ') {
 		
 		if (! is_array($array) ) { $array = explode($delim,$array); }
@@ -57,36 +55,7 @@ class GaskenTwigExtension extends \Twig_Extension
 		return trim(join($delim,array_unique($array)),$delim);
 	}
 	
-	public function gas_add_link($href,$type="text/css",$rel="stylesheet")
-	{
-		$coba = Grav::instance();
-		$gas = $coba['config']['gas'];
-		
-		if (!isset($gas['link'])) {
-			$gas['link']=[];
-		}
-		
-		$entry['href']=$href;
-		$entry['type']=$type;
-		$entry['rel']=$rel;
-		
-		array_push($gas['link'],$entry);
-		$coba['config']['gas'] = $gas;
-		
-	}
-	
-	public function gas_link($void='') {
 
-		$coba = Grav::instance();
-		$gas = $coba['config']['gas'];
-		$str = "";
-		foreach ($gas['link'] as $i) {
-			$str .= '<link rel="'.$i['rel'].'" href="'.$i['href'].'" type="'.$i['type'].'">'."\n";
-		}
-		
-		return $str;
-	}
-	
 	public function unique_array($array) 
 	{
 		array_filter($array);
@@ -141,6 +110,14 @@ class GaskenTwigExtension extends \Twig_Extension
 		shuffle($words); 
 		for ($x = 0; $x <= $n; $x++) { $w .= $words[$x]. ' '; }
 		return rtrim($w);
+	}
+
+	public function gasvara_print($var,$delim='') {
+		$coba = Grav::instance();
+		$gas = $coba['config']['gas'];
+		$array = $gas[$var];
+		array_filter($array);
+		return trim(join($delim,array_unique($array)),$delim);
 	}
 
     public function gasvar_array_func($var,$value)
