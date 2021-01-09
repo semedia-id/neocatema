@@ -11,21 +11,21 @@ use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
 
 class Neocatema extends Theme
 {
-    public $gantry = '5.4.0';
+	public $gantry = '5.4.0';
 
-    /**
-     * @var GantryTheme
-     */
-    protected $theme;
+	/**
+	 * @var GantryTheme
+	 */
+	protected $theme;
 
-    /**
-     * @return array
-     */
-    public static function getSubscribedEvents()
-    {
-        return [
-            'onThemeInitialized' => ['onThemeInitialized', 0],
-            'onAdminMenu' => ['onAdminMenu', 0],
+	/**
+	 * @return array
+	 */
+	public static function getSubscribedEvents()
+	{
+		return [
+			'onThemeInitialized' => ['onThemeInitialized', 0],
+			'onAdminMenu' => ['onAdminMenu', 0],
 			'onGetPageTemplates' => ['onGetPageTemplates', 0],
 			'onGetPageBlueprints' => ['onGetPageBlueprints', 0],
 			'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
@@ -34,71 +34,71 @@ class Neocatema extends Theme
 			'onTwigExtensions' => ['onTwigExtensions', 0],
 			'onOutputGenerated' => ['onOutputGenerated', 0],
 
-//             'onFormProcessed' => ['onFormProcessed', 0],
+//			 'onFormProcessed' => ['onFormProcessed', 0],
 		];
-    }
+	}
 
-    public function onAdminMenu()
-    {
+	public function onAdminMenu()
+	{
 
-        $theme_name = $this->name;
+		$theme_name = $this->name;
 
 		$this->grav['assets']->add("user://themes/$theme_name/admin/poko.css",1);
 		$this->grav['assets']->add("user://themes/$theme_name/js/w3color/w3color.js");
 		$this->grav['assets']->add("user://themes/$theme_name/admin/poko.js");
 
-    }
+	}
 
-    public function onThemeInitialized()
-    {
-        if (defined('GRAV_CLI') && GRAV_CLI) {
-            return;
-        }
+	public function onThemeInitialized()
+	{
+		if (defined('GRAV_CLI') && GRAV_CLI) {
+			return;
+		}
 
-        $locator = $this->grav['locator'];
-        $path = $locator('theme://');
-        $name = $this->name;
+		$locator = $this->grav['locator'];
+		$path = $locator('theme://');
+		$name = $this->name;
 
-        if (!class_exists('\Gantry5\Loader')) {
-            if ($this->isAdmin()) {
-                $messages = $this->grav['messages'];
-                $messages->add('Please enable Gantry 5 plugin in order to use current theme!', 'error');
-                return;
-            } else {
-                throw new \LogicException('Please install and enable Gantry 5 Framework plugin!');
-            }
-        }
+		if (!class_exists('\Gantry5\Loader')) {
+			if ($this->isAdmin()) {
+				$messages = $this->grav['messages'];
+				$messages->add('Please enable Gantry 5 plugin in order to use current theme!', 'error');
+				return;
+			} else {
+				throw new \LogicException('Please install and enable Gantry 5 Framework plugin!');
+			}
+		}
 
-        // Setup Gantry 5 Framework or throw exception.
-        \Gantry5\Loader::setup();
+		// Setup Gantry 5 Framework or throw exception.
+		\Gantry5\Loader::setup();
 
-        // Get Gantry instance.
-        $gantry = Gantry::instance();
+		// Get Gantry instance.
+		$gantry = Gantry::instance();
 
-        // Set the theme path from Grav variable.
-        $gantry['theme.path'] = $path;
-        $gantry['theme.name'] = $name;
+		// Set the theme path from Grav variable.
+		$gantry['theme.path'] = $path;
+		$gantry['theme.name'] = $name;
 
-        // Define the template.
-        require $locator('theme://includes/theme.php');
+		// Define the template.
+		require $locator('theme://includes/theme.php');
 
-        // Define Gantry services.
+		// Define Gantry services.
 
 		$gantry['theme'] = function ($c) {
-            return new \Gantry\Theme\Neoca($c['theme.path'], $c['theme.name']);
-        };
-    }
+			return new \Gantry\Theme\Neoca($c['theme.path'], $c['theme.name']);
+		};
+	}
 
-    public function onShortcodeHandlers()
-    {
+	public function onShortcodeHandlers()
+	{
 		$theme_name = $this->name;
-        $this->grav['shortcode']->registerAllShortcodes("user://themes/$theme_name/php/shortcodes");
-    }
+		$this->grav['shortcode']->registerAllShortcodes("user://themes/$theme_name/php/shortcodes");
+	}
 
 
 	public function onTwigSiteVariables()
-    {
-        $locator = $this->grav['locator'];
+	{
+		$locator = $this->grav['locator'];
 		$adminCookieSuffix = '-admin';
 		$this->adminCookie = session_name() . $adminCookieSuffix;
 
@@ -106,9 +106,9 @@ class Neocatema extends Theme
 
 		/* Provide {{ config.gas }} */
 
-        if (isset($_COOKIE[$this->adminCookie]) === true) {
+		if (isset($_COOKIE[$this->adminCookie]) === true) {
 			$this->config->set('gas.admin',true);
-        }
+		}
 
 		$log_path = $locator('log://popularity');
 
@@ -125,52 +125,52 @@ class Neocatema extends Theme
 			$this->config->set('gas.stat.total',array_values((array)json_decode(file_get_contents($log_path . '/totals.json')))[0]);
 		}
 
-    }
+	}
 
-    public function onTwigExtensions()
-    {
+	public function onTwigExtensions()
+	{
 		require_once(__DIR__.'/php/GaskenTwigExtension.php');
-        $this->grav['twig']->twig->addExtension(new GaskenTwigExtension());
-        //require_once(__DIR__.'/php/ColorMixerTwigExtension.php');
-        //$this->grav['twig']->twig->addExtension(new ColorMixerTwigExtension());
-    }
+		$this->grav['twig']->twig->addExtension(new GaskenTwigExtension());
+		//require_once(__DIR__.'/php/ColorMixerTwigExtension.php');
+		//$this->grav['twig']->twig->addExtension(new ColorMixerTwigExtension());
+	}
 
 
 	/*
 	 * So you can make templae outside the theme for a client needs
 	 */
 
-    public function onTwigTemplatePaths()
-    {
+	public function onTwigTemplatePaths()
+	{
 		$locator = $this->grav['locator'];
 		$theme_name = $this->name;
-		
+
 		$tdir = $locator('user://').'/templates';
 		if (! file_exists($tdir) ) { mkdir($tdir); }
-		
+
 		$bdir = $locator('user://').'/blueprints';
 		if (! file_exists($tdir) ) { mkdir($bdir); }
-		
+
 		$pdir = $locator('user://')."/data/gantry5/themes/$theme_name/particles";
 		if (! file_exists($pdir) ) { mkdir($pdir,0755,true); }
 
-        $this->grav['twig']->twig_paths[] = $locator('user://templates');
-    }
+		$this->grav['twig']->twig_paths[] = $locator('user://templates');
+	}
 
 	public function onGetPageTemplates(Event $event)
-    {
-        $types = $event->types;
-        $types->scanTemplates('user://templates');
-    }
+	{
+		$types = $event->types;
+		$types->scanTemplates('user://templates');
+	}
 
-    public function onGetPageBlueprints(Event $event)
-    {
-        $types = $event->types;
-        $types->scanBlueprints('user://blueprints');
-    }
+	public function onGetPageBlueprints(Event $event)
+	{
+		$types = $event->types;
+		$types->scanBlueprints('user://blueprints');
+	}
 
-    public function onOutputGenerated()
-    {
+	public function onOutputGenerated()
+	{
 
 		function createPath($path) {
 			if (is_dir($path)) return true;
@@ -179,7 +179,7 @@ class Neocatema extends Theme
 			return ($return && is_writable($prev_path)) ? mkdir($path) : false;
 		}
 
-        if (! $this->isAdmin()) {
+		if (! $this->isAdmin()) {
 
 			$st_content = $this->grav->output."";
 
@@ -194,16 +194,16 @@ class Neocatema extends Theme
 				$tmp = preg_replace('/\s+$/', '', $tmp);
 				$tmp = array_filter($tmp);
 				$st_content = implode("\n", $tmp);
-			
+
 				$st_content  = preg_replace('/\s+\">/', '">', $st_content );
 				$st_content  = preg_replace('/"\s+>/', '">', $st_content );
 				$st_content = preg_replace('/[\r\n\s+\t]+(?=(?:[^<])*>)/', ' ', $st_content);
 				$st_content = preg_replace('/\n(>|\}|\)|\")/', '$1', $st_content);
-		
+
 				$this->grav->output = $st_content;
-			
+
 			}
-			
+
 			if (isset($this->config['theme']['static_path'])) {
 
 				$locator = $this->grav['locator'];
@@ -229,4 +229,3 @@ class Neocatema extends Theme
 		}
 	}
 }
-
