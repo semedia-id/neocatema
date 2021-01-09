@@ -1,0 +1,40 @@
+name: Page Meta
+type: particle
+icon: fa-header
+
+configuration:
+  caching:
+    type: static
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable the particle.
+      default: true  
+
+    class:
+      type: input.selectize
+      label: CSS Classes
+      description: Enter CSS class names.
+      default:
+
+    vars:
+      type: collection.list
+      array: true
+      label: Variables
+      value: text
+      ajax: true
+      overridable: false
+      exclude: ['content', 'media']
+      fields:      
+        .text:
+          type: input.text
+          label: text      
+
+    text:
+      type: textarea.textarea
+      label: Custom Twig/HTML
+      default: <h1>{{page.title}}</h1>
+      overridable: true

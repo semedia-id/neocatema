@@ -1,0 +1,28 @@
+{%- extends '@nucleus/partials/particle.html.twig' -%}
+
+{%- block particle %}
+
+<div class='gn-page-meta{{ (particle.class ? " "~particle.class: "") }}'>
+
+	{% if particle.text %}
+		{{ gantry.theme.compile(particle.text)|raw }}
+	{% endif %}
+	
+	{% if particle.vars %}
+
+	{% for var in particle.vars %}
+		{%- set text = gantry.theme.compile(var.text|raw) -%}
+		{%- set class = var.text|lower|replace({
+			"{{":"","}}":"",
+			"page.header":"","page.":""
+		}) %}
+	
+		<div class="{{class|raw}}">{{ text|raw }}</div>
+
+	{% endfor %}
+
+	{% endif %}
+
+</div>
+
+{% endblock -%}

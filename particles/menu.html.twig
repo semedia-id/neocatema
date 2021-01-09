@@ -4,22 +4,6 @@
     <div class="alert alert-error">{{ e.getMessage }}</div>
 {% endtry %}
 
-{#
-
-{% set ticon = gantry.config.get('styles.menu.icon') %}
-{% set ticon_position = gantry.config.get('styles.menu.icon-position') %}
-
-{% set menu_colwidth = gantry.config.get('styles.menu.col-width') %}
-{% set menu_animation = gantry.config.get('styles.menu.animation') %}
-{% set menu_breakpoint = gantry.config.get('styles.menu.mobile-menu-breakpoint') %}
-{% set menu_w = gantry.config.get('styles.menu.icon-w') %}
-{% set menu_h = gantry.config.get('styles.menu.icon-h') %}
-{% set menu_hide = gantry.config.get('styles.menu.hide-on-mobile') %}
-
-
-
-#}
-
 {% macro getCustomWidth(item, menu, mode, dropdown_type, menu_animation) -%}
     {%- if (item.width|default('auto') != 'auto') and not (dropdown_type == 'fullwidth' and item.level > 1) -%}
         {%- if mode == 'item' %} style="position: relative;"

@@ -55,9 +55,11 @@ configuration:
       - gantry-engine://scss
     files:
       - theme
+      - custome
     persistent:
       - theme
     overrides:
+      - custome
 
   block-variations:
 

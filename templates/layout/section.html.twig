@@ -4,7 +4,8 @@
 {% set options = {
     'gsize': ( segment.attributes.disable_sizes ? false : true ),
     'ggrid': (segment.attributes.disable_grid ? false : true ),
-    'gcontent': (segment.attributes.disable_gcontent ? false : true )
+    'gcontent': (segment.attributes.disable_gcontent ? false : true ),
+	'gcontainer': (segment.attributes.disable_container ? false : true )
     }
 %}
 
@@ -83,11 +84,11 @@
 
     {{ button_responsive|raw }}
 
-    <div class="g-container layout-{{boxed}}">
+	{% if options.gcontainer %}<div class="g-container layout-{{boxed}}">{% endif %}
 
     {{html|raw}}
 
-    </div>
+    {% if options.gcontainer %}</div>{% endif %}
 
 </{{tag}}>
 
