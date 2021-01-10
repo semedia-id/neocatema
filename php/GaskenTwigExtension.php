@@ -117,7 +117,11 @@ class GaskenTwigExtension extends \Twig_Extension
 		$gas = $coba['config']['gas'];
 		$array = $gas[$var];
 		array_filter($array);
-		return trim(join($delim,array_unique($array)),$delim);
+		sort($array);
+		$res = join($delim,array_unique($array));
+		$res = preg_replace('#\n|\r#', '', $res);
+		$res = preg_replace('#;\s+|;;#', ';', $res);
+		return trim(trim($res,' '),$delim);
 	}
 
 	public function gasvar_array_func($var,$value)

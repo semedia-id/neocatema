@@ -60,14 +60,13 @@
 
 @include breakpoint(mobile-only) {
 
-	.responsive-dock {
-		.responsive-block {
-			position: absolute;
-			left:0;
-			width:100%;
-			top: var(--dock-y,3rem);
-		}
-	}	
+	html .responsive-block.responsive-dock {
+		position: absolute;
+		left:0;
+		top: var(--dock-y,3rem);
+		width: 100% !important;
+	}
+
 }
 
 .responsive-block {
@@ -98,6 +97,7 @@
     --menu-width: 100%;
     --background: var(--c-d);
 
+	
     .g-goback { display: none; }
 
 	.toplevel {

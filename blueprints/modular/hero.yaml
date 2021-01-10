@@ -105,10 +105,10 @@ form:
               placeholder: 'Select...'
               default: paralax-h
               options:
-                paralax-h: paralax-h
-                paralax-v: paralax-v
-                zoom: zoom-flash
-                fade: fade
+                mod-paralax-h: paralax-h
+                mod-paralax-v: paralax-v
+                mod-zoom: zoom-flash
+                mod-fade: fade
 
             _section_img:
               type: fieldset

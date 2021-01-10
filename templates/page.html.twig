@@ -3,9 +3,6 @@
 
 {%- set segments = gantry.theme.segments() -%}
 
-{%- set c_array = [gantry.page.preset,'page-'~page.slug(),'g-style-' ~ gantry.theme.preset] -%}
-{%- set body_class = stringken(c_array) %}
-
 {%- set boxed = gantry.config.page.body.layout.sections -%}
 {%- set box_class = boxed==2 ? "g-container layout-2": "g-container" %}
 
@@ -101,7 +98,6 @@
 
 	{% block page_injected_script %}
 		{% include "etc/injected_js.html.twig" %}
-        <script>{{ gasvara_string('inline_js')|raw }}</script>
     {% endblock %}
     {{ gantry.config.page.body.body_bottom|raw }}
     {{ gantry.document.getHtml('body_bottom')|join("\n")|raw }}
@@ -122,7 +118,10 @@
 	{{ gantry.document.getHtml('head_bottom')|join("\n")|raw }}
 </head>
 
-<body class="{{body_class}}">
+    <body{{ gantry.page.bodyAttributes({'class': [ 
+		'page-'~page.slug(), gantry.page.preset, 
+		'g-style-' ~ gantry.theme.preset
+	]})|raw }}>
 
     {{ body_top|raw }}
 
@@ -134,43 +133,8 @@
 
     {{ body_bottom|raw }}
 
+    <script>{{ gasvara_string('inline_js')|raw }}</script>
+
 </body>
 </html>
 {% endblock -%}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{#
-
-{%- set page_header = include('component/header-part.html.twig') %}
-{%- set page_footer = include('component/footer-part.html.twig') %}
-
-
-
-
-
-
-
-
-
-    {{ page_header|raw }}
-
-    <body{{ gantry.page.bodyAttributes({'class': ['page-'~page.slug(), gantry.page.preset, 'g-style-' ~ gantry.theme.preset]})|raw }}>
-    </div>
-
-    {{ page_footer|raw }}
-
-</body>
-
-#}

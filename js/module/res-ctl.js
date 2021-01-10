@@ -3,11 +3,18 @@ function responsiveControler() {
 
 	document.querySelectorAll('.res-ctl').forEach( function(el) {
 
-		var block = el.closest('.g-block')
-		
+		var block = el.closest('.g-block');
+		var target = document.querySelector(gas(el).data('target'));
+		var parent = target.parentNode
+
+
 		if (!block) {
 			var block = el.closest('div');
 		}
+
+        var element = el.cloneNode(true);
+		parent.insertBefore(element, target)
+		el.remove();
 
 		gas(block).cssvar('ctl-width', gas(el).data('ctl-width') );
 		gas(block).cssvar('ctl-height', gas(el).data('ctl-height') );
@@ -31,8 +38,7 @@ function responsiveControler() {
 			divh.classList.add('right');
 			divh.prepend(btn)
 		
-			document.querySelector( gas(el).data('target') ).prepend(divh)
-
+			target.prepend(divh)
 
 			btn.addEventListener("click", function(e) {
 				var target=gas(btn).data('target');
@@ -48,19 +54,14 @@ function responsiveControler() {
 			gas('body').data('responsive-position',gas(el).data('position'));
 		}
 
-		gas(block).cssvar('responsive-width',gas(block).width()+'px');
+		gas(block).cssvar('responsive-width',gas(target).width()+'px');
 
-        var element = el.cloneNode(true);
-		block.prepend(element)
-		el.remove();
 
 		element.addEventListener("click", function(e) {
 			var target=gas(element).data('target');
 			gas(target).toggleClass('show');
 		});
-
-
-			
+		
 	});
 
 }
