@@ -1,0 +1,25 @@
+
+.modular {
+
+    #modular-pagenav {
+        position: fixed;
+        bottom: 1rem;
+    }
+
+    .pagenav {
+        padding: 1rem;
+    	li { 
+            display: inline-block; 
+            margin-right: 1rem; 
+
+            &:last-child {
+                margin-right: 0; 
+            }
+
+            a { color:var(--t) }
+
+        }
+		
+    }
+
+}

@@ -14,7 +14,7 @@
 	{%- set module_link = module.slug|lower|replace({"_":""}) -%}
 
 	{% if page.header.onpage_menu %}
-		{% set pagenav = pagenav ~ '<li><a href="#' ~ module_link ~'">'~module.title~'</a></li>'~"\n" %}
+		{% set pagenav = pagenav ~ '<li><a class="button" href="#' ~ module_link ~'">'~module.title~'</a></li>'~"\n" %}
 	{% endif %}
 
 	{% set module_content %}
@@ -29,7 +29,7 @@
 	{{ page.content|raw }}
 
 	{% if pagenav|trim %}
-		<ul class='pagenav'>
+		<ul class='pagenav' id='modular-pagenav'>
 		{{ pagenav|raw }}
 		</ul>
 	{% endif %}

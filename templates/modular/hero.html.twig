@@ -29,7 +29,7 @@
     {% for item in page.header.list %}
         <li>
         {{ (item.link ? "<a href='"~item.link~"'>" : "")|raw }}
-        {{ (item.icon ? "<i block class='"~item.icon~"'></i>" : "")|raw }}
+        {{ (item.icon ? "<i class='block "~item.icon~"'></i>" : "")|raw }}
         <div class='item-wrap'>
         {{ (item.header ? "<div class='item-title'>"~item.header~"</div>" : "")|raw }}
         {{ (item.text ? "<div class='item-text'>"~item.text~"</div>" : "")|raw }}

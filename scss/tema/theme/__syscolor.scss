@@ -19,13 +19,13 @@
 }
 
 .primary {
-	--background: #{get-hsl-var(accent)};
-	--text: #{get-hsl-var(accent,(l:97%))};
+	--background: #{get-hsl-var(accent)} !important;
+	--text: #{get-hsl-var(accent,(l:97%))}!important;
 }
 
 .secondary {
-	--background: #{get-hsl-var(surface)};
-	--text: #{get-hsl-var(accent,(l:97%))};
+	--background: #{get-hsl-var(surface)} !important;
+	--text: #{get-hsl-var(accent,(l:97%))} !important;
 }
 
 .dark-scheme {
