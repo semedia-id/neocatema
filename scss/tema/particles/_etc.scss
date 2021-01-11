@@ -1,21 +1,3 @@
-.fix-at-top {
-    position: fixed;
-    width: 100%;
-    top:0;
-    z-index: 90;
-    
-}
-
-.dock-at-top {
-    transition: all 1s ease;
-}
-
-.pinned {
-    width: 100%;
-    z-index: 90;
-    box-shadow: 0 0 6px var(--shadow);
-}
-
 .g-branding {
     padding: 1em 0;
 }
@@ -34,3 +16,10 @@ a.logo img {
     line-height: 2.4;
     .stat { float: right;}
 }
+
+.logo-large { width: 100% }
+
+.g-social {
+	.g-social-text { margin-left: .5rem }
+}
+

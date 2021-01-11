@@ -1,9 +1,10 @@
 /* -------------------------------------------------------------
  * 
- * neocatema/etc - 01/10/21 11:03:00
+ * neocatema/etc - 01/11/21 09:50:33
  * 
  */ 
  
-@import 'etc/responsive';
-@import 'etc/responsive-block';
+@import 'etc/fix-dock';
+@import 'etc/responsive.scss.txt';
+@import 'etc/responsive-block.txt';
 @import 'etc/scheme-switch';
