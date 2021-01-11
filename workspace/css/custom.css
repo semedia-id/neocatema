@@ -16,17 +16,22 @@
  * neocatema/etc - 01/10/21 11:03:29
  * 
  */
-.modular #modular-pagenav {
-  position: fixed;
-  bottom: 1rem; }
-.modular .pagenav {
-  padding: 1rem; }
-  .modular .pagenav li {
-    display: inline-block;
-    margin-right: 1rem; }
-    .modular .pagenav li:last-child {
-      margin-right: 0; }
-    .modular .pagenav li a {
-      color: var(--t); }
+.modular {
+  --var: 11;
+  --car:33;
+  --tar: 44;
+  }
+  .modular #modular-pagenav {
+    position: fixed;
+    bottom: 1rem; }
+  .modular .pagenav {
+    padding: 1rem; }
+    .modular .pagenav li {
+      display: inline-block;
+      margin-right: 1rem; }
+      .modular .pagenav li:last-child {
+        margin-right: 0; }
+      .modular .pagenav li a {
+        color: var(--t); }
 
 /*# sourceMappingURL=custom.css.map */
