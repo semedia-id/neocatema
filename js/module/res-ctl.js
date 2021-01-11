@@ -12,12 +12,13 @@ function responsiveControler() {
 			var block = el.closest('div');
 		}
 
+		gas(parent).cssvar('ctl-width', gas(el).data('ctl-width') );
+		gas(parent).cssvar('ctl-height', gas(el).data('ctl-height') );
+
         var element = el.cloneNode(true);
 		parent.insertBefore(element, target)
 		el.remove();
 
-		gas(block).cssvar('ctl-width', gas(el).data('ctl-width') );
-		gas(block).cssvar('ctl-height', gas(el).data('ctl-height') );
 		if ( gas(el).data('responsive') )  { gas(block).addClass('desktop'); }
 
 		gas( gas(el).data('target') ).addClass('responsive-block');
