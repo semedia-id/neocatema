@@ -3,10 +3,9 @@
 function mergebase() {
 	IN=$1;
 	FD=`echo $IN | sed -e 's/\/$//'`
-	echo "/* -------------------------------------------------------------" > _$FD.scss
-	echo " * " >> _$FD.scss
-	date +" * neocatema/$FD - %D %T" >> _$FD.scss
-	echo " * " >> _$FD.scss
+	echo "/* ---" > _$FD.scss
+	# date +" * neocatema/$FD - %D %T" >> _$FD.scss
+	echo " * neocatema/$FD" >> _$FD.scss
 	echo " */ " >> _$FD.scss
 	echo " " >> _$FD.scss
 
