@@ -1,3 +1,27 @@
+.modular {
+
+    #modular-pagenav {
+
+    }
+
+    .pagenav {
+        padding: 1rem;
+    	li { 
+            display: inline-block; 
+            margin-right: 1rem; 
+
+            &:last-child {
+                margin-right: 0; 
+            }
+
+            a { color:var(--t) }
+
+        }
+		
+    }
+
+}
+
 .g-title { 
         font-size: .8rem;
         font-weight: 700;
