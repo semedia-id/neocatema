@@ -37,7 +37,7 @@ form:
         placeholder: 1px (default) 
         pattern: '\d+(\.\d+){0,1}(rem|em|px)'
 
-    _note1:
+    _note2:
         type: separator.note
         class: opt-note header
         content: Typeface
