@@ -15,7 +15,7 @@ function gn_modular_slideshow(ele,sec=15) {
 function gn_modular_slideshow_func(r) {
 	var images = r.data('image').split(",");
 	window.value = window.value + 1;
-	if (window.value >= images.length) { window.value = 0; }
+	if (window.value == images.length) { window.value = 0; }
 	//console.log(window.value,images[window.value])
 	r.style('backgroundImage','url('+images[window.value]+')');
 }
