@@ -1,0 +1,44 @@
+title: modular
+extends@:
+    type: default
+    context: 'blueprints://pages'
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        blog:
+          type: tab
+          title: Settings
+
+          fields:
+
+            header.class:
+              type: text
+              label: Class
+              
+            summary:
+              type: section
+              title: Onpage Menu
+              underline: true
+              
+            header.onpage_menu:
+              type: toggle
+              toggleable: true
+              label: onpage menu
+              highlight: 1
+              options:
+                0: PLUGIN_ADMIN.DISABLED
+                1: PLUGIN_ADMIN.ENABLED
+                
+            header.bullet:
+              type: toggle
+              toggleable: true
+              label: Use bullet onpage menu
+              highlight: 1
+              options:
+                0: PLUGIN_ADMIN.DISABLED
+                1: PLUGIN_ADMIN.ENABLED
+                
+

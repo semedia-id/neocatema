@@ -7,16 +7,27 @@
 {%- set box_class = boxed==2 ? "g-container layout-2": "g-container" %}
 
 {%- set head_meta %}
-	{% include('component/meta.html.twig') %}
+	{% include('component/head-meta.html.twig') %}
 	{% block head_meta %}
 	{% endblock %}
-	{{ gantry.document.getHtml('head_meta')|join("\n    ")|raw }}    
+	{{ gantry.document.getHtml('head_meta')|join("\n")|raw }}    
 {% endset -%}
 
 {%- set head_title %}
 	<title>{% if header.title %}{{ header.title }} | {% endif %}{{ site.title }}</title>
 	<link href="{{ page.url(true, true) }}" rel="canonical" >
 {% endset -%}
+
+{%- set head_preload = include("etc/font-preload.html.twig") -%}
+
+{%- set head_asset %}
+	{% include('component/head-asset.html.twig') %}
+{% endset -%}
+
+{%- set body_asset %}
+	{% include('component/body-asset.html.twig') %}
+{% endset -%}
+
 
 {%- set head_custom %}
 	{% block head_custom %}
@@ -26,18 +37,13 @@
 	{% endblock %}
 {% endset -%}
 
-{%- set head_preload = include("etc/font-preload.html.twig") -%}
-
-{%- set head_asset %}
-	{% include('component/asset.html.twig') %}
-{% endset -%}
-
 {%- set content %}
     {% if gantry.theme.hasContent() %}
         {% block content %}
         {% endblock %}
     {% endif %}
 {% endset -%}
+
 
 {%- set page_layout %}
     {%- for segment in segments if segment.type != 'offcanvas' -%}
@@ -74,7 +80,7 @@
 {%- set page_bottom %}
     {% block page_bottom %}
     {% endblock %}
-    {{ gantry.document.getHtml('bottom')|join("\n    ")|raw }}
+    {{ gantry.document.getHtml('bottom')|join("\n")|raw }}
 {% endset -%}
 
 {%- set body_bottom %}
@@ -86,19 +92,6 @@
     {% block body_bottom %}
     {% endblock %}
 
-	{%- do gantry.document.addScript(url('gantry-assets://js/main.js'), 10, 'footer') -%}
-
-	{% if gantry.config.get('styles.option.devinchrome') -%}
-		{%- do gantry.document.addScript(url('gantry-assets://workspace/js/script.js'), 10, 'footer') -%}
-	{% endif %}
-	
-	{% do gantry.platform.finalize() -%}
-	{{ gantry.scripts('footer')|join("\n")|raw -}}
-    {{ gantry.debugger.render()|raw }}
-
-	{% block page_injected_script %}
-		{% include "etc/injected_js.html.twig" %}
-    {% endblock %}
     {{ gantry.config.page.body.body_bottom|raw }}
     {{ gantry.document.getHtml('body_bottom')|join("\n")|raw }}
 
@@ -132,6 +125,7 @@
 	</div>
 
     {{ body_bottom|raw }}
+	{{ body_asset|raw }}
 
     <script>{{ gasvara_string('inline_js')|raw }}</script>
 

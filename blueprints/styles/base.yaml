@@ -1,5 +1,6 @@
 name: Common Base
-type: tema
+type: configuration
+
 
 form:
   fields:

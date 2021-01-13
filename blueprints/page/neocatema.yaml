@@ -1,0 +1,16 @@
+name: Neocatema Attributes
+description: Settings that can be applied to the theme.
+type: global
+form:
+  fields:
+  
+    _note:
+      type: separator.note
+      class: 'alert alert-success blocksize-note'
+      content: '<small>See: <a href="https://github.com/tacoen/neocatema/wiki">Neocatema wiki</a></small>'
+
+    workspace:
+      type: input.checkbox
+      label: user/workspaces
+      default: '1'
+            

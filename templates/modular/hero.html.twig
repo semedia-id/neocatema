@@ -97,6 +97,8 @@
     {% set styles = styles
         ~ (page.header.media_order ? "background-image: url('" ~ page.media.images|first.url ~ "');" )
         ~ (page.header.img_blend ? "background-blend-mode:" ~ page.header.img_blend ~ ";" )
+        ~ (page.header.img_posX ? "background-position-x:" ~ page.header.img_posX ~ "%;" )
+        ~ (page.header.img_posY ? "background-position-y:" ~ page.header.img_posY ~ "%;" )
         ~ (page.header.img_animation ? "animation-name:" ~ page.header.img_animation ~ ";" )
         ~ (page.header.img_timeout ? "animation-duration:" ~ page.header.img_timeout ~ "s;" )
     %}

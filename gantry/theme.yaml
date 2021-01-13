@@ -98,10 +98,10 @@ configuration:
       ncc-success: green-color
 
     Custom Color:
-        ncc-color1: custom-color-1
-        ncc-color2: custom-color-2
-        ncc-color3: custom-color-3
-        ncc-color4: custom-color-4
+      ncc-color1: custom-color-1
+      ncc-color2: custom-color-2
+      ncc-color3: custom-color-3
+      ncc-color4: custom-color-4
 
     Background Cover:
       cover-1: Cover 1
@@ -121,17 +121,16 @@ admin:
   styles:
 
     configuration:
-      - menu
+      - base
       - breakpoints
-      - option
+      - menu
 
     neocatema:
       - light
-      - base
+      - option
       - dark
 
     variations:
       - accent
-      - cover
-      - surface
+      - colors
 

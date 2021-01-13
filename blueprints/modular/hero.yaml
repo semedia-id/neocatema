@@ -108,6 +108,24 @@ form:
                     max: 120
                     step: 1
 
+            header.img_posX:
+                type: number
+                label: Position-X
+                default: 50
+                validate:
+                    min: 0
+                    max: 100
+                    step: 1
+
+            header.img_posY:
+                type: number
+                label: Position-X
+                default: 50
+                validate:
+                    min: 0
+                    max: 100
+                    step: 1
+                    
             header.img_animation:
               name: animation
               type: select
