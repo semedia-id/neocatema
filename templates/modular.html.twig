@@ -14,7 +14,11 @@
 	{%- set module_link = module.slug|lower|replace({"_":""}) -%}
 
 	{% if page.header.onpage_menu %}
-		{% set pagenav = pagenav ~ '<li><a class="button" href="#' ~ module_link ~'">'~module.title~'</a></li>'~"\n" %}
+		{% if page.header.bullet %}
+			{% set pagenav = pagenav ~ '<li><a class="button toggle" href="#' ~ module_link ~'"><i class="fa fa-circle"></i></a></li>'~"\n" %}
+		{%else %}
+			{% set pagenav = pagenav ~ '<li><a class="button toggle" href="#' ~ module_link ~'">'~module.title~'</a></li>'~"\n" %}
+		{% endif %}		
 	{% endif %}
 
 	{% set module_content %}

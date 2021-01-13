@@ -29,11 +29,10 @@ class Neocatema extends Theme
 			'onGetPageTemplates' => ['onGetPageTemplates', 0],
 			'onGetPageBlueprints' => ['onGetPageBlueprints', 0],
 			'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
-			'onShortcodeHandlers' => ['onShortcodeHandlers', 0],
 			'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
 			'onTwigExtensions' => ['onTwigExtensions', 0],
 			'onOutputGenerated' => ['onOutputGenerated', 0],
-
+//			'onShortcodeHandlers' => ['onShortcodeHandlers', 0],
 //			 'onFormProcessed' => ['onFormProcessed', 0],
 		];
 	}
@@ -89,12 +88,13 @@ class Neocatema extends Theme
 		};
 	}
 
+	/*
 	public function onShortcodeHandlers()
 	{
 		$theme_name = $this->name;
 		$this->grav['shortcode']->registerAllShortcodes("user://themes/$theme_name/php/shortcodes");
 	}
-
+	*/
 
 	public function onTwigSiteVariables()
 	{
