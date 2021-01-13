@@ -10,7 +10,6 @@ Yes, Neocátema has its [Wiki](https://github.com/tacoen/neocatema/wiki).
 
  * [Grav CMS](https://getgrav.org/downloads)
  * [Gantry 5](http://gantry.org/downloads)
- * [Shortcode core Plugins](https://github.com/getgrav/grav-plugin-shortcode-core)
 
 ## Features
 
