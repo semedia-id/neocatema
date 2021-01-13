@@ -151,6 +151,26 @@ class Neocatema extends Theme
 		$bdir = $locator('user://').'/blueprints';
 		if (! file_exists($tdir) ) { mkdir($bdir); }
 
+		# --- user/workspace
+		$tdir = $locator('user://').'/workspace/scss';
+		if (! file_exists($tdir) ) { mkdir($tdir,0755,true); }
+		$tdir = $locator('user://').'/workspace/css';
+		if (! file_exists($tdir) ) { mkdir($tdir,0755,true); }
+		$u_css = $locator('user://').'/workspace/css/custom.css';
+		if (! file_exists($u_css) ) { touch($u_css); }
+		$u_scss = $locator('user://').'/workspace/scss/custom.scss';
+		if (! file_exists($u_scss) ) { 
+			copy(__DIR__.'/_userspace/scss/custom.scss',$u_scss);
+		}
+		$u_gscss = $locator('user://').'/workspace/scss/_grav-dependency.scss';
+		if (! file_exists($u_gscss) ) { 
+			copy(__DIR__.'/_userspace/scss/_grav-dependency.scss',$u_gscss);
+		}
+		$u_scwatch = $locator('user://').'/workspace/scss-watch.sh';
+		if (! file_exists($u_scwatch) ) { 
+			copy(__DIR__.'/_userspace/scss-watch.sh',$u_scwatch);
+		}
+
 		$pdir = $locator('user://')."/data/gantry5/themes/$theme_name/particles";
 		if (! file_exists($pdir) ) { mkdir($pdir,0755,true); }
 
