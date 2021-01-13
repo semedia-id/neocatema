@@ -119,7 +119,7 @@ form:
 
             header.img_posY:
                 type: number
-                label: Position-X
+                label: Position-Y
                 default: 50
                 validate:
                     min: 0
