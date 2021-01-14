@@ -1,0 +1,61 @@
+title: pages
+extends@:
+    type: default
+    context: 'blueprints://pages'
+
+form:
+  validation: loose
+
+  fields:
+
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+         
+        options:
+          type: tab
+          title: PLUGIN_ADMIN.OPTIONS
+
+          fields:
+
+            ncc_section_0:
+              type: section
+              title: Page Assets
+              underline: true
+
+            header.links:
+              type: list
+              label: Links
+              style: vertical
+              fields:
+                .href:
+                  type: text
+                  label: href
+                .rel:
+                  type: text
+                  label: rel
+
+            header.scripts:
+              type: list
+              style: vertical
+              help: Will printed on body bottom
+              label: Scripts
+              fields:
+                .src:
+                  type: text
+                  label: src
+                .attr:
+                  type: text
+                  label: Attribute
+
+            ncc_section_1:
+              type: section
+              title: Page DataList
+              underline: true
+
+            header.datalist:
+              toggleable: true
+              type: array
+              label: DataList

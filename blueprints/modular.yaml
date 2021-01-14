@@ -4,24 +4,29 @@ extends@:
     context: 'blueprints://pages'
 
 form:
+  validation: loose
+
   fields:
+
     tabs:
+      type: tabs
 
       fields:
-        blog:
+         
+        modular:
           type: tab
-          title: Settings
-
+          title: Modular
+          
           fields:
 
-            header.class:
+            ncc_section_0:
+              type: section
+              title: Modular Page Setting
+              underline: true
+              
+            header.modular_class:
               type: text
               label: Class
-              
-            summary:
-              type: section
-              title: Onpage Menu
-              underline: true
               
             header.onpage_menu:
               type: toggle

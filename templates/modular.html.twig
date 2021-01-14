@@ -31,7 +31,7 @@
 {% endfor %}
 
 {% block content %}
-	<div class="modular-wrapper{{ page.header.class ? ' '~page.header.class }}">
+	<div class="modular-wrapper{{ page.header.modular_class ? ' '~page.header.modular_class }}">
 	{{ page.content|raw }}
 	{% if pagenav|trim %}
 		<ul class='pagenav' id='modular-pagenav'>

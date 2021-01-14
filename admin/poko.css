@@ -2,15 +2,32 @@
 	display: none;
 }
 
+
+.ncc-note {
+	font-size: .9rem !important;
+	font-weight: normal !important;
+	letter-spacing: initial !important;
+}
+
+.ncc-note.bordered {
+	margin: 1.5rem !important;
+    padding: .5rem !important;
+	border: 1px solid #0009 !important;
+}	
+
+
 .sf-note {
 padding: 0 0 0 185px;
 font-size: .8em;
+font-weight: normal;
 }	
 
 .opt-note {
 	padding: 0 0 0 .65rem;
-	font-size: .8em;
+	font-size: .8em !important;
+	font-weight: normal;
 }	
+
 
 .opt-note.header {
 	padding-top: 1rem; font-weight: 700; color: #911;

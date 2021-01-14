@@ -4,9 +4,26 @@
 {% if gantry.config.page.neocatema.workspace|default(1) %}
 	{%- do gantry.document.addScript(url('user://workspace/js/script.js'), 10, 'footer') -%}
 {% endif %}
-	
+
+{%- if page.header.datalist %}
+	<div id='ncc-page-datalist'
+	{% for key,value in page.header.datalist %}
+		data-{{key}}="{{value}}"
+	{% endfor %}
+	><!--datalist--></div>
+{%endif -%}
+
 {% do gantry.platform.finalize() -%}
 {{ gantry.scripts('footer')|join("\n")|raw -}}
+
+{% if page.header.scripts %}
+
+	{% for script in page.header.scripts %}
+		<script type="text/javascript" src="{{script.src|raw}}">
+	{%endfor%}
+
+{%endif%}
+
 {{ gantry.debugger.render()|raw }}
 
 {% block page_injected_script %}
