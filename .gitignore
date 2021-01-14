@@ -4,4 +4,4 @@ bin/*
 .sass-cache/
 .sass-cache/*
 scss/custome/*
-images/*
+images/**

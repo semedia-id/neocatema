@@ -1,5 +1,9 @@
-{%- do gantry.document.addScript(url('gantry-assets://js/module.min.js'), 99) -%}
+{% if gantry.config.page.neocatema.preload_font|default(0) %}
+	{%- set head_preload = include("etc/font-preload.html.twig") -%}
+{% endif %}
 
+
+{%- do gantry.document.addScript(url('gantry-assets://js/module.min.js'), 10) -%}
 {%- do gantry.theme.loadAtoms() -%}
 
 {% assets with { priority: 10 } %}
@@ -38,14 +42,8 @@
 
 {% endassets -%}
 
-{% if gantry.config.page.assets.favicon %}
-    <link rel="icon" type="image/x-icon" href="{{ url(gantry.config.page.assets.favicon) }}" />
-{% endif %}
-{% if gantry.config.page.assets.touchicon %}
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ url(gantry.config.page.assets.touchicon) }}">
-    <link rel="icon" sizes="192x192" href="{{ url(gantry.config.page.assets.touchicon) }}">
-{% endif %}
-
+{{ head_preload|raw }}
+	
 {% do gantry.platform.finalize %}
 
 {% block assets deferred %}
@@ -53,4 +51,11 @@
 	{{ assets.js()|raw }}
 {% endblock %}
 
+{% if gantry.config.page.assets.favicon %}
+    <link href="{{ url(gantry.config.page.assets.favicon) }}" rel="icon" type="image/x-icon" />
+{% endif %}
+{% if gantry.config.page.assets.touchicon %}
+    <link href="{{ url(gantry.config.page.assets.touchicon) }}" rel="apple-touch-icon" sizes="180x180">
+    <link href="{{ url(gantry.config.page.assets.touchicon) }}" rel="icon" sizes="192x192" >
+{% endif %}
 

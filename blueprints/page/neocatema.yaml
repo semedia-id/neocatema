@@ -13,4 +13,8 @@ form:
       type: input.checkbox
       label: user/workspaces
       default: '1'
-            
+
+    preload_font:
+      type: input.checkbox
+      label: Preload Webfont
+      default: '0'            
