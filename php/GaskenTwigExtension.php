@@ -22,8 +22,7 @@ class GaskenTwigExtension extends \Twig_Extension
 	{
 		return [
 			new \Twig_SimpleFilter('filedir', [$this, 'filedir']),
-			new \Twig_SimpleFilter('fileget', [$this, 'fileget']),
-			new \Twig_SimpleFilter('file_exists', [$this, 'file_is_exist']),
+
 			new \Twig_SimpleFilter('stripper', [$this, 'stripper_func']),
 			new \Twig_SimpleFilter('nodupe', [$this, 'unique_array']),
 		];
@@ -33,9 +32,6 @@ class GaskenTwigExtension extends \Twig_Extension
 	{
 		return [
 			new \Twig_SimpleFunction('filedir', [$this, 'filedir']),
-			new \Twig_SimpleFunction('fileget', [$this, 'fileget']),
-			new \Twig_SimpleFilter('file_exists', [$this, 'file_is_exist']),
-			new \Twig_SimpleFunction('randomwords', [$this, 'randomwords']),
 
 			new \Twig_SimpleFunction('gasvara', [$this, 'gasvar_array_func']),
 			new \Twig_SimpleFunction('gasvara_string', [$this, 'gasvara_print']),
@@ -62,14 +58,6 @@ class GaskenTwigExtension extends \Twig_Extension
 		sort($array);
 		return array_unique($array);
 
-	}
-
-	public function file_is_exist($path) {
-		if (file_exists($path)) {
-			return true;
-		} else {
-			return false;
-		}
 	}
 
 	public function to_array($stdClassObject)
@@ -103,15 +91,6 @@ class GaskenTwigExtension extends \Twig_Extension
 		return (trim($string));
 	}
 
-	public function randomwords($n) {
-		if ($n > 100) { $n=100; }
-		$w = '';
-		$words = ['lorem','ipsum','dolor','sit','amet','consectetur','adipiscing','elit','suspendisse','turpis','ligula','commodo','at','vehicula','scelerisque','tincidunt','ac','ante','duis','a','scelerisque','metus','a','congue','felis','mauris','mattis','risus','id','finibus','rhoncus','in','sit','amet','aliquet','nisi','vivamus','vestibulum','lectus','ipsum','eu','porta','elit','laoreet','et','aliquam','porttitor','nisl','eu','elit','viverra','pulvinar','vivamus','ex','enim','lacinia','molestie','efficitur','et','mattis','non','metus','morbi','sit','amet','dictum','diam','imperdiet','vulputate','arcu','maecenas','magna','sapien','facilisis','vitae','posuere','tincidunt','faucibus','non','tortor','praesent','quis','eleifend','dolor','ut','congue','ut','justo','vitae','suscipit','suspendisse','non','dictum','nisl','aenean','semper','eget','sapien','nec','dignissim'];
-		shuffle($words);
-		for ($x = 0; $x <= $n; $x++) { $w .= $words[$x]. ' '; }
-		return rtrim($w);
-	}
-
 	public function gasvara_print($var,$delim='') {
 		$coba = Grav::instance();
 		$gas = $coba['config']['gas'];
@@ -140,10 +119,7 @@ class GaskenTwigExtension extends \Twig_Extension
 
 	}
 
-	public function fileget($file)
-	{
-		return file_get_contents(GRAV_ROOT.$file);
-	}
+
 
 	public function filedir($path='',$pattern='*')
 	{

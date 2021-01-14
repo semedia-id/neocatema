@@ -1,5 +1,7 @@
 {% extends "partials/page.html.twig" %}
 
 {% block content %}
+
+	ooo: {{ file_is_exists('default.txt') }}
     {{ page.content|raw }}
 {% endblock %}

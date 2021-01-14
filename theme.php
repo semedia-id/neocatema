@@ -131,6 +131,10 @@ class Neocatema extends Theme
 	{
 		require_once(__DIR__.'/php/GaskenTwigExtension.php');
 		$this->grav['twig']->twig->addExtension(new GaskenTwigExtension());
+		
+		require_once(__DIR__.'/php/ncc-TwigExtension.php');
+		$this->grav['twig']->twig->addExtension(new nccTwigExtension());
+		
 		//require_once(__DIR__.'/php/ColorMixerTwigExtension.php');
 		//$this->grav['twig']->twig->addExtension(new ColorMixerTwigExtension());
 	}

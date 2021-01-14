@@ -20,6 +20,11 @@ form:
 
           fields:
 
+            author.name:
+              config-default@: site.author.name
+              type: text
+              label: Author name
+  
             ncc_section_0:
               type: section
               title: Page Assets
