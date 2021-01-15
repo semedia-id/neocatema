@@ -213,21 +213,47 @@ class Neocatema extends Theme
 			if (isset($this->config['theme']['tidy_output'])) {
 
 				$tmp = explode("\n", $st_content);
-				$tmp = preg_replace('/^(\W)\s+$/', '$1', $tmp);
-				$tmp = preg_replace('/^\s+(\W)/', '$1', $tmp);
-				$tmp = preg_replace('/(\r|\t)/', '', $tmp);
-				$tmp = preg_replace('/(\W)\s+(\W)/', '$1$2', $tmp);
 
+				$tmp = preg_replace('/^(\<|\>)\s+$/', '$1', $tmp);
+				$tmp = preg_replace('/^\s+(\>|\<)/', '$1', $tmp);
 				$tmp = preg_replace('/\s+$/', '', $tmp);
+				$tmp = preg_replace('/^\s+$/', '', $tmp);
+				$tmp = preg_replace('/\s+">/', '">', $tmp );
+				$tmp = preg_replace('/"\s+>/', '">', $tmp );
+				$tmp = preg_replace('/(>)\s+(<)/', '$1$2', $tmp);				
+
 				$tmp = array_filter($tmp);
 				$st_content = implode("\n", $tmp);
+				$tmp = preg_replace('/\s+">/', '">', $st_content );
+				$tmp = preg_replace('/"\s+>/', '">', $tmp );
+				$tmp = preg_replace('/\r/', '', $tmp );
+				$tmp = preg_replace('/[\r\n\s+\t]+(?=(?:[^<])*>)/', ' ', $tmp);
+				$tmp = preg_replace('/[\r\n](\<\/(li|label|i>|b>|button|a|span|div))/mi', '$1', $tmp );
 
-				$st_content  = preg_replace('/\s+\">/', '">', $st_content );
-				$st_content  = preg_replace('/"\s+>/', '">', $st_content );
-				$st_content = preg_replace('/[\r\n\s+\t]+(?=(?:[^<])*>)/', ' ', $st_content);
+				$this->grav->output = $tmp;
+
+/*
+				$tmp = preg_replace('/[\r\n\s+\t]/', ' ', $tmp);
+
+
+				
+				$tmp = preg_replace('/\s+$/', '', $tmp );
+				$tmp = preg_replace('/\s+$/', '', $tmp );
+				//$tmp = preg_replace('/\n(\<\/)/', '$1', $tmp );
+
+/*				
+				$tmp = preg_replace('/(\r|\t)/', '', $tmp);
+
+				$tmp = preg_replace('/\s+$/', '', $tmp);
+
+
 				$st_content = preg_replace('/\n(>|\}|\)|\")/', '$1', $st_content);
 
-				$this->grav->output = $st_content;
+
+				$st_content = explode("\n", $tmp);
+				$st_content = array_filter($st_content);
+				$this->grav->output = implode("\n", $st_content);
+*/
 
 			}
 

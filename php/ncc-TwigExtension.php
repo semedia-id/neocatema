@@ -21,6 +21,14 @@ class nccTwigExtension extends \Twig_Extension
 		return 'nccTwigExtension';
 	}
 
+	public function getFilters()
+	{
+		return [
+			new \Twig_SimpleFilter('stripper', [$this, 'stripper_func']),
+			new \Twig_SimpleFilter('nodupe', [$this, 'unique_array']),
+		];
+	}
+	
 	public function getFunctions()
 	{
 		return [
@@ -28,8 +36,48 @@ class nccTwigExtension extends \Twig_Extension
 			new \Twig_SimpleFunction('popularity', [$this, 'popularity']),
 			new \Twig_SimpleFunction('fileget', [$this, 'fileget']),
 			new \Twig_SimpleFunction('filedira', [$this, 'filedira']),
-			new \Twig_SimpleFunction('file_is_exists', [$this, 'file_is_exist']),			
+			new \Twig_SimpleFunction('file_is_exists', [$this, 'file_is_exist']),
+			new \Twig_SimpleFunction('stringken', [$this, 'ncc_stringken']),
+			new \Twig_SimpleFunction('arrayken', [$this, 'ncc_arrayken']),
+			new \Twig_SimpleFunction('to_array', [$this, 'ncc_obj_to_array']),			
 		];
+	}
+
+	public function ncc_obj_to_array($stdClassObject)
+	{
+		$response = array();
+		foreach ($stdClassObject as $key => $value) {
+			$response[$key]= $value;
+		}
+		ksort($response);
+		return $response;
+	}
+
+	public function unique_array($array)
+	{
+		array_filter($array);
+		sort($array);
+		return array_unique($array);
+
+	}
+	
+	public function ncc_arrayken($string,$delim,$unique=false)
+	{
+		$array = explode($delim, $string);
+		array_filter($array);
+		if ($unique) {
+			return array_unique($array);
+		} else {
+			return $array;
+		}
+	}
+
+	public function ncc_stringken($array, $delim=' ') {
+
+		if (! is_array($array) ) { $array = explode($delim,$array); }
+		array_filter($array);
+		sort($array);
+		return trim(join($delim,array_unique($array)),$delim);
 	}
 
 	public function randomwords($n=10) {
@@ -104,6 +152,27 @@ class nccTwigExtension extends \Twig_Extension
 		}
 	}
 	
+
+	public function stripper_func($string,$compress=false)
+	{
+
+		$tmp = explode("\n", $string);
+		$tmp = preg_replace('/^\s+$/', '', $tmp);
+		$tmp = preg_replace('/^\s+/', '', $tmp);
+		$tmp = preg_replace('/\s+$/', '', $tmp);
+		$tmp = array_filter($tmp);
+		$string = implode("\n", $tmp);
+		$string = preg_replace('/;;/', ';', $string);
+
+		if ($compress) {
+			$string = preg_replace('/\t/', '', $string);
+			$string = preg_replace('/\n/', '', $string);
+			$string = preg_replace('/\s+(=|:|<|>|\(|\)|\}|\{|,)/', '$1', $string);
+			$string = preg_replace('/(=|:|<|>|\(|\)|\}|\{|,)\s+/', '$1', $string);
+		}
+
+		return (trim($string));
+	}
 
 
 }
