@@ -36,7 +36,7 @@
 
 {% assets with { priority: 1 } %}
 
-	{% if gantry.config.page.neocatema.workspace|default(1) %}
+	{% if gantry.config.page.neocatema.workspace_css|default(0) %}
 		<link rel="stylesheet" href="user://workspace/css/custom.css" type="text/css">
 	{% endif %}
 

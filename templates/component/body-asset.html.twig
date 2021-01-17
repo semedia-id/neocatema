@@ -1,7 +1,7 @@
 {%- do gantry.document.addScript(url('gantry-assets://js/main.js'), 10, 'footer') -%}
 
 
-{% if gantry.config.page.neocatema.workspace|default(1) %}
+{% if gantry.config.page.neocatema.workspace_js|default(0) %}
 	{%- do gantry.document.addScript(url('user://workspace/js/script.js'), 10, 'footer') -%}
 {% endif %}
 

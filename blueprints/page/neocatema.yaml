@@ -9,10 +9,15 @@ form:
       class: 'alert alert-success blocksize-note'
       content: '<small>See: <a href="https://github.com/tacoen/neocatema/wiki">Neocatema wiki</a></small>'
 
-    workspace:
+    workspace_css:
       type: input.checkbox
-      label: user/workspaces
-      default: '1'
+      label: user/workspaces/css
+      default: '0'
+
+    workspace_js:
+      type: input.checkbox
+      label: user/workspaces/js
+      default: '0'
 
     preload_font:
       type: input.checkbox

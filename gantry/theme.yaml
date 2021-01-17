@@ -74,7 +74,6 @@ configuration:
     resize:
         grow: grow
         shrink: shrink
-
   
   section-variations:
 
