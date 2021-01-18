@@ -1,5 +1,5 @@
-name: animate.css
-description: html5 animate utitilies.
+name: loading.css
+description: loading.io loading.css
 type: atom
 icon: fa-image
 
@@ -14,4 +14,4 @@ form:
     _info:
       type: separator.note
       class: alert alert-info
-      content: 'For more information on how to use this atom, see <a href="https://animate.style/">animate.style <i class="fa fa-external-link" aria-hidden="true"></i></a>.'
+      content: 'For more information on how to use this atom, see <a href="https://loading.io/animation/">loading.io <i class="fa fa-external-link" aria-hidden="true"></i></a>.'

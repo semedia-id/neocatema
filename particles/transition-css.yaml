@@ -1,0 +1,17 @@
+name: transition.css
+description: loading.io transition.css
+type: atom
+icon: fa-image
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable Lightcase atom.
+      default: true
+
+    _info:
+      type: separator.note
+      class: alert alert-info
+      content: 'For more information on how to use this atom, see <a href="https://loading.io/transition/">loading.io <i class="fa fa-external-link" aria-hidden="true"></i></a>.'
