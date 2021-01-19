@@ -13,7 +13,19 @@ form:
       active: 1
 
       fields:
-         
+
+        Extend:
+          type: tab
+          title: List
+
+          fields:
+            header.content_data:
+              type: array
+              label: Data
+              toggleable: true
+              placeholder_key: ncc_function(eg: file)
+              placeholder_value: value(eg: sample.txt)              
+
         options:
           type: tab
           title: PLUGIN_ADMIN.OPTIONS
@@ -24,7 +36,7 @@ form:
               config-default@: site.author.name
               type: text
               label: Author name
-  
+              
             ncc_section_0:
               type: section
               title: Page Assets

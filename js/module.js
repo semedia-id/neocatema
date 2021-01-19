@@ -1,4 +1,4 @@
-/* Compile Time: 01/13/21 23:58:40 */
+/* Compile Time: 01/20/21 01:38:06 */
 /*
  * gas.js -- for Gakeun.js on ncc Grav theme
  *
@@ -1090,26 +1090,29 @@ function ncc_modular_nav() {
 }
 /* ------ module/modular-slide.js ------*/
 
+window.value=[];
+
 function gn_modular_slideshow(ele,sec=15) {
 
 	var r = gas(ele); 
 
 	if (r) {
 		var sec = r.data('delay')
-		window.value = 0
-		//console.log(sec);
+		id = ele.replace('#','');
+		window.value[id] = 0
+		// console.log(id,sec);
 		setInterval(function(){ 
-			gn_modular_slideshow_func(r);
+			gn_modular_slideshow_func(r,id);
 		}, sec*1000 );
 	}
 }
 
-function gn_modular_slideshow_func(r) {
+function gn_modular_slideshow_func(r,id) {
 	var images = r.data('image').split(",");
-	window.value = window.value + 1;
-	if (window.value >= images.length) { window.value = 0; }
-	//console.log(window.value,images[window.value])
-	r.style('backgroundImage','url('+images[window.value]+')');
+	window.value[id] = window.value[id] + 1;
+	if (window.value[id] >= images.length) { window.value[id] = 0; }
+	// console.log(id,window.value[id],images[window.value[id]])
+	r.style('backgroundImage','url('+images[window.value[id]]+')');
 }
 
 /* ------ module/page_lightbox.js ------*/

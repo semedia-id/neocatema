@@ -1,175 +1,208 @@
-title: module-hero
-extends@: default
+title: hero-module
+extends@:
+    type: default
+    context: 'blueprints://pages'
 
 form:
+  validation: loose
+
   fields:
+
     tabs:
+      type: tabs
+      active: 1
+
       fields:
-        advanced:
+
+        Modular:
+          type: tab
+          title: Modular
           fields:
+
+            section_0:
+              type: section
+              title: Modular Pages
+              underline: true
+
             columns:
+              type: columns
               fields:
-                column1:
+
+                column-1l:
+                  type: column
                   fields:
-                    name:
-                      default: 'modular/features'
-                      data-options@: '\Grav\Common\Page\Pages::modularTypes'
-            overrides:
-              fields:
-                header.template:
-                  default: 'modular/features'
-                  data-options@: '\Grav\Common\Page\Pages::modularTypes'
-        contents:
-          type: tab
-          title: Hero Setup
-          fields:
 
-            header.class:
-              type: text
-              label: Class
+                    header.class:
+                      type: text
+                      label: Module Class
 
-            header.background_color:
-              type: colorpicker
-              label: Background Color
-            
-            _section3:
-              type: section
-              title: Page Content
+                    header.background_color:
+                      type: colorpicker
+                      label: Background Color
 
-            header.modular_height:
-              type: text
-              label: Modular Height
-              default: 100vh
-              
-            header.content_h_layout:
-              type: select
-              label: H-position
-              placeholder: 'Select...'
-              default: center
-              options:
-                left: left
-                center: center
-                right: right
-                
-            header.content_v_layout:
-              type: select
-              label: V-position
-              placeholder: 'Select...'
-              default: middle
-              options:
-                top: top
-                middle: middle
-                bottom: bottom                
+                    header.modular_height:
+                      type: text
+                      label: Modular Height
+                      default: 100vh
 
-            header.title_print:
-              label: Show Page Title
-              type: checkbox
-              default: false
+                    header.content_h_layout:
+                      type: select
+                      label: H Alignment
+                      placeholder: 'Select...'
+                      default: center
+                      options:
+                        left: left
+                        center: center
+                        right: right
 
-            _section4:
-              type: section
-              title: Background Animation
+                    header.content_v_layout:
+                      type: select
+                      label: V Alignment
+                      placeholder: 'Select...'
+                      default: middle
+                      options:
+                        top: top
+                        middle: middle
+                        bottom: bottom
 
-            header.enable_paralax:
-              type: checkbox
-              label: Paralax Backround
-              default: false
-
-            header.img_blend:
-              type: select
-              label: Image Blend-Mode
-              placeholder: 'Select...'
-              default: soft-light
-              options:
-                normal: normal
-                soft-light: soft-light
-                hard-light: hard-light
-                overlay: overlay
-                darken: darken
-                multiply: multiply
-                screen: screen
-                lighten: lighten
-                color-burn: color-burn
-                color-dodge: color-dodge
-                saturation: saturation
-                hue: hue
-                color: color
-                luminosity: luminosity
-                difference: difference
-                auto: auto
-
-            header.img_timeout:
-                name: timeout
-                type: number
-                label: Slide second
-                default: 10
-                validate:
-                    min: 0
-                    max: 120
-                    step: 1
-
-            header.img_posX:
-                type: number
-                label: Position-X
-                default: 50
-                validate:
-                    min: 0
-                    max: 100
-                    step: 1
-
-            header.img_posY:
-                type: number
-                label: Position-Y
-                default: 50
-                validate:
-                    min: 0
-                    max: 100
-                    step: 1
-                    
-            header.img_animation:
-              name: animation
-              type: select
-              label: Animation
-              placeholder: 'Select...'
-              default: paralax-h
-              options:
-                mod-paralax-h: paralax-h
-                mod-paralax-v: paralax-v
-                mod-zoom: zoom-flash
-                mod-fade: fade
-
-            _section_img:
-              type: fieldset
-              title: Images
-              collapsible: true
-              collapsed: false
-              fields:                
-                header.images:
-                  type: list
-                  label: Background Image
-                  style: vertical
+                column-1r:
+                  type: column
                   fields:
-                    .file:
-                      type: pagemediaselect
-                      label: Image
-                
-        listing:
-          type: tab
-          title: List
-          fields:
 
-            _section1:
+                    header.title_print:
+                      type: toggle
+                      options:
+                        1: 'Yes'
+                        0: 'No'
+                      label: Show Page Title
+                      default: 0
+                      highlight: 1
+
+                    header.enable_background:
+                      type: toggle
+                      options:
+                        1: 'Yes'
+                        0: 'No'
+                      label: Use Background Image
+                      default: 0
+                      highlight: 1
+
+                    header.list_enable:
+                      type: toggle
+                      options:
+                        1: 'Yes'
+                        0: 'No'
+                      label: Use Features List
+                      default: 0
+                      highlight: 1
+
+                    header.buttons_enable:
+                      type: toggle
+                      options:
+                        1: 'Yes'
+                        0: 'No'
+                      label: Use Buttons
+                      default: 0
+                      highlight: 1
+
+            _section_f0:
               type: fieldset
-              title: List
+              title: Background Image
               collapsible: true
               collapsed: false
               fields:
 
-                header.list_enable:
-                  type: checkbox
-                  label: Enable
-                  default: 0
-                  
+                columns2:
+                  type: columns
+                  fields:
+                    column-2l:
+                      type: column
+                      fields:
+
+                        header.img_animation:
+                          name: animation
+                          type: select
+                          label: Animation
+                          placeholder: 'Select...'
+                          default: disable
+                          options:
+                            mod-paralax-h: paralax-h
+                            mod-paralax-v: paralax-v
+                            mod-zoom: zoom-flash
+                            mod-fade: fade
+                            disable: disable
+                            
+                        header.img_timeout:
+                            name: timeout
+                            type: range
+                            label: Slide second
+                            default: 10
+                            validate:
+                                min: 0
+                                max: 60
+                                step: 1
+
+                        header.img_posX:
+                            type: range
+                            label: Position-X
+                            default: 50
+                            validate:
+                                min: 0
+                                max: 100
+                                step: 1
+
+                        header.img_posY:
+                            type: range
+                            label: Position-Y
+                            default: 50
+                            validate:
+                                min: 0
+                                max: 100
+                                step: 1
+
+                    column-2r:
+                      type: column
+                      fields:
+
+                        header.img_blend:
+                          type: select
+                          label: Image Blend-Mode
+                          placeholder: 'Select...'
+                          default: normal
+                          options:
+                            normal: normal
+                            soft-light: soft-light
+                            hard-light: hard-light
+                            overlay: overlay
+                            darken: darken
+                            multiply: multiply
+                            screen: screen
+                            lighten: lighten
+                            color-burn: color-burn
+                            color-dodge: color-dodge
+                            saturation: saturation
+                            hue: hue
+                            color: color
+                            luminosity: luminosity
+                            difference: difference
+                            auto: auto
+
+                        header.images:
+                          type: list
+                          label: Select Background Image
+                          style: vertical
+                          fields:
+                            .file:
+                              type: pagemediaselect
+                              label: Image
+
+            _section_f1:
+              type: fieldset
+              title: Features List
+              collapsible: true
+              collapsed: false
+              fields:
+
                 header.list_layout:
                   type: select
                   label: Layout
@@ -181,7 +214,6 @@ form:
 
                 header.list:
                   type: list
-                  label: Items
                   style: vertical
                   fields:
                     .icon:
@@ -201,13 +233,8 @@ form:
               type: fieldset
               title: Buttons
               collapsible: true
-              collapsed: true
+              collapsed: false
               fields:
-
-                header.buttons_enable:
-                  type: checkbox
-                  label: Enable
-                  default: 0
 
                 header.buttons_layout:
                   type: select
@@ -220,7 +247,7 @@ form:
 
                 header.buttons_list:
                   type: list
-                  label: Buttons
+                  style: vertical
                   fields:
                     .text:
                       type: text

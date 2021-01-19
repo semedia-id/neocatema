@@ -9,17 +9,10 @@
 {% set id = 'modular-' ~ rand(1000, 9999) %}
 
 {% if page.header.background_color %}
-
-    {% set bgcolor = '--color:'~page.header.background_color~';' %}
-
+    {% set style_bgcolor = '--color:'~page.header.background_color~';' %}
     {% set class = class ~ ' hsl-pal' %}
-
     {% set module_injectjs = module_injectjs ~ "ncc_construct_pallete('#"~id~"');" %}
-
-
     {% do gasvara('inline_js',module_injectjs) %}
-    
-
 {% endif %}
 
 {% if page.header.list_enable and page.header.list %}
@@ -56,67 +49,77 @@
     {% endset %}
 {% endif %}
 
-{% set styles = bgcolor 
+{% set styles = style_bgcolor 
 	~ (page.header.modular_height ? "min-height:"~header.modular_height~";" )
 %}
 
-{% if page.header.enable_paralax %}
-
-{% if page.header.images|length > 0 %}
-
-    {% set img_list = "data-image=" %}
-
-    {% for img in page.header.images %}
-        {% if loop.last %}
-            {% set img_list = img_list~page.media[img.file].url|e %}
-        {% else %}
-            {% set img_list = img_list~page.media[img.file].url|e~"," %}
-        {% endif %}
-    {% endfor %}
-
-
-{% else %}
-
-    {% if page.media.images|length > 0 %}
-        {% set img_list = "data-image=" %}
-        {% for img in page.media.images %}
-            {% if loop.last %}
-                {% set img_list = img_list~img.url|e %}
-            {% else %}
-                {% set img_list = img_list~img.url|e~"," %}
-            {% endif %}
-        {% endfor %}
-    {% endif %}
-
-{% endif %}
-
-{% set img_list = img_list|rtrim %}
-
-{% if img_list %}
+{% if page.header.enable_background %}
 
     {% set styles = styles
-        ~ (page.header.media_order ? "background-image: url('" ~ page.media.images|first.url ~ "');" )
-        ~ (page.header.img_blend ? "background-blend-mode:" ~ page.header.img_blend ~ ";" )
-        ~ (page.header.img_posX ? "background-position-x:" ~ page.header.img_posX ~ "%;" )
-        ~ (page.header.img_posY ? "background-position-y:" ~ page.header.img_posY ~ "%;" )
+		~ (page.header.img_blend ? "background-blend-mode:" ~ page.header.img_blend ~ ";" )
+		~ (page.header.img_posX ? "background-position-x:" ~ page.header.img_posX ~ "%;" )
+		~ (page.header.img_posY ? "background-position-y:" ~ page.header.img_posY ~ "%;" )
+    %}
+
+{% if page.header.img_animation != 'disable' %}
+
+    {% set styles = styles
         ~ (page.header.img_animation ? "animation-name:" ~ page.header.img_animation ~ ";" )
         ~ (page.header.img_timeout ? "animation-duration:" ~ page.header.img_timeout ~ "s;" )
     %}
 
-    {% set module_img_injectjs %}
-		gn_modular_slideshow('#{{id}}',{{page.header.img_timeout|raw}});
-    {% endset %}
 
-    {% do gasvara('inline_js',module_img_injectjs) %}
+	{% if page.header.images|length > 0 %}
+		{% set img_list = "data-image=" %}
+		{% for img in page.header.images %}
+			{% if loop.last %}
+				{% set img_list = img_list~page.media[img.file].url|e %}
+			{% else %}
+				{% set img_list = img_list~page.media[img.file].url|e~"," %}
+			{% endif %}
+		{% endfor %}
 
+	{% else %}
+
+		{% if page.media.images|length > 0 %}
+			{% set img_list = "data-image=" %}
+			{% for img in page.media.images %}
+				{% if loop.last %}
+					{% set img_list = img_list~img.url|e %}
+				{% else %}
+					{% set img_list = img_list~img.url|e~"," %}
+				{% endif %}
+			{% endfor %}
+			
+		{% endif %}
+
+	{% endif %}
+
+	{% set img_list = img_list|rtrim %}
+
+	{% if img_list %}
+		{% set module_img_injectjs %}
+			gn_modular_slideshow('#{{id}}',{{page.header.img_timeout|raw}});
+		{% endset %}
+		{% do gasvara('inline_js',module_img_injectjs) %}
+		{% set div_attr = "data-delay="~ page.header.img_timeout|default(10) %}
+	{% endif %}
+
+{% else %}
+
+	{% set styles = styles~ "background-size: cover;" %}
 
 {% endif %}
 
+{% set styles = styles
+	~ (page.header.media_order ? "background-image: url('" ~ page.media.images|first.url ~ "');" )
+%}
+
 {% endif %}
+
 
 <div id="{{id|raw}}" class="{{ class|raw }}" style="{{ styles|raw }}" 
-    {{img_list|raw}}
-    data-delay={{page.header.img_timeout}}>
+    {{img_list|raw}} {{div_attr}}>
 
     <div class='page-content'>
         {% if page.header.title_print %}<div class='h1'>{{ page.title }}</div>{% endif %}

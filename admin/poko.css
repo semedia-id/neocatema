@@ -1,6 +1,9 @@
+
 .plugins-notifications-container {
 	display: none;
 }
+
+[data-grav-field="range"] .form-input-wrapper  { display: flex; }
 
 
 .ncc-note {
