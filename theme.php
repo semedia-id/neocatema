@@ -246,11 +246,8 @@ class Neocatema extends Theme
 
 				}					
 
-				$st_content = implode('\n', $tmp);
-				$st_content = preg_replace('#</(div|li|ul)>\n#','</$1>',$st_content);
-				$tmp = explode('\n', $st_content);
-				$tmp = preg_replace('#^\s+#','',$tmp);
-				$st_content = implode('\n',$tmp);
+				$st_content = preg_replace('#</(div|li|ul])>\n#','</$1>',$tmp);
+				$st_content = preg_replace('#</head>#',"<meta http-equiv='cache-control' content='public' />\n</head>",$st_content);
 				
 				if ($this->config['theme']['rewrite']) {
 					file_put_contents($filepath, $st_content);
