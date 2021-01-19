@@ -146,41 +146,27 @@ class Neocatema extends Theme
 
 	public function onTwigTemplatePaths()
 	{
+
+		require_once(__DIR__.'/php/ncc-util.php');
+
 		$locator = $this->grav['locator'];
 		$theme_name = $this->name;
 
-		$tdir = $locator('user://').'/templates';
-		if (! file_exists($tdir) ) { mkdir($tdir); }
-
-		$bdir = $locator('user://').'/blueprints';
-		if (! file_exists($tdir) ) { mkdir($bdir); }
-
-		# --- user/workspace
-		$tdir = $locator('user://').'/workspace/scss';
-		if (! file_exists($tdir) ) { mkdir($tdir,0755,true); }
-		$tdir = $locator('user://').'/workspace/css';
-		if (! file_exists($tdir) ) { mkdir($tdir,0755,true); }
-		$tdir = $locator('user://').'/workspace/js';
-		if (! file_exists($tdir) ) { mkdir($tdir,0755,true); }
-		
-		$u_css = $locator('user://').'/workspace/css/custom.css';
-		if (! file_exists($u_css) ) { touch($u_css); }
-		
-		$u_css = $locator('user://').'/workspace/js/script.js';
-		if (! file_exists($u_css) ) { touch($u_css); }
-
-		$u_scss = $locator('user://').'/workspace/scss/custom.scss';
-		if (! file_exists($u_scss) ) { copy(__DIR__.'/_userspace/scss/custom.scss',$u_scss); }
-		
-		$u_gscss = $locator('user://').'/workspace/scss/_grav-dependency.scss';
-		if (! file_exists($u_gscss) ) { copy(__DIR__.'/_userspace/scss/_grav-dependency.scss',$u_gscss);}
-		
-		$u_scwatch = $locator('user://').'/workspace/scss-watch.sh';
-		if (! file_exists($u_scwatch) ) { copy(__DIR__.'/_userspace/scss-watch.sh',$u_scwatch);}
-
-		$pdir = $locator('user://')."/data/gantry5/themes/$theme_name/particles";
-		if (! file_exists($pdir) ) { mkdir($pdir,0755,true); }
-
+		create_ifnotexists($locator('user://').'/templates');
+		create_ifnotexists($locator('user://').'/blueprints');
+		create_ifnotexists($locator('user://').'/workspace/css');
+		create_ifnotexists($locator('user://').'/workspace/scss');
+		create_ifnotexists($locator('user://').'/workspace/js');
+		create_ifnotexists($locator('user://')."/data/gantry5/themes/$theme_name/particles");
+		create_ifnotexists($locator('user://').'/workspace/js/script.js','touch');
+		create_ifnotexists($locator('user://').'/workspace/css/custom.css','touch');
+		create_ifnotexists($locator('user://').'/workspace/scss/custom.scss',
+			'copy',__DIR__.'/_userspace/scss/custom.scss');
+		create_ifnotexists($locator('user://').'/workspace/scss/_grav-dependency.scss',
+			'copy',__DIR__.'/_userspace/scss/_grav-dependency.scss');
+		create_ifnotexists($locator('user://').'/workspace/scss-watch.sh',
+			'copy',__DIR__.'/_userspace/scss-watch.sh');
+			
 		$this->grav['twig']->twig_paths[] = $locator('user://templates');
 	}
 
@@ -199,6 +185,8 @@ class Neocatema extends Theme
 	public function onOutputGenerated()
 	{
 
+		require_once(__DIR__.'/php/ncc-util.php');
+		
 		function createPath($path) {
 			if (is_dir($path)) return true;
 			$prev_path = substr($path, 0, strrpos($path, '/', -2) + 1 );
@@ -208,57 +196,14 @@ class Neocatema extends Theme
 
 		if (! $this->isAdmin()) {
 
-			$st_content = $this->grav->output."";
-
 			if (isset($this->config['theme']['tidy_output'])) {
-
-				$tmp = explode("\n", $st_content);
-
-				$tmp = preg_replace('/^(\<|\>)\s+$/', '$1', $tmp);
-				$tmp = preg_replace('/^\s+(\>|\<)/', '$1', $tmp);
-				$tmp = preg_replace('/\s+$/', '', $tmp);
-				$tmp = preg_replace('/^\s+$/', '', $tmp);
-				$tmp = preg_replace('/\s+">/', '">', $tmp );
-				$tmp = preg_replace('/"\s+>/', '">', $tmp );
-				$tmp = preg_replace('/(>)\s+(<)/', '$1$2', $tmp);				
-
-				$tmp = array_filter($tmp);
-				$st_content = implode("\n", $tmp);
-				$tmp = preg_replace('/\s+">/', '">', $st_content );
-				$tmp = preg_replace('/"\s+>/', '">', $tmp );
-				$tmp = preg_replace('/\r/', '', $tmp );
-				$tmp = preg_replace('/[\r\n\s+\t]+(?=(?:[^<])*>)/', ' ', $tmp);
-				$tmp = preg_replace('/[\r\n](\<\/(li|label|i>|b>|button|a|span|div))/mi', '$1', $tmp );
-
-				$this->grav->output = $tmp;
-
-/*
-				$tmp = preg_replace('/[\r\n\s+\t]/', ' ', $tmp);
-
-
-				
-				$tmp = preg_replace('/\s+$/', '', $tmp );
-				$tmp = preg_replace('/\s+$/', '', $tmp );
-				//$tmp = preg_replace('/\n(\<\/)/', '$1', $tmp );
-
-/*				
-				$tmp = preg_replace('/(\r|\t)/', '', $tmp);
-
-				$tmp = preg_replace('/\s+$/', '', $tmp);
-
-
-				$st_content = preg_replace('/\n(>|\}|\)|\")/', '$1', $st_content);
-
-
-				$st_content = explode("\n", $tmp);
-				$st_content = array_filter($st_content);
-				$this->grav->output = implode("\n", $st_content);
-*/
-
+				$this->grav->output = ncc_tidyup($this->grav->output."");
 			}
 
 			if (isset($this->config['theme']['static_path'])) {
-
+				
+				$st_content = $this->grav->output;
+				
 				$locator = $this->grav['locator'];
 				$tdir = $_SERVER['DOCUMENT_ROOT'].'/'. $this->config['theme']['static_path'];
 
@@ -267,9 +212,46 @@ class Neocatema extends Theme
 				$file = $tdir.$this->grav['uri']->path();
 				createPath($file);
 				$filepath = $file."/index.html";
+				
+				$tmp = explode('\n',$st_content);
 
-				$st_content = preg_replace('#href="\/#','href="/static/',$st_content);
-				$st_content = preg_replace('#link href="\/static#','link href="',$st_content);
+				$st = $this->config['theme']['static_path'];
+
+				$tmp = preg_replace('#href="\/#','href="/'.$st.'/',$tmp);
+				$tmp = preg_replace('#link href="\/'.$st.'#','link href="',$tmp);
+				
+				function copy_asset($src,$tdir) {
+					$name = preg_replace('#assets/#','',$src);
+					//$name = preg_replace('#^(.+?)(\..+?$)#','ncc-static$2',$src);
+					$sdir = preg_replace('#'.GRAV_ROOT.'#','',$tdir);
+					copy($src,$tdir.'/'.$name);
+					return $sdir."/".$name;
+				}
+				
+				if ($this->grav['assets']['css_pipeline']) {
+
+					$tmp = preg_replace_callback('/\"\/(assets(?=\/)(.*?)(.css)(?="))/', 
+						function($matches) use ($tdir) { 
+						return '"'.copy_asset($matches[1],$tdir);
+						}, $tmp);
+
+				}
+				
+				if ($this->grav['assets']['js_pipeline']) {
+				
+					$tmp = preg_replace_callback('/\"\/(assets(?=\/)(.*?)(.js)(?="))/', 
+						function($matches) use ($tdir) { 
+						return '"'.copy_asset($matches[1],$tdir);
+						}, $tmp);
+
+				}					
+
+				$st_content = implode('\n', $tmp);
+				$st_content = preg_replace('#</(div|li|ul)>\n#','</$1>',$st_content);
+				$tmp = explode('\n', $st_content);
+				$tmp = preg_replace('#^\s+#','',$tmp);
+				$st_content = implode('\n',$tmp);
+				
 				if ($this->config['theme']['rewrite']) {
 					file_put_contents($filepath, $st_content);
 				} else {

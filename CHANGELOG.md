@@ -86,4 +86,16 @@
 1. [](#improved)
 	* gasvara, utilize {{config.gas}} for variables collecting in twig
 	
+# 0.5.5
+## 18/01/2020
+
+1. [](#improved)
+	* twig function
+	* modular templates
+	* better html-tidyup
+	* better static-pages generator with 404 handler
+
+2. [](#new)
+	* moving workspace to user (userspace)
+	
 	

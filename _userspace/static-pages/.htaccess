@@ -1,0 +1,7 @@
+ErrorDocument 404 /static-page/404.php
+
+RewriteEngine On
+RewriteBase /static-page
+
+RewriteCond %{REQUEST_URI} ^404.php?$
+RewriteRule ^/static-page/(.+)$ /$1 [L]

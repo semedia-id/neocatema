@@ -19,7 +19,7 @@ form:
   validation: loose
   fields:
 
-    _note:
+    _section0:
         type: section
         title: Options
 
@@ -30,9 +30,14 @@ form:
         default: true
         help: I love Tidyhtml, but when its not avaliable, I check this. 
 
-    _note2:
+    _section1:
         type: section
-        title: Generate Static Page
+        title: Static Page
+
+    _note3:
+        type: section
+        title: Generate static pages work best with pipeline.
+        classes: ncc-note
 
     static_path:
         toggleable: true
@@ -45,7 +50,7 @@ form:
         label: Rewrite everything
         default: false
 
-    _note3:
+    _section3:
         type: section
         title: Properties
 

@@ -1,10 +1,10 @@
-{% if gantry.config.page.neocatema.preload_font|default(0) %}
-	{%- set head_preload = include("etc/font-preload.html.twig") -%}
-{% endif %}
-
 
 {%- do gantry.document.addScript(url('gantry-assets://js/module.min.js'), 10) -%}
 {%- do gantry.theme.loadAtoms() -%}
+
+{% if gantry.config.page.neocatema.preload_font|default(0) %}
+	{%- set head_preload = include("etc/font-preload.html.twig") -%}
+{% endif %}
 
 {% assets with { priority: 10 } %}
 
