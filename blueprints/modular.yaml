@@ -1,7 +1,5 @@
 title: modular
-extends@:
-    type: modular
-    context: 'blueprints://pages'
+
 
 form:
   validation: loose
