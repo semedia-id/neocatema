@@ -3,7 +3,7 @@ description: Settings that can be applied to the theme.
 type: global
 form:
   fields:
-  
+
     _note:
       type: separator.note
       class: 'alert alert-success blocksize-note'
@@ -22,4 +22,4 @@ form:
     preload_font:
       type: input.checkbox
       label: Preload Webfont
-      default: '0'            
+      default: '0'

@@ -111,31 +111,16 @@ class Neocatema extends Theme
 			$this->config->set('gas.admin',true);
 		}
 
-		$log_path = $locator('log://popularity');
-
-		if (file_exists($log_path . '/daily.json')) {
-			$val = array_values((array)json_decode(file_get_contents($log_path . '/daily.json')))[0];
-			$this->config->set('gas.stat.daily',$val);
-		}
-
-		if (file_exists($log_path . '/monthly.json')) {
-			$this->config->set('gas.stat.monthly',array_values((array)json_decode(file_get_contents($log_path . '/monthly.json')))[0]);
-		}
-
-		if (file_exists($log_path . '/totals.json')) {
-			$this->config->set('gas.stat.total',array_values((array)json_decode(file_get_contents($log_path . '/totals.json')))[0]);
-		}
-
 	}
 
 	public function onTwigExtensions()
 	{
 		require_once(__DIR__.'/php/GaskenTwigExtension.php');
 		$this->grav['twig']->twig->addExtension(new GaskenTwigExtension());
-		
+
 		require_once(__DIR__.'/php/ncc-TwigExtension.php');
 		$this->grav['twig']->twig->addExtension(new nccTwigExtension());
-		
+
 		//require_once(__DIR__.'/php/ColorMixerTwigExtension.php');
 		//$this->grav['twig']->twig->addExtension(new ColorMixerTwigExtension());
 	}
@@ -164,7 +149,7 @@ class Neocatema extends Theme
 			'copy',__DIR__.'/skel/user/workspace/scss/_grav-dependency.scss');
 		create_ifnotexists($locator('user://').'/workspace/scss-watch.sh',
 			'copy',__DIR__.'//skel/user/workspace/scss-watch.sh');
-			
+
 		$this->grav['twig']->twig_paths[] = $locator('user://templates');
 	}
 
@@ -191,7 +176,7 @@ class Neocatema extends Theme
 	{
 
 		require_once(__DIR__.'/php/ncc-util.php');
-		
+
 		function createPath($path) {
 			if (is_dir($path)) return true;
 			$prev_path = substr($path, 0, strrpos($path, '/', -2) + 1 );
@@ -206,9 +191,9 @@ class Neocatema extends Theme
 			}
 
 			if (isset($this->config['theme']['static_path'])) {
-				
+
 				$st_content = $this->grav->output;
-				
+
 				$locator = $this->grav['locator'];
 				$tdir = $_SERVER['DOCUMENT_ROOT'].'/'. $this->config['theme']['static_path'];
 
@@ -217,14 +202,14 @@ class Neocatema extends Theme
 				$file = $tdir.$this->grav['uri']->path();
 				createPath($file);
 				$filepath = $file."/index.html";
-				
+
 				$tmp = explode('\n',$st_content);
 
 				$st = $this->config['theme']['static_path'];
 
 				$tmp = preg_replace('#href="\/#','href="/'.$st.'/',$tmp);
 				$tmp = preg_replace('#link href="\/'.$st.'#','link href="',$tmp);
-				
+
 				function copy_asset($src,$tdir) {
 					$name = preg_replace('#assets/#','',$src);
 					//$name = preg_replace('#^(.+?)(\..+?$)#','ncc-static$2',$src);
@@ -232,28 +217,28 @@ class Neocatema extends Theme
 					copy($src,$tdir.'/'.$name);
 					return $sdir."/".$name;
 				}
-				
+
 				if ($this->grav['assets']['css_pipeline']) {
 
-					$tmp = preg_replace_callback('/\"\/(assets(?=\/)(.*?)(.css)(?="))/', 
-						function($matches) use ($tdir) { 
+					$tmp = preg_replace_callback('/\"\/(assets(?=\/)(.*?)(.css)(?="))/',
+						function($matches) use ($tdir) {
 						return '"'.copy_asset($matches[1],$tdir);
 						}, $tmp);
 
 				}
-				
+
 				if ($this->grav['assets']['js_pipeline']) {
-				
-					$tmp = preg_replace_callback('/\"\/(assets(?=\/)(.*?)(.js)(?="))/', 
-						function($matches) use ($tdir) { 
+
+					$tmp = preg_replace_callback('/\"\/(assets(?=\/)(.*?)(.js)(?="))/',
+						function($matches) use ($tdir) {
 						return '"'.copy_asset($matches[1],$tdir);
 						}, $tmp);
 
-				}					
+				}
 
 				$st_content = preg_replace('#</(div|li|ul])>\n#','</$1>',$tmp);
 				$st_content = preg_replace('#</head>#',"<meta http-equiv='cache-control' content='public' />\n</head>",$st_content);
-				
+
 				if ($this->config['theme']['rewrite']) {
 					file_put_contents($filepath, $st_content);
 				} else {

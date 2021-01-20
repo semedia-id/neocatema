@@ -28,7 +28,7 @@ class nccTwigExtension extends \Twig_Extension
 			new \Twig_SimpleFilter('nodupe', [$this, 'unique_array']),
 		];
 	}
-	
+
 	public function getFunctions()
 	{
 		return [
@@ -39,7 +39,7 @@ class nccTwigExtension extends \Twig_Extension
 			new \Twig_SimpleFunction('file_is_exists', [$this, 'file_is_exist']),
 			new \Twig_SimpleFunction('stringken', [$this, 'ncc_stringken']),
 			new \Twig_SimpleFunction('arrayken', [$this, 'ncc_arrayken']),
-			new \Twig_SimpleFunction('to_array', [$this, 'ncc_obj_to_array']),			
+			new \Twig_SimpleFunction('to_array', [$this, 'ncc_obj_to_array']),
 		];
 	}
 
@@ -60,7 +60,7 @@ class nccTwigExtension extends \Twig_Extension
 		return array_unique($array);
 
 	}
-	
+
 	public function ncc_arrayken($string,$delim,$unique=false)
 	{
 		$array = explode($delim, $string);
@@ -90,14 +90,14 @@ class nccTwigExtension extends \Twig_Extension
 	}
 
 	public function file_is_exist($path) {
-		
+
 		if (Utils::startsWith($path, '/')) {
 			$wpath = GRAV_ROOT . $path;
 		} else {
 			$wpath = Grav::instance()['page']->path() . '/' . $path;
-		}		
-		
-		
+		}
+
+
 		if (file_exists($wpath)) {
 			return true;
 		} else {
@@ -116,18 +116,18 @@ class nccTwigExtension extends \Twig_Extension
 		}
 		return $res;
 	}
-		
+
 	public function fileget($file) {
 		return file_get_contents($file);
 	}
-	
-	public function popularity($what) 
+
+	public function popularity($what)
 	{
-	
+
 		$log_path = GRAV_ROOT.'/logs/popularity';
 
 		switch($what) {
-			
+
 			case 'daily':
 				$file = $log_path . '/daily.json';
 				break;
@@ -142,7 +142,7 @@ class nccTwigExtension extends \Twig_Extension
 				$file = $log_path . '/visitors.json';
 				break;
 		}
-		
+
 		if (file_exists($file)) {
 			$array = (array)json_decode(file_get_contents($file));
 			$val = array_values($array)[0];
@@ -151,7 +151,7 @@ class nccTwigExtension extends \Twig_Extension
 			return "N/A";
 		}
 	}
-	
+
 
 	public function stripper_func($string,$compress=false)
 	{

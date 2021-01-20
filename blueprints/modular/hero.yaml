@@ -131,7 +131,7 @@ form:
                             mod-zoom: zoom-flash
                             mod-fade: fade
                             disable: disable
-                            
+
                         header.img_timeout:
                             name: timeout
                             type: range

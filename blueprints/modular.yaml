@@ -12,17 +12,17 @@ form:
       type: tabs
 
       fields:
-         
+
         modular:
           type: tab
           title: Modular
-          
+
           fields:
 
             modular_title:
               type: spacer
               title: Modular Page
-              
+
             header.content.items:
               type: text
               label: PLUGIN_ADMIN.ITEMS
@@ -42,16 +42,16 @@ form:
               help: '"desc" or "asc" are valid values'
               placeholder: desc
               size: small
-              
+
             ncc_section_0:
               type: section
               title: Modular Page Setting
               underline: true
-              
+
             header.modular_class:
               type: text
               label: Class
-              
+
             header.onpage_menu:
               type: toggle
               toggleable: true
@@ -60,7 +60,7 @@ form:
               options:
                 0: PLUGIN_ADMIN.DISABLED
                 1: PLUGIN_ADMIN.ENABLED
-                
+
             header.bullet:
               type: toggle
               toggleable: true
@@ -69,5 +69,5 @@ form:
               options:
                 0: PLUGIN_ADMIN.DISABLED
                 1: PLUGIN_ADMIN.ENABLED
-                
+
 

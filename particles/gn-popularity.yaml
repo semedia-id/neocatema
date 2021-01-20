@@ -17,7 +17,7 @@ form:
       label: Enabled
       description: Globally enable the particle.
       default: true
-    
+
     title:
       type: input.text
       label: title

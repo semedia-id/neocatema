@@ -9,7 +9,7 @@ form:
       type: separator.note
       class: 'alert alert-success blocksize-note'
       content: '<small>This a modified version of gantry <b>body.yaml</b></small>'
-      
+
     attribs.id:
       type: input.text
       label: Body Id
