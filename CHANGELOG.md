@@ -97,5 +97,9 @@
 
 2. [](#new)
 	* moving workspace to user (userspace)
-	
+
+# 0.1.0
+
+1. [](#improved)
+	* Grav 1.7
 	
