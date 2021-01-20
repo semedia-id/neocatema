@@ -58,5 +58,6 @@ form:
         size: long
         type: textarea
         label: <b>Owner Information</b>
-        readonly: true
+        default: website
+        
         help: This field was readonly for a reason.

@@ -3,6 +3,7 @@ namespace Grav\Theme;
 
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Theme as GantryTheme;
+use Grav\Common\Grav;
 use Grav\Common\Theme;
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
@@ -140,10 +141,6 @@ class Neocatema extends Theme
 	}
 
 
-	/*
-	 * So you can make templae outside the theme for a client needs
-	 */
-
 	public function onTwigTemplatePaths()
 	{
 
@@ -154,18 +151,19 @@ class Neocatema extends Theme
 
 		create_ifnotexists($locator('user://').'/templates');
 		create_ifnotexists($locator('user://').'/blueprints');
+		create_ifnotexists($locator('user://')."/data/gantry5/themes/$theme_name/particles");
+
 		create_ifnotexists($locator('user://').'/workspace/css');
 		create_ifnotexists($locator('user://').'/workspace/scss');
 		create_ifnotexists($locator('user://').'/workspace/js');
-		create_ifnotexists($locator('user://')."/data/gantry5/themes/$theme_name/particles");
 		create_ifnotexists($locator('user://').'/workspace/js/script.js','touch');
 		create_ifnotexists($locator('user://').'/workspace/css/custom.css','touch');
 		create_ifnotexists($locator('user://').'/workspace/scss/custom.scss',
-			'copy',__DIR__.'/_userspace/scss/custom.scss');
+			'copy',__DIR__.'/skel/user/workspace/scss/custom.scss');
 		create_ifnotexists($locator('user://').'/workspace/scss/_grav-dependency.scss',
-			'copy',__DIR__.'/_userspace/scss/_grav-dependency.scss');
+			'copy',__DIR__.'/skel/user/workspace/scss/_grav-dependency.scss');
 		create_ifnotexists($locator('user://').'/workspace/scss-watch.sh',
-			'copy',__DIR__.'/_userspace/scss-watch.sh');
+			'copy',__DIR__.'//skel/user/workspace/scss-watch.sh');
 			
 		$this->grav['twig']->twig_paths[] = $locator('user://templates');
 	}
@@ -180,6 +178,13 @@ class Neocatema extends Theme
 	{
 		$types = $event->types;
 		$types->scanBlueprints('user://blueprints');
+	}
+
+	public function cobaan(){
+		$grav = Grav::instance();
+		$config = $grav['theme'];
+		return $config->get('owner');
+		return 'inilah';
 	}
 
 	public function onOutputGenerated()

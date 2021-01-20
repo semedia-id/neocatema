@@ -8,7 +8,7 @@ form:
     tabs:
 
       fields:
-        blog:
+        articles:
           type: tab
           title: Articles
 
