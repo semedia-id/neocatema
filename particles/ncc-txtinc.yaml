@@ -1,0 +1,39 @@
+name: Textfile
+description: Textfile Includer
+type: particle
+icon: fa-file-text-o
+
+configuration:
+  caching:
+    type: config_matches
+    values:
+      twig: '0'
+      filter: '0'
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      default: true
+
+    file:
+      type: input.filepicker
+      label: File
+      root: 'user/workspace/assets'
+      
+    twig:
+        type: input.checkbox
+        label: Process Twig
+        default: '1'
+
+    filter:
+        type: input.checkbox
+        label: Process shortcodes
+        default: '0'
+
+    class:
+        type: input.selectize
+        label: CSS Classes
+        description: Set a specific CSS class for custom styling.      
+

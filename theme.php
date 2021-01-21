@@ -141,6 +141,7 @@ class Neocatema extends Theme
 		create_ifnotexists($locator('user://').'/workspace/css');
 		create_ifnotexists($locator('user://').'/workspace/scss');
 		create_ifnotexists($locator('user://').'/workspace/js');
+		create_ifnotexists($locator('user://').'/workspace/assets');
 		create_ifnotexists($locator('user://').'/workspace/js/script.js','touch');
 		create_ifnotexists($locator('user://').'/workspace/css/custom.css','touch');
 		create_ifnotexists($locator('user://').'/workspace/scss/custom.scss',

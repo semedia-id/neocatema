@@ -1,0 +1,10 @@
+{% extends '@nucleus/partials/particle.html.twig' %}
+
+{%- set text = particle.twig ? gantry.theme.compile(fileget(particle.file)) : fileget(particle.file) -%}
+{%- set text = (particle.filter ? gantry.platform.filter(text) : text)|html|raw %}
+
+{% block particle %}
+{%- if particle.class %}<div class="{{particle.class}}">{% endif -%}
+{{ text|raw }}
+{%- if particle.class %}</div>{% endif -%}
+{% endblock %}
