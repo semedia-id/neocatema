@@ -121,11 +121,13 @@
 <div id="{{id|raw}}" class="{{ class|raw }}" style="{{ styles|raw }}" 
     {{img_list|raw}} {{div_attr}}>
 
+	{% if content|trim %}
     <div class='page-content'>
         {% if page.header.title_print %}<div class='h1'>{{ page.title }}</div>{% endif %}
         {{ content|raw }}
     </div>
-    
+    {% endif %}
+	
     {{ features|raw }}
 
     {{ buttons|raw }}
