@@ -8,8 +8,7 @@
 
 	{% set page = page|replace({'=':'/'}) %}
 	{% set doc_content = filegeta( docpath~"/"~page~header.extension) %}
-    {%- set doc_content = gantry.theme.compile(doc_content) -%}
-    {%- set doc_content = gantry.platform.filter(doc_content)|html|raw %}
+
 
 {% else %}
 
@@ -23,7 +22,9 @@
 <div class='flex top {{header.wrapperclass}}'>
 
 <div class='{{header.contentclass}} pr-100  pb-100'>
-{{ doc_content|raw }}
+    {%- set doc_content = gantry.theme.compile(doc_content) -%}
+    {%- set doc_content = gantry.platform.filter(doc_content)|html|raw %}
+	{{ doc_content|raw }}
 </div>
 
 <div class='{{header.menuclass}} pa-100'>
