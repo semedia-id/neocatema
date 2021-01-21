@@ -1,0 +1,49 @@
+title: docupath
+extends@:
+    type: default
+    context: 'blueprints://pages'
+
+form:
+  validation: loose
+
+  fields:
+
+    tabs:
+      type: tabs
+
+      fields:
+
+        docupath:
+          type: tab
+          title: Document
+
+          fields:
+
+            header.folder:
+              type: text
+              label: Document Folder
+              
+            header.extension:
+              type: text
+              label: extension
+
+            header.wrapperclass:
+              type: text
+              default: theme-dummy
+              label: wrapper class
+              
+            header.menuclass:
+              type: text
+              default: td-menu
+              label: menu class
+                
+            header.contentclass:
+              type: text
+              default: td-content
+              label: content class
+                
+            header.start:
+              type: text
+              label: Home 
+
+              

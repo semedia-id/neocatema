@@ -59,9 +59,9 @@
     <link href="{{ url(gantry.config.page.assets.touchicon) }}" rel="icon" sizes="192x192" >
 {% endif %}
 
-{% if page.header.links %}
+{% if header.plinks %}
 
-	{% for link in page.header.links %}
+	{% for link in header.plinks %}
 		<link href="{{link.href|raw}}" rel="{{link.rel|raw}}">
 	{%endfor%}
 

@@ -35,6 +35,7 @@ class nccTwigExtension extends \Twig_Extension
 			new \Twig_SimpleFunction('randomwords', [$this, 'randomwords']),
 			new \Twig_SimpleFunction('popularity', [$this, 'popularity']),
 			new \Twig_SimpleFunction('fileget', [$this, 'fileget']),
+			new \Twig_SimpleFunction('filegeta', [$this, 'filegeta']),
 			new \Twig_SimpleFunction('filedira', [$this, 'filedira']),
 			new \Twig_SimpleFunction('file_is_exists', [$this, 'file_is_exist']),
 			new \Twig_SimpleFunction('stringken', [$this, 'ncc_stringken']),
@@ -106,17 +107,34 @@ class nccTwigExtension extends \Twig_Extension
 	}
 
 	public function filedira($path,$pattern="*") {
+		
+		function rglob($pattern, $flags = 0) {
+			$files = glob($pattern, $flags); 
+			foreach (glob(dirname($pattern).'/*', GLOB_ONLYDIR) as $dir) {
+				$files = array_merge($files, rglob($dir.'/'.basename($pattern), $flags));
+			}
+			return $files;
+		}
+		
 		$res=[]; $i=0;
-		$files = glob("$path/".$pattern);
-		//$files = preg_replace('#'.GRAV_ROOT.'#', '', $files);
+		$files = rglob(GRAV_ROOT."$path/".$pattern);
+		$files = preg_replace('#'.GRAV_ROOT.'#', '', $files);
 		foreach ($files as $f) {
-			$res[$i]['name'] = preg_replace('#'.$path.'/#', '', $f);
+			$inf = pathinfo($f);
 			$res[$i]['file'] = preg_replace('#'.GRAV_ROOT.'#', '', $f);
+			$res[$i]['path'] = $inf['dirname'];
+			$res[$i]['name'] = $inf['filename'];
+			$res[$i]['ext'] = $inf['extension'];
+			$res[$i]['base'] = $inf['basename'];
 			$i++;
 		}
 		return $res;
 	}
 
+	public function filegeta($file) {
+		return file_get_contents(GRAV_ROOT.$file);
+	}
+	
 	public function fileget($file) {
 		return file_get_contents($file);
 	}

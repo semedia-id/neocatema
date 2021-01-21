@@ -1,0 +1,60 @@
+{% extends "partials/page.html.twig" %}
+
+{% set page = uri.param('page') %}
+
+{% set docpath = header.folder %}
+
+{% block content %}
+
+<div class='flex top {{header.wrapperclass}}'>
+<div class='{{header.contentclass}} pr-100  pb-100'>
+
+{%if page %}
+
+	{% set page = page|replace({'=':'/'}) %}
+	{% set doc_content = filegeta( docpath~"/"~page~header.extension) %}
+    {%- set doc_content = gantry.theme.compile(doc_content) -%}
+    {%- set doc_content = gantry.platform.filter(doc_content)|html|raw %}
+	
+{% else %}
+
+	{% set doc_content = filegeta( docpath~"/"~header.start~header.extension) %}
+	
+
+{% endif %}
+
+{{ doc_content|raw }}
+
+
+</div>
+<div class='{{header.menuclass}} pa-100'>
+<ol class='none'>
+
+{% set group = [] %}
+{% for f in filedira(docpath,'*.html.twig') %}
+	{% set ext = header.extension %}
+	{% set fn = f['base']|regex_replace("#"~header.extension~"#",'') %}
+	{% set gname = f['path']|regex_replace('#'~docpath~'#','')|replace({'/':''}) %}
+	{% set link = uri.path~"/page:"~f['file']|
+		regex_replace("#"~header.extension~"#",'')|
+		regex_replace('#'~docpath~'/#','')|
+		replace({'/':'='}) %}
+	{% set fnice = fn|replace({'_':' '})|regex_replace('#^.*/#','')|regex_replace('/^.*--/','') %}
+
+	{%if gname != last_gname %}<li class='sep'><strong>{{gname}}</strong></li>{% endif %}
+	<li><a href='{{link}}'>{{fnice}}</a></li>
+
+
+	{% set last_gname = gname %}
+
+{% endfor %}
+
+</ol>
+
+
+</div>
+</div>
+
+{% endblock %}
+
+

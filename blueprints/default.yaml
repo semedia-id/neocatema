@@ -380,7 +380,7 @@ form:
               title: Page Assets
               underline: true
 
-            header.links:
+            header.plinks:
               type: list
               label: Links
               style: vertical
@@ -392,7 +392,7 @@ form:
                   type: text
                   label: rel
 
-            header.scripts:
+            header.pscripts:
               type: list
               style: vertical
               help: Will printed on body bottom
