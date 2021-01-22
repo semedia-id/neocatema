@@ -1,5 +1,5 @@
 name: neocatema
-version: "1.0.0"
+version: "1.1.0"
 description: "Theme base on Neocátema(skeleton)"
 icon: html5
 author:
@@ -7,6 +7,7 @@ author:
   email: tacoen@gmail.com
   url: https://tacoen.github.io/
 homepage: https://tacoen.github.io/neocatema/
+demo: http://semedia.web.id/neocatema
 readme: https://github.com/tacoen/neocatema/blob/master/README.md
 keywords: gantry5, css3, theme, utility-base
 bugs: https://github.com/tacoen/neocatema/issues

@@ -166,13 +166,6 @@ class Neocatema extends Theme
 		$types->scanBlueprints('user://blueprints');
 	}
 
-	public function cobaan(){
-		$grav = Grav::instance();
-		$config = $grav['theme'];
-		return $config->get('owner');
-		return 'inilah';
-	}
-
 	public function onOutputGenerated()
 	{
 
