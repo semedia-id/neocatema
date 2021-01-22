@@ -1,6 +1,6 @@
-
-.plugins-notifications-container {
-	display: none;
+.pkbutton {
+	background: #666!important;
+	color: #eee !important;
 }
 
 [data-grav-field="range"] .form-input-wrapper  { display: flex; }
@@ -16,20 +16,20 @@
 	margin: 1.5rem !important;
     padding: .5rem !important;
 	border: 1px solid #0009 !important;
-}	
+}
 
 
 .sf-note {
 padding: 0 0 0 185px;
 font-size: .8em;
 font-weight: normal;
-}	
+}
 
 .opt-note {
 	padding: 0 0 0 .65rem;
 	font-size: .8em !important;
 	font-weight: normal;
-}	
+}
 
 
 .opt-note.header {
@@ -46,9 +46,9 @@ font-weight: normal;
 	color: #0005;
 }
 
-.sf-view a { 
-	padding: 1rem 0; 
-	display:block; 
+.sf-view a {
+	padding: 1rem 0;
+	display:block;
 }
 
 .sf-view .btn {
@@ -62,9 +62,9 @@ font-weight: normal;
 	padding: .5rem;
 	margin-bottom: 1rem;
 }
-	
-.sf-view p { 
-	margin: 1rem 0 0 31% !important; 
+
+.sf-view p {
+	margin: 1rem 0 0 31% !important;
 	font-size: .9rem;
 	line-height: 1.1;
 }
@@ -138,3 +138,61 @@ font-weight: normal;
 
 .CodeMirror pre { font-family: monospace !important; }
 
+
+.ncpmenu ul,
+ul.ncpfile {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul.ncpfile li {
+	line-height:2.4;
+	border-top: 1px dotted #999;
+}
+
+ul.ncpfile li:last-child {
+	border-bottom: 1px dotted #999;
+}
+
+ul.ncpfile li .tw {
+    color: #69c;
+    font-weight: 700;
+    display: inline-block;
+    width: 40%;
+}
+
+ul.ncpfile li .bp {
+    color: #c11;
+    display: inline-block;
+    width: 30%;
+}
+
+ul.ncpfile li .bp.na {
+	color: #999;
+}
+
+
+.pad {
+	padding: 1rem;
+	border: 1px solid #0003;
+	background: #f9f9f9;
+}
+
+.pad h5 { margin-top: 0 }
+
+.ncpflex {
+	display: flex;
+    flex-wrap:wrap;
+	min-height: 70vh;
+}
+
+.ncpmenu {
+	flex-basis: 25%;
+}
+
+.ncpcontent {
+	flex-basis: 75%;
+}
+
+.ncpmenu h5 { margin:0; }
+.ncpmenu ul { margin-top: 0; line-height: 1.8}

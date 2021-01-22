@@ -121,11 +121,13 @@ class nccTwigExtension extends \Twig_Extension
 		$files = preg_replace('#'.GRAV_ROOT.'#', '', $files);
 		foreach ($files as $f) {
 			$inf = pathinfo($f);
+			$res[$i]['mtime'] = date ("Y/m/d - H:i:s", filemtime(GRAV_ROOT.$f) );			
 			$res[$i]['file'] = preg_replace('#'.GRAV_ROOT.'#', '', $f);
 			$res[$i]['path'] = $inf['dirname'];
 			$res[$i]['name'] = $inf['filename'];
 			$res[$i]['ext'] = $inf['extension'];
 			$res[$i]['base'] = $inf['basename'];
+
 			$i++;
 		}
 		return $res;
