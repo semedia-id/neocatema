@@ -1,3 +1,5 @@
+html .gp-banner.hidden { display: none }
+
 .pkbutton {
 	background: #666!important;
 	color: #eee !important;
@@ -155,14 +157,21 @@ ul.ncpfile li:last-child {
 }
 
 ul.ncpfile li .tw {
-    color: #69c;
+    color: #396;
     font-weight: 700;
     display: inline-block;
     width: 40%;
 }
 
 ul.ncpfile li .bp {
-    color: #c11;
+    color: #f91;
+	font-weight: 700;
+    display: inline-block;
+    width: 10%;
+}
+
+ul.ncpfile li .mtime {
+    color: #666;
     display: inline-block;
     width: 30%;
 }
@@ -176,6 +185,7 @@ ul.ncpfile li .bp.na {
 	padding: 1rem;
 	border: 1px solid #0003;
 	background: #f9f9f9;
+	margin-bottom: 2rem;
 }
 
 .pad h5 { margin-top: 0 }
@@ -196,3 +206,6 @@ ul.ncpfile li .bp.na {
 
 .ncpmenu h5 { margin:0; }
 .ncpmenu ul { margin-top: 0; line-height: 1.8}
+
+#admin-main h1.sub-section { font-size: 1.1rem; margin: 0 0 .5rem; }
+
