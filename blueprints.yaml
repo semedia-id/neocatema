@@ -31,26 +31,6 @@ form:
         default: true
         help: I love Tidyhtml, but when its not avaliable, I check this. 
 
-    _section1:
-        type: section
-        title: Static Page
-
-    _note3:
-        type: section
-        title: Generate static pages work best with pipeline.
-        classes: ncc-note
-
-    static_path:
-        toggleable: true
-        type: text
-        label: Static Path (static root)
-        help: enable static pages generator.
-
-    rewrite:
-        type: checkbox
-        label: Rewrite everything
-        default: false
-
     _section3:
         type: section
         title: Properties

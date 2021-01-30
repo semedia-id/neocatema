@@ -183,7 +183,7 @@ ul.ncpfile li .bp.na {
 
 .pad {
 	padding: 1rem;
-	border: 1px solid #0003;
+	border: 1px solid #0002;
 	background: #f9f9f9;
 	margin-bottom: 2rem;
 }
@@ -194,6 +194,10 @@ ul.ncpfile li .bp.na {
 	display: flex;
     flex-wrap:wrap;
 	min-height: 70vh;
+}
+
+.ncpblock {
+	padding: 0 2rem 2rem 1.5rem;
 }
 
 .ncpmenu {
@@ -209,3 +213,21 @@ ul.ncpfile li .bp.na {
 
 #admin-main h1.sub-section { font-size: 1.1rem; margin: 0 0 .5rem; }
 
+.workspace-image{
+    width: 240px;
+    height: 145px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #0002;
+    border: 1px solid #0002;
+	margin-top: .25rem;
+}
+
+.workspace-image .exist {
+	box-shadow: 0 0 6px #0006;
+}
+
+.workspace-image i { font-size: 5rem; }
+		

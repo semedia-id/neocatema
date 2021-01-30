@@ -134,8 +134,8 @@ class Neocatema extends Theme
 		$locator = $this->grav['locator'];
 		$theme_name = $this->name;
 
-		create_ifnotexists($locator('user://').'/templates');
-		create_ifnotexists($locator('user://').'/blueprints');
+		create_ifnotexists($locator('user://').'/workspace/templates');
+		create_ifnotexists($locator('user://').'/workspace/blueprints');
 		create_ifnotexists($locator('user://')."/data/gantry5/themes/$theme_name/particles");
 
 		create_ifnotexists($locator('user://').'/workspace/css');
@@ -157,13 +157,13 @@ class Neocatema extends Theme
 	public function onGetPageTemplates(Event $event)
 	{
 		$types = $event->types;
-		$types->scanTemplates('user://templates');
+		$types->scanTemplates('user://workspace/templates');
 	}
 
 	public function onGetPageBlueprints(Event $event)
 	{
 		$types = $event->types;
-		$types->scanBlueprints('user://blueprints');
+		$types->scanBlueprints('user://workspace/blueprints');
 	}
 
 	public function onOutputGenerated()
@@ -184,64 +184,6 @@ class Neocatema extends Theme
 				$this->grav->output = ncc_tidyup($this->grav->output."");
 			}
 
-			if (isset($this->config['theme']['static_path'])) {
-
-				$st_content = $this->grav->output;
-
-				$locator = $this->grav['locator'];
-				$tdir = $_SERVER['DOCUMENT_ROOT'].'/'. $this->config['theme']['static_path'];
-
-				if (! file_exists($tdir)) { mkdir($tdir); }
-
-				$file = $tdir.$this->grav['uri']->path();
-				createPath($file);
-				$filepath = $file."/index.html";
-
-				$tmp = explode('\n',$st_content);
-
-				$st = $this->config['theme']['static_path'];
-
-				$tmp = preg_replace('#href="\/#','href="/'.$st.'/',$tmp);
-				$tmp = preg_replace('#link href="\/'.$st.'#','link href="',$tmp);
-
-				function copy_asset($src,$tdir) {
-					$name = preg_replace('#assets/#','',$src);
-					//$name = preg_replace('#^(.+?)(\..+?$)#','ncc-static$2',$src);
-					$sdir = preg_replace('#'.GRAV_ROOT.'#','',$tdir);
-					copy($src,$tdir.'/'.$name);
-					return $sdir."/".$name;
-				}
-
-				if ($this->grav['assets']['css_pipeline']) {
-
-					$tmp = preg_replace_callback('/\"\/(assets(?=\/)(.*?)(.css)(?="))/',
-						function($matches) use ($tdir) {
-						return '"'.copy_asset($matches[1],$tdir);
-						}, $tmp);
-
-				}
-
-				if ($this->grav['assets']['js_pipeline']) {
-
-					$tmp = preg_replace_callback('/\"\/(assets(?=\/)(.*?)(.js)(?="))/',
-						function($matches) use ($tdir) {
-						return '"'.copy_asset($matches[1],$tdir);
-						}, $tmp);
-
-				}
-
-				$st_content = preg_replace('#</(div|li|ul])>\n#','</$1>',$tmp);
-				$st_content = preg_replace('#</head>#',"<meta http-equiv='cache-control' content='public' />\n</head>",$st_content);
-
-				if ($this->config['theme']['rewrite']) {
-					file_put_contents($filepath, $st_content);
-				} else {
-					if (! file_exists($filepath) ) {
-						file_put_contents($filepath, $st_content);
-					}
-				}
-
-			}
 		}
 	}
 }

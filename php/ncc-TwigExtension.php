@@ -98,7 +98,6 @@ class nccTwigExtension extends \Twig_Extension
 			$wpath = Grav::instance()['page']->path() . '/' . $path;
 		}
 
-
 		if (file_exists($wpath)) {
 			return true;
 		} else {
@@ -107,21 +106,21 @@ class nccTwigExtension extends \Twig_Extension
 	}
 
 	public function filedira($path,$pattern="*") {
-		
+
 		function rglob($pattern, $flags = 0) {
-			$files = glob($pattern, $flags); 
+			$files = glob($pattern, $flags);
 			foreach (glob(dirname($pattern).'/*', GLOB_ONLYDIR) as $dir) {
 				$files = array_merge($files, rglob($dir.'/'.basename($pattern), $flags));
 			}
 			return $files;
 		}
-		
+
 		$res=[]; $i=0;
 		$files = rglob(GRAV_ROOT."$path/".$pattern);
 		$files = preg_replace('#'.GRAV_ROOT.'#', '', $files);
 		foreach ($files as $f) {
 			$inf = pathinfo($f);
-			$res[$i]['mtime'] = date ("Y/m/d - H:i:s", filemtime(GRAV_ROOT.$f) );			
+			$res[$i]['mtime'] = date ("Y/m/d - H:i:s", filemtime(GRAV_ROOT.$f) );
 			$res[$i]['file'] = preg_replace('#'.GRAV_ROOT.'#', '', $f);
 			$res[$i]['path'] = $inf['dirname'];
 			$res[$i]['name'] = $inf['filename'];
@@ -136,7 +135,7 @@ class nccTwigExtension extends \Twig_Extension
 	public function filegeta($file) {
 		return file_get_contents(GRAV_ROOT.$file);
 	}
-	
+
 	public function fileget($file) {
 		return file_get_contents($file);
 	}
