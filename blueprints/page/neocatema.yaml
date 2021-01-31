@@ -13,7 +13,7 @@ form:
       type: input.checkbox
       label: user/workspaces/css
       default: '0'
-
+      
     workspace_js:
       type: input.checkbox
       label: user/workspaces/js

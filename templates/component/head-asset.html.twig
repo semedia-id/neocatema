@@ -37,7 +37,16 @@
 {% assets with { priority: 1 } %}
 
 	{% if gantry.config.page.neocatema.workspace_css|default(0) %}
-		<link rel="stylesheet" href="user://workspace/css/custom.css" type="text/css">
+
+	{% set wstest = gantry.theme.path~"/custom/scss/workspace.scss" %}
+	
+	{% if file_is_exist(wstest,true) %}
+		<link rel="stylesheet" href="workspace.scss" /> 
+	{% else %}
+ 		<link rel="stylesheet" href="user://workspace/css/custom.css" type="text/css">
+	{% endif %}
+
+
 	{% endif %}
 
 {% endassets -%}
@@ -72,3 +81,5 @@
 <link rel="stylesheet" href="{{ url('gantry-engine://css/nucleus-ie9.css') }}" type="text/css"/>
 <script type="text/javascript" src="{{ url('gantry-assets://js/matchmedia.polyfill.js') }}"></script>
 <![endif]-->
+
+

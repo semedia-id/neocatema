@@ -38,6 +38,7 @@ class nccTwigExtension extends \Twig_Extension
 			new \Twig_SimpleFunction('filegeta', [$this, 'filegeta']),
 			new \Twig_SimpleFunction('filedira', [$this, 'filedira']),
 			new \Twig_SimpleFunction('file_is_exists', [$this, 'file_is_exist']),
+			new \Twig_SimpleFunction('file_is_exist', [$this, 'file_is_exist']),
 			new \Twig_SimpleFunction('stringken', [$this, 'ncc_stringken']),
 			new \Twig_SimpleFunction('arrayken', [$this, 'ncc_arrayken']),
 			new \Twig_SimpleFunction('to_array', [$this, 'ncc_obj_to_array']),
@@ -90,17 +91,25 @@ class nccTwigExtension extends \Twig_Extension
 		return rtrim($w);
 	}
 
-	public function file_is_exist($path) {
+	public function file_is_exist($path,$fromroot=false) {
 
-		if (Utils::startsWith($path, '/')) {
-			$wpath = GRAV_ROOT . $path;
+		
+		if ($fromroot) {
+			$wpath = $path;
 		} else {
-			$wpath = Grav::instance()['page']->path() . '/' . $path;
+			if (Utils::startsWith($path, '/')) {
+				$wpath = GRAV_ROOT . $path;
+			} else {
+				$wpath = Grav::instance()['page']->path() . '/' . $path;
+			}
 		}
+
+
 
 		if (file_exists($wpath)) {
 			return true;
 		} else {
+			echo 'masuk:'.$wpath;
 			return false;
 		}
 	}
