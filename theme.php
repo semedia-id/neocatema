@@ -149,8 +149,14 @@ class Neocatema extends Theme
 		create_ifnotexists($locator('user://').'/workspace/scss/_grav-dependency.scss',
 			'copy',__DIR__.'/skel/user/workspace/scss/_grav-dependency.scss');
 		create_ifnotexists($locator('user://').'/workspace/scss-watch.sh',
-			'copy',__DIR__.'//skel/user/workspace/scss-watch.sh');
-
+			'copy',__DIR__.'/skel/user/workspace/scss-watch.sh');
+		
+		/*
+		if (!file_exists(__DIR__.'custom/scss')) {
+			symlink($locator('user://').'/workspace/scss', __DIR__.'/custom/scss');			
+		}
+		*/
+		
 		$this->grav['twig']->twig_paths[] = $locator('user://templates');
 	}
 
