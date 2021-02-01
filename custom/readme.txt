@@ -1,7 +1,12 @@
-in windows:
+To make symbolic link from user/workspace/scss, please follow this example.
 
-mklink /D scss D:\UniServerZ\vhosts\grav\user\workspace\scss
+in windows:
+-----------
+
+mklink /D scss ..\..\..\workspace\scss
+
 
 in linux/bash:
+--------------
 
 ln -s ../../../workspace/scss scss
