@@ -5,11 +5,11 @@ function ncc_main_afterLoad() {
 	var scheme = preferScheme();
 	responsiveControler();
 	clickControler();
-	construct_styles();
 	ncc_breakpoint_tagging();
 	ncc_init_swipeable();	
 	ncc_dock_top();
 	ncc_fixtop_init();
+	construct_styles();
 	console.log('ncc-main: afterload');
 }
 

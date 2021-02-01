@@ -59,6 +59,5 @@ function preferScheme() {
 
 	}
 
-	construct_styles()
 
 }

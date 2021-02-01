@@ -6,6 +6,7 @@ function construct_styles() {
 		}
 		var id = el.id
 		ncc_construct_pallete('#'+id);
+		console.log('#'+id);
 	});
 
 }
