@@ -22,5 +22,6 @@ sed 's/[[:space:]]*$//g' temp > temp2
 sed 's/^[[:space:]]*//g' temp2 > temp
 sed '/^$/d' temp > module.min.js
 
+rm -f module.js
 rm -f temp
 rm -f temp2
