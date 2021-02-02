@@ -38,10 +38,10 @@
 
 	{% if gantry.config.page.neocatema.workspace_css|default(0) %}
 
-	{% set wstest = gantry.theme.path~"/custom/scss/workspace.scss" %}
+	{% set wstest = gantry.theme.path~"/custom/scss/gantry.scss" %}
 	
 	{% if file_is_exist(wstest,true) %}
-		<link rel="stylesheet" href="workspace.scss" /> 
+		<link rel="stylesheet" href="gantry.scss" /> 
 	{% else %}
  		<link rel="stylesheet" href="user://workspace/css/custom.css" type="text/css">
 	{% endif %}

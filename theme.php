@@ -134,22 +134,32 @@ class Neocatema extends Theme
 		$locator = $this->grav['locator'];
 		$theme_name = $this->name;
 
+		/* check and create the workspace's path */
+		
 		create_ifnotexists($locator('user://').'/workspace/templates');
 		create_ifnotexists($locator('user://').'/workspace/blueprints');
-		create_ifnotexists($locator('user://')."/data/gantry5/themes/$theme_name/particles");
-
 		create_ifnotexists($locator('user://').'/workspace/css');
 		create_ifnotexists($locator('user://').'/workspace/scss');
 		create_ifnotexists($locator('user://').'/workspace/js');
 		create_ifnotexists($locator('user://').'/workspace/assets');
+
+		create_ifnotexists($locator('user://')."/data/gantry5/themes/$theme_name/particles");
+
+		/* touch the needed files */
+
 		create_ifnotexists($locator('user://').'/workspace/js/script.js','touch');
-		create_ifnotexists($locator('user://').'/workspace/css/custom.css','touch');
-		create_ifnotexists($locator('user://').'/workspace/scss/custom.scss',
-			'copy',__DIR__.'/skel/user/workspace/scss/custom.scss');
-		create_ifnotexists($locator('user://').'/workspace/scss/_grav-dependency.scss',
-			'copy',__DIR__.'/skel/user/workspace/scss/_grav-dependency.scss');
+		create_ifnotexists($locator('user://').'/workspace/css/grav.css','touch');
+
+		/* copy file from theme/skeleton */
+		
+		create_ifnotexists($locator('user://').'/workspace/scss/grav.scss',
+			'copy',__DIR__.'/skel/workspace/scss/grav.scss');
+		create_ifnotexists($locator('user://').'/workspace/scss/gantry.scss',
+			'copy',__DIR__.'/skel/workspace/scss/gantry.scss');
+		create_ifnotexists($locator('user://').'/workspace/scss/_custom.scss',
+			'copy',__DIR__.'/skel/workspace/scss/_custom.scss');
 		create_ifnotexists($locator('user://').'/workspace/scss-watch.sh',
-			'copy',__DIR__.'/skel/user/workspace/scss-watch.sh');
+			'copy',__DIR__.'/skel/workspace/scss-watch.sh');
 		
 		/*
 		if (!file_exists(__DIR__.'custom/scss')) {
@@ -177,17 +187,28 @@ class Neocatema extends Theme
 
 		require_once(__DIR__.'/php/ncc-util.php');
 
-		function createPath($path) {
-			if (is_dir($path)) return true;
-			$prev_path = substr($path, 0, strrpos($path, '/', -2) + 1 );
-			$return = createPath($prev_path);
-			return ($return && is_writable($prev_path)) ? mkdir($path) : false;
-		}
-
 		if (! $this->isAdmin()) {
 
 			if (isset($this->config['theme']['tidy_output'])) {
 				$this->grav->output = ncc_tidyup($this->grav->output."");
+			}
+			
+			if (isset($this->config['plugins']['neocaprima']['static_path'])) {
+				
+				/* require neocaprima plugins */
+
+				$tdir = GRAV_ROOT.'/'. $this->config['plugins']['neocaprima']['static_path'];
+
+				ncc_generate_staticpages(
+					$this->grav->output,
+					$tdir.$this->grav['uri']->path(),
+					__DIR__."/skel",
+					$tdir,
+					$this->config['plugins']['neocaprima']['static_path'],
+					$this->config['plugins']['neocaprima']['rewrite'],
+					$this->grav['assets']['js_pipeline'],
+					$this->grav['assets']['css_pipeline']
+				);
 			}
 
 		}

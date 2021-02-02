@@ -109,7 +109,6 @@ class nccTwigExtension extends \Twig_Extension
 		if (file_exists($wpath)) {
 			return true;
 		} else {
-			echo 'masuk:'.$wpath;
 			return false;
 		}
 	}
