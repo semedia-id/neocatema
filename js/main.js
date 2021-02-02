@@ -6,7 +6,7 @@ function ncc_main_afterLoad() {
 	responsiveControler();
 	clickControler();
 	ncc_breakpoint_tagging();
-	ncc_init_swipeable();	
+	ncc_init_swipeable();
 	ncc_dock_top();
 	ncc_fixtop_init();
 	construct_styles();

@@ -93,7 +93,7 @@ class nccTwigExtension extends \Twig_Extension
 
 	public function file_is_exist($path,$fromroot=false) {
 
-		
+
 		if ($fromroot) {
 			$wpath = $path;
 		} else {

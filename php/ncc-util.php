@@ -14,7 +14,7 @@
 		copy($src,$tdir.'/'.$name);
 		return $sdir."/".$name;
 	}
-			
+
 	function ncc_generate_staticpages(
 		$st_content,
 		$file,
@@ -23,20 +23,20 @@
 		$st,
 		$rw,
 		$jsp,
-		$csp) 
+		$csp)
 	{
 
 		//if (! file_exists($tdir)) { mkdir($tdir); }
 
-		create_ifnotexists("$tdir");		
-		create_ifnotexists("$tdir/404.php","copy","$skelthemedir/static-pages/404.php");		
-		create_ifnotexists("$tdir/.htaccess","copy","$skelthemedir/static-pages/.htaccess");		
-			
+		create_ifnotexists("$tdir");
+		create_ifnotexists("$tdir/404.php","copy","$skelthemedir/static-pages/404.php");
+		create_ifnotexists("$tdir/.htaccess","copy","$skelthemedir/static-pages/.htaccess");
+
 		createPath($file);
 
-		$filepath = $file."/index.html";		
+		$filepath = $file."/index.html";
 		$tmp = explode('\n',$st_content);
-		
+
 		$tmp = preg_replace('#href="\/#','href="/'.$st.'/',$tmp);
 		$tmp = preg_replace('#link href="\/'.$st.'#','link href="',$tmp);
 
@@ -57,12 +57,12 @@
 
 		$tmp = preg_replace('#</(div|li|ul])>\n#','</$1>',$tmp);
 		$tmp = preg_replace('#<head>#',"<head>\n<meta http-equiv='cache-control' content='public' />",$tmp);
-		
+
 		# remove querystring?
 		$tmp = preg_replace('#\?\w+#','',$tmp);
 
 		$st_content = implode('',$tmp);
-				
+
 		if ($rw) {
 			file_put_contents($filepath, $st_content);
 		} else {
@@ -70,9 +70,9 @@
 				file_put_contents($filepath, $st_content);
 			}
 		}
-		
+
 	}
-	
+
 	function ncc_tidyup($html)
 	{
 		$tmp = explode("\n", $html);
