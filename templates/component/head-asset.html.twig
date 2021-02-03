@@ -10,8 +10,13 @@
 
     <link rel="stylesheet" href="gantry-assets://css/ncc-icon.css" type="text/css">
 
+    {#
+    <link rel="stylesheet" href="gantry-assets://css/font-awesome.min.css" type="text/css">
+	#}
+
     {% if gantry.config.page.fontawesome.enable|default(1) %}
-        <link rel="stylesheet" href="gantry-assets://css/font-awesome.min.css" type="text/css">
+		{% set forkfa = url('plugins://admin/themes/grav/css/fork-awesome.min.css') %}
+        <link rel="stylesheet" href="{{forkfa}}" type="text/css">
     {% endif %}
 
 {% endassets -%}
