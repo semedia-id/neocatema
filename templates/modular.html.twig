@@ -1,7 +1,5 @@
 {% extends "partials/page.html.twig" %}
 
-
-
 {% set pagenav = "" %}
 {% set content = "" %}
 
@@ -32,7 +30,7 @@
 
 {% block content %}
 	<div class="modular-wrapper{{ page.header.modular_class ? ' '~page.header.modular_class }}">
-	{{ page.content|raw }}
+	<div class='page-content'>{{ page.content|raw }}</div>
 	{% if pagenav|trim %}
 		<ul class='pagenav' id='modular-pagenav'>
 		{{ pagenav|raw }}

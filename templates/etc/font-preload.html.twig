@@ -2,8 +2,7 @@
 
 {% if gantry.config.page.fontawesome.enable|default(1) %}
 
-    {# set fonts = fonts|merge(['gantry-assets://fonts/fontawesome-webfont']) #}
-    {% set fonts = fonts|merge(['plugins://admin/themes/grav/fonts/forkawesome-webfont']) %}
+    {% set fonts = fonts|merge(['gantry-assets://fonts/forkawesome-webfont']) %}
 
 {% endif %}
 
