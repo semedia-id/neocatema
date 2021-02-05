@@ -156,7 +156,12 @@ body.modular main {
 
             li { width: 100%; }
             li, li a {
-                @include flex-div(row,center,start);
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				justify-content: start;
+				flex-wrap: nowrap;
+	
                 i { margin-bottom: 0; }
 
                 .item-wrap { text-align: left; margin-left: 1rem; }
