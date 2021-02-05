@@ -14,7 +14,7 @@
 	&.nowrap { flex-wrap: nowrap; }
 
 	&.top { align-items: start; }
-	&.middle { align-items: center; }
+	&.middle,&.mid { align-items: center; }
 	&.bottom { align-items: flex-end; }
 	&.left { justify-content: start; }
 	&.center { justify-content: center; }

@@ -8,7 +8,7 @@ form:
     enabled:
       type: input.checkbox
       label: Enabled
-      description: Globally enable Lightcase atom.
+      description: Globally enable loading.css
       default: true
 
     _info:

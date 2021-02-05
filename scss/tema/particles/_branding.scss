@@ -21,6 +21,7 @@
 		svg,
 		img {
 			height: 100%;
+			width: 100%;
 		}
 
 		i.icon {
@@ -29,7 +30,7 @@
 	}
 
 	.wrapper {
-		@include flex-div(column,center,flex-center,initial);
+		@include flex-div(column,start,center,initial);
 		flex: 1 0;
 		font-weight: 300;
 		line-height: 1.2;

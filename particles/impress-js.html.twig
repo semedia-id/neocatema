@@ -1,0 +1,4 @@
+{%- set impress_init %}impress().init();{% endset -%}
+{%- do gantry.document.addScript(url('gantry-assets://js/impress.js'), 11, 'footer') -%}
+
+{% do gasvara('inline_js',impress_init|stripper(true)) %}

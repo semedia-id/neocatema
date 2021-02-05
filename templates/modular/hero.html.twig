@@ -49,7 +49,7 @@
     {% endset %}
 {% endif %}
 
-{% set styles = style_bgcolor 
+{% set styles = style_bgcolor
 	~ (page.header.modular_height ? "min-height:"~header.modular_height~";" )
 %}
 
@@ -61,15 +61,9 @@
 		~ (page.header.img_posY ? "background-position-y:" ~ page.header.img_posY ~ "%;" )
     %}
 
-{% if page.header.img_animation != 'disable' %}
-
-    {% set styles = styles
-        ~ (page.header.img_animation ? "animation-name:" ~ page.header.img_animation ~ ";" )
-        ~ (page.header.img_timeout ? "animation-duration:" ~ page.header.img_timeout ~ "s;" )
-    %}
-
-
 	{% if page.header.images|length > 0 %}
+
+		{% set first_img = page.media[page.header.images|first.file].url %}
 		{% set img_list = "data-image=" %}
 		{% for img in page.header.images %}
 			{% if loop.last %}
@@ -82,7 +76,8 @@
 	{% else %}
 
 		{% if page.media.images|length > 0 %}
-			{% set img_list = "data-image=" %}
+		{% set first_img = page.media.images|first.url %}
+		{% set img_list = "data-image=" %}
 			{% for img in page.media.images %}
 				{% if loop.last %}
 					{% set img_list = img_list~img.url|e %}
@@ -90,12 +85,28 @@
 					{% set img_list = img_list~img.url|e~"," %}
 				{% endif %}
 			{% endfor %}
-			
+
 		{% endif %}
+
 
 	{% endif %}
 
-	{% set img_list = img_list|rtrim %}
+	{% if page.header.img_animation != 'disable' %}
+
+		{% set img_list = img_list|rtrim %}
+
+		{% set styles = styles
+			~ (page.header.img_animation ? "animation-name:" ~ page.header.img_animation ~ ";" )
+			~ (page.header.img_timeout ? "animation-duration:" ~ page.header.img_timeout ~ "s;" )
+		%}
+
+	{% else %}
+
+		{% set styles = styles~ "background-size: cover;" %}
+		{% set img_list =  "" %}
+
+	{% endif %}	
+
 
 	{% if img_list %}
 		{% set module_img_injectjs %}
@@ -105,20 +116,11 @@
 		{% set div_attr = "data-delay="~ page.header.img_timeout|default(10) %}
 	{% endif %}
 
-{% else %}
-
-	{% set styles = styles~ "background-size: cover;" %}
+	{% set styles = styles ~"background-image: url('" ~ first_img ~ "');" %}
 
 {% endif %}
 
-{% set styles = styles
-	~ (page.header.media_order ? "background-image: url('" ~ page.media.images|first.url ~ "');" )
-%}
-
-{% endif %}
-
-
-<div id="{{id|raw}}" class="{{ class|raw }}" style="{{ styles|raw }}" 
+<div id="{{id|raw}}" class="{{ class|raw }}" style="{{ styles|raw }}"
     {{img_list|raw}} {{div_attr}}>
 
     {% if page.header.title_print %}
@@ -127,7 +129,7 @@
 	{% if content|trim %}
 		<div class='page-content'>{{ content|raw }}</div>
     {% endif %}
-	
+
     {{ features|raw }}
 
     {{ buttons|raw }}

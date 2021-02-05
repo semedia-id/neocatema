@@ -1,0 +1,17 @@
+name: impress.js
+description: presentation tool based on the power of CSS3 transforms and transitions
+type: atom
+icon: fa-css3
+
+form:
+  fields:
+    enabled:
+      type: input.checkbox
+      label: Enabled
+      description: Globally enable impress.js atom
+      default: true
+
+    _info:
+      type: separator.note
+      class: alert alert-info
+      content: 'For more information on how to use this atom, see <a href="https://impress.js.org">impress.js <i class="fa fa-external-link" aria-hidden="true"></i></a>.'

@@ -6,3 +6,5 @@ preset:
 
 layout:
   /main/: { }
+  /offcanvas/:
+    - system-messages

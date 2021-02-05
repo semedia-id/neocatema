@@ -167,7 +167,7 @@ class Neocatema extends Theme
 		}
 		*/
 		
-		$this->grav['twig']->twig_paths[] = $locator('user://templates');
+		$this->grav['twig']->twig_paths[] = $locator('user://workspace/templates');
 	}
 
 	public function onGetPageTemplates(Event $event)

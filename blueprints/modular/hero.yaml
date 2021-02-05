@@ -128,8 +128,8 @@ form:
                           options:
                             mod-paralax-h: paralax-h
                             mod-paralax-v: paralax-v
-                            mod-zoom: zoom-flash
-                            mod-fade: fade
+                            mod-zoom: zoom-c
+                            mod-fit: fit-still
                             disable: disable
 
                         header.img_timeout:
