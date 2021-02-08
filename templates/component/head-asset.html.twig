@@ -10,7 +10,6 @@
 
     <link rel="stylesheet" href="gantry-assets://css/ncc-icon.css" type="text/css">
 
-
     {% if gantry.config.page.fontawesome.enable|default(1) %}
 		<link rel="stylesheet" href="gantry-assets://css/fork-awesome.min.css" type="text/css">
     {% endif %}
@@ -39,15 +38,25 @@
 
 	{% if gantry.config.page.neocatema.workspace_css|default(0) %}
 
-	{% set wstest = gantry.theme.path~"/custom/scss/gantry.scss" %}
+		{% set wstest = gantry.theme.path~"/custom/scss/gantry.scss" %}
 
-	{% if file_is_exist(wstest,true) %}
-		<link rel="stylesheet" href="gantry.scss" />
-	{% else %}
- 		<link rel="stylesheet" href="user://workspace/css/grav.css" type="text/css">
+		{% if file_is_exist(wstest,true) %}
+			<link rel="stylesheet" href="gantry.scss" />
+		{% else %}
+			<link rel="stylesheet" href="user://workspace/css/grav.css" type="text/css">
+		{% endif %}
+
 	{% endif %}
 
+{% endassets -%}
 
+
+{% assets with { priority: 10 } %}
+
+	{% if page.header.plinks %}
+		{% for link in page.header.plinks %}
+			<link href="{{link.href|raw}}" rel="{{link.rel|raw}}" type="text/css">
+		{%endfor%}
 	{% endif %}
 
 {% endassets -%}
@@ -69,18 +78,8 @@
     <link href="{{ url(gantry.config.page.assets.touchicon) }}" rel="icon" sizes="192x192" >
 {% endif %}
 
-{% if header.plinks %}
-
-	{% for link in header.plinks %}
-		<link href="{{link.href|raw}}" rel="{{link.rel|raw}}">
-	{%endfor%}
-
-{%endif%}
-
 <!--[if (gte IE 8)&(lte IE 9)]>
 <script type="text/javascript" src="{{ url('gantry-assets://js/html5shiv-printshiv.min.js') }}"></script>
 <link rel="stylesheet" href="{{ url('gantry-engine://css/nucleus-ie9.css') }}" type="text/css"/>
 <script type="text/javascript" src="{{ url('gantry-assets://js/matchmedia.polyfill.js') }}"></script>
 <![endif]-->
-
-

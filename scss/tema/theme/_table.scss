@@ -43,7 +43,7 @@ table {
 		}
 	}
 
-    &.row-stripes {
+    &.col-stripes {
         th:nth-child(odd),
 		td:nth-child(odd) { background: var(--shade1) }
     }
@@ -52,12 +52,25 @@ table {
         tr:nth-child(even) td { background: var(--shade1) }
     }
 
-	&.compact {
+	&.compact  {
 		width: auto;
 		th,td {
 			padding: .25em;
 		}
 	}
+	
+	&.noheader-bg {
+		thead {         
+			background-color: var(--body);
+			color: var(--body-text);
+			th { border-bottom: var(--hrsep) solid var(--border); }
+		}
+	}
 }
 
-
+.noheader-bg table { @extend table.noheader-bg; }
+.noborder table { @extend table.noborder; }
+.compact table { @extend table.compact; }
+.spaced table { @extend table.spaced; }
+.col-stripes table { @extend table.col-stripes; }
+.stripes table { @extend table.stripes; }

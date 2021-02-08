@@ -7,6 +7,7 @@
 	{% do gasvara('inline_js',"ncc_modular_nav();") %}
 {% endif %}
 
+{% set nth = 0 %}
 {% for module in page.collection() %}
 
 	{%- set module_link = module.slug|lower|replace({"_":""}) -%}
@@ -19,9 +20,10 @@
 		{% endif %}		
 	{% endif %}
 
+	{% set nth = nth + 1 %}
 	{% set module_content %}
 		<div id="{{ module_link|raw }}"></div>
-        {{ module.content|raw }}
+        <div class='modular-nth{{nth}}'>{{ module.content|raw }}</div>
 	{% endset %}
 
 	{% set content = content ~ module_content %}
@@ -37,5 +39,6 @@
 		</ul>
 	{% endif %}
 	{{ content|raw }}
+	<div class='modular-adjust'></div>
 	</div>
 {% endblock %}

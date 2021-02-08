@@ -100,9 +100,12 @@ body.modular main {
 	color: var(--text);
 	padding:  calc(4 * var(--padding)) calc(6 * var(--padding));
 
+	> a {
+	    display:block;
+	}
+	
 	a { 
 	    color: var(--t) !important;
-	    display:block;
 	    opacity: .9;
 
 	    &:hover { 

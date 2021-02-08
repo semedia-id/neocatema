@@ -1,5 +1,7 @@
 html .gp-banner.hidden { display: none }
 
+.more-pad { margin-top: 3rem !important }
+
 .pkbutton {
 	background: #666!important;
 	color: #eee !important;

@@ -375,14 +375,16 @@ form:
 
           fields:
 
+            title_asset:
+              type: spacer
+              title: Page Assets
+              
             ncc_section_0:
               type: section
-              title: Page Assets
-              underline: true
+              title: Links
 
             header.plinks:
               type: list
-              label: Links
               style: vertical
               fields:
                 .href:
@@ -390,8 +392,17 @@ form:
                   label: href
                 .rel:
                   type: text
+                  default: stylesheet
                   label: rel
+                .type:
+                  type: text
+                  default: text/css
+                  label: type
 
+            ncc_section_1:
+              type: section
+              title: Scripts
+              
             header.pscripts:
               type: list
               style: vertical
@@ -405,7 +416,7 @@ form:
                   type: text
                   label: Attribute
 
-            ncc_section_1:
+            ncc_section_2:
               type: section
               title: Page DataList
               underline: true

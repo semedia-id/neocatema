@@ -26,6 +26,7 @@ class nccTwigExtension extends \Twig_Extension
 		return [
 			new \Twig_SimpleFilter('stripper', [$this, 'stripper_func']),
 			new \Twig_SimpleFilter('nodupe', [$this, 'unique_array']),
+			new \Twig_SimpleFilter('safetxt', [$this, 'safetxt_func']),
 		];
 	}
 
@@ -145,6 +146,12 @@ class nccTwigExtension extends \Twig_Extension
 	}
 
 	public function fileget($file) {
+		if (Utils::startsWith($file, '/')) {
+			$file = GRAV_ROOT . $file;
+		} else {
+			$file = Grav::instance()['page']->path() . '/' . $file;
+		}
+			
 		return file_get_contents($file);
 	}
 
@@ -180,6 +187,11 @@ class nccTwigExtension extends \Twig_Extension
 	}
 
 
+	public function safetxt_func($string,$compress=false)
+	{
+		$string = preg_replace('/\W|\s/', '', $string);
+		return strtolower($string);
+	}
 	public function stripper_func($string,$compress=false)
 	{
 
