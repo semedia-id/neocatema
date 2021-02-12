@@ -6,7 +6,7 @@ function construct_styles() {
 		}
 		var id = el.id
 		ncc_construct_pallete('#'+id);
-		console.log('#'+id);
+		//console.log('#'+id);
 	});
 
 }
@@ -43,4 +43,17 @@ function ncc_construct_pallete(q) {
 
 	gas(q).cssConstruct(cstyle)
 
+}
+
+function auto_styles() {
+
+	document.querySelectorAll('.auto-text-color').forEach( function(h) {
+		var c = w3color(getComputedStyle(h)['backgroundColor']);
+		if ((c.lightness)> .5) { 
+			gas(h).cssvar('text',"var(--b)")
+		} else {
+			gas(h).cssvar('text',"var(--w)")
+		}
+	});
+	
 }

@@ -1,7 +1,7 @@
 date +"/* Compile Time: %D %T */" > module.js
 
-cat 'gas/gas.js' >> module.js
-cat 'w3color/w3color.js' >> module.js
+cat 'core/gas.js' >> module.js
+cat 'core/w3color.js' >> module.js
 
 # cat 'requirejs/require.js' >> module.js
 # cat 'requirejs/domready.js' >> module.js

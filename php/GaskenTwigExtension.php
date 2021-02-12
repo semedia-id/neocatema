@@ -26,16 +26,10 @@ class GaskenTwigExtension extends \Twig_Extension
 			new \Twig_SimpleFunction('gasvara', [$this, 'gasvar_array_func']),
 			new \Twig_SimpleFunction('gasvara_string', [$this, 'gasvara_print']),
 			new \Twig_SimpleFunction('filedir', [$this, 'filedir']),
-
-
 		];
 	}
 
-
-
-
-
-	public function gasvara_print($var,$delim='') {
+	public function gasvara_print($var,$delim='',$compact=false) {
 		$coba = Grav::instance();
 		$gas = $coba['config']['gas'];
 		$array = $gas[$var];
@@ -44,7 +38,8 @@ class GaskenTwigExtension extends \Twig_Extension
 		$res = join($delim,array_unique($array));
 		$res = preg_replace('#\n|\r#', '', $res);
 		$res = preg_replace('#;\s+|;;#', ';', $res);
-		return trim(trim($res,' '),$delim);
+		if (!$compact) { $res = preg_replace('#;#', ";\n", $res); }
+		return "\n".trim($res,' ');
 	}
 
 	public function gasvar_array_func($var,$value)

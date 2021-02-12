@@ -1,31 +1,36 @@
-{%- do gantry.document.addScript(url('gantry-assets://js/main.js'), 10, 'footer') -%}
-
+{% do gantry.document.addScript(url('gantry-assets://js/main.js'), 10, 'footer') %}
 
 {% if gantry.config.page.neocatema.workspace_js|default(0) %}
-	{%- do gantry.document.addScript(url('user://workspace/js/script.js'), 10, 'footer') -%}
+	{% do gantry.document.addScript(url('user://workspace/js/script.js'), 10, 'footer') %}
 {% endif %}
 
-{%- if header.datalist %}
-	<div id='ncc-page-datalist'
-	{% for key,value in header.datalist %}
+{%- if header.asset_datalist %}
+	<div id='ncc-page-datalist' style='display:none' 
+	{% for key,value in header.asset_datalist %}
 		data-{{key}}="{{value}}"
 	{% endfor %}
 	><!--datalist--></div>
 {%endif -%}
 
+{% if header.asset_scripts %}
+	{% for script in header.asset_scripts %}
+		{% if script.src|trim %}
+		<script type="text/javascript" src="{{url(script.src)}}" {{script.attr}}></script>
+		{% endif %}
+	{%endfor%}
+{% endif %}
+
 {% do gantry.platform.finalize() -%}
+
 {{ gantry.scripts('footer')|join("\n")|raw -}}
 
-{% if header.pscripts %}
 
-	{% for script in header.pscripts %}
-		<script type="text/javascript" src="{{url(script.src)}}"></script>
-	{%endfor%}
-
-{%endif%}
-
-{{ gantry.debugger.render()|raw }}
+{% if header.asset_inlinejs|trim %}
+	{% do gasvara('inline_js',header.asset_inlinejs|stripper(true)) %}
+{% endif %}
 
 {% block page_injected_script %}
 	{% include "etc/injected_js.html.twig" %}
 {% endblock %}
+
+{{ gantry.debugger.render()|raw }}

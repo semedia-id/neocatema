@@ -32,7 +32,7 @@
 
 {% block content %}
 	<div class="modular-wrapper{{ page.header.modular_class ? ' '~page.header.modular_class }}">
-	<div class='page-content'>{{ page.content|raw }}</div>
+	{% if page.content|trim %}<div class='page-content'>{{ page.content|raw }}</div>{% endif %}
 	{% if pagenav|trim %}
 		<ul class='pagenav' id='modular-pagenav'>
 		{{ pagenav|raw }}

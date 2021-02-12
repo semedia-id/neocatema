@@ -34,6 +34,8 @@ $heading: assign-inputs(['h1','h2','h3','h4','h5','h6']);
     margin-block-end: 0;
     margin-inline-start: 0;
     margin-inline-end: 0;
+	
+	&:focus { border: none; outline: none; }
 }
 
 @for $i from 1 through 6 {

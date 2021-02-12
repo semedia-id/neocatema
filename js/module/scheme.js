@@ -30,10 +30,12 @@ function ncc_scheme_actived() {
 	
 function preferScheme() {
 
-	if (disable_scheme) {
-		gas('body').addClass('light-scheme');
-		localStorage.setItem('ncc-scheme','light')
-		var scheme = 'light';
+	if (typeof disable_scheme !== 'undefined') {
+		if (disable_scheme) { 
+			gas('body').addClass('light-scheme');
+			localStorage.setItem('ncc-scheme','light')
+			var scheme = 'light';
+		}
 	}
 
 	

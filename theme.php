@@ -33,11 +33,33 @@ class Neocatema extends Theme
 			'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
 			'onTwigExtensions' => ['onTwigExtensions', 0],
 			'onOutputGenerated' => ['onOutputGenerated', 0],
+			'onBuildPagesInitialized' => ['modulePrepare',0],
 //			'onShortcodeHandlers' => ['onShortcodeHandlers', 0],
 //			 'onFormProcessed' => ['onFormProcessed', 0],
 		];
 	}
 
+	public function modulePrepare() 
+	{
+		require_once(__DIR__.'/php/ncc-util.php');
+		
+		$cores = ncc_filedir(__DIR__.'/js/core','*.js');
+		$modules = ncc_filedir(__DIR__.'/js/module','*.js');
+		$str = "/* to recompile this file, clear your grav cache */\n";
+
+		foreach ($cores as $m) {
+			$str .= ncc_compact( file_get_contents($m['file']) );
+		}
+		
+		foreach ($modules as $m) {
+			$str .= "\n/*- ".$m['base']." -*/\n";
+			$str .= ncc_compact( file_get_contents($m['file']) );
+		}
+			
+		file_put_contents(__DIR__.'/js/module.min.js',$str);
+	
+	
+	}
 	public function onAdminMenu()
 	{
 

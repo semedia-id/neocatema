@@ -1,1 +1,1 @@
-scss --sourcemap=auto --watch ../workspace/scss:../workspace/css
+scss --sourcemap=auto --watch ./scss:./css

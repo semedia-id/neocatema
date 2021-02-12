@@ -368,60 +368,100 @@ form:
                 blueprint:
                   type: blueprint
 
-
         Assets:
           type: tab
           title: Assets
 
           fields:
 
-            title_asset:
+            asset_title:
               type: spacer
               title: Page Assets
-              
-            ncc_section_0:
-              type: section
-              title: Links
+              classes: its-neocatema
 
-            header.plinks:
-              type: list
-              style: vertical
+            asset_columns:
+              type: columns
               fields:
-                .href:
-                  type: text
-                  label: href
-                .rel:
-                  type: text
-                  default: stylesheet
-                  label: rel
-                .type:
-                  type: text
-                  default: text/css
-                  label: type
 
-            ncc_section_1:
-              type: section
-              title: Scripts
+                asset_column1:
+                  type: column
+                  fields:
+
+                    ncc_section_0:
+                      type: section
+                      title: Links
+
+                    header.asset_links:
+                      type: list
+                      style: vertical
+                      fields:
+                        .href:
+                          type: text
+                          label: href
+                        .rel:
+                          type: text
+                          default: stylesheet
+                          label: rel
+                        .type:
+                          type: text
+                          default: text/css
+                          label: type
+
+                    ncc_section_1:
+                      type: section
+                      title: Scripts
+
+                    header.asset_scripts:
+                      type: list
+                      style: vertical
+                      help: Will printed on body bottom
+                      fields:
+                        .src:
+                          type: text
+                          label: src
+                        .attr:
+                          type: text
+                          label: Attribute
+
+                asset_column2:
+                  type: column
+                  fields:
+
+                    ncc_section_3:
+                      type: section
+                      title: Page Inlines
+                      underline: true
+                      
+                    asset_fieldset_css:
+                      type: fieldset
+                      title: Inline Styles
+                      collapsible: true
+                      collapsed: true
+                      fields:  
+                        header.asset_inlinecss:
+                          type: textarea
+                          style: vertical
+                          rows: 10
+                          label: CSS
+                    
+                    asset_fieldset_ijs:
+                      type: fieldset
+                      title: Inline Scripts
+                      collapsible: true
+                      collapsed: true
+                      fields:  
+                        header.asset_inlinejs:
+                          type: textarea
+                          style: vertical
+                          rows: 10
+                          label: JS
+
+                    ncc_section_2:
+                      type: section
+                      title: Page DataList
+                      classes: more-pad
               
-            header.pscripts:
-              type: list
-              style: vertical
-              help: Will printed on body bottom
-              label: Scripts
-              fields:
-                .src:
-                  type: text
-                  label: src
-                .attr:
-                  type: text
-                  label: Attribute
-
-            ncc_section_2:
-              type: section
-              title: Page DataList
-              underline: true
-
-            header.datalist:
-              toggleable: true
-              type: array
-              label: DataList
+                    header.asset_datalist:
+                      type: array
+                      style: vertical
+                      size: long

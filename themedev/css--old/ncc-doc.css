@@ -1,3 +1,16 @@
+/* ---
+ * neocatema/function
+ */
+/* ---
+ * neocatema/mixin
+ */
+/* ---
+ * neocatema/common
+ */
+/* ---
+ * neocatema/configuration
+ */
+/* grav dependecy on workspace */
 .color-chart {
   width: 20%;
   padding-right: 2em;
@@ -66,8 +79,8 @@ input[type="color" i]::-webkit-color-swatch {
   flex: 0 0 10%;
   flex-flow: row wrap;
   justify-content: center;
-  border: 1px dotted var(--border2);
   margin-bottom: 1rem;
+  border: 1px solid var(--border2);
   padding: .5rem; }
   .nc-icon i {
     font-size: 3rem;
@@ -128,6 +141,24 @@ textarea.example {
   min-height: 8rem;
   font-size: 1em;
   line-height: 1.2; }
+  textarea.example::-webkit-scrollbar {
+    width: 0.25rem;
+    height: 0.25rem; }
+  textarea.example::-webkit-scrollbar-thumb {
+    background: #fff3;
+    border: 1px outset #0006;
+    border-top: 1px outset #0003;
+    border-left: 1px outset #0003;
+    border-radius: .25rem; }
+  textarea.example::-webkit-scrollbar-track {
+    box-shadow: inset -1px 0 3px #0009;
+    background: #0006; }
+  textarea.example::-webkit-scrollbar-thumb:hover {
+    background: #fffd;
+    box-shadow: 0 2px 6px #0005; }
+  textarea.example {
+    scrollbar-face-color: #fff3;
+    scrollbar-track-color: #0006; }
 
 .flex.spaced {
   flex-wrap: wrap; }

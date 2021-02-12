@@ -52,7 +52,8 @@
   bottom: .25rem;
   left: .25rem;
   font-size: .9rem;
-  z-index: 9999; }
+  z-index: 9999;
+  }
   #ncc-panel label {
     font-weight: 700;
     display: block;

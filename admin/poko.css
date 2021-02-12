@@ -1,5 +1,18 @@
 html .gp-banner.hidden { display: none }
 
+.its-neocatema { 
+	position: relative;
+}
+
+.its-neocatema:after {
+	position: absolute;
+	content: 'neocatema';
+	font-size: .7rem;
+	right: 2rem;
+	top:0;
+	opacity: .5;
+}
+
 .more-pad { margin-top: 3rem !important }
 
 .pkbutton {

@@ -1,5 +1,3 @@
-@import 'custom/grav-dependency';
-
 .color-chart {
 	width: 20%;
 	padding-right: 2em;
@@ -75,8 +73,8 @@ input[type="color" i]::-webkit-color-swatch {
 	justify-content: center;
 	i { font-size: 3rem; margin-bottom: 1rem; }
 	input { font-size: .7rem; display: block; width: 100%; margin-bottom: .5rem; text-align: center;}
+	border: 1px dotted var(--border2);
 	margin-bottom: 1rem;
-	border: 1px solid var(--border2);
 	padding: .5rem;
 	span { font-size: .8rem; color: var(--accent); }
 	
@@ -152,7 +150,7 @@ textarea.example {
 	min-height: 8rem;
 	font-size: 1em;
 	line-height: 1.2;
-	@include scrollbars( .25rem, #fff3, #0006);	
+	//@include scrollbars( .25rem, #fff3, #0006);	
 }
 
 

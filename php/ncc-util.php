@@ -1,5 +1,13 @@
 <?php
 
+	function rglob($pattern, $flags = 0) {
+		$files = glob($pattern, $flags);
+		foreach (glob(dirname($pattern).'/*', GLOB_ONLYDIR) as $dir) {
+			$files = array_merge($files, rglob($dir.'/'.basename($pattern), $flags));
+		}
+		return $files;
+	}
+		
 	function createPath($path) {
 		if (is_dir($path)) return true;
 		$prev_path = substr($path, 0, strrpos($path, '/', -2) + 1 );
@@ -73,9 +81,23 @@
 
 	}
 
-	function ncc_tidyup($html)
+	function ncc_compact($html) {
+		$tmp = explode("\n", $html);
+		$tmp = preg_replace('#[ \t]+(\r?$)#', '$1', $tmp );
+		$tmp = preg_replace('/\r/', '', $tmp );
+		$tmp = preg_replace('#\s+$|^\s+#', '', $tmp );
+		$tmp = preg_replace('/\s+$/', '', $tmp);
+		$tmp = array_filter($tmp);		
+		return implode("\n", $tmp);
+	}
+
+	function ncc_tidyup($html,$strip=false)
 	{
 		$tmp = explode("\n", $html);
+		if ($strip) {
+			$tmp = preg_replace('#[ \t]+(\r?$)#', '$1', $tmp );
+			$tmp = preg_replace('#\s+$|^\s+#', '', $tmp );
+		}
 		$tmp = preg_replace('/^(\<|\>)\s+$/', '$1', $tmp);
 		$tmp = preg_replace('/^\s+(\>|\<)/', '$1', $tmp);
 		$tmp = preg_replace('/\s+$/', '', $tmp);
@@ -90,6 +112,8 @@
 		$tmp = preg_replace('/\r/', '', $tmp );
 		$tmp = preg_replace('/[\r\n\s+\t]+(?=(?:[^<])*>)/', ' ', $tmp);
 		$tmp = preg_replace('/[\r\n](\<\/(li|label|i>|b>|button|a|span|div))/mi', '$1', $tmp );
+		
+
 		return $tmp;
 	}
 
@@ -113,7 +137,22 @@
 		}
 	}
 
-	function passme($var) {
-		return $var;
+	function ncc_filedir($path,$pattern="*") {
+
+		$res=[]; $i=0;
+		$files = rglob("$path/".$pattern);
+		//$files = preg_replace('#'.GRAV_ROOT.'#', '', $files);
+		foreach ($files as $f) {
+			$inf = pathinfo($f);
+			$res[$i]['mtime'] = date ("Y/m/d - H:i:s", filemtime($f) );
+			$res[$i]['file'] = $f;
+			$res[$i]['path'] = $inf['dirname'];
+			$res[$i]['name'] = $inf['filename'];
+			$res[$i]['ext'] = $inf['extension'];
+			$res[$i]['base'] = $inf['basename'];
+
+			$i++;
+		}
+		return $res;
 	}
 ?>

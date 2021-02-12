@@ -92,6 +92,10 @@ script {
 	@extend %noselect;
 }
 
+a:focus {
+	text-decoration: none; 
+	outline: none;
+}
 
 a:not(.button) { 
 	text-decoration: none; 
