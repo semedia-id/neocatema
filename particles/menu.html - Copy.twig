@@ -29,7 +29,6 @@
         {% endif %}
     {% endif %}
 {% endmacro %}
-
 {% macro displayItem(item, menu, context, dropdown_type, menu_animation) %}
     {% import _self as self %}
     {% if item.type == 'particle' and not item.options.particle.enabled %}
@@ -72,11 +71,9 @@
             {% endfor %}
         {% endif %}
         {% set rel = rel ? ' rel="' ~ rel|e('html_attr') ~ '"' %}
-        
-		<li class="nav-item type-{{ item.type }} {{ item.id }}
+        <li class="nav-item type-{{ item.type }} {{ item.id }}
 			{% if item.icon %} has-icon {% endif %}
 		    {% if item.image %} has-image {% endif %}
-			{% if not self.displayTitle(item)|trim %} icon-only {% endif %}
 			{% if not item.dropdown_hide %}{{ parent }}{% endif %}
 			{{ active }}
 			{{ dropdown }}
@@ -97,22 +94,16 @@
             {% else %}
 				<span class="nav-item-container{{ item.anchor_class ? ' ' ~ item.anchor_class }}" data-g-menuparent=""{{ label|raw }}>
 			{% endif %}
+                {% if item.image %}
+                    <span class='nav-item-image'><img src="{{ url(item.image) }}" alt="{{ item.title }}" /></span>
+                {% elseif item.icon %}
+                    <span class='nav-item-icon'><i class="{{ item.icon }}" aria-hidden="true"></i></span>
+                {% endif %}
                 {% if item.url %}
-
-					<span class='nav-item-flex'>
-					{% if item.image %}
-						<span class='nav-item-image'><img src="{{ url(item.image) }}" alt="{{ item.title }}" /></span>
-					{% elseif item.icon %}
-						<span class='nav-item-icon'><i class="{{ item.icon }}" aria-hidden="true"></i></span>
-					{% endif %}
-
-					{% if self.displayTitle(item)|trim %}
-						<span class="nav-item-content">{{ self.displayTitle(item) }}</span>
-					{% endif %}
-                    
-					</span>
-					
-					{% if (item.children) and not item.dropdown_hide -%}
+                    <span class="nav-item-content">
+                        {{ self.displayTitle(item) }}
+                    </span>
+                    {% if (item.children) and not item.dropdown_hide -%}
 						<label for="{{ item.id }}" class="menu-parent-indicator" data-g-menuparent="">
 						<i class="off ncico-chevron-up"></i>
 						<i class="on ncico-chevron-down"></i>

@@ -1,16 +1,9 @@
 nav.menucan {
-
 	--menu-width: 180px;
 	--hover: var(--c-ho, var(--shade1));
 	--active: var(--c-ac, var(--shade2));
 	--background: var(--c,);
 	--text: var(--t,var(--text));
-
-}
-
-.bg {
-	background: var(--c);
-	color: var(--t);
 }
 
 @mixin dropdown-show {
@@ -74,6 +67,7 @@ nav.menucan {
     }
 
 
+	
     .nav-item-content {
     	white-space:nowrap;
     	text-overflow:ellipsis;
@@ -94,6 +88,20 @@ nav.menucan {
             position: absolute;
             li a { padding: .5rem; }
         }
+		
+		&.icon-only {
+			width: auto;
+			.nav-item-icon { padding: 0 }
+		}
+		
+		.nav-item-icon { 
+			padding-right: .5rem;
+
+			@include breakpoint(mobile-only) {
+				padding-left: .25rem;
+			}
+
+		}
 
 	}
 
@@ -107,6 +115,11 @@ nav.menucan {
         }
     }
 
+	@include breakpoint(desktop-only) {	
+		a > label > .on { opacity:0 }
+		a:hover > label > .on { opacity: 1 }
+	}
+	
 	input[type="checkbox"]:checked {
 
         ~ span > label,
@@ -127,12 +140,12 @@ nav.menucan {
 
     li:hover {
     	background-color: var(--hover);
-        .dropdown-menu {
+        > .dropdown-menu {
         	@include dropdown-show;
         }
 
         @include breakpoint(mobile-only) {
-            .dropdown-menu {
+            > .dropdown-menu {
                 display: none;
             }
         }
@@ -158,4 +171,85 @@ li {
 
 .g-go-back {
 	display:none;
+}
+
+.sublevel {
+
+	.dropdown-menu.g-dropdown-right {
+		left: var(--menu-width);
+		top: 0;
+		
+		@include breakpoint(mobile-only) {
+			left: 0;
+		}
+	}
+	
+	i.on { transform: rotate(-90deg) }
+}
+
+
+
+
+
+@mixin menucan-responsive {
+
+    height: auto;
+    --menu-width: 100%;
+    --background: var(--c-d);
+
+	
+    .g-goback { display: none; }
+
+	.toplevel {
+		flex-flow:column nowrap !important;
+		height: auto !important;
+		width: 100% !important;
+	}
+
+    li {
+	    width: 100% !important;
+	    height: auto !important;
+        border-top: 1px solid var(--shade1);
+
+        .nav-item-container { 
+            padding: 1rem .5em !important; 
+            height: auto !important; 
+        }
+
+        .dropdown-menu  {
+        	width: 100% !important;
+        	position: relative !important;
+            .nav-item-container {
+                padding: 1em .5rem !important;
+                height: var(--content-h)
+            }
+        }
+
+    }
+
+    li:hover {
+        .dropdown-menu  {
+            display:none;
+        }
+    }
+
+    .menu-parent-indicator:hover  {
+        @include touch-alike
+    }
+
+}
+
+.menucan {
+
+    &.responsive {
+        @include menucan-responsive;
+    }
+
+    @include breakpoint(mobile-only) {
+        @include menucan-responsive;
+		overflow-y: auto;
+		max-height: 99vh;
+		padding-bottom: 6rem;
+    }
+
 }
