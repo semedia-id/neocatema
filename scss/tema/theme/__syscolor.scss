@@ -30,14 +30,11 @@
 
 .dark-scheme {
 
+	.primary {
+		--text: #{get-hsl-var(accent,(l:3%))};
+	}
 
-    .primary {
-	    --text: #{get-hsl-var(accent,(l:3%))};
-    }
-
-    .secondary {
-	    --text: #{get-hsl-var(accent,(l:3%))};
-    }
-
-
+	.secondary {
+		--text: #{get-hsl-var(accent,(l:3%))};
+	}
 }

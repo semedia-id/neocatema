@@ -1,5 +1,5 @@
 /* Forms
-   ========================================================================== */
+	========================================================================== */
 
 /*
 
@@ -23,8 +23,6 @@ form {
 
 */
 
-
-
 select option {
 	background-color: var(--option);
 	color: var(--option-text);
@@ -36,63 +34,58 @@ form {
 	#{$text-inputs-list} {
 		width: 100%;
 	}
-
 }
 
 /* Grav */
 
 form {
-   width: 100%;
-  .required { color: var(--accent); }
+	width: 100%;
+ .required { color: var(--accent); }
 
-  .form-field {
+ .form-field {
 	margin-bottom: var(--margin);
-    .form-label {
-      label { font-weight: 700 }
-    }
-    .form-data {
-      .form-input-wrapper { width: 100%; }
-      .form-textarea-wrapper { width: 100%; }
-    }
-  }
+	.form-label {
+	 label { font-weight: 700 }
+	}
+	.form-data {
+	 .form-input-wrapper { width: 100%; }
+	 .form-textarea-wrapper { width: 100%; }
+	}
+ }
 }
-
 
 .row form,
 form.row {
-    .form-field,
-    .form-data,
-    .form-label {
-        display:inline-block;
-    }
+	.form-field,
+	.form-data,
+	.form-label {
+		display:inline-block;
+	}
 
-    * { width: auto !important; }
-
+	* { width: auto !important; }
 }
 
 .inline-form form,
 form.inline-form {
 
-  .buttons { margin-left: 40%; }
+ .buttons { margin-left: 40%; }
 
-  .form-field {
+ .form-field {
 	margin-bottom: var(--margin);
 	display: flex;
 
+	.form-label {
+	 flex-basis: 40%;
+	 label { font-weight: 700; }
+	}
 
-    .form-label {
-      flex-basis: 40%;
-	  label { font-weight: 700; }
-    }
-
-    .form-data {
-	  flex-basis: 60%;
-      .form-input-wrapper { width: 100%; }
-      .form-textarea-wrapper { width: 100%; }
-    }
-  }
+	.form-data {
+	 flex-basis: 60%;
+	 .form-input-wrapper { width: 100%; }
+	 .form-textarea-wrapper { width: 100%; }
+	}
+ }
 }
-
 
 textarea {
 	font-family: var(--font-mono);
@@ -102,13 +95,11 @@ textarea {
 	@include scrollbars(.5rem, var(--hilite), var(--shade1));
 }
 
-
 /* from bourbon/addons
  *
  * $text-inputs-list
  *
  */
-
 
 /*
 select,

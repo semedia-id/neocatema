@@ -1,8 +1,8 @@
 #gn-branding {
 
 	display: flex;
-    height:100%;
-    padding-right: 1rem;
+	height:100%;
+	padding-right: 1rem;
 	a {
 		border: none; outline: none;
 		&:hover { text-decoration: none; }
@@ -25,7 +25,7 @@
 		}
 
 		i.icon {
-    		@include flex-div(row, center, center);
+			@include flex-div(row, center, center);
 		}
 	}
 
@@ -62,5 +62,3 @@
 		}
 	}
 }
-
-

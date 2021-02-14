@@ -25,7 +25,7 @@
 	&.blue { @include notice-color(info); }
 	&.green { @include notice-color(success); }
 
-    p { margin-bottom: 0 }
+	p { margin-bottom: 0 }
 
 	&:after {
 		content: "x";
@@ -42,5 +42,4 @@
 	&.red { @include dark-notice-color(error); }
 	&.blue { @include dark-notice-color(info); }
 	&.green { @include dark-notice-color(success); }
-
 }

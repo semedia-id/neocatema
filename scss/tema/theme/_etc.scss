@@ -1,7 +1,7 @@
 
 .disabled
 :disabled,
-[disabled] { opacity: .6; cursor: not-allowed;  }
+[disabled] { opacity: .6; cursor: not-allowed; }
 
 .ttu { text-transform: uppercase; }
 .ttl { text-transform: lowercase; }
@@ -13,18 +13,14 @@
 .lh-2 { line-height: calc(2 * var(--line-height)); }
 .lh-3 { line-height: calc(3 * var(--line-height)); }
 
-
 [class*='ncico-'] {
 
 	&.x2 { font-size: 2em; }
 	&.x3 { font-size: 3em; }
 	&.x4 { font-size: 4em; }
-
-
 }
 
 hr { clear:both; }
-
 
 .bullet { border-radius: 50%; }
 .rounded { border-radius: 1em; }

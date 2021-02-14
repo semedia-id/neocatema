@@ -4,11 +4,11 @@ code { color: var(--accent); }
 
 var { font-weight: 700; }
 kbd {
-    background-color: var(--text);
+	background-color: var(--text);
 	color: var(--background);
 	padding: 1px .25rem;
-    border-radius: 2px;
-    letter-spacing: -1px;
+	border-radius: 2px;
+	letter-spacing: -1px;
 }
 
 mark {
@@ -16,7 +16,6 @@ mark {
 	padding: 1px .25rem;
 	display:inline-block;
 }
-
 
 abbr[title],
 dfn[title] {

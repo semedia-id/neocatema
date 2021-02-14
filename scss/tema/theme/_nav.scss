@@ -1,5 +1,7 @@
 nav.menucan {
 	--menu-width: 180px;
+	--container-h: 60px;
+	--container-pad: .5rem;
 	--hover: var(--c-ho, var(--shade1));
 	--active: var(--c-ac, var(--shade2));
 	--background: var(--c,);
@@ -7,87 +9,84 @@ nav.menucan {
 }
 
 @mixin dropdown-show {
-    opacity: 1;
-    height: auto;
-    z-index: 81;
-    visibility:visible;
-    transform:scaleY(1) translate(0) ;
-    height: auto;
-    width: initial;
+	opacity: 1;
+	height: auto;
+	z-index: 81;
+	visibility:visible;
+	transform:scaleY(1) translate(0) ;
+	height: auto;
+	width: initial;
 }
 
 @mixin dropdown-hide {
-    opacity: 0;
-    z-index: -1;
-    width:0;
-    height:0;
-    transform: scaleY(.1) translateY(-100%);
-    visibility:hidden;
+	opacity: 0;
+	z-index: -1;
+	width:0;
+	height:0;
+	transform: scaleY(.1) translateY(-100%);
+	visibility:hidden;
 }
 
 nav.menucan {
 
-    position: relative;
-    z-index: 80;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    background: var(--background);
+	position: relative;
+	z-index: 80;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	background: var(--background);
 
-    @include breakpoint(mobile-only) {
-        height: auto;
+	@include breakpoint(mobile-only) {
+		height: auto;
 		position: absolute;
 		left: 0;		
-    }
+	}
 
-    ul { margin: 0 }
+	ul { margin: 0 }
 
 	.toplevel {
 		@include flex-div(row, start, start, nowrap);
-        height: 100%;
+		height: 100%;
 	}
 
-    .nav-item {
-    	transition: background .5s ease;
-    }
+	.nav-item {
+		transition: background .5s ease;
+	}
 
-    .active {
-        background-color: var(--active);
-    }
+	.active {
+		background-color: var(--active);
+	}
 
+	.nav-item-container {
+		@include flex-div(row, center, space-between, wrap);
+		transition: background .5s ease;
+		color: var(--t);
+		padding: 0 .5em;
+		height: 100%;
+		&:hover { text-decoration: none; }
 
-    .nav-item-container {
-        @include flex-div(row, center, space-between, wrap);
-        transition: background .5s ease;
-        color: var(--t);
-        padding: 0 .5em;
-        height: 100%;
-        &:hover { text-decoration: none; }
-
-    }
-
-
+	}
 	
-    .nav-item-content {
-    	white-space:nowrap;
-    	text-overflow:ellipsis;
-    	overflow:hidden;
-    }
+	.nav-item-content {
+		white-space:nowrap;
+		text-overflow:ellipsis;
+		overflow:hidden;
+	}
 
-    .dropdown-menu {
-        @include dropdown-hide;
-        background: var(--background);
-    }
-
+	.dropdown-menu {
+		@include dropdown-hide;
+		background: var(--background);
+	}
 
 	li {
-	    width: var(--menu-width);
-	    height: 100%;
-        .dropdown-menu  {
-        	background: var(--background);
-            position: absolute;
-            li a { padding: .5rem; }
-        }
+		width: var(--menu-width);
+		height: var(--container-h);
+
+		.dropdown-menu {
+			background: var(--background);
+			position: absolute;
+			li a { padding: var(--container-pad); }
+		}
 		
 		&.icon-only {
 			width: auto;
@@ -95,7 +94,7 @@ nav.menucan {
 		}
 		
 		.nav-item-icon { 
-			padding-right: .5rem;
+			padding-right: var(--container-pad);
 
 			@include breakpoint(mobile-only) {
 				padding-left: .25rem;
@@ -105,15 +104,15 @@ nav.menucan {
 
 	}
 
-    input[type='checkbox'] {
-        display: none;
+	input[type='checkbox'] {
+		display: none;
 
-        ~ span > label,
-        ~ a > label {
-        	.off { display: none; }
-        	.on { display: block; }
-        }
-    }
+		~ span > label,
+		~ a > label {
+			.off { display: none; }
+			.on { display: block; }
+		}
+	}
 
 	@include breakpoint(desktop-only) {	
 		a > label > .on { opacity:0 }
@@ -122,52 +121,45 @@ nav.menucan {
 	
 	input[type="checkbox"]:checked {
 
-        ~ span > label,
-        ~ a > label {
-        	.off { display: block; }
-        	.on { display: none; }
-        }
+		~ span > label,
+		~ a > label {
+			.off { display: block; }
+			.on { display: none; }
+		}
 
-        ~ .dropdown-menu {
-        	@include dropdown-show;
+		~ .dropdown-menu {
+			@include dropdown-show;
 
 			@include breakpoint(mobile-only) {
 				display:initial;
 			}
-        }
+		}
 	}
 
+	li:hover {
+		background-color: var(--hover);
+		> .dropdown-menu {
+			@include dropdown-show;
+		}
 
-    li:hover {
-    	background-color: var(--hover);
-        > .dropdown-menu {
-        	@include dropdown-show;
-        }
-
-        @include breakpoint(mobile-only) {
-            > .dropdown-menu {
-                display: none;
-            }
-        }
-    }
-
+		@include breakpoint(mobile-only) {
+			> .dropdown-menu {
+				display: none;
+			}
+		}
+	}
 }
-
 
 li {
 
-    .g-fade {
-    	transition: opacity .5s linear;
-    }
+	.g-fade {
+		transition: opacity .5s linear;
+	}
 
-
-    .g-slide {
-    	transition: transform .25s ease;
-    }
-
-
+	.g-slide {
+		transition: transform .25s ease;
+	}
 }
-
 
 .g-go-back {
 	display:none;
@@ -187,18 +179,14 @@ li {
 	i.on { transform: rotate(-90deg) }
 }
 
-
-
-
-
 @mixin menucan-responsive {
 
-    height: auto;
-    --menu-width: 100%;
-    --background: var(--c-d);
+	height: auto;
+	--menu-width: 100%;
+	--background: var(--c-d);
 
 	
-    .g-goback { display: none; }
+	.g-goback { display: none; }
 
 	.toplevel {
 		flex-flow:column nowrap !important;
@@ -206,50 +194,47 @@ li {
 		width: 100% !important;
 	}
 
-    li {
-	    width: 100% !important;
-	    height: auto !important;
-        border-top: 1px solid var(--shade1);
+	li {
+		width: 100% !important;
+		height: auto !important;
+		border-top: 1px solid var(--shade1);
 
-        .nav-item-container { 
-            padding: 1rem .5em !important; 
-            height: auto !important; 
-        }
+		.nav-item-container { 
+			padding: 1rem var(--container-pad) !important; 
+			height: auto !important; 
+		}
 
-        .dropdown-menu  {
-        	width: 100% !important;
-        	position: relative !important;
-            .nav-item-container {
-                padding: 1em .5rem !important;
-                height: var(--content-h)
-            }
-        }
+		.dropdown-menu {
+			width: 100% !important;
+			position: relative !important;
+			.nav-item-container {
+				height: var(--content-h)
+			}
+		}
 
-    }
+	}
 
-    li:hover {
-        .dropdown-menu  {
-            display:none;
-        }
-    }
+	li:hover {
+		.dropdown-menu {
+			display:none;
+		}
+	}
 
-    .menu-parent-indicator:hover  {
-        @include touch-alike
-    }
-
+	.menu-parent-indicator:hover {
+		@include touch-alike
+	}
 }
 
 .menucan {
 
-    &.responsive {
-        @include menucan-responsive;
-    }
+	&.responsive {
+		@include menucan-responsive;
+	}
 
-    @include breakpoint(mobile-only) {
-        @include menucan-responsive;
+	@include breakpoint(mobile-only) {
+		@include menucan-responsive;
 		overflow-y: auto;
 		max-height: 99vh;
 		padding-bottom: 6rem;
-    }
-
+	}
 }

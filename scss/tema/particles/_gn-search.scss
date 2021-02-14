@@ -1,12 +1,12 @@
 .gn-search-wrapper {
 
 	height: 100%;
-    @include flex-div(row,center,center);
+	@include flex-div(row,center,center);
 
-    form { 
-        @include flex-div(row,center,center);
-    	height: 100%;
-        margin: 0;
-        width: auto;
-    }
+	form { 
+		@include flex-div(row,center,center);
+		height: 100%;
+		margin: 0;
+		width: auto;
+	}
 }

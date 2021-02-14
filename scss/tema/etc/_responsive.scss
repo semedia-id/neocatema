@@ -1,92 +1,83 @@
 /*
 
-
 @mixin touch-alike {
 
-    box-shadow: 0 0 8px var(--light3);
-    background-color: var(--light1);
-    border-radius: 50%;
-
+	box-shadow: 0 0 8px var(--light3);
+	background-color: var(--light1);
+	border-radius: 50%;
 }
 
 @mixin responsive-transform {
-    &.fixed-left.slide { transform: translateX(-100%); }
-    &.fixed-right.slide { transform: translateX(100%); }
-    &.left.slide { transform: translateX(-100%); }
-    &.right.slide { transform: translateX(100%); }
-    &.h-flip { transform: translateX(150%) perspective(50vw) rotateY(-90deg)    }
+	&.fixed-left.slide { transform: translateX(-100%); }
+	&.fixed-right.slide { transform: translateX(100%); }
+	&.left.slide { transform: translateX(-100%); }
+	&.right.slide { transform: translateX(100%); }
+	&.h-flip { transform: translateX(150%) perspective(50vw) rotateY(-90deg)	}
 }
-
 
 .responsive-block {
 
-    transition: all .5s ease;
-    z-index: 999;
+	transition: all .5s ease;
+	z-index: 999;
 
 	@include breakpoint(mobile-only) {
-        visibility: hidden;
-        opacity: 0;
+		visibility: hidden;
+		opacity: 0;
 	}
 
-    .res-close { display: none; }
+	.res-close { display: none; }
 
 	&.show {
 		visibility: visible;
 		opacity: 1;
 		transform: translate(0) rotate(0);
 	}
-
 }
-
 
 .res-content {
 
-    transition: all 1s ease;
-    width: var(--responsive-width);
+	transition: all 1s ease;
+	width: var(--responsive-width);
 
 	@include breakpoint(mobile-only) {
 		.res-close { display: initial; }
-        @include responsive-transform;
-    }
+		@include responsive-transform;
+	}
 
 	&.show {
 		transform: translate(0) rotate(0) scale(1);
 		opacity: 1;
 	}
-
 }
 
 [data-responsive-position='pos-fixed-right'] {
 
 	@include breakpoint(mobile-only) {
 
-	    .res-content.responsive-block {
-            position: fixed;
-            right:0;
-            top:0;
+		.res-content.responsive-block {
+			position: fixed;
+			right:0;
+			top:0;
 
-            &.show {
+			&.show {
 				visibility:visible;
-           }
-        }
+			}
+		}
 
-    }
+	}
 }
-
-
 
 [data-responsive-position='fixed right'] {
 
 	.res-content.responsive-block {
 
-
 		.desktop & {
 			display: none;
 		}
 
-	    :not(.show) {
-            @include responsive-transform;
-	    }
+		:not(.show) {
+			@include responsive-transform;
+		}
 
 		&.show {
 			display: initial;
@@ -103,17 +94,15 @@
 			display: initial;
 		}
 	}
-
 }
-
 
 @mixin menucan-responsive {
 
-    height: auto;
-    --menu-width: 100%;
-    --background: var(--c-d);
+	height: auto;
+	--menu-width: 100%;
+	--background: var(--c-d);
 
-    .g-goback { display: none; }
+	.g-goback { display: none; }
 
 	.toplevel {
 		flex-flow:column nowrap !important;
@@ -121,49 +110,47 @@
 		width: 100% !important;
 	}
 
-    li {
-	    width: 100% !important;
-	    height: auto !important;
-        border-top: 1px solid var(--shade1);
+	li {
+		width: 100% !important;
+		height: auto !important;
+		border-top: 1px solid var(--shade1);
 
-        a,.nav-item-content { 
-            padding: .5em 1em !important; 
-            height: auto !important; 
-        }
+		a,.nav-item-content { 
+			padding: .5em 1em !important; 
+			height: auto !important; 
+		}
 
-        .dropdown-menu  {
-        	width: 100% !important;
-        	position: relative !important;
-            a,.nav-item-content {
-                padding: .5em 1em .5em 2em !important;
-                height: auto;
-            }
-        }
+		.dropdown-menu {
+			width: 100% !important;
+			position: relative !important;
+			a,.nav-item-content {
+				padding: .5em 1em .5em 2em !important;
+				height: auto;
+			}
+		}
 
-    }
+	}
 
-    li:hover {
-        .dropdown-menu  {
-            display:none;
-        }
-    }
+	li:hover {
+		.dropdown-menu {
+			display:none;
+		}
+	}
 
-    .menu-parent-indicator:hover  {
-        @include touch-alike
-    }
-
+	.menu-parent-indicator:hover {
+		@include touch-alike
+	}
 }
 
 .menucan {
 
-    &.responsive {
-        @include menucan-responsive;
-    }
+	&.responsive {
+		@include menucan-responsive;
+	}
 
-    @include breakpoint(mobile-only) {
-        @include menucan-responsive;
-    }
-
+	@include breakpoint(mobile-only) {
+		@include menucan-responsive;
+	}
 }
 
 */

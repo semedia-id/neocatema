@@ -17,7 +17,7 @@ $all-buttons-active: assign-inputs($buttons, active);
 
 #{$all-buttons} {
 	--background: #{get-hsl-var(button)};
-    --input-background: #{get-hsl-var(button,(l:90%))};
+	--input-background: #{get-hsl-var(button,(l:90%))};
 	--input-text: #{get-hsl-var(button,(l:3%))};
 	--text: #{get-hsl-var(button,(l:3%))};
 }
@@ -42,7 +42,6 @@ select,
 	font-family: var(--font-base);
 	display: inline-block;
 	align-items: center;
-
 
 	padding: .25rem .5rem .125rem .5rem;
 
@@ -76,7 +75,6 @@ select,
 		font-size: 1.5rem;
 		padding: 1rem 1rem .75rem 1rem;
 	}
-
 }
 
 p > button {
@@ -92,7 +90,6 @@ select,
 	&:hover { border: 1px solid var(--border2); }
 	&:focus { outline: 1px outset var(--border2); }
 }
-
 
 #{$all-buttons} {
 	cursor:pointer;

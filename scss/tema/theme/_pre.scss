@@ -1,13 +1,13 @@
 pre {
 	--background: #{get-hsl-var(surface,(l:90%))};
-    --text: #{get-hsl-var(surface,(l:5%))};
+	--text: #{get-hsl-var(surface,(l:5%))};
 
-    background-color: var(--background);
-    padding: 1em;
-    overflow: auto;
-    color: var(--text);
-    code { color: var(--text); }
-    @include scrollbars( .25rem, #fff3, #0006);
+	background-color: var(--background);
+	padding: 1em;
+	overflow: auto;
+	color: var(--text);
+	code { color: var(--text); }
+	@include scrollbars( .25rem, #fff3, #0006);
 	font-size: .9em;
 	max-height: 60vh;
 	max-width: 99.5%;
@@ -20,5 +20,4 @@ pre {
 .dark-scheme pre {
 	filter: invert(1);
 	--background: #{get-hsl-var(surface,(l:80%))};
-
 }

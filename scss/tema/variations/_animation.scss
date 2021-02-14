@@ -1,10 +1,10 @@
 @keyframes spins {
-	from { transform: rotate(0deg);  }
-	to { transform: rotate(-360deg);  }
+	from { transform: rotate(0deg); }
+	to { transform: rotate(-360deg); }
 }
 
 @keyframes bounce {
-	0% { transform: translateY(0px);  }
+	0% { transform: translateY(0px); }
 	10% { transform: translateY(3px); }
 	30% { transform: translateY(-5px); }
 	40% { transform: translateY(2px); }
@@ -13,7 +13,7 @@
 	70% { transform: translateY(-2px); }
 	80% { transform: translateY(0px); }
 	90% { transform: translateY(-1px); }
-	100% { transform: translateY(0);  }
+	100% { transform: translateY(0); }
 }
 
 .anim-spin {
@@ -42,7 +42,6 @@
 	animation-iteration-count: 2;
 }
 
-
 @keyframes mod-paralax-v {
 	0% { background-size: 200%; background-position: 50% 50%; }
 	50% { background-size: 200%; background-position: 50% 55%; }
@@ -50,9 +49,9 @@
 }
 
 @keyframes mod-paralax-h {
-	0% { background-position: 50% 50%;  background-size: 200%;}
+	0% { background-position: 50% 50%; background-size: 200%;}
 	50% { background-position: 55% 50%; background-size: 200%; }
-	100% {background-position: 50% 50%; background-size: 200%  }
+	100% {background-position: 50% 50%; background-size: 200% }
 }
 
 @keyframes mod-zoom {
@@ -88,7 +87,6 @@
 	90% { transform: translateY(-3px); }
 	100% { transform: translateY(0); }
 }
-
 
 .banim-fade {
 	animation-name: block-fade;

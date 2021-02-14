@@ -1,17 +1,17 @@
 .fix-at-top {
-    position: fixed;
-    width: 100%;
-    top:0;
-    z-index: 90;
-    
+	position: fixed;
+	width: 100%;
+	top:0;
+	z-index: 90;
+	
 }
 
 .dock-at-top {
-    transition: all 1s ease;
+	transition: all 1s ease;
 }
 
 .pinned {
-    width: 100%;
-    z-index: 90;
-    box-shadow: 0 0 6px var(--shadow);
+	width: 100%;
+	z-index: 90;
+	box-shadow: 0 0 6px var(--shadow);
 }

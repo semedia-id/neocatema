@@ -28,12 +28,10 @@ $ol-list-types: [
 ol[decimal-leading-zero],
 ol.decimal-leading-zero { padding-left: 1.5rem; }
 
-
 ul.none,
 ol.none,
 ul[none],
 ol[none] { list-style-type: none; padding-left: 0; }
-
 
 // sub list are keep with previous.
 
