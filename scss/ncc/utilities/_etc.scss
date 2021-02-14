@@ -5,12 +5,12 @@ html.smooth_scroll {
 }
 
 div,p {
-    .big { font-size: 1.5rem; line-height: 2; font-weight: 400; }
-    .medium { font-size: .9rem; line-height: 1 }
-    .small { font-size: .83rem; line-height: 1.15 }
-    .center { text-align: center }
-    .left { text-align: left }
-    .right { text-align: right }
+	.big { font-size: 1.5rem; line-height: 2; font-weight: 400; }
+	.medium { font-size: .9rem; line-height: 1 }
+	.small { font-size: .83rem; line-height: 1.15 }
+	.center { text-align: center }
+	.left { text-align: left }
+	.right { text-align: right }
 }
 
 p + dd,
@@ -23,7 +23,6 @@ p > img[align='left'] { margin-right: 1em; margin-bottom: 1em; }
 p > img[align='right'] { margin-left: 1em; margin-bottom: 1em; }
 p > img[align='fitwidth'] { margin: 1em 0; display:block; width: 100%; }
 p > img[align='center'] { margin: 1em auto; display:block;  }
-
 
 .each-ma-1 >* { margin: 1rem; }
 .each-mr-1 >* { margin-right: 1rem; }

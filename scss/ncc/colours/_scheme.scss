@@ -6,7 +6,7 @@
 	@if $var == background {
 		--color:#{$val};
 	}
-	
+
 	@if $var == shade or $var == border
 		or $var== shadow or $var == light {
 
@@ -34,7 +34,6 @@
 	}
 }
 
-
 @mixin schemer($scheme) {
 
 	@each $var, $val in $scheme {
@@ -53,8 +52,6 @@
 			$u: ($w - $l)/5;
 			$d: ($l - $b)/5;
 
-
-
 			--#{$var}-h: #{$h};
 			--#{$var}-s: #{$s};
 			--#{$var}-l: #{$l};
@@ -69,19 +66,16 @@
 				--b: #{unquote('hsl(var(--h), var(--s), 3%)')};
 				--w: #{unquote('hsl(var(--h), var(--s), 97%)')};
 
-
 				@if ($l<50%) { --t: var(--w); }
 				@else {	--t: var(--b); }
 
 			}
-
 
 		}
 
 	}
 
 }
-
 
 .light-scheme {
 	@include schemer($light)
@@ -90,7 +84,6 @@
 .dark-scheme {
 	@include schemer($dark)
 }
-
 
 .red { @extend .ncc-error }
 .yellow { @extend .ncc-warning }

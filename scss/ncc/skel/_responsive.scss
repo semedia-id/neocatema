@@ -1,28 +1,26 @@
 @mixin touch-alike {
 
-    box-shadow: 0 0 8px var(--light3);
-    background-color: var(--light1);
-    border-radius: 50%;
+	box-shadow: 0 0 8px var(--light3);
+	background-color: var(--light1);
+	border-radius: 50%;
 
 }
 
 @mixin responsive-transform {
-    &.fixed-left.slide { transform: translateX(-100%); }
-    &.fixed-right.slide { transform: translateX(100%); }
-    &.left.slide { transform: translateX(-100%); }
-    &.right.slide { transform: translateX(100%); }
-    &.h-flip { transform: translateX(150%) perspective(50vw) rotateY(-90deg)    }
+	&.fixed-left.slide { transform: translateX(-100%); }
+	&.fixed-right.slide { transform: translateX(100%); }
+	&.left.slide { transform: translateX(-100%); }
+	&.right.slide { transform: translateX(100%); }
+	&.h-flip { transform: translateX(150%) perspective(50vw) rotateY(-90deg)	}
 }
-
-
 
 .res-ctl {
 
-    &:hover {
-        text-shadow: 0 0 3px #000;
-        box-shadow: none;
-        border:none;
-    }
+	&:hover {
+		text-shadow: 0 0 3px #000;
+		box-shadow: none;
+		border:none;
+	}
 
 	display: none;
 	background: transparent;
@@ -30,8 +28,8 @@
 	outline: none;
 	color: var(--t);
 	font-size: calc(var(--ctl-height) / 2);
-    width: var(--ctl-width);
-    height: 100%;
+	width: var(--ctl-width);
+	height: 100%;
 
 	.desktop & {
 		display: initial;
@@ -44,8 +42,8 @@
 
 .desktop {
 	.responsive-block {
-        visibility: hidden;
-        opacity: 0;
+		visibility: hidden;
+		opacity: 0;
 	}
 
 	&.responsive-dock {
@@ -71,16 +69,15 @@
 
 .responsive-block {
 
-    transition: all .5s ease;
-    z-index: 999;
-
+	transition: all .5s ease;
+	z-index: 999;
 
 	@include breakpoint(mobile-only) {
-        visibility: hidden;
-        opacity: 0;
+		visibility: hidden;
+		opacity: 0;
 	}
 
-    .res-close { display: none; }
+	.res-close { display: none; }
 
 	&.show {
 		visibility: visible;

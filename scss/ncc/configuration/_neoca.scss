@@ -26,15 +26,15 @@ $light-border-color: #00000044 !default;
 $light-hilite-color: #ffffff99 !default;
 $light-shadow-color: #00000022 !default;
 
-$dark-background-color:invert($light-background-color) !default; 
-$dark-text-color: invert($light-text-color) !default; 
-$dark-surface-color: invert($light-surface-color) !default; 
-$dark-button-color: invert($light-button-color) !default; 
-$dark-accent-color: invert($light-accent-color) !default; 
-$dark-success-color: darken($light-success-color,20%) !default; 
-$dark-warning-color: darken($light-warning-color,20%) !default; 
-$dark-error-color: darken($light-error-color,20%) !default; 
-$dark-info-color: darken($light-info-color,20%) !default; 
+$dark-background-color:invert($light-background-color) !default;
+$dark-text-color: invert($light-text-color) !default;
+$dark-surface-color: invert($light-surface-color) !default;
+$dark-button-color: invert($light-button-color) !default;
+$dark-accent-color: invert($light-accent-color) !default;
+$dark-success-color: darken($light-success-color,20%) !default;
+$dark-warning-color: darken($light-warning-color,20%) !default;
+$dark-error-color: darken($light-error-color,20%) !default;
+$dark-info-color: darken($light-info-color,20%) !default;
 
 $dark-shade-color: #00000099 !default;
 $dark-border-color: #ffffff44 !default;

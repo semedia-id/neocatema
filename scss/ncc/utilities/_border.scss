@@ -35,7 +35,6 @@ $bs: (1,2,3);
 
 .bc-shade { border-color: var(--shade); }
 
-
 /* ---------- new atomic way ------------ */
 
 $sides:(
@@ -46,7 +45,6 @@ $sides:(
 	't':'top'
 );
 
-
 @each $style in [dotted,dashed,double,solid] {
 	@each $c in [light,shade] {
 		@for $i from 0 through 3 {
@@ -56,26 +54,26 @@ $sides:(
 			@for $z from 1 through 7 {
 				$zs: $z;
 				@if ($z==1) { $zs: ''; }
-				
+
 				@each $s, $side in $sides {
-				
+
 					$prefix: border;
 					$sn: -#{$s};
-					
+
 					@if ($s=='a') {
 						$sn: '';
 					}
-					
+
 					@if ($side!='all') {
 						$prefix: border-#{$side};
 					}
-				
-					.bd#{$sn}-#{$style}#{$zs}-#{$c}#{$cn} { 
+
+					.bd#{$sn}-#{$style}#{$zs}-#{$c}#{$cn} {
 						#{$prefix}: #{$z}px #{$style} var(--#{$color}) !important;
 					}
 				}
 			}
 		}
-	}			
+	}
 }
 

@@ -34,7 +34,6 @@ $light: varkan($light, shadow, $light-shadow-color);
 $light: varkan($light, border, $light-border-color);
 $light: varkan($light, light, $light-hilite-color);
 
-
 @mixin hsl-var($name) {
 	--h: unquote("var(--#{$name}-h)");
 	--s: unquote("var(--#{$name}-s)");

@@ -1,4 +1,4 @@
-html { 
+html {
 	box-sizing:border-box;
 }
 
@@ -9,8 +9,8 @@ html {
 body { margin:0; padding: 0; }
 
 table {
-  text-indent: 0;
-  border-color: inherit;
+	text-indent: 0;
+	border-color: inherit;
 }
 
 tfoot,
@@ -23,7 +23,7 @@ tbody {
 
 main,
 aside {
-    min-height: 100%;
+	min-height: 100%;
 }
 
 noscript { display: none; }
@@ -93,12 +93,12 @@ script {
 }
 
 a:focus {
-	text-decoration: none; 
+	text-decoration: none;
 	outline: none;
 }
 
-a:not(.button) { 
-	text-decoration: none; 
+a:not(.button) {
+	text-decoration: none;
 	&:hover { text-decoration: underline; }
 }
 
@@ -106,7 +106,4 @@ nav ul {
 	list-style-type: none;
 	padding-left:0;
 }
-
-
-
 

@@ -1,7 +1,7 @@
 .g-container {
 	margin: 0;
-	width: 100%; 
-	
+	width: 100%;
+
 	&.layout-1 {
 		width: 100%;
 		@include breakpoint(large-desktop-range) {
@@ -13,8 +13,7 @@
 		}
 
 	}
-	
-	
+
 	&.layout-2 {
 		margin: 0 auto;
 		width: $breakpoints-large-desktop-container;
@@ -23,9 +22,7 @@
 
 	}
 
-}	
-
-
+}
 
 /*
 .g-grid
