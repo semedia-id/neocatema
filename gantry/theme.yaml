@@ -54,9 +54,11 @@ configuration:
       - gantry-theme://scss
       - gantry-engine://scss
     files:
+      - ncc-skel
       - theme
       - custome
     persistent:
+      - ncc-skel
       - theme
     overrides:
       - custome

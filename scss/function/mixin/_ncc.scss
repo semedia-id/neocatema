@@ -1,0 +1,15 @@
+@mixin touch-alike {
+
+	box-shadow: 0 0 8px var(--light3);
+	background-color: var(--light1);
+	border-radius: 50%;
+
+}
+
+@mixin responsive-transform {
+	&.fixed-left.slide { transform: translateX(-100%); }
+	&.fixed-right.slide { transform: translateX(100%); }
+	&.left.slide { transform: translateX(-100%); }
+	&.right.slide { transform: translateX(100%); }
+	&.h-flip { transform: translateX(150%) perspective(50vw) rotateY(-90deg)	}
+}

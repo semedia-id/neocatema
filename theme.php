@@ -1,13 +1,22 @@
 <?php
 namespace Grav\Theme;
-
+/*
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Theme as GantryTheme;
 use Grav\Common\Grav;
 use Grav\Common\Theme;
 use Grav\Common\Plugin;
 use RocketTheme\Toolbox\Event\Event;
-
+use Grav\Plugin\Admin\Admin;
+use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
+*/
+use Gantry\Framework\Gantry;
+use Gantry\Framework\Theme as GantryTheme;
+use Grav\Common\Grav;
+use Grav\Common\Plugin;
+use Grav\Common\Theme;
+use Grav\Plugin\Admin\Admin;
+use RocketTheme\Toolbox\Event\Event;
 use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
 
 class Neocatema extends Theme
@@ -33,13 +42,13 @@ class Neocatema extends Theme
 			'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
 			'onTwigExtensions' => ['onTwigExtensions', 0],
 			'onOutputGenerated' => ['onOutputGenerated', 0],
-			'onBuildPagesInitialized' => ['modulePrepare',0],
+			'onBuildPagesInitialized' => ['propertiesPrepare',0],
 //			'onShortcodeHandlers' => ['onShortcodeHandlers', 0],
 //			 'onFormProcessed' => ['onFormProcessed', 0],
 		];
 	}
 
-	public function modulePrepare() 
+	public function propertiesPrepare() 
 	{
 		require_once(__DIR__.'/php/ncc-util.php');
 		
@@ -65,9 +74,9 @@ class Neocatema extends Theme
 
 		$theme_name = $this->name;
 
-		$this->grav['assets']->add("user://themes/$theme_name/admin/poko.css",1);
-		$this->grav['assets']->add("user://themes/$theme_name/js/w3color/w3color.js");
-		$this->grav['assets']->add("user://themes/$theme_name/admin/poko.js");
+		$this->grav['assets']->add("user://themes/$theme_name/admin/css/poko.css",1);
+		$this->grav['assets']->add("user://themes/$theme_name/js/core/w3color.js");
+		$this->grav['assets']->add("user://themes/$theme_name/admin/js/poko.js");
 
 	}
 

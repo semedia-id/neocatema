@@ -37,6 +37,7 @@ class nccTwigExtension extends \Twig_Extension
 			new \Twig_SimpleFunction('popularity', [$this, 'popularity']),
 			new \Twig_SimpleFunction('fileget', [$this, 'fileget']),
 			new \Twig_SimpleFunction('filegeta', [$this, 'filegeta']),
+			new \Twig_SimpleFunction('file_as_array', [$this, 'file_as_array']),
 			new \Twig_SimpleFunction('filedira', [$this, 'filedira']),
 			new \Twig_SimpleFunction('file_is_exists', [$this, 'file_is_exist']),
 			new \Twig_SimpleFunction('file_is_exist', [$this, 'file_is_exist']),
@@ -135,7 +136,7 @@ class nccTwigExtension extends \Twig_Extension
 			$res[$i]['name'] = $inf['filename'];
 			$res[$i]['ext'] = $inf['extension'];
 			$res[$i]['base'] = $inf['basename'];
-
+			$res[$i]['dir'] = preg_replace('#'.$path.'\/#','',$inf['dirname'].'/');
 			$i++;
 		}
 		return $res;
@@ -155,6 +156,16 @@ class nccTwigExtension extends \Twig_Extension
 		return file_get_contents($file);
 	}
 
+	public function file_as_array($file) {
+		if (Utils::startsWith($file, '/')) {
+			$file = GRAV_ROOT . $file;
+		} else {
+			$file = Grav::instance()['page']->path() . '/' . $file;
+		}
+		$array = file($file);
+		$array = preg_replace('#\r|\n|\s+$#','',$array);
+		return array_filter($array);
+	}
 	public function popularity($what)
 	{
 
