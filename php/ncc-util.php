@@ -101,32 +101,21 @@
 
 		$html = preg_replace('/\r/', '', $html);
 		$html = preg_replace('/[\n\s+\t]+(?=(?:[^<])*>)/', ' ', $html);
-		$html = preg_replace('/  +(?=(?:[^<])*>)/', ' ', $html);
-		$html = preg_replace('/\t/', ' ', $html);
-
+		$html = preg_replace('/\'(?=(?:[^<])*>)/', '"', $html);
 		$tmp = explode("\n", $html);
-		$tmp = preg_replace('/(>)\s+(<)/', '$1$2', $tmp);
-		$tmp = preg_replace('/\<(div|p|section|table|ul|ol)/si', chr(10).'<$1', $tmp);
-		$tmp = preg_replace('/\s+$|^\s+/', '', $tmp);
 		$tmp = preg_replace("/\s+>/", ">", $tmp );
 		$tmp = preg_replace('/\s+\">/', '">', $tmp );
 		$tmp = preg_replace('/"\s+>/', '">', $tmp );
 		$tmp = preg_replace("/\s+\'>/", "'>", $tmp );
-		$tmp = preg_replace("/'\s+>/", "'>", $tmp );		
+		$tmp = preg_replace("/'\s+>/", "'>", $tmp );
+		$tmp = preg_replace("/\s+</", " <", $tmp );
+		$tmp = preg_replace('/^\s+$/', '', $tmp);		
+		$tmp = preg_replace('/(>)\s+(<)/', '$1$2', $tmp);
+		$tmp = preg_replace("/^\s+</", "<", $tmp );
 		$tmp = array_filter($tmp);
 		$html = implode("\n", $tmp);
-		$html = preg_replace('/\n<\/(li|div|a|span|label)>/', "</$1>", $html);
-
-		/*
-		$html = preg_replace('/\s+">/', '">', $html );
-		$html = preg_replace("/\s+'>/", "'>", $html );
-		$html = preg_replace('/\<(div|p)/', chr(13).'<$1', $html);
-		*/
-		/*
-		$html = preg_replace('/\/(div|span|a|i|p|button)>\n/', "/$1>", $html);
-		$html = preg_replace('/<(section|main|footer|aside|script|svg)>/', "\n<$1", $html);
-		*/
-		//$html = preg_replace('/\n\n/','\n',$html);
+		$html = preg_replace('/\s+<\/(li|div|a|span|label)>/', "</$1>", $html);
+		$html = preg_replace('/=""/', "", $html);
 		return $html;
 	}
 

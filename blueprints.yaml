@@ -1,6 +1,6 @@
 name: neocatema
-version: "1.1.0"
-description: "Theme base on Neocátema(skeleton)"
+version: "1.1"
+description: "Neocatema(skeleton) Theme"
 icon: html5
 author:
   name: tacoen
@@ -14,7 +14,7 @@ bugs: https://github.com/tacoen/neocatema/issues
 license: MIT
 
 dependencies:
-  - { name: grav, version: '>=1.5.10' }
+  - { name: grav, version: '>=1.7' }
 
 form:
   validation: loose
@@ -25,13 +25,16 @@ form:
         title: Options
 
     tidy_output:
-        style: vertical
-        type: checkbox
+        type: toggle
         label: Tidy HTML Output
-        default: true
-        help: I love Tidyhtml, but when its not avaliable, I check this. 
+        help: We love Tidyhtml, but when its not avaliable, we check this.
+        highlight: 1
+        default: 1
+        options:
+          1: PLUGIN_ADMIN.ENABLED
+          0: PLUGIN_ADMIN.DISABLED
 
-    _section3:
+    _section1:
         type: section
         title: Properties
 

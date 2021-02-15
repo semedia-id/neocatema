@@ -48,10 +48,10 @@ class Neocatema extends Theme
 		];
 	}
 
-	public function propertiesPrepare() 
+	public function propertiesPrepare()
 	{
 		require_once(__DIR__.'/php/ncc-util.php');
-		
+
 		$cores = ncc_filedir(__DIR__.'/js/core','*.js');
 		$modules = ncc_filedir(__DIR__.'/js/module','*.js');
 		$str = "/* to recompile this file, clear your grav cache */\n";
@@ -59,15 +59,15 @@ class Neocatema extends Theme
 		foreach ($cores as $m) {
 			$str .= ncc_compact( file_get_contents($m['file']) );
 		}
-		
+
 		foreach ($modules as $m) {
 			$str .= "\n/*- ".$m['base']." -*/\n";
 			$str .= ncc_compact( file_get_contents($m['file']) );
 		}
-			
+
 		file_put_contents(__DIR__.'/js/module.min.js',$str);
-	
-	
+
+
 	}
 	public function onAdminMenu()
 	{
@@ -112,21 +112,42 @@ class Neocatema extends Theme
 
 		// Define the template.
 		require $locator('theme://includes/theme.php');
+		require_once(__DIR__.'/php/ncc-util.php');
 
+		/* check and create the workspace's path */
+
+		create_ifnotexists($locator('user://').'/workspace/templates');
+		create_ifnotexists($locator('user://').'/workspace/blueprints');
+		create_ifnotexists($locator('user://').'/workspace/css');
+		create_ifnotexists($locator('user://').'/workspace/scss');
+		create_ifnotexists($locator('user://').'/workspace/js');
+		create_ifnotexists($locator('user://').'/workspace/assets');
+
+		/* touch the needed files */
+
+		create_ifnotexists($locator('user://').'/workspace/js/script.js','touch');
+		create_ifnotexists($locator('user://').'/workspace/css/grav.css','touch');
+
+		/* copy file from theme/skeleton */
+
+		create_ifnotexists($locator('user://').'/workspace/scss/grav.scss',
+			'copy',__DIR__.'/skel/workspace/scss/grav.scss');
+		create_ifnotexists($locator('user://').'/workspace/scss/gantry.scss',
+			'copy',__DIR__.'/skel/workspace/scss/gantry.scss');
+		create_ifnotexists($locator('user://').'/workspace/scss/_custom.scss',
+			'copy',__DIR__.'/skel/workspace/scss/_custom.scss');
+		create_ifnotexists($locator('user://').'/workspace/scss-watch.sh',
+			'copy',__DIR__.'/skel/workspace/scss-watch.sh');
+
+		/* for particles */
+		// create_ifnotexists($locator('user://')."/data/gantry5/themes/$name/particles");
+		
 		// Define Gantry services.
 
 		$gantry['theme'] = function ($c) {
 			return new \Gantry\Theme\Neoca($c['theme.path'], $c['theme.name']);
 		};
 	}
-
-	/*
-	public function onShortcodeHandlers()
-	{
-		$theme_name = $this->name;
-		$this->grav['shortcode']->registerAllShortcodes("user://themes/$theme_name/php/shortcodes");
-	}
-	*/
 
 	public function onTwigSiteVariables()
 	{
@@ -160,44 +181,7 @@ class Neocatema extends Theme
 	public function onTwigTemplatePaths()
 	{
 
-		require_once(__DIR__.'/php/ncc-util.php');
-
 		$locator = $this->grav['locator'];
-		$theme_name = $this->name;
-
-		/* check and create the workspace's path */
-		
-		create_ifnotexists($locator('user://').'/workspace/templates');
-		create_ifnotexists($locator('user://').'/workspace/blueprints');
-		create_ifnotexists($locator('user://').'/workspace/css');
-		create_ifnotexists($locator('user://').'/workspace/scss');
-		create_ifnotexists($locator('user://').'/workspace/js');
-		create_ifnotexists($locator('user://').'/workspace/assets');
-
-		create_ifnotexists($locator('user://')."/data/gantry5/themes/$theme_name/particles");
-
-		/* touch the needed files */
-
-		create_ifnotexists($locator('user://').'/workspace/js/script.js','touch');
-		create_ifnotexists($locator('user://').'/workspace/css/grav.css','touch');
-
-		/* copy file from theme/skeleton */
-		
-		create_ifnotexists($locator('user://').'/workspace/scss/grav.scss',
-			'copy',__DIR__.'/skel/workspace/scss/grav.scss');
-		create_ifnotexists($locator('user://').'/workspace/scss/gantry.scss',
-			'copy',__DIR__.'/skel/workspace/scss/gantry.scss');
-		create_ifnotexists($locator('user://').'/workspace/scss/_custom.scss',
-			'copy',__DIR__.'/skel/workspace/scss/_custom.scss');
-		create_ifnotexists($locator('user://').'/workspace/scss-watch.sh',
-			'copy',__DIR__.'/skel/workspace/scss-watch.sh');
-		
-		/*
-		if (!file_exists(__DIR__.'custom/scss')) {
-			symlink($locator('user://').'/workspace/scss', __DIR__.'/custom/scss');			
-		}
-		*/
-		
 		$this->grav['twig']->twig_paths[] = $locator('user://workspace/templates');
 	}
 
@@ -220,12 +204,12 @@ class Neocatema extends Theme
 
 		if (! $this->isAdmin()) {
 
-			if (isset($this->config['theme']['tidy_output'])) {
+			if ($this->config['theme']['tidy_output']) {
 				$this->grav->output = ncc_tidyup($this->grav->output."");
 			}
-			
+
 			if (isset($this->config['plugins']['neocaprima']['static_path'])) {
-				
+
 				/* require neocaprima plugins */
 
 				$tdir = GRAV_ROOT.'/'. $this->config['plugins']['neocaprima']['static_path'];
