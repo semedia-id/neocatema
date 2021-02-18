@@ -6,7 +6,10 @@
   margin: 0 0 .5rem; }
 
 html .gp-banner.hidden {
-  display: none; }
+  display: none !important; }
+
+.CodeMirror pre {
+  font-family: monospace !important; }
 
 [class*='its'] {
   position: relative; }
@@ -61,10 +64,11 @@ ul.ncpfile li .bp.na {
   color: #999; }
 
 .pad {
-  padding: 1rem;
-  border: 1px solid #0002;
-  background: #f9f9f9;
   margin-bottom: 2rem; }
+  .pad.more {
+    padding: 1rem;
+    border: 1px solid #0002;
+    background: #f9f9f9; }
 
 .pad h5 {
   margin-top: 0; }
@@ -72,16 +76,17 @@ ul.ncpfile li .bp.na {
 .ncpflex {
   display: flex;
   flex-wrap: wrap;
-  min-height: 70vh; }
+  min-height: 70vh;
+  padding: 1rem !important;
+  width: 100%; }
+  .ncpflex .ncpmenu {
+    width: 25%;
+    padding-right: 1rem; }
+  .ncpflex .ncpcontent {
+    width: calc(75% - 1rem); }
 
 .ncpblock {
   padding: 0 2rem 2rem 1.5rem; }
-
-.ncpmenu {
-  flex-basis: 25%; }
-
-.ncpcontent {
-  flex-basis: 75%; }
 
 .ncpmenu h5 {
   margin: 0; }
@@ -91,18 +96,17 @@ ul.ncpfile li .bp.na {
   line-height: 1.8; }
 
 .workspace-image {
-  width: 240px;
-  height: 145px;
+  width: 100%;
   background-color: #f9f9f9;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #0002;
-  border: 1px solid #0002;
-  margin-top: .25rem; }
+  border: 1px solid #0002; }
 
 .workspace-image .exist {
-  box-shadow: 0 0 6px #0006; }
+  box-shadow: 0 4px 6px #0006;
+  width: 100%; }
 
 .workspace-image i {
   font-size: 5rem; }
@@ -225,8 +229,5 @@ ul.ncpfile li .bp.na {
 
 .pages-list .row:hover {
   outline: 1px solid #0092; }
-
-.CodeMirror pre {
-  font-family: monospace !important; }
 
 /*# sourceMappingURL=poko.css.map */

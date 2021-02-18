@@ -15,6 +15,7 @@ function ncc_scheme_switch(ele=false) {
 }	
 
 function ncc_scheme_actived() {
+	
 	if (document.querySelector('#ncc_scheme_switch')) {
 		
 		//store selected scheme
@@ -31,6 +32,7 @@ function ncc_scheme_actived() {
 function preferScheme() {
 
 	if (typeof disable_scheme !== 'undefined') {
+		
 		if (disable_scheme) { 
 			gas('body').addClass('light-scheme');
 			localStorage.setItem('ncc-scheme','light')
@@ -54,9 +56,15 @@ function preferScheme() {
 	} else {
 
         if (prefer_scheme == 'dark') {
-		    gas('body').addClass('dark-scheme');
+			if (! gas('body').hasClass('light-scheme')) {
+				gas('body').addClass('dark-scheme');
+			}
         } else {
-		    gas('body').addClass('light-scheme');
+
+			if (! gas('body').hasClass('dark-scheme')) {
+				gas('body').addClass('light-scheme');
+			}
+			
         }
 
 	}

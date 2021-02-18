@@ -22,7 +22,7 @@
     {% for item in page.header.list %}
         <li>
         {{ (item.link ? "<a href='"~item.link~"'>" : "")|raw }}
-        {{ (item.icon ? "<i class='block "~item.icon~"'></i>" : "")|raw }}
+        {{ (item.icon ? "<i class='"~item.icon~"'></i>" : "")|raw }}
         <div class='item-wrap'>
         {{ (item.header ? "<div class='item-title'>"~item.header~"</div>" : "")|raw }}
         {{ (item.text ? "<div class='item-text'>"~item.text~"</div>" : "")|raw }}
@@ -76,7 +76,7 @@
 	{% else %}
 
 		{% if page.media.images|length > 0 %}
-		{% set first_img = page.media.images|first.url %}
+		{% set first_img = page.media.images|first.url|e %}
 		{% set img_list = "data-image=" %}
 			{% for img in page.media.images %}
 				{% if loop.last %}
@@ -116,7 +116,7 @@
 		{% set div_attr = "data-delay="~ page.header.img_timeout|default(10) %}
 	{% endif %}
 
-	{% set styles = styles ~"background-image: url('" ~ first_img ~ "');" %}
+	{% set styles = styles ~"background-image: url(" ~ first_img ~ ");" %}
 
 {% endif %}
 
@@ -135,4 +135,3 @@
     {{ buttons|raw }}
 
 </div>
-

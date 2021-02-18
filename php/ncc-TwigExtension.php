@@ -57,12 +57,19 @@ class nccTwigExtension extends \Twig_Extension
 		return $response;
 	}
 
-	public function unique_array($array)
+	public function unique_array($array,$delim=' ')
 	{
-		array_filter($array);
-		sort($array);
-		return array_unique($array);
-
+		if (is_array($array)) {
+			array_filter($array);
+			sort($array);
+			return array_unique($array);
+		} else {
+			$array = explode($delim,trim($array));
+			$array = array_unique($array);
+			array_filter($array);
+			sort($array);
+			return implode($delim,$array);
+		}
 	}
 
 	public function ncc_arrayken($string,$delim,$unique=false)

@@ -1,5 +1,12 @@
 {% extends '@nucleus/partials/particle.html.twig' %}
-{% block particle %}
+
+{% block javascript_footer %}
+	{% if particle.layout|default('block') == "tree" 
+	      or particle.layout|default('block') == "collapse"%}		
+	<script src="{{ url('gantry-theme://js/tree.js') }}"></script>
+	{% endif %}
+{% endblock %}
+
 {% if particle.pagekey is empty %}
 	{% set colm = page.slug() %}
 {% elseif particle.pagekey == "/" %}
@@ -7,19 +14,28 @@
 {% else %}
 	{% set colm = particle.pagekey %}
 {% endif %}
-{% if colm == "home" %}
-	{% set pagecol = pages.children.visible %}
+{% if colm|lower == "home" %}
+	{% set pagecol = pages.children %}
 {% else %}
-	{% set pagecol = pages.find('/'~colm).children.visible %}
+	{% set cari = '/'~colm %}
+	{% set pagecol = pages.find(cari).children %}
 {% endif %}
-<div class='gn-tree {{ particle.layout }}' data-slug="{{ colm }}">
+
+{% set id = 'gn-tree'~ rand(1000, 9999) %}
+
+{% block particle %}
+
+<div id='{{id}}' class='gn-tree {{ particle.layout }}' data-slug="{{ colm }}">
+
+{% if particle.title %}<h3>{{particle.title}}</h3>{% endif %}
+
 <ol class="gatree toplevel">
 	{% for page in pagecol %}
 		{% if particle.expand == 0  %}
             <li class="item"><a href="{{ page.url }}">{{ page.title }}</a>
 		{% else %}
 			{% if page.children.visible is empty %}
-				<li class="item">
+				<li class="item {{page.title|stripper}}">
 				<a class='link' href="{{ page.url }}">{{ page.title }}</a>
 			{% else %}
 				<li class="parent">
@@ -55,7 +71,4 @@
 		{% endfor %}
 </ol>
 </div>
-{% endblock %}
-{% block javascript_footer %}
-	<script src="{{ url('gantry-theme://js/tree.js') }}"></script>
 {% endblock %}

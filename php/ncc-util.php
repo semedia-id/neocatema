@@ -101,7 +101,6 @@
 
 		$html = preg_replace('/\r/', '', $html);
 		$html = preg_replace('/[\n\s+\t]+(?=(?:[^<])*>)/', ' ', $html);
-		$html = preg_replace('/\'(?=(?:[^<])*>)/', '"', $html);
 		$tmp = explode("\n", $html);
 		$tmp = preg_replace("/\s+>/", ">", $tmp );
 		$tmp = preg_replace('/\s+\">/', '">', $tmp );

@@ -15,12 +15,14 @@ form:
       description: Globally enable the particle.
       default: true
 
-    pagekey:
-        type: input.text
-        label: Branch
-        overrideable: True
-        default:
+    title:
+        type: text
+        label: title
 
+    pagekey:
+        label: Branch
+        type: menu.item
+ 
     layout:
         type: select.selectize
         label: Layout

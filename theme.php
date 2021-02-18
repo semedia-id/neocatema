@@ -15,6 +15,7 @@ use Gantry\Framework\Theme as GantryTheme;
 use Grav\Common\Grav;
 use Grav\Common\Plugin;
 use Grav\Common\Theme;
+use Grav\Common\Page\Interfaces\PageCollectionInterface;
 use Grav\Plugin\Admin\Admin;
 use RocketTheme\Toolbox\Event\Event;
 use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
@@ -201,7 +202,7 @@ class Neocatema extends Theme
 	{
 
 		require_once(__DIR__.'/php/ncc-util.php');
-
+		
 		if (! $this->isAdmin()) {
 
 			if ($this->config['theme']['tidy_output']) {
@@ -228,4 +229,7 @@ class Neocatema extends Theme
 
 		}
 	}
+	
+
+	
 }

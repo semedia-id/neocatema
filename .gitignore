@@ -6,3 +6,4 @@ bin/*
 scss/custome/*
 images/**
 custom/**
+js/module.min.js

@@ -9,6 +9,7 @@ table {
 
 	width: 100%;
 	border-collapse: collapse;
+	margin-top: 1rem;
 
 	thead {
 		background-color: var(--header);
@@ -63,6 +64,7 @@ table {
 		thead {		 
 			background-color: var(--body);
 			color: var(--body-text);
+			font-weight: 100;
 			th { border-bottom: var(--hrsep) solid var(--border); }
 		}
 	}
@@ -74,3 +76,21 @@ table {
 .spaced table { @extend table.spaced; }
 .col-stripes table { @extend table.col-stripes; }
 .stripes table { @extend table.stripes; }
+
+.dark-scheme {
+
+	table {
+		--body: #{get-hsl-var(surface,(l:30%))};
+		--header-text: #{get-hsl-var(surface,(l:80%))};
+		--header: #{get-hsl-var(surface,(l:40%))};
+		--body-text: #{get-hsl-var(surface,(l:90%))};
+		--shade: #{get-hsl-var(surface,(l:10%))};
+		--hrsep: 1px;
+	
+		&.noheader-bg {
+			thead {		 
+				th { border-bottom: var(--hrsep) solid var(--shade1); }
+			}
+	}		
+	}
+}

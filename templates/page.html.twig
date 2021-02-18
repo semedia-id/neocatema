@@ -108,10 +108,11 @@
 	{{ gantry.document.getHtml('head_bottom')|join("\n")|raw }}
 </head>
 
-    <body{{ gantry.page.bodyAttributes({'class': [ 
+	{% set class = gantry.page.bodyAttributes({'class': [ 
 		'page-'~page.slug(), gantry.page.preset, 
-		'g-style-' ~ gantry.theme.preset
-	]})|raw }}>
+		'g-style-' ~ gantry.theme.preset]})|replace({'class=':'','"':'','=':''})|nodupe %}
+		
+    <body class="{{class|raw}}">
 
     {{ body_top|raw }}
 
