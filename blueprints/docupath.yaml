@@ -29,17 +29,14 @@ form:
 
             header.wrapperclass:
               type: text
-              default: theme-dummy
               label: wrapper class
               
             header.menuclass:
               type: text
-              default: td-menu
               label: menu class
                 
             header.contentclass:
               type: text
-              default: td-content
               label: content class
                 
             header.start:

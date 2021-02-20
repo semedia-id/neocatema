@@ -48,7 +48,7 @@
 		@include flex-basis(100%);
 		max-width: 100%;
 		width: 100% !important;
-
+		flex-basis: 100%;
 		&.grow,
 		&.shrink {
 			flex-basis: auto !important;

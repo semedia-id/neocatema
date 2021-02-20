@@ -1,22 +1,12 @@
 <?php
 namespace Grav\Theme;
-/*
+
+use Grav\Common\Plugin;
+use Grav\Common\Theme;
+use Grav\Plugin\Admin\Admin;
 use Gantry\Framework\Gantry;
 use Gantry\Framework\Theme as GantryTheme;
 use Grav\Common\Grav;
-use Grav\Common\Theme;
-use Grav\Common\Plugin;
-use RocketTheme\Toolbox\Event\Event;
-use Grav\Plugin\Admin\Admin;
-use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
-*/
-use Gantry\Framework\Gantry;
-use Gantry\Framework\Theme as GantryTheme;
-use Grav\Common\Grav;
-use Grav\Common\Plugin;
-use Grav\Common\Theme;
-use Grav\Common\Page\Interfaces\PageCollectionInterface;
-use Grav\Plugin\Admin\Admin;
 use RocketTheme\Toolbox\Event\Event;
 use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
 
@@ -35,17 +25,15 @@ class Neocatema extends Theme
 	public static function getSubscribedEvents()
 	{
 		return [
-			'onThemeInitialized' => ['onThemeInitialized', 0],
 			'onAdminMenu' => ['onAdminMenu', 0],
-			'onGetPageTemplates' => ['onGetPageTemplates', 0],
-			'onGetPageBlueprints' => ['onGetPageBlueprints', 0],
-			'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
-			'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
-			'onTwigExtensions' => ['onTwigExtensions', 0],
-			'onOutputGenerated' => ['onOutputGenerated', 0],
 			'onBuildPagesInitialized' => ['propertiesPrepare',0],
-//			'onShortcodeHandlers' => ['onShortcodeHandlers', 0],
-//			 'onFormProcessed' => ['onFormProcessed', 0],
+			'onGetPageBlueprints' => ['onGetPageBlueprints', 0],
+			'onGetPageTemplates' => ['onGetPageTemplates', 0],
+			'onOutputGenerated' => ['onOutputGenerated', 0],
+			'onThemeInitialized' => ['onThemeInitialized', 0],
+			'onTwigExtensions' => ['onTwigExtensions', 0],
+			'onTwigSiteVariables' => ['onTwigSiteVariables', 0],
+			'onTwigTemplatePaths' => ['onTwigTemplatePaths', 0],
 		];
 	}
 
@@ -67,9 +55,8 @@ class Neocatema extends Theme
 		}
 
 		file_put_contents(__DIR__.'/js/module.min.js',$str);
-
-
 	}
+
 	public function onAdminMenu()
 	{
 
@@ -142,7 +129,7 @@ class Neocatema extends Theme
 
 		/* for particles */
 		// create_ifnotexists($locator('user://')."/data/gantry5/themes/$name/particles");
-		
+
 		// Define Gantry services.
 
 		$gantry['theme'] = function ($c) {
@@ -168,14 +155,9 @@ class Neocatema extends Theme
 
 	public function onTwigExtensions()
 	{
-		require_once(__DIR__.'/php/GaskenTwigExtension.php');
-		$this->grav['twig']->twig->addExtension(new GaskenTwigExtension());
-
 		require_once(__DIR__.'/php/ncc-TwigExtension.php');
 		$this->grav['twig']->twig->addExtension(new nccTwigExtension());
 
-		//require_once(__DIR__.'/php/ColorMixerTwigExtension.php');
-		//$this->grav['twig']->twig->addExtension(new ColorMixerTwigExtension());
 	}
 
 
@@ -202,7 +184,7 @@ class Neocatema extends Theme
 	{
 
 		require_once(__DIR__.'/php/ncc-util.php');
-		
+
 		if (! $this->isAdmin()) {
 
 			if ($this->config['theme']['tidy_output']) {
@@ -229,7 +211,7 @@ class Neocatema extends Theme
 
 		}
 	}
-	
 
-	
+
+
 }

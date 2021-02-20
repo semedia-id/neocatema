@@ -1,5 +1,8 @@
 {%-set inline_js %}
-var disable_scheme = {{ (gantry.config.get('styles.option.disable_scheme') ? 'true': 'false')|raw }};
+
+{%- if gantry.config.get('styles.option.disable_scheme') %}
+	var disable_scheme = 'true';
+{% endif -%}
 var gn_media_breakpoint = {
     'wide':{{ 16*gantry.config.get('styles.breakpoints.large-desktop-container')|number_format }},
     'desktop':{{ 16*gantry.config.get('styles.breakpoints.desktop-container')|number_format}},
@@ -9,4 +12,4 @@ var gn_media_breakpoint = {
 {% endset -%}
 
 
-{% do gasvara('inline_js',inline_js|stripper(true)) %}
+{% do gasvara('inline_js',inline_js|stripper) %}

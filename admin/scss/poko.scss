@@ -1,3 +1,14 @@
+div.section[data-lm-id*="drawer"] {
+
+	background: transparent !important;
+	border: 1px dashed #999 !important;
+	h4[title] { 
+		color: #807f7d; 
+		font-size: 1rem !important;
+		&:after { content: " (hidden section)" }
+	}
+}
+
 [data-grav-field="range"] .form-input-wrapper  { display: flex; }
 #admin-main h1.sub-section { font-size: 1.1rem; margin: 0 0 .5rem; }
 

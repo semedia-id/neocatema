@@ -1,3 +1,12 @@
+div.section[data-lm-id*="drawer"] {
+  background: transparent !important;
+  border: 1px dashed #999 !important; }
+  div.section[data-lm-id*="drawer"] h4[title] {
+    color: #807f7d;
+    font-size: 1rem !important; }
+    div.section[data-lm-id*="drawer"] h4[title]:after {
+      content: " (hidden section)"; }
+
 [data-grav-field="range"] .form-input-wrapper {
   display: flex; }
 

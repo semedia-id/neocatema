@@ -35,7 +35,7 @@
             <li class="item"><a href="{{ page.url }}">{{ page.title }}</a>
 		{% else %}
 			{% if page.children.visible is empty %}
-				<li class="item {{page.title|stripper}}">
+				<li class="item {{page.title|safetxt}}">
 				<a class='link' href="{{ page.url }}">{{ page.title }}</a>
 			{% else %}
 				<li class="parent">

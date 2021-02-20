@@ -1,5 +1,7 @@
 {% set boxed = segment.attributes.boxed ? segment.attributes.boxed : gantry.config.page.body.layout.sections %}
 
+{% if options is not iterable %}
+
 {% set options = {
     'gsize': ( segment.attributes.disable_sizes ? false : true ),
     'ggrid': (segment.attributes.disable_grid ? false : true ),
@@ -7,6 +9,8 @@
 	'gcontainer': (segment.attributes.disable_container ? false : true )
     }
 %}
+
+{% endif %}
 
 
 {%- set c_array = ['g-container'] -%}

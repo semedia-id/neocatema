@@ -10,7 +10,7 @@
     {% set c_array = c_array| merge(['size-'~segment.attributes.size]) -%}
 {% endif -%}
 
-{% set class = stringken(c_array) %}
+{% set class = stringken(c_array)|replace('.','-')|nodupe %}
 
 {%set styles = '' %}
 
@@ -22,7 +22,7 @@
 
 {% set styles = styles ~ (segment.attributes.background_color ? '--color:'~segment.attributes.background_color)~';' %}
 
-{% set styles = stringken(styles,';') %}
+{% set styles = stringken(styles,';')|nodupe %}
 
 {% set html %}
     {% if segment.children %}

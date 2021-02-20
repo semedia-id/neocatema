@@ -5,3 +5,5 @@ RewriteBase /static-page
 
 RewriteCond %{REQUEST_URI} ^404.php?$
 RewriteRule ^/static-page/(.+)$ /$1 [L]
+
+Header set Cache-Control "max-age=31536000, immutable"

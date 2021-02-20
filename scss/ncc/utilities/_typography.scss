@@ -65,3 +65,8 @@ h5 + p { margin-top: 0 }
 tfoot,thead,legend {
 	@extend .h5;
 }
+
+
+.whitespaces, .ws {
+	white-space: break-spaces;
+}

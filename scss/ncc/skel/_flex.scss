@@ -37,8 +37,13 @@
 
 .g-grid {
     flex-flow: row;
+	flex-wrap: wrap;
 }
 
 .g-block {
 	@extend .flex;
+}
+
+section {
+    width: 100%;
 }

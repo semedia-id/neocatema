@@ -1,7 +1,13 @@
 
+function void_double_scheme() {
+
+	if ( gas('body').hasClass('dark-scheme') && gas('body').hasClass('light-scheme') ) {
+		gas('body').removeClass('light-scheme');
+	}
+}
 
 function ncc_scheme_switch(ele=false) {
-	
+
 	if (gas('body').hasClass('dark-scheme')) {
 		gas('body').removeClass('dark-scheme');
 		gas('body').addClass('light-scheme');
@@ -16,6 +22,8 @@ function ncc_scheme_switch(ele=false) {
 
 function ncc_scheme_actived() {
 	
+	void_double_scheme();
+		
 	if (document.querySelector('#ncc_scheme_switch')) {
 		
 		//store selected scheme
@@ -43,6 +51,8 @@ function preferScheme() {
 	
 	var prefer_scheme = localStorage.getItem('ncc-scheme');
 
+	void_double_scheme();
+
     if (!prefer_scheme) {
 
 	    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -69,5 +79,6 @@ function preferScheme() {
 
 	}
 
+	return prefer_scheme;
 
 }

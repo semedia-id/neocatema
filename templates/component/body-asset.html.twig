@@ -26,7 +26,7 @@
 
 
 {% if header.asset_inlinejs|trim %}
-	{% do gasvara('inline_js',header.asset_inlinejs|stripper(true)) %}
+	{% do gasvara('inline_js',header.asset_inlinejs|stripper) %}
 {% endif %}
 
 {% block page_injected_script %}

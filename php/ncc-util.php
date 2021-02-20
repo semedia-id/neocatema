@@ -142,16 +142,19 @@
 	function ncc_filedir($path,$pattern="*") {
 
 		$res=[]; $i=0;
-		$files = rglob("$path/".$pattern);
+		$files = rglob("$path".$pattern);
 		//$files = preg_replace('#'.GRAV_ROOT.'#', '', $files);
 		foreach ($files as $f) {
 			$inf = pathinfo($f);
 			$res[$i]['mtime'] = date ("Y/m/d - H:i:s", filemtime($f) );
-			$res[$i]['file'] = $f;
+			$res[$i]['ctime'] = date ("Y/m/d - H:i:s", filectime($f) );
+			$res[$i]['file'] = preg_replace('#'.GRAV_ROOT.'#', '', $f);
 			$res[$i]['path'] = $inf['dirname'];
+			$res[$i]['spath'] = preg_replace('#'.GRAV_ROOT.'#', '', $inf['dirname']);
 			$res[$i]['name'] = $inf['filename'];
 			$res[$i]['ext'] = $inf['extension'];
 			$res[$i]['base'] = $inf['basename'];
+			$res[$i]['dir'] = preg_replace('#'.$path.'#','',$inf['dirname'].'/');
 
 			$i++;
 		}

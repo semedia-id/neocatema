@@ -7,12 +7,12 @@
 {%if page %}
 
 	{% set page = page|replace({'=':'/'}) %}
-	{% set doc_content = filegeta( docpath~"/"~page~header.extension) %}
+	{% set doc_content = fileget( docpath~"/"~page~header.extension)|markdown %}
 
 
 {% else %}
 
-	{% set doc_content = filegeta( docpath~"/"~header.start~header.extension) %}
+	{% set doc_content = fileget( docpath~"/"~header.start~header.extension)|markdown %}
 
 
 {% endif %}
@@ -29,10 +29,10 @@
 
 <div class='{{header.menuclass}} pa-100'>
 <ol class='none'>
-{% for f in filedira(docpath,'*.html.twig') %}
+{% for f in filedir(docpath,'*.html.twig') %}
 	{% set ext = header.extension %}
 	{% set fn = f['base']|regex_replace("#"~header.extension~"#",'') %}
-	{% set gname = f['path']|regex_replace('#'~docpath~'#','')|replace({'/':''}) %}
+	{% set gname = f['spath']|regex_replace('#'~docpath~'#','')|replace({'/':''}) %}
 	{% set link = uri.path~"/page:"~f['file']|
 		regex_replace("#"~header.extension~"#",'')|
 		regex_replace('#'~docpath~'/#','')|

@@ -9,6 +9,14 @@
     }
 %}
 
+{% if segment.id|trim == 'drawer' %}
+	{% set options = { 
+		'gcontent': false,
+		'gsize': true,
+		'ggrid': false,
+		'gcontainer': false,
+	} %}
+{% endif %}
 
 {%- set c_array = segment.attributes.class|split(' ') -%}
 {%- set c_array = c_array| merge(segment.attributes.variations|split(' ')) -%}
@@ -19,9 +27,9 @@
 {%- set c_array = c_array| merge([(segment.attributes.disable_gcontent ? 'no-gcontent')]) -%}
 {%- set c_array = c_array| merge([(segment.attributes.res_swipe ? 'swipe')]) -%}
 {%- set c_array = c_array| merge([(segment.attributes.responsive ? 'responsive')]) -%}
-{% set class = stringken(c_array) %}
+{%- set class = stringken(c_array) %}
 
-{%set styles = '' %}
+{%- set styles = '' %}
 
 {% for line in segment.attributes.css %}
     {% for var,val in line %}
