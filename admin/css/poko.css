@@ -1,3 +1,6 @@
+table.ncc_enviro td {
+  text-align: left; }
+
 div.section[data-lm-id*="drawer"] {
   background: transparent !important;
   border: 1px dashed #999 !important; }

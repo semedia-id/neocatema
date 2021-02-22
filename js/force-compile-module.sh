@@ -6,7 +6,7 @@ cat 'core/w3color.js' >> module.js
 # cat 'requirejs/require.js' >> module.js
 # cat 'requirejs/domready.js' >> module.js
 	
-for f in module/*
+for f in modules/*
 do
 	echo "" >> module.js
 	echo "/* ------ $f ------*/" >> module.js

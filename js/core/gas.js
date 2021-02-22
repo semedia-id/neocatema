@@ -60,9 +60,9 @@ gas.prototype = {
 		return this.ele.id;
 	},
 	dataRemove: function(what) {
-		this.ele.removeAttribute('data-'+what);		
+		this.ele.removeAttribute('data-'+what);
 	},
-	
+
 	data: function(what,value=false) {
 
 		if (value) { this.ele.setAttribute('data-'+what,value); }
@@ -129,9 +129,9 @@ gas.prototype = {
 		const newSheet = new CSSStyleSheet();
 		newSheet.replaceSync(styles);
 		document.adoptedStyleSheets = document.adoptedStyleSheets.concat(newSheet);
-//		this.ele.adoptedStyleSheets = document.adoptedStyleSheets.concat(newSheet); 
+//		this.ele.adoptedStyleSheets = document.adoptedStyleSheets.concat(newSheet);
 	},
-	
+
 	cssvar: function(what,value=false,important=false) {
 		var c = getComputedStyle(this.ele)
 		if (value) {

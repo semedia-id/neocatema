@@ -10,7 +10,7 @@
 	{% include('component/head-meta.html.twig') %}
 	{% block head_meta %}
 	{% endblock %}
-	{{ gantry.document.getHtml('head_meta')|join("\n")|raw }}    
+	{{ gantry.document.getHtml('head_meta')|join("\n")|raw }}
 {% endset -%}
 
 {%- set head_title %}
@@ -108,10 +108,10 @@
 	{{ gantry.document.getHtml('head_bottom')|join("\n")|raw }}
 </head>
 
-	{% set class = gantry.page.bodyAttributes({'class': [ 
-		'page-'~page.slug(), gantry.page.preset, 
+	{% set class = gantry.page.bodyAttributes({'class': [
+		'page-'~page.slug(), gantry.page.preset,
 		'g-style-' ~ gantry.theme.preset]})|replace({'class=':'','"':'','=':''})|nodupe %}
-		
+
     <body class="{{class|raw}}">
 
     {{ body_top|raw }}

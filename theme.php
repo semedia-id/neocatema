@@ -42,7 +42,7 @@ class Neocatema extends Theme
 		require_once(__DIR__.'/php/ncc-util.php');
 
 		$cores = ncc_filedir(__DIR__.'/js/core','*.js');
-		$modules = ncc_filedir(__DIR__.'/js/module','*.js');
+		$modules = ncc_filedir(__DIR__.'/js/modules','*.js');
 		$str = "/* to recompile this file, clear your grav cache */\n";
 
 		foreach ($cores as $m) {
@@ -68,6 +68,16 @@ class Neocatema extends Theme
 
 	}
 
+	public function webcheck() {
+		
+
+		$array=[];
+		$barray=[];
+		$array[] = "<tr><td>DOCUMENT_ROOT</td><td><input type='text' value='". str_replace('\\', '/',$_SERVER['DOCUMENT_ROOT'])."' ></td></tr>";
+		$array[] = "<tr><td>DIR</td><td><input type='text' value='".str_replace('\\', '/',__DIR__)."' ></td></tr>";
+		return "<table class='ncc_enviro'>".join("",$array)."</table>";
+	}
+	
 	public function onThemeInitialized()
 	{
 		if (defined('GRAV_CLI') && GRAV_CLI) {

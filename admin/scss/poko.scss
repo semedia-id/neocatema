@@ -1,9 +1,13 @@
+table.ncc_enviro {
+	td { text-align: left; }
+}
+
 div.section[data-lm-id*="drawer"] {
 
 	background: transparent !important;
 	border: 1px dashed #999 !important;
-	h4[title] { 
-		color: #807f7d; 
+	h4[title] {
+		color: #807f7d;
 		font-size: 1rem !important;
 		&:after { content: " (hidden section)" }
 	}
@@ -17,9 +21,9 @@ html .gp-banner.hidden { display: none !important }
 .CodeMirror pre { font-family: monospace !important; }
 
 
-[class*='its'] { 
+[class*='its'] {
 	position: relative;
-	
+
 	&:after {
 		position: absolute;
 		font-size: .7rem;
@@ -27,7 +31,7 @@ html .gp-banner.hidden { display: none !important }
 		top:0;
 		opacity: .5;
 	}
-	
+
 	&.neocatema:after { content: 'neocatema'; }
 	&.neocaprima:after { content: 'neocaprima'; }
 
@@ -87,7 +91,7 @@ ul.ncpfile li .bp.na {
 	    border: 1px solid #0002;
 	    background: #f9f9f9;
 	}
-	
+
 	margin-bottom: 2rem;
 }
 
@@ -136,7 +140,7 @@ ul.ncpfile li .bp.na {
 }
 
 .workspace-image i { font-size: 5rem; }
-		
+
 
 /* --------------------------- */
 

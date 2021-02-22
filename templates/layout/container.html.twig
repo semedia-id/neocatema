@@ -12,7 +12,6 @@
 
 {% endif %}
 
-
 {%- set c_array = ['g-container'] -%}
 {%- set c_array = c_array| merge(segment.attributes.class|split(' ')) -%}
 {%- set c_array = c_array| merge(['layout-'~boxed]) -%}

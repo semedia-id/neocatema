@@ -21,26 +21,30 @@ form:
   fields:
 
     _section0:
-        type: section
-        title: Options
+      type: section
+      title: Options
 
     tidy_output:
-        type: toggle
-        label: Tidy HTML Output
-        help: We love Tidyhtml, but when its not avaliable, we check this.
-        highlight: 1
-        default: 1
-        options:
-          1: PLUGIN_ADMIN.ENABLED
-          0: PLUGIN_ADMIN.DISABLED
-
-    _section1:
-        type: section
-        title: Properties
+      type: toggle
+      label: Tidy HTML Output
+      help: We love Tidyhtml, but when its not avaliable, we check this.
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
 
     owner:
-        size: long
-        type: textarea
-        label: <b>Owner Information</b>
-        readonly: true
-        help: This field was readonly for a reason.
+      style: vertical
+      type: textarea
+      label: <b>Owner Information</b>
+      readonly: true
+      help: This field was readonly for a reason.
+
+    _section_checker:
+      type: section
+      title: Enviroment
+
+    _checker:
+      type: section
+      data-text@: '\Grav\Theme\Neocatema::webcheck'
