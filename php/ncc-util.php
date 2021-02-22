@@ -149,6 +149,7 @@
 			$res[$i]['mtime'] = date ("Y/m/d - H:i:s", filemtime($f) );
 			$res[$i]['ctime'] = date ("Y/m/d - H:i:s", filectime($f) );
 			$res[$i]['file'] = preg_replace('#'.GRAV_ROOT.'#', '', $f);
+			$res[$i]['rfile'] = $f;
 			$res[$i]['path'] = $inf['dirname'];
 			$res[$i]['spath'] = preg_replace('#'.GRAV_ROOT.'#', '', $inf['dirname']);
 			$res[$i]['name'] = $inf['filename'];

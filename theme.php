@@ -41,17 +41,20 @@ class Neocatema extends Theme
 	{
 		require_once(__DIR__.'/php/ncc-util.php');
 
-		$cores = ncc_filedir(__DIR__.'/js/core','*.js');
-		$modules = ncc_filedir(__DIR__.'/js/modules','*.js');
-		$str = "/* to recompile this file, clear your grav cache */\n";
-
+		$cores = ncc_filedir(__DIR__.'/js/core/','*.js');
+		$modules = ncc_filedir(__DIR__.'/js/modules/','*.js');
+		$str = "/* to recompile this file, clear your grav cache\n";
+		$str .= "   => ". __DIR__;
+		$str .= "\n*/\n";
 		foreach ($cores as $m) {
-			$str .= ncc_compact( file_get_contents($m['file']) );
+			//$str .= "/* = ".$m['file'] ." */";
+			$str .= ncc_compact( file_get_contents($m['rfile']) );
 		}
 
 		foreach ($modules as $m) {
+			//$str .= "/* = ".$m['file'] ." */";
 			$str .= "\n/*- ".$m['base']." -*/\n";
-			$str .= ncc_compact( file_get_contents($m['file']) );
+			$str .= ncc_compact( file_get_contents($m['rfile']) );
 		}
 
 		file_put_contents(__DIR__.'/js/module.min.js',$str);
@@ -73,8 +76,9 @@ class Neocatema extends Theme
 
 		$array=[];
 		$barray=[];
-		$array[] = "<tr><td>DOCUMENT_ROOT</td><td><input type='text' value='". str_replace('\\', '/',$_SERVER['DOCUMENT_ROOT'])."' ></td></tr>";
-		$array[] = "<tr><td>DIR</td><td><input type='text' value='".str_replace('\\', '/',__DIR__)."' ></td></tr>";
+		$array[] = "<tr><td>DOCUMENT_ROOT</td><td><input type='text' value='". $_SERVER['DOCUMENT_ROOT']. "' ></td></tr>";
+		$array[] = "<tr><td>GRAV_ROOT</td><td><input type='text' value='". GRAV_ROOT ."' ></td></tr>";
+		$array[] = "<tr><td>DIR</td><td><input type='text' value='". __DIR__ ."' ></td></tr>";
 		return "<table class='ncc_enviro'>".join("",$array)."</table>";
 	}
 	
