@@ -27,7 +27,11 @@
 
 <div id='{{id}}' class='gn-tree {{ particle.layout }}' data-slug="{{ colm }}">
 
-{% if particle.title %}<h3>{{particle.title}}</h3>{% endif %}
+{%- if particle.title %}<h3>
+	{%- if particle.title_link %}<a href='{{particle.title_link|raw}}'>{% endif %}
+	{{particle.title}}
+	{%- if particle.title_link %}</a>{% endif %}
+</h3>{% endif -%}
 
 <ol class="gatree toplevel">
 	{% for page in pagecol %}

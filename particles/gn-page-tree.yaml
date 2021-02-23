@@ -16,24 +16,28 @@ form:
       default: true
 
     title:
-        type: text
-        label: title
+      type: text
+      label: title
 
+    title_link:
+      type: text
+      label: title link
+        
     pagekey:
-        label: Branch
-        type: menu.item
+      label: Branch
+      type: menu.item
  
     layout:
-        type: select.selectize
-        label: Layout
-        default: tree
-        options:
-            tree: tree
-            collapse: collapse
-            block: block
+      type: select.selectize
+      label: Layout
+      default: tree
+      options:
+        tree: tree
+        collapse: collapse
+        block: block
 
     expand:
-        type: input.checkbox
-        label: Show Child
-        default: 0
+      type: input.checkbox
+      label: Show Child
+      default: 0
 
