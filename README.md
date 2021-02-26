@@ -35,13 +35,6 @@ Yes, Neocatema has its [Wiki](https://github.com/tacoen/neocatema/wiki).
 
 ## Instalation
 
-### Manual Installation
-
-To install this theme, just download the zip version of this repository and unzip it under "/your/site/grav/user/themes". 
-Then, rename the folder to "neoca". You should now have Neoca theme files under
-
-`/your/site/grav/user/themes/neoca`
 
 # It limitless!
 
-![neoca theme-dev](https://github.com/tacoen/neocatema/wiki/theme-dev.png)
