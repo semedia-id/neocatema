@@ -33,8 +33,5 @@ Yes, Neocatema has its [Wiki](https://github.com/tacoen/neocatema/wiki).
   * tocbot
   * w3color
 
-## Instalation
 
-
-# It limitless!
 
