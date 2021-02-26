@@ -4,7 +4,7 @@
 
 Neocatema is Grav Gantry Theme with CSS Utility Base Framework.
 
-Showcase: [semedia](https://semedia.web.id/start/source/neocatema/)
+Demo, Showcase, and documentation : [https://semedia.web.id/start/source/neocatema/](https://semedia.web.id/start/source/neocatema/)
 
 Yes, Neocatema has its [Wiki](https://github.com/tacoen/neocatema/wiki).
 
