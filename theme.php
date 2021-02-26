@@ -37,6 +37,11 @@ class Neocatema extends Theme
 		];
 	}
 
+	public function getgantry_outline() {
+		$gantry = Gantry::instance();
+		$array = $gantry['outlines']->all()->toArray();
+		return $array;
+	}
 	public function propertiesPrepare()
 	{
 		require_once(__DIR__.'/php/ncc-util.php');

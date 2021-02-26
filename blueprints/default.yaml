@@ -427,41 +427,77 @@ form:
                   type: column
                   fields:
 
-                    ncc_section_3:
+                    ncc_section_gantry:
+                      type: section
+                      title: Gantry Overrides
+
+                    header.gantry_outline:
+                        type: select
+                        label: Outlines
+                        default: default
+                        data-options@: 'Grav\Theme\Neocatema::getgantry_outline'
+
+                    header.gantry_layout:
+                      type: select
+                      label: Container
+                      default: 0
+                      selectize:
+                        allowEmptyOption: true
+                      options:
+                        0: Use Gantry Global Setting
+                        1: Remove Container
+                        2: Full-width (Boxed Content)
+                        3: Boxed Content
+
+                    ncc_section_inlines:
                       type: section
                       title: Page Inlines
+                      classes: more-pad
                       underline: true
-                      
+
                     asset_fieldset_css:
                       type: fieldset
                       title: Inline Styles
                       collapsible: true
                       collapsed: true
-                      fields:  
+                      fields:
                         header.asset_inlinecss:
                           type: textarea
                           style: vertical
                           rows: 10
                           label: CSS
-                    
+
                     asset_fieldset_ijs:
                       type: fieldset
                       title: Inline Scripts
                       collapsible: true
                       collapsed: true
-                      fields:  
+                      fields:
                         header.asset_inlinejs:
                           type: textarea
                           style: vertical
                           rows: 10
                           label: JS
 
-                    ncc_section_2:
+                    asset_fieldset_drawer:
+                      type: fieldset
+                      title: Drawer
+                      collapsible: true
+                      collapsed: true
+                      fields:
+                        header.asset_inlinecss:
+                          type: textarea
+                          style: vertical
+                          rows: 10
+                          label: Hidden HTML
+
+                    ncc_section_3:
                       type: section
                       title: Page DataList
                       classes: more-pad
-              
+
                     header.asset_datalist:
                       type: array
                       style: vertical
-                      size: long
+                      classes: fixfit
+                      size: long-fit

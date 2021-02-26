@@ -33,6 +33,8 @@ class nccTwigExtension extends \Twig_Extension
 			new \Twig_SimpleFunction('file_as_array', [$this, 'file_as_array']),
 			new \Twig_SimpleFunction('file_is_exist', [$this, 'file_is_exist']),
 
+			new \Twig_SimpleFunction('makeindex', [$this, 'makeindex']),
+
 			new \Twig_SimpleFunction('filedir', [$this, 'filedir']),
 			new \Twig_SimpleFunction('fileget', [$this, 'fileget']),
 			new \Twig_SimpleFunction('gasvara', [$this, 'gasvar_array_func']),
@@ -177,6 +179,34 @@ class nccTwigExtension extends \Twig_Extension
 		$string = preg_replace('/\W|\s/', '', $string);
 		return strtolower($string);
 	}
+	
+	public function makeindex($path,$pattern="*") {
+
+		require_once(__DIR__.'/ncc-util.php');
+
+		$path = preg_replace("#".GRAV_ROOT."#","",$path);
+
+		if (Utils::startsWith($path, '/')) {
+			$path = GRAV_ROOT . $path.'/';
+		} else {
+			$path = Grav::instance()['page']->path() . '/' . $path.'/';
+		}
+
+		$files = ncc_filedir($path,$pattern);
+		$index = [];
+		
+		foreach ($files as $f) {
+			if ($f['npath']) {
+				$index[$f['npath']][] = $f;
+			} else {
+				$index[''][] = $f;
+			}
+		}
+		
+		return $index;
+		
+	}
+	
 	public function filedir($path,$pattern="*") {
 
 		require_once(__DIR__.'/ncc-util.php');

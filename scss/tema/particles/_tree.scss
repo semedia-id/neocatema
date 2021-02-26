@@ -30,8 +30,7 @@
 	}
 
 	ol.gatree {
-		font-size: .9rem;
-
+		
 		li li { list-style-type: lower-alpha; }
 		li li li { list-style-type: disc; }
 
@@ -77,6 +76,7 @@
 
 			.indicator:before {
 				font-family: 'FontAwesome';
+				font-size: .9rem;
 				position: absolute;
 				content: "\f196";
 				right: 0;

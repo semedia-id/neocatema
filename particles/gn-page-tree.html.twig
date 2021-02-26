@@ -42,7 +42,7 @@
 				<li class="item {{page.title|safetxt}}">
 				<a class='link' href="{{ page.url }}">{{ page.title }}</a>
 			{% else %}
-				<li class="parent">
+				<li class="parent f-{{ page.title|safetxt }}">
 				{% if page.content is empty %}
 					<a class='fold' href="javascript:void(0);">{{ page.title }}</a>
 				{% else %}

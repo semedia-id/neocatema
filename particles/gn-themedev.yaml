@@ -21,3 +21,7 @@ form:
       type: separator.note
       class: alert alert-danger
       content: Theme Dev, a content particle for theme developer. Don't, use this particle in production site.
+      
+    use_content:
+        type: input.checkbox
+        label: Enable Dummy Content

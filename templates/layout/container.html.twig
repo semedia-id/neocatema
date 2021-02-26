@@ -1,4 +1,7 @@
-{% set boxed = segment.attributes.boxed ? segment.attributes.boxed : gantry.config.page.body.layout.sections %}
+{% set boxed = segment.attributes.boxed ? 
+	segment.attributes.boxed : 
+	(header.gantry_layout > 0 ? header.gantry_layout - 1 : gantry.config.page.body.layout.sections)
+	%}
 
 {% if options is not iterable %}
 

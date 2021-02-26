@@ -232,6 +232,7 @@ function ncc_themedev_init() {
 	inputcolor(scheme);
 	inputothers();
 	boxcolor();
+	auto_styles();
 }
 
 document.addEventListener('DOMContentLoaded', function () {

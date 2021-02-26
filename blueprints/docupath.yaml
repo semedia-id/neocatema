@@ -34,7 +34,16 @@ form:
             header.menuclass:
               type: text
               label: menu class
-                
+
+            header.tree_layout:
+              type: select
+              label: Menu Layout
+              default: collapse
+              options:
+                tree: tree
+                collapse: collapse
+                block: block
+        
             header.contentclass:
               type: text
               label: content class

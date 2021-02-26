@@ -20,3 +20,4 @@ function ncc_main_onResize() {
 
 document.addEventListener('DOMContentLoaded', ncc_main_afterLoad);
 window.addEventListener('resize', ncc_main_onResize);
+// window.addEventListener('DOMContentLoaded', (event) => { });

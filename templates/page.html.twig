@@ -1,9 +1,9 @@
 {%- do gantry.debugger.startTimer('render', 'Rendering page') -%}
-{%- do gantry.theme.setLayout() -%}
 
-{%- set segments = gantry.theme.segments() -%}
+{%- do gantry.theme.setLayout(header.gantry_outline ? header.gantry_outline) -%}
+{%- set segments = gantry.theme.segments(header.gantry_outline ? header.gantry_outline) -%}
 
-{%- set boxed = gantry.config.page.body.layout.sections -%}
+{%- set boxed = header.gantry_layout > 0 ? header.gantry_layout - 1 : gantry.config.page.body.layout.sections -%}
 {%- set box_class = boxed==2 ? "g-container layout-2": "g-container" %}
 
 {%- set head_meta %}
@@ -109,8 +109,10 @@
 </head>
 
 	{% set class = gantry.page.bodyAttributes({'class': [
-		'page-'~page.slug(), gantry.page.preset,
-		'g-style-' ~ gantry.theme.preset]})|replace({'class=':'','"':'','=':''})|nodupe %}
+		'page-'~page.slug(),  
+		gantry.page.preset,
+		'g-style-' ~ gantry.theme.preset]})|
+			replace({'class=':'','"':'','=':''})|nodupe %}
 
     <body class="{{class|raw}}">
 
