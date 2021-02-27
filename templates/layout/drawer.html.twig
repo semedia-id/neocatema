@@ -1,0 +1,24 @@
+{% set options = {
+    'gsize': false,
+    'ggrid': false,
+    'gcontent': false,
+	'gcontainer': false,
+	'drawer': true
+    }
+%}
+
+{% set html %}
+    {% if segment.children %}
+        {%- for segment in segment.children -%}
+            {% include 'layout/'~segment.type~'.html.twig' with {
+				'segment': segment,
+				'options':options} %}
+        {% endfor %}
+    {% endif %}
+{% endset %}
+
+{% if html|trim %}
+    <div id='g-drawer'>
+    {{ html|raw }}
+    </div>
+{% endif %}

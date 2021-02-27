@@ -1,7 +1,7 @@
 {%- do gantry.debugger.startTimer('render', 'Rendering page') -%}
 
-{%- do gantry.theme.setLayout(header.gantry_outline ? header.gantry_outline) -%}
-{%- set segments = gantry.theme.segments(header.gantry_outline ? header.gantry_outline) -%}
+{%- do gantry.theme.setLayout(header.gantry_outline != '---' ? header.gantry_outline) -%}
+{%- set segments = gantry.theme.segments(header.gantry_outline != '---' ? header.gantry_outline) -%}
 
 {%- set boxed = header.gantry_layout > 0 ? header.gantry_layout - 1 : gantry.config.page.body.layout.sections -%}
 {%- set box_class = boxed==2 ? "g-container layout-2": "g-container" %}
@@ -42,16 +42,24 @@
     {% endif %}
 {% endset -%}
 
-
 {%- set page_layout %}
-    {%- for segment in segments if segment.type != 'offcanvas' -%}
-        {% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
-    {% endfor %}
+    {%- for segment in segments %} 
+		{% if segment.id|trim not in ['offcanvas','drawer'] -%}
+			{% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
+		{% endif %}
+	{% endfor %}
 {% endset -%}
 
 {%- set page_offcanvas %}
     {%- for segment in segments if segment.type == 'offcanvas' -%}
         {% include 'layout/'~segment.type~'.html.twig' with {'segment':segment} %}
+    {% endfor %}
+{% endset -%}
+
+
+{%- set page_drawer %}
+    {%- for segment in segments if segment.id == 'drawer' -%}
+        {% include 'layout/drawer.html.twig' with {'segment':segment} %}
     {% endfor %}
 {% endset -%}
 
@@ -78,6 +86,7 @@
 {%- set page_bottom %}
     {% block page_bottom %}
     {% endblock %}
+    {{ page_drawer|raw }}
     {{ gantry.document.getHtml('bottom')|join("\n")|raw }}
 {% endset -%}
 

@@ -434,8 +434,10 @@ form:
                     header.gantry_outline:
                         type: select
                         label: Outlines
-                        default: default
+                        default: '---'
                         data-options@: 'Grav\Theme\Neocatema::getgantry_outline'
+                        options:
+                            '---': Use Gantry Page Assignments
 
                     header.gantry_layout:
                       type: select

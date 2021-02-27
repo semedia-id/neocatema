@@ -6,6 +6,7 @@ table.ncc_enviro {
 	td { text-align: left; }
 }
 
+div.section[data-lm-id^="__"],
 div.section[data-lm-id*="drawer"] {
 
 	background: transparent !important;

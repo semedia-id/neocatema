@@ -10,6 +10,14 @@ function ncc_main_afterLoad() {
 	construct_styles();
 	auto_styles();
 	console.log('ncc-main: afterload');
+	
+	document.querySelectorAll('head link[rel=stylesheet]').forEach( function(l) {
+		if ( gas(l).attr('href').includes('nuc-skel.css') ) { l.id = 'nuc-skel'; }
+		if ( gas(l).attr('href').includes('theme.css') ) { l.id = 'nuc-theme'; }
+	
+	});
+	
+	
 }
 
 function ncc_main_onResize() {

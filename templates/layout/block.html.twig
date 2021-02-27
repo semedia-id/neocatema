@@ -47,11 +47,20 @@
     {% endif %}
 {% endset %}
 
-
 {% if html|trim %}
-    <div id="{{id}}"
-        {% if styles|trim %}style="{{styles|raw}}"{%endif%}
-        class="g-block {{ class|raw }}">
-        {{ html|raw }}
-    </div>
+	{%if options.drawer %}
+		{%- set classes = class ? "class='"~class|nodupe ~"'" -%}
+		<div id="{{id}}" {{classes|raw}}>
+		{{ html|raw }}
+		</div>
+	{% else %}
+		{%- set classes = class|trim ? "class='"~ (class~' g-block')|nodupe ~"'" -%}
+		{%- set styleses = styles|trim ? "style='"~ styles|nodupe ~"'" -%}
+
+		<div id="{{id}}" {{classes|raw}} {{styleses}}> 
+		
+		{{ html|raw }}
+		</div>
+	{% endif %}
+
 {% endif %}
