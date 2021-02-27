@@ -152,8 +152,7 @@
 			$res[$i]['rfile'] = $f;
 			$res[$i]['path'] = $inf['dirname'];
 			$res[$i]['spath'] = preg_replace('#'.GRAV_ROOT.'#', '', $inf['dirname']);
-
-			if ( trim($path,'/') == $inf['dirname'] ) {
+			if ( rtrim($path,'/') == $inf['dirname'] ) {
 				$res[$i]['npath'] = false;
 			} else { 
 				$co = explode("/",$inf['dirname']);
