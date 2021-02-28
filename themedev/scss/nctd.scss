@@ -1,0 +1,40 @@
+body {
+background: #999;
+--tbgr: #666;
+--ttxt: #ddd;
+}
+
+#nctd-toolbar {
+
+	position: fixed;
+	bottom: 1rem;
+	left: 1rem;
+	width: calc(100% - 2rem);
+	background: var(--tbgr);
+	color: var(--ttxt);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;	
+	display: flex;
+}	
+
+
+
+
+
+.panel {
+
+	position: fixed;
+	top: 1rem;
+	left: 1rem;
+	height: calc(100% - 3rem - 40px);
+	width: 20%;
+	background: var(--tbgr);
+	color: var(--ttxt);
+	display: flex;
+	flex-flow:column;
+	
+
+}
+
+

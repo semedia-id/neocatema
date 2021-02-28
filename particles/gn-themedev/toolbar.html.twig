@@ -1,0 +1,33 @@
+<div id='ncc-toolbar' class='panels open'>
+	<div>
+	<a title='panel' href='#' onclick="gn_toggle('#ncc-panel','open')" class='icon toggle'><svg><use xlink:href="#bot"></use></svg></a>
+	<a title='panel' href='#' onclick="gn_toggle('#ncc-chart','open')" class='icon toggle'><svg><use xlink:href="#palette"></use></svg></a>
+	<a title='scheme' href='#' onclick="ncc_scheme_switch(); ncc_themedev_init();" class='icon toggle'><svg><use xlink:href="#scheme"></use></svg></a>
+	<a title='theme' href='#' onclick="css_ctl('nuc-theme')" class='icon toggle'>
+		<svg class='off'><use xlink:href="#rule0"></use></svg>
+		<svg class='on'><use xlink:href="#rule1"></use></svg></a>
+	</div>
+	<div>
+	<a href='#' onclick="gn_toggle('#ncc-vars','open'); nc_variables();" class='icon toggle'><svg><use xlink:href="#cog"></use></svg></a>
+	<a title='revert' onclick="localStorage.clear();location.reload();" class='icon toggle'><svg><use xlink:href="#export"></use></svg></a>
+	</div>
+</div>
+
+<svg display="none" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<symbol id='palette' viewBox="0 0 32 32"><path fill="red" d="M12 12a2 2 0 11-4 0 2 2 0 014 0z"/><path fill="#0f0" d="M18 9a2 2 0 11-4 0 2 2 0 014 0z"/><path fill="#00f" d="M24 12a2 2 0 11-4 0 2 2 0 014 0z"/><path fill="#ff0" d="M25 18a2 2 0 11-4 0 2 2 0 014 0z"/><path fill="#f0f" d="M21 23a2 2 0 11-4 0 2 2 0 014 0z"/><path d="M17 2h-1C8 2 2 8 2 16a5 5 0 006 5l1-1h1c2 0 3 2 3 3v4c0 2 1 3 3 3a14 14 0 0014-15c0-7-6-13-13-13zm8 22c-3 3-6 4-9 4l-1-1v-4c0-3-2-5-5-5H9l-1 1H7c-2 0-3-1-3-3A12 12 0 0116 4c7 0 12 5 12 11v1c0 3-1 6-3 8z"/></symbol>
+<symbol id='scheme' viewBox="0 0 32 32"><path d="M26 4H6L4 6v20l2 2h20l2-2V6l-2-2zM6 26L26 6v20z"/></symbol>
+<symbol id='adjust' viewBox="0 0 32 32"><path d="M15 2h2v3h-2V2zM27 15h3v2h-3v-2zM15 27h2v3h-2v-3zM2 15h3v2H2v-2zM5 7l2-2 2 3-1 1-3-2zM23 8l2-3 2 2-3 2-1-1zM23 24l1-1 3 2-2 2-2-3zM5 25l3-2 1 1-2 3-2-2zM16 8a8 8 0 108 8c0-4-4-8-8-8zm0 14a6 6 0 110-12z"/></symbol>
+<symbol id='typo' viewBox="0 0 32 32"><defs/><path d="M23 27V15h-5v-2h12v2h-5v12h-2z"/><path d="M11 27V8H2V6h20v2h-9v19h-2z"/></symbol>
+<symbol id='export' viewBox="0 0 32 32"><path d="M28 19H15l2-3-1-1-5 5 5 5 1-1-2-3h13v-2z"/><path d="M24 14v-4-1l-7-7H6L4 4v24l2 2h16l2-2v-2h-2v2H6V4h8v6l2 2h6v2zm-8-4V4l6 6z"/></symbol>
+<symbol id='cog' viewBox="0 0 32 32"><path d="M16 22a6 6 0 116-6c0 3-3 6-6 6zm0-10a4 4 0 00-4 4c0 2 2 4 4 4s4-2 4-4-2-4-4-4z"/><path d="M29 11l-2-4a2 2 0 00-2-1l-3 1-1-1-1-2-2-2h-4l-2 2-1 2-1 1-3-1-2 1-2 4a2 2 0 000 3l2 1v2l-2 1a2 2 0 000 3l2 4a2 2 0 002 1l3-1 1 1 1 2 2 2h4v-2h-4l-1-4-3-1-3 1-3-4 3-2a9 9 0 010-4l-3-2 3-4 3 1 3-1 1-4h4l1 4 3 1 3-1 3 4-3 2 1 2 3-2a2 2 0 000-3z"/><path fill='red' d="M23 26l-3-2-1 1 4 4 7-7-1-1-6 5z"/></symbol>
+<symbol id='rule1' viewBox="0 0 32 32"><path d="M10 16h12v2H10v-2zM10 10h12v2H10v-2z"/><path d="M16 30l-6-3c-4-2-6-6-6-10V4l2-2h20l2 2v13c0 4-2 8-6 10zM6 4v13c0 3 2 6 5 8l5 3 5-3c3-2 5-5 5-8V4z"/></symbol>
+<symbol id='rule0' viewBox="0 0 32 32"><path d="M16 30l-6-3c-4-2-6-6-6-10V4l2-2h20l2 2v13c0 4-2 8-6 10zM6 4v13c0 3 2 6 5 8l5 3 5-3c3-2 5-5 5-8V4z"/></symbol>
+<symbol id='bot' viewBox="0 0 32 32">
+<path fill="#fc3" d="M18 10h2v2h-2v-2z" />
+<path fill="#69d" d="M12 10h2v2h-2v-2z" />
+<path fill="var(--text)" d="M26 20h-5v-2h1l2-2v-4h2v-2h-2V8l-2-2h-2V2h-2v4h-4V2h-2v4h-2L8 8v2H6v2h2v4l2 2h1v2H6l-2 2v8h2v-8h20v8h2v-8l-2-2zM10 8h12v8H10zm3 10h6v2h-6z"/></symbol>
+</defs>
+</svg>
+
+

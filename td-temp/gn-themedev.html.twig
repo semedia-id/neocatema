@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="gantry-theme://themedev/css/theme-dev.css" />
 {% endblock %}
 {% block javascript_footer %}
+    <script src="{{ url('user://neocatema/js/ncc-doc.js') }}"></script>
     <script src="{{ url('gantry-theme://themedev/js/theme-dev.js') }}"></script>
 {% endblock %}
 
@@ -16,7 +17,6 @@
 {% endif %}
 
 {% pageblock body_bottom %}
-	{% include '@particles/gn-themedev/toolbar.html.twig' %}
 	{% include '@particles/gn-themedev/vars.html.twig' %}
 	{% include '@particles/gn-themedev/color-chart.html.twig' %}
 	{% include '@particles/gn-themedev/inputs.html.twig' %}

@@ -1,4 +1,4 @@
-@mixin scrollbars( $size:1rem, $foreground-color:#fffd, $background-color:#0006) {
+@mixin scrollbars( $size:1rem, $foreground-color:#fffd, $background-color:#0006, $thumb-color:#ccc) {
 
 	&::-webkit-scrollbar { width: $size;  height: $size; }
 	&::-webkit-scrollbar-thumb {
@@ -15,7 +15,7 @@
 	}
 
 	&::-webkit-scrollbar-thumb:hover {
-		background: #fffd;
+		background: $thumb-color;
 		box-shadow: 0 2px 6px #0005;
 	}
 

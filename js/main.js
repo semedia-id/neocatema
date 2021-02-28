@@ -9,13 +9,11 @@ function ncc_main_afterLoad() {
 	ncc_fixtop_init();
 	construct_styles();
 	auto_styles();
+	
+	css_ctl_init();
+	
 	console.log('ncc-main: afterload');
 	
-	document.querySelectorAll('head link[rel=stylesheet]').forEach( function(l) {
-		if ( gas(l).attr('href').includes('nuc-skel.css') ) { l.id = 'nuc-skel'; }
-		if ( gas(l).attr('href').includes('theme.css') ) { l.id = 'nuc-theme'; }
-	
-	});
 	
 	
 }

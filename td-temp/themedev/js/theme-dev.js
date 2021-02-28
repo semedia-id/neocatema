@@ -8,14 +8,11 @@ var field2 = ['surface','accent','error','warning','success','info','button'];
 var fields = field1.concat(field2);
 var kan = '#g-page-surround'
 
-function box_color() {
-
+function boxcolor() {
 	document.querySelectorAll('.boxcolor').forEach( function(h) {
-		var hx = getComputedStyle(h).backgroundColor;
-		var c = w3color(hx);
-		gas(h).data('value', c.toHexString());
+		var c = w3color(getComputedStyle(h)['backgroundColor']).toHexString();
+		gas(h).data('value', c);
 	});
-	
 }
 
 
@@ -234,7 +231,7 @@ function ncc_themedev_init() {
 	// console.log('!!! init:',scheme);
 	inputcolor(scheme);
 	inputothers();
-	box_color();
+	boxcolor();
 	auto_styles();
 }
 
@@ -246,7 +243,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		ncc_themedev_init();
 	});
 	
-	/*
 	document.querySelector('#ncc-panel-ctl').addEventListener('click', function() {
 		var tg = document.querySelector('#ncc-panel').classList.contains('open');
 		
@@ -256,7 +252,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			localStorage.removeItem('ncc-panel');
 		}
 	});
-	*/
+
 	if ( localStorage.getItem('ncc-panel') ) {
 		var tg = document.querySelector('#ncc-panel').classList.contains('open');
 		if (!tg) {

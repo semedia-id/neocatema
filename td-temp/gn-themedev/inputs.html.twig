@@ -1,70 +1,50 @@
-<div id='ncc-panel' class='panels container'>
+<div id='ncc-panel'>
+<button id='ncc-panel-ctl' class='toggle' onclick="gn_toggle('#ncc-panel','open')">
+<i class='ncico-sliders pr-25'></i>Theme Dev
+</button>
 
-<div class='td-brad flex row' onclick="gn_toggle('#ncc-palette','open')">
-<svg class=''><use xlink:href="#bot"></use></svg><span>Tema2</span>
-</div>
+<div class='content'>
+<div class='set'>
 
 <div class='accordion'>
-	<input toggle id='themecolor' type='checkbox'>
-	<label for='themecolor'>Theme Colors</label>
-	<div class='toggle-content'>
+<input toggle id='item1' type='checkbox'>
+<label for='item1'>Theme Colors</label>
+<div toggle-content>
 
-	<form class="color-input">
+<form class="color-input">
 	<div><input type="color" id="background-color" class="background-color" data-color="background" name="background-color" value="#ffffff" onchange="javascript:change_color(this);" data-value="#090909" style="--text:#fff;"></div>
 	<div><input type="color" id="text-color" class="text-color" data-color="text" name="text-color" value="#ffffff" onchange="javascript:change_color(this);" data-value="#eeeeee" style="--text:#000;"></div>
 	<div><input type="color" id="surface-color" class="surface-color" data-color="surface" name="surface-color" value="#ffffff" onchange="javascript:change_color(this);" data-value="#ccbbaa" style="--text:#000;"></div>
 	<div><input type="color" id="accent-color" class="accent-color" data-color="accent" name="accent-color" value="#ffffff" onchange="javascript:change_color(this);" data-value="#66eeee" style="--text:#000;"></div>
 	<div><input type="color" id="button-color" class="button-color" data-color="button" name="button-color" value="#ffffff" onchange="javascript:change_color(this);" data-value="#222222" style="--text:#fff;"></div>
-	</form>
+</form>
 	
-	</div>
+</div>
 </div>
 
 <div class='accordion'>
-	<input toggle id='themecolor2' type='checkbox'>
-	<label for='themecolor2'>System Colors</label>
-	<div class='toggle-content'>
-	<form class="color-input">
+<input toggle id='item5' type='checkbox'>
+<label for='item5'>System Colors</label>
+<div toggle-content>
+
+<form class="color-input">
 	<div><input type="color" id="warning-color" class="warning-color" data-color="warning" name="warning-color" value="#ffffff" onchange="javascript:change_color(this);"></div>
 	<div><input type="color" id="error-color" class="error-color" data-color="error" name="error-color" value="#ffffff" onchange="javascript:change_color(this);"></div>
 	<div><input type="color" id="info-color" class="info-color" data-color="info" name="info-color" value="#ffffff" onchange="javascript:change_color(this);"></div>
 	<div><input type="color" id="success-color" class="success-color" data-color="success" name="success-color" value="#ffffff" onchange="javascript:change_color(this);"></div>
-	</form>
-	</div>
-</div>
-
-<div class='accordion'>
-	<input toggle id='deco' type='checkbox'>
-	<label for='deco'>Decorant</label>
-	<form class='toggle-content inline-form'>
-	<div class='form-field'>
-	<div class='form-label'>Shade</div>
-	<div class='form-data'><input onchange="nc_cssvar('shade',false,this.value)" type='text' value='' name='shade'></div>
-	</div>
-
-	<div class='form-field'>
-	<div class='form-label'>Border</div>
-	<div class='form-data'><input onchange="nc_cssvar('border',false,this.value)" type='text' value='' name='border'></div>
-	</div>
+</form>
 	
-	<div class='form-field'>
-	<div class='form-label'>Highlight</div>
-	<div class='form-data'><input onchange="nc_cssvar('hilite',false,this.value)" type='text' value='' name='hilite'></div>
-	</div>
-
-	<div class='form-field'>
-	<div class='form-label'>Shadow</div>
-	<div class='form-data'><input onchange="nc_cssvar('shadow',false,this.value)" type='text' value='' name='shadow'></div>
-	</div>
-
-	</form>
+</div>
 </div>
 
+
 <div class='accordion'>
-	<input toggle id='typo1' type='checkbox'>
-	<label for='typo1'>Typography</label>
-	<div class='toggle-content'>
+<input toggle id='item2' type='checkbox'>
+<label for='item2'>Typography</label>
+<div toggle-content>
+
 	<form class='inline-form'>
+
 	<div class='form-field'>
 	<div class='form-label'>Font Size</div>
 	<div class='form-data'><input onchange="nc_cssvar('font-size','base',this.value)" type='text' value='' name='font-size'></div>
@@ -74,6 +54,8 @@
 	<div class='form-data'><input onchange="nc_cssvar('line-height','base',this.value)" type='text' value='' name='line-height'></div>
 	</div>
 
+	<p class='sep'>Font</p>
+	
 	<div class='form-field'>
 	<div class='form-label'>Base</div>
 	<div class='form-data'><input onchange="nc_cssvar('font-base','base',this.value)"type='text' value='' name='font-base'></div>
@@ -102,7 +84,7 @@
 <div class='accordion'>
 <input toggle id='item3' type='checkbox'>
 <label for='item3'>Page Setting</label>
-<div class='toggle-content'>
+<div toggle-content>
 
 
 	<form class='inline-form'>
@@ -116,16 +98,6 @@
 	<div class='form-label'>Margin</div>
 	<div class='form-data'><input onchange="nc_cssvar('margin','base',this.value)" type='text' value='' name='margin'></div>
 	</div>
-	
-	<div class='form-field'>
-	<div class='form-label'>B-Radius</div>
-	<div class='form-data'><input onchange="nc_cssvar('bradius','base',this.value)" type='text' value='' name='bradius'></div>
-	</div>
-
-	<div class='form-field'>
-	<div class='form-label'>Separator</div>
-	<div class='form-data'><input onchange="nc_cssvar('hrsep','base',this.value)" type='text' value='' name='hrsep'></div>
-	</div>	
 
 	</form>
 
@@ -134,13 +106,52 @@
 </div>
 
 
-<div class='sep'>
+<div class='accordion'>
+<input toggle id='item4' type='checkbox'>
+<label for='item4'>Decorant</label>
+<div toggle-content>
 
+
+	<form class='inline-form'>
+
+	<div class='form-field'>
+	<div class='form-label'>Shade</div>
+	<div class='form-data'><input onchange="nc_cssvar('shade',false,this.value)" type='text' value='' name='shade'></div>
+	</div>
+
+	<div class='form-field'>
+	<div class='form-label'>Border</div>
+	<div class='form-data'><input onchange="nc_cssvar('border',false,this.value)" type='text' value='' name='border'></div>
+	</div>
+	
+	<div class='form-field'>
+	<div class='form-label'>Highlight</div>
+	<div class='form-data'><input onchange="nc_cssvar('hilite',false,this.value)" type='text' value='' name='hilite'></div>
+	</div>
+
+	<div class='form-field'>
+	<div class='form-label'>Shadow</div>
+	<div class='form-data'><input onchange="nc_cssvar('shadow',false,this.value)" type='text' value='' name='shadow'></div>
+	</div>
+
+	<div class='form-field'>
+	<div class='form-label'>B-Radius</div>
+	<div class='form-data'><input onchange="nc_cssvar('bradius','base',this.value)" type='text' value='' name='bradius'></div>
+	</div>
+
+	<div class='form-field'>
+	<div class='form-label'>Separator</div>
+	<div class='form-data'><input onchange="nc_cssvar('hrsep','base',this.value)" type='text' value='' name='hrsep'></div>
+	</div>
+
+	</form>
+
+
+</div>
 </div>
 
 </div><!--set-->
 
-<!--
 <p class='tools pa-50 pb-0 mb-0'>
 <button title='variables' id='ncc-page-ctl' class='toggle' onclick="gn_toggle('#ncc-page','open');nc_variables();">
 <i class='ncico-download'></i></button>
@@ -156,8 +167,6 @@
 </button>
 
 </p>
---->
-
 </div><!--content-->
 
 </div>

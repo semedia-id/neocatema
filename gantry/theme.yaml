@@ -55,11 +55,11 @@ configuration:
       - gantry-engine://scss
     files:
       - nuc-skel
-      - theme
+      - tema
     persistent:
       - nuc-skel
     overrides:
-      - theme
+      - tema
 
   block-variations:
 

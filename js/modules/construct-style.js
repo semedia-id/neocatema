@@ -1,3 +1,13 @@
+function box_color() {
+
+	document.querySelectorAll('.boxcolor').forEach( function(h) {
+		var hx = getComputedStyle(h).backgroundColor;
+		var c = w3color(hx);
+		gas(h).data('value', c.toHexString());
+	});
+	
+}
+
 function construct_styles() {
 
 	document.querySelectorAll('.hsl-pal').forEach( function(el) {
