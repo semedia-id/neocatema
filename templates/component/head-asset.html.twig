@@ -75,6 +75,8 @@
 
 {% if gantry.config.page.assets.favicon %}
     <link href="{{ url(gantry.config.page.assets.favicon) }}" rel="icon" type="image/x-icon" />
+{% else %}
+    <link href="{{ url('gantry-theme://images/favicon.png') }}" rel="icon" type="image/x-icon" />
 {% endif %}
 {% if gantry.config.page.assets.touchicon %}
     <link href="{{ url(gantry.config.page.assets.touchicon) }}" rel="apple-touch-icon" sizes="180x180">
