@@ -27,10 +27,14 @@
     {% endblock -%}
 
     {% block head_overrides -%}
-        {% for scss in gantry.theme.configuration.css.overrides %}
-            <link rel="stylesheet" href="{{ scss }}.scss" type="text/css"/>
-        {%- endfor %}
-    {% endblock -%}
+
+		{% if gantry.config.page.neocatema.skel_only==0 %}
+			{% for scss in gantry.theme.configuration.css.overrides %}
+				<link rel="stylesheet" href="{{ scss }}.scss" type="text/css"/>
+			{%- endfor %}
+		{% endif %}
+    
+	{% endblock -%}
 
 {% endassets -%}
 
@@ -84,8 +88,7 @@
 <script type="text/javascript" src="{{ url('gantry-assets://js/matchmedia.polyfill.js') }}"></script>
 <![endif]-->
 
+
 {% if header.asset_inlinecss|trim %}
-<style type='text/css'>
-{{ header.asset_inlinecss }}
-</style>
+<style type='text/css'>{{ header.asset_inlinecss }}</style>
 {% endif %}

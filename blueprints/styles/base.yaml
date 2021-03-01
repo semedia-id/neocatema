@@ -8,7 +8,7 @@ form:
     _note1:
         type: separator.note
         class: opt-note header
-        content: Content
+        content: Atomic Unit Base
 
     padding:
         type: input.text

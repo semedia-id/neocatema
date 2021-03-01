@@ -1,30 +1,23 @@
 details:
-  name: neoca
+  name: Neocatema
   version: '2.0'
   icon: html5
   date: 'August 17, 2020'
 
-  description: Neoca Theme
+  description: Neocatema (Skeleton) Theme
   images:
-    thumbnail: /admin/image/preset1.png
-    preview: /admin/image/preset1.png
+    thumbnail: thumbnail.jpg
+    preview: screenshot.jpg
 
-author:
-  name: tacoen
-  email: tacoen@gmail.com
-  url: https://github.com/tacoen/
+  author:
+    name: Semedia
+    email: semedia@gmail.com
+    link: https://semedia.web.id
 
-  homepage: https://github.com/tacoen/neoca
-  readme: https://github.com/tacoen/neoca/blob/master/README.md
-  keywords: gantry, gantry5, theme, gaskeun
-  bugs: https://github.com/tacoen/neoca/issues
-  license: MIT
-
-  documentation:
-    link: https://github.com/tacoen/neoca/wiki
-
-  support:
-    link: https://github.com/tacoen/neoca/issues
+  support: 
+    link: https://github.com/semedia-id
+  documentation: 
+    link: https://semedia.web.id/start/source/neocatema
 
 
 configuration:

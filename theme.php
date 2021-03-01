@@ -12,7 +12,7 @@ use RocketTheme\Toolbox\ResourceLocator\UniformResourceLocator;
 
 class Neocatema extends Theme
 {
-	public $gantry = '5.4.0';
+	public $gantry = '5.4.37';
 
 	/**
 	 * @var GantryTheme
@@ -206,7 +206,7 @@ class Neocatema extends Theme
 
 		if (! $this->isAdmin()) {
 
-			if ($this->config['theme']['tidy_output']) {
+			if (isset($this->config['theme']['tidy_output'])) {
 				$this->grav->output = ncc_tidyup($this->grav->output."");
 			}
 

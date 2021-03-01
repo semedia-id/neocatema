@@ -9,17 +9,22 @@ form:
       class: 'alert alert-success blocksize-note'
       content: '<small>See: <a href="https://github.com/tacoen/neocatema/wiki">Neocatema wiki</a></small>'
 
+    skel_only:
+      type: enable.enable
+      label: CSS Skeleton only
+      default: '0'
+
     workspace_css:
-      type: input.checkbox
-      label: user/workspaces/css
+      type: enable.enable
+      label: workspaces/css
       default: '0'
       
     workspace_js:
-      type: input.checkbox
-      label: user/workspaces/js
+      type: enable.enable
+      label: workspaces/js
       default: '0'
 
     preload_font:
-      type: input.checkbox
+      type: enable.enable
       label: Preload Webfont
       default: '0'

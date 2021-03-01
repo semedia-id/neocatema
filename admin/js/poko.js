@@ -25,7 +25,7 @@ function scss_tailor_func() {
 
 document.addEventListener('DOMContentLoaded', function() {
 
-	scss_tailor_func();
+	//scss_tailor_func();
 
 });
 

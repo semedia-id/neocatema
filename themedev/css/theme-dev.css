@@ -5,7 +5,6 @@
   line-height: var(--line-height);
   background: var(--background);
   color: var(--text); }
-
 .td-brad {
   display: flex;
   justify-content: space-between;
@@ -19,7 +18,6 @@
     font-weight: 700;
     text-transform: uppercase;
     font-size: 1.1; }
-
 .panels {
   --panel: #333;
   --text: #ddd9;
@@ -89,7 +87,6 @@
     color: var(--label); }
   .panels input[type="checkbox"] {
     display: none; }
-
 #ncc-toolbar {
   position: fixed;
   bottom: 1rem;
@@ -112,12 +109,10 @@
       fill: var(--text); }
     #ncc-toolbar .icon .off {
       display: none; }
-
 body.disable-nuc-theme #ncc-toolbar .icon .off {
   display: initial; }
 body.disable-nuc-theme #ncc-toolbar .icon .on {
   display: none; }
-
 #ncc-panel {
   position: fixed;
   bottom: calc(2rem + 32px);
@@ -125,13 +120,11 @@ body.disable-nuc-theme #ncc-toolbar .icon .on {
   width: 220px;
   max-height: calc(100% - 32px - 3rem);
   overflow-y: auto; }
-
 #ncc-typo {
   position: fixed;
   bottom: calc(2rem + 32px);
   right: 1rem;
   width: 220px; }
-
 #ncc-vars,
 #ncc-chart {
   position: fixed;
@@ -147,53 +140,45 @@ body.disable-nuc-theme #ncc-toolbar .icon .on {
     width: 100px; }
   #ncc-vars textarea,
   #ncc-chart textarea {
-    height: 30vh; }
-
-/* ---------------------------------------- 
-
+    height: 30vh;
+    width: 100%;
+    background: #ccc;
+    color: #000; }
+/* ----------------------------------------
 %reset-list {
     list-style-type:none;
     margin:0;
     padding:0;
 }
-
-
 @mixin flex-div($direction: row, $align-item: center, $justify-content: flex-start, $wrap: wrap) {
 	display: flex;
 	flex-direction: $direction;
     align-items: $align-item;
     justify-content: $justify-content;
-	flex-wrap: $wrap;	
+	flex-wrap: $wrap;
 }
-
 @mixin ncc-scrollbars( $size:1rem, $foreground-color:#fffd, $background-color:#0006) {
-
 	&::-webkit-scrollbar { width: $size;  height: $size; }
 	&::-webkit-scrollbar-thumb {
-		background: $foreground-color; 
+		background: $foreground-color;
 		border: 1px outset #0006;
 		border-top: 1px outset #0003;
 		border-left: 1px outset #0003;
 		border-radius: .25rem;
 	}
-	
-	&::-webkit-scrollbar-track { 
-		box-shadow: inset -1px 0 3px #0009; 
-		background: $background-color; 
+	&::-webkit-scrollbar-track {
+		box-shadow: inset -1px 0 3px #0009;
+		background: $background-color;
 	}
-	
 	&::-webkit-scrollbar-thumb:hover {
 		background: #fffd;
 		box-shadow: 0 2px 6px #0005;
 	}
-	
 	& {
 		scrollbar-face-color: $foreground-color;
 		scrollbar-track-color: $background-color;
 	}
 }
-
-
 .dummy-preview {
   width: 500px;
   height: 400px; }
@@ -208,7 +193,6 @@ body.disable-nuc-theme #ncc-toolbar .icon .on {
     display: flex;
     flex-direction: column;
     justify-content: space-between; }
-
 .xample:hover {
   background: var(--background);
   outline: 1px solid var(--border);
@@ -224,19 +208,12 @@ body.disable-nuc-theme #ncc-toolbar .icon .on {
     background-color: var(--border);
     cursor: pointer;
     padding: .1rem; }
-
-
-
-
 #ncc-panel {
-
-    label { 
-        font-weight: 700; 
-        display: block; margin-bottom: 1em; 
+    label {
+        font-weight: 700;
+        display: block; margin-bottom: 1em;
     }
-
-    input[type="checkbox"] { display: none; }	
-
+    input[type="checkbox"] { display: none; }
     transition: height .25s ease;
 	position: fixed;
 	width: 210px;
@@ -245,48 +222,35 @@ body.disable-nuc-theme #ncc-toolbar .icon .on {
 	left: .25rem;
 	font-size: .9rem;
     z-index: 9999;
-	@include ncc-scrollbars(.25rem,#fffc,#0003);	
-	
+	@include ncc-scrollbars(.25rem,#fffc,#0003);
 	.set {
 		padding: 0 .5rem;
 	}
-
 	.accordion {
         margin: 1em 0;
 	}
-
 	form {
 		font-size: .8rem;
-		
 		.sep { font-weight:700; margin: 1rem 0; }
 	}
-	
 	button {
 		text-align: left;
 	}
-	
 	&.open {
 		height: calc(100vh - .5rem);
 		overflow-y: auto;
 	}
-	
-
     .color-input {
         width: 100%;
     }
-    
-
    .tools {
     	margin:0;
     }
-
     [naked] {
     	color: var(--text);
     }
 }
-
 .dark-scheme {
-
     #ncc-page,
 	#ncc-panel {
 		--text: #eee;
@@ -295,7 +259,6 @@ body.disable-nuc-theme #ncc-toolbar .icon .on {
 		--label: #c33;
 	}
 }
-
 #ncc-page {
     transition:all .25s ease;
 	opacity: 0;
@@ -307,19 +270,16 @@ body.disable-nuc-theme #ncc-toolbar .icon .on {
 	overflow-y: scroll;
 	padding: 1rem;
 	z-index: 9998;
-	@include ncc-scrollbars(.25rem,#fffc,#0003);	
-
+	@include ncc-scrollbars(.25rem,#fffc,#0003);
 	form {
 		width: calc(100% - 2rem);
 	}
-
 	&.open {
     	top: .25rem;
 		transform: translateX(0);
 		opacity: 1;
 	}
 }
-
 #ncc-panel .content {
 	display: flex;
 	height: calc(100vh - 42px);
@@ -331,7 +291,6 @@ body.disable-nuc-theme #ncc-toolbar .icon .on {
     	@include ncc-scrollbars(.25rem,#fffc,#0003);
 	}
 }
-
 #ncc-chart {
 	@extend #ncc-page;
 	display: flex;
@@ -339,11 +298,7 @@ body.disable-nuc-theme #ncc-toolbar .icon .on {
 	align-items: flex-start;
 	color: var(--text);
 	background: var(--background);
-
 	.boxcolor { width: 88px; }
-
 }
-
 */
-
 /*# sourceMappingURL=theme-dev.css.map */

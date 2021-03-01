@@ -4,10 +4,10 @@ preset:
   name: default
 
 layout:
-  /navigation/:
   /header/:
+  /navigation/:
   /main/:
-  /footer/: 
+  /footer/:
+  /drawer/:
   /offcanvas/:
     - system-messages
-

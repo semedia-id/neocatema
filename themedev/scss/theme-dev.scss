@@ -167,7 +167,9 @@ body.disable-nuc-theme {
 	overflow-y:overlay;
     .color-chart
     .color-chart { width: 100px; }
-    textarea { height: 30vh; }
+
+    textarea { height: 30vh; width: 100%; background: #ccc; color:#000; }
+
 }
 
 

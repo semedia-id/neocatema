@@ -1,11 +1,12 @@
-name: neocatema
-version: "1.1"
+name: Neocatema
+version: "2.0"
 description: "Neocatema(skeleton) Theme"
 icon: html5
 author:
   name: tacoen
   email: tacoen@gmail.com
   url: https://tacoen.github.io/
+  link: https://tacoen.github.io/
 homepage: https://tacoen.github.io/neocatema/
 demo: http://semedia.web.id/neocatema
 readme: https://github.com/tacoen/neocatema/blob/master/README.md
@@ -14,7 +15,7 @@ bugs: https://github.com/tacoen/neocatema/issues
 license: MIT
 
 dependencies:
-  - { name: grav, version: '>=1.7' }
+  - { name: grav, version: '>=1.6' }
 
 form:
   validation: loose
@@ -48,3 +49,4 @@ form:
     _checker:
       type: section
       data-text@: '\Grav\Theme\Neocatema::webcheck'
+      
